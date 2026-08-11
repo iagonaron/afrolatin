@@ -1,0 +1,18 @@
+{
+  "name": "Ritmos afrolatinos · Unidad 7",
+  "short_name": "Afrolatin",
+  "description": "Nueve géneros afrolatinos: origen, cómo reconocerlos, laboratorio rítmico y ejemplos reales.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#04100F",
+  "theme_color": "#04100F",
+  "lang": "es",
+  "icons": [
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png"},
+    {"src":"icon-maskable-192.png","sizes":"192x192","type":"image/png","purpose":"maskable"},
+    {"src":"icon-maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
+  ]
+}
