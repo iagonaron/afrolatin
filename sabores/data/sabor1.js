@@ -443,14 +443,11 @@ BLUES.dia(1, {
      "id": "s1_016",
      "quien": "CANDE",
      "texto": "Pero lo más bacano de esta tierra es su música. ¡Eche, vengan, que les enseño mi tarima!",
-     "voz": "voz/s1/s1_016.mp3",
-     "var": "RECURSO_CAMINO",
-     "fijo": true
+     "voz": "voz/s1/s1_016.mp3"
     }
    ],
    "var": {
-    "RECURSO_MERCADO": "img/s1/v2_mercado.webp",
-    "RECURSO_CAMINO": "img/s1/v2_camino.webp"
+    "RECURSO_MERCADO": "img/s1/v2_mercado.webp"
    },
    "mus": {
     "src": "mus/s1_cumbia_fondo.mp3",
@@ -953,82 +950,101 @@ BLUES.dia(1, {
     ],
     "letra": [
      {
-      "t": 3.07,
-      "txt": "Escucha bien, mijito, que te voy a enseñar:"
+      "t": 3.14,
+      "txt": "Escucha bien, mijito, que te voy a enseñar:",
+      "t1": 7.24
      },
      {
-      "t": 8.17,
+      "t": 8.23,
       "txt": "la cumbia no se corre, la cumbia es pa' caminar.",
-      "t1": 12.27
+      "t1": 12.44
      },
      {
-      "t": 12.97,
-      "txt": "Las maracas sin parar van marcando el compás,"
+      "t": 13.0,
+      "txt": "Las maracas sin parar van marcando el compás,",
+      "t1": 18.09
      },
      {
-      "t": 18.57,
+      "t": 18.6,
       "txt": "y el tambor con el bajo caminan por detrás.",
-      "t1": 21.07
+      "t1": 20.74
      },
      {
-      "t": 21.27,
+      "t": 21.23,
       "txt": "Una larga y dos cortas, ¡chá-chiqui, chá-chiqui!"
      },
      {
-      "t": 24.27,
+      "t": 24.33,
       "txt": "La guacharaca lo dice, lo dice siempre así."
      },
      {
-      "t": 27.27,
+      "t": 27.84,
       "txt": "Una larga y dos cortas, ¡chá-chiqui, chá-chiqui!"
      },
      {
-      "t": 30.27,
+      "t": 30.34,
       "txt": "Esa es la cumbia, mijo, la cumbia de aquí.",
-      "t1": 33.37
+      "t1": 33.75
      },
      {
-      "t": 35.41,
+      "t": 34.15,
+      "txt": ""
+     },
+     {
+      "t": 36.02,
       "txt": "¡Esa es la cumbia, mijo, la cumbia de aquí!",
-      "t1": 44.41
+      "t1": 44.57
      },
      {
-      "t": 45.31,
-      "txt": "Oye bien el teclado: nunca cae en el tiempo,"
+      "t": 45.24,
+      "txt": "Oye bien el teclado: nunca cae en el tiempo,",
+      "t1": 50.33
      },
      {
-      "t": 50.51,
+      "t": 50.57,
       "txt": "siempre justo después: eso es contratiempo.",
-      "t1": 55.31
+      "t1": 55.35
      },
      {
-      "t": 55.91,
+      "t": 56.0,
       "txt": "El acordeón costeño le canta por encima,",
       "t1": 60.31
      },
      {
-      "t": 60.71,
+      "t": 60.76,
       "txt": "y suenan los metales cuando la fiesta se anima.",
       "t1": 64.51
      },
      {
-      "t": 65.11,
+      "t": 65.28,
       "txt": "Una larga y dos cortas, ¡chá-chiqui, chá-chiqui!"
      },
      {
-      "t": 70.61,
+      "t": 70.75,
       "txt": "La guacharaca lo dice…",
-      "t1": 72.41
+      "t1": 73.63
      },
      {
-      "t": 75.79,
+      "t": 74.03,
+      "txt": ""
+     },
+     {
+      "t": 75.84,
       "txt": "…¡la cumbia de aquí!",
-      "t1": 76.89
+      "t1": 76.83
      },
      {
-      "t": 80.09,
+      "t": 77.23,
+      "txt": ""
+     },
+     {
+      "t": 80.15,
       "txt": "¡Eche! ¡Eso es cumbia, mijo!",
-      "t1": 82.39
+      "t1": 87.52
+     },
+     {
+      "t": 87.92,
+      "txt": ""
      }
     ],
     "fichas": [],
@@ -1745,89 +1761,181 @@ BLUES.dia(1, {
     ],
     "letra": [
      {
-      "t": 1.7,
-      "txt": "Oye, mi pana, mira esto: si la cumbia va despacio,",
-      "t1": 5.61
+      "t": 1.8,
+      "txt": "Oye, mi pana, mira esto:",
+      "t1": 3.82
      },
      {
-      "t": 5.76,
-      "txt": "el merengue va corriendo, ¡a toda pastilla, papá!",
-      "t1": 9.3
+      "t": 4.0,
+      "txt": "si la cumbia va despacio,",
+      "t1": 5.7
      },
      {
-      "t": 9.45,
-      "txt": "La güira no se detiene: una larga y dos cortas,",
-      "t1": 12.36
+      "t": 5.88,
+      "txt": "el merengue va corriendo,",
+      "t1": 7.34
      },
      {
-      "t": 12.51,
-      "txt": "chiqui-chiqui, chiqui-chá, ¡qué rápido se menea!",
-      "t1": 16.42
+      "t": 7.52,
+      "txt": "¡a toda pastilla, papá!",
+      "t1": 9.39
      },
      {
-      "t": 17.52,
-      "txt": "¡Merengue, merengue! La cumbia a toda pastilla.",
-      "t1": 21.0
+      "t": 9.57,
+      "txt": "La güira no se detiene:",
+      "t1": 11.21
      },
      {
-      "t": 21.15,
-      "txt": "¡Merengue, merengue! La güira no se cansa.",
-      "t1": 23.76
+      "t": 11.39,
+      "txt": "una larga y dos cortas,",
+      "t1": 12.46
      },
      {
-      "t": 23.91,
-      "txt": "La tambora, mano y palo: ¡pa-cu-tá, pa-cu-tá!",
-      "t1": 27.29
+      "t": 12.64,
+      "txt": "chiqui-chiqui, chiqui-chá,",
+      "t1": 13.96
      },
      {
-      "t": 27.44,
-      "txt": "¡Merengue, merengue, de la República Dominicana!",
-      "t1": 30.69
+      "t": 14.14,
+      "txt": "¡qué rápido se menea!",
+      "t1": 15.34
      },
      {
-      "t": 33.04,
-      "txt": "El bajo salta y salta, el piano pone el sabor,",
-      "t1": 37.32
+      "t": 15.74,
+      "txt": ""
      },
      {
-      "t": 37.47,
-      "txt": "y cuando llega el jaleo los saxos suben el calor.",
-      "t1": 41.06
+      "t": 17.65,
+      "txt": "¡Merengue, merengue!",
+      "t1": 18.9
      },
      {
-      "t": 41.21,
-      "txt": "Trompetas en el coro, la conga no se calla,",
-      "t1": 44.75
+      "t": 19.08,
+      "txt": "La cumbia a toda pastilla.",
+      "t1": 21.08
      },
      {
-      "t": 44.9,
-      "txt": "y to' el mundo en la calle ¡bailando hasta que salga el sol!",
-      "t1": 49.43
+      "t": 21.26,
+      "txt": "¡Merengue, merengue!",
+      "t1": 22.43
      },
      {
-      "t": 49.58,
-      "txt": "¡Merengue, merengue! La cumbia a toda pastilla.",
-      "t1": 52.87
+      "t": 22.61,
+      "txt": "La güira no se cansa.",
+      "t1": 23.85
      },
      {
-      "t": 53.02,
-      "txt": "¡Merengue, merengue! La güira no se cansa.",
-      "t1": 56.02
+      "t": 24.03,
+      "txt": "La tambora, mano y palo:",
+      "t1": 25.95
      },
      {
-      "t": 56.17,
-      "txt": "La tambora, mano y palo: ¡pa-cu-tá, pa-cu-tá!",
-      "t1": 59.64
+      "t": 26.13,
+      "txt": "¡pa-cu-tá, pa-cu-tá!",
+      "t1": 27.36
      },
      {
-      "t": 59.79,
-      "txt": "¡Merengue, merengue, de la República Dominicana!",
-      "t1": 63.04
+      "t": 27.54,
+      "txt": "¡Merengue, merengue,",
+      "t1": 28.41
      },
      {
-      "t": 65.87,
+      "t": 28.59,
+      "txt": "de la República Dominicana!",
+      "t1": 33.01
+     },
+     {
+      "t": 33.12,
+      "txt": "El bajo salta y salta,",
+      "t1": 34.48
+     },
+     {
+      "t": 35.38,
+      "txt": "el piano pone el sabor,",
+      "t1": 37.4
+     },
+     {
+      "t": 37.58,
+      "txt": "y cuando llega el jaleo",
+      "t1": 39.03
+     },
+     {
+      "t": 39.21,
+      "txt": "los saxos suben el calor.",
+      "t1": 41.13
+     },
+     {
+      "t": 41.31,
+      "txt": "Trompetas en el coro,",
+      "t1": 42.83
+     },
+     {
+      "t": 43.01,
+      "txt": "la conga no se calla,",
+      "t1": 44.81
+     },
+     {
+      "t": 44.99,
+      "txt": "y to' el mundo en la calle",
+      "t1": 47.18
+     },
+     {
+      "t": 47.36,
+      "txt": "¡bailando hasta que salga el sol!",
+      "t1": 49.24
+     },
+     {
+      "t": 49.45,
+      "txt": "¡Merengue, merengue!",
+      "t1": 50.72
+     },
+     {
+      "t": 50.9,
+      "txt": "La cumbia a toda pastilla.",
+      "t1": 52.96
+     },
+     {
+      "t": 53.14,
+      "txt": "¡Merengue, merengue!",
+      "t1": 54.64
+     },
+     {
+      "t": 54.82,
+      "txt": "La güira no se cansa.",
+      "t1": 56.09
+     },
+     {
+      "t": 56.27,
+      "txt": "La tambora, mano y palo:",
+      "t1": 57.72
+     },
+     {
+      "t": 57.9,
+      "txt": "¡pa-cu-tá, pa-cu-tá!",
+      "t1": 59.71
+     },
+     {
+      "t": 59.89,
+      "txt": "¡Merengue, merengue,",
+      "t1": 60.94
+     },
+     {
+      "t": 61.12,
+      "txt": "de la República Dominicana!",
+      "t1": 63.57
+     },
+     {
+      "t": 63.97,
+      "txt": ""
+     },
+     {
+      "t": 66.12,
       "txt": "¡Diache! ¡Eso es merengue, tíguere!",
-      "t1": 69.47
+      "t1": 69.85
+     },
+     {
+      "t": 70.25,
+      "txt": ""
      }
     ],
     "fichas": [],

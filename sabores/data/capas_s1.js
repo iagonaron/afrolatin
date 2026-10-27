@@ -9,7 +9,7 @@
     sinSubtitulos: true,
     poses: {   // los PNG recortados (img/s1/pj/); «_» = la pose por defecto. Se completan con las hojas grises del Taller.
       CANDE: { _: 'explica', sorpresa: 'img/s1/pj/cande_sorpresa.webp', explica: 'img/s1/pj/cande_explica.webp', rie: 'img/s1/pj/cande_rie.webp', piensa: 'img/s1/pj/cande_piensa.webp', aplaude: 'img/s1/pj/cande_aplaude.webp', baila: 'img/s1/pj/cande_baila.webp', senala: 'img/s1/pj/cande_senala.webp', brazos: 'img/s1/pj/cande_brazos.webp', oreja: 'img/s1/pj/cande_oreja.webp', pulgar: 'img/s1/pj/cande_pulgar.webp' },   // (27-oct noche) hojas grises s1v2_22–25
-      YUNIOR: { _: 'explica', guira: 'img/s1/pj/yunior_guira.webp', sorpresa: 'img/s1/pj/yunior_sorpresa.webp', explica: 'img/s1/pj/yunior_explica.webp', baila: 'img/s1/pj/yunior_baila.webp', senala: 'img/s1/pj/yunior_senala.webp', piensa: 'img/s1/pj/yunior_piensa.webp', aplaude: 'img/s1/pj/yunior_aplaude.webp', baila2: 'img/s1/pj/yunior_baila2.webp', celebra: 'img/s1/pj/yunior_celebra.webp', brazos: 'img/s1/pj/yunior_brazos.webp', oreja: 'img/s1/pj/yunior_oreja.webp', pulgar: 'img/s1/pj/yunior_pulgar.webp' },   // s1v2_26–29
+      YUNIOR: { _: 'explica', guira: 'img/s1/pj/yunior_guira.webp', guira2: 'img/s1/pj/yunior_guira2.webp', rie: 'img/s1/pj/yunior_rie.webp', sorpresa: 'img/s1/pj/yunior_sorpresa.webp', explica: 'img/s1/pj/yunior_explica.webp', baila: 'img/s1/pj/yunior_baila.webp', senala: 'img/s1/pj/yunior_senala.webp', piensa: 'img/s1/pj/yunior_piensa.webp', aplaude: 'img/s1/pj/yunior_aplaude.webp', baila2: 'img/s1/pj/yunior_baila2.webp', celebra: 'img/s1/pj/yunior_celebra.webp', brazos: 'img/s1/pj/yunior_brazos.webp', oreja: 'img/s1/pj/yunior_oreja.webp', pulgar: 'img/s1/pj/yunior_pulgar.webp' },   // s1v2_26–29
       SCHOENBERG: { _: 'cruzado', cruzado: 'img/s1/pj/schoenberg_cruzado.webp', reloj: 'img/s1/pj/schoenberg_reloj.webp', piensa: 'img/s1/pj/schoenberg_piensa.webp',
         sospecha: 'img/s1/pj/schoenberg_sospecha.webp', asoma: 'img/s1/pj/schoenberg_asoma.webp', espalda: 'img/s1/pj/schoenberg_espalda.webp' }   // (27-oct) hoja s1v2_11–12 del Taller
     },
@@ -44,7 +44,7 @@
       s1_008: [{ rotulos: [{ txt: 'A Coruña', x: .6317, y: .1644, clase: 'parada' }, { txt: 'Colombia', x: .169, y: .5687, clase: 'parada izq', en: .12 },
                  { txt: 'R. Dominicana', x: .2021, y: .4577, clase: 'parada', en: .22 }, { txt: 'Cuba', x: .1669, y: .451, clase: 'parada izq', en: .32 },
                  { txt: 'Brasil', x: .4069, y: .868, clase: 'parada', en: .42 }, { txt: 'Nueva York', x: .1793, y: .1972, clase: 'parada', en: .52 },
-                 { txt: 'Angola', x: .7807, y: .8041, clase: 'parada', en: .62 }] }, k(['Su tierra', 'Sus instrumentos', 'Su banda'], .72, .95)],
+                 { txt: 'Angola', x: .7807, y: .8041, clase: 'parada', en: .62 }] }, k(['Su tierra', 'Sus instrumentos', 'Su banda'], .72, .95, 'lista')],   // (Iago 23:22) en columna y centrados: no se amontonan a la izquierda
       s1_009: [k(['1.ª parada: Colombia'], .1)],
       s1_010: [k(['Colombia'], 0), k(['Cartagena de Indias'], .35)],
       s1_011: [k(['Puerto de llegada', 'de africanos esclavizados'], .2, .5), k(['Sus tambores'], .8)],

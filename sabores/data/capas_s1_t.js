@@ -126,7 +126,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "x": 0.2,
 "y": 0.42,
 "h": 0.36,
-"tn": 1.3
+"tn": 1.85
 },
 {
 "img": "img/s1/v2_postal_iberica.webp",
@@ -136,7 +136,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "y": 0.42,
 "h": 0.36,
 "solo": false,
-"tn": 1.3
+"tn": 1.85
 },
 {
 "img": "img/s1/v2_postal_indigena.webp",
@@ -146,7 +146,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "y": 0.42,
 "h": 0.36,
 "solo": false,
-"tn": 1.3
+"tn": 1.85
 }
 ],
 "s1_005": [
@@ -281,27 +281,22 @@ Object.assign(BLUES.CAPAS.lineas, {
 0,
 0.94
 ],
-"t": 0
+"t": 0,
+"estilo": "titulo"
 }
 ],
 "s1_010": [
 {
 "claves": [
-"Colombia"
-],
-"ts": [
-0
-],
-"t": 0
-},
-{
-"claves": [
+"Colombia",
 "Cartagena de Indias"
 ],
 "ts": [
+0,
 2.18
 ],
-"t": 2.18
+"t": 0,
+"estilo": "titulo"
 }
 ],
 "s1_011": [
@@ -695,23 +690,24 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s1_m01": [
 {
 "claves": [
-"República Dominicana"
+"República Dominicana",
+"Santo Domingo"
 ],
 "ts": [
-0
+0,
+3.62
 ],
-"t": 0
+"t": 0,
+"estilo": "titulo"
 },
 {
 "claves": [
-"Santo Domingo",
 "la catedral más antigua de América"
 ],
 "ts": [
-3.62,
 4.97
 ],
-"t": 3.62
+"t": 4.97
 }
 ],
 "s1_m02": [
@@ -1117,4 +1113,4 @@ Object.assign(BLUES.CAPAS.lineas, {
 }
 ]
 });
-BLUES.CAPAS.tam = {"img/s1/inst_maracas.webp": {"w": 0.167, "h": 0.3, "x": 0.5, "y": 0.55}, "img/s1/inst_guacharaca.webp": {"w": 0.0687, "h": 0.3375, "x": 0.5, "y": 0.5312}, "img/s1/inst_tambor.webp": {"w": 0.2782, "h": 0.52, "x": 0.5, "y": 0.44}, "img/s1/inst_llamador.webp": {"w": 0.1683, "h": 0.375, "x": 0.5, "y": 0.5125}, "img/s1/inst_tambora.webp": {"w": 0.2306, "h": 0.45, "x": 0.5, "y": 0.475}, "img/s1/inst_bajo_h.webp": {"w": 0.4852, "h": 0.2884, "x": 0.5, "y": 0.5558}, "img/s1/inst_contratiempo.webp": {"w": 0.3893, "h": 0.52, "x": 0.5, "y": 0.44}, "img/s1/inst_acordeon.webp": {"w": 0.2583, "h": 0.39, "x": 0.5, "y": 0.505}, "img/s1/inst_trompeta.webp": {"w": 0.0725, "h": 0.375, "x": 0.5, "y": 0.5125}, "img/s1/inst_trombon.webp": {"w": 0.091, "h": 0.52, "x": 0.5, "y": 0.44}, "img/s1/inst_m_guira.webp": {"w": 0.0814, "h": 0.3, "x": 0.5, "y": 0.55}, "img/s1/inst_m_tambora.webp": {"w": 0.1898, "h": 0.2953, "x": 0.5, "y": 0.5523}, "img/s1/inst_m_conga.webp": {"w": 0.1557, "h": 0.52, "x": 0.5, "y": 0.44}, "img/s1/inst_m_bajo_h.webp": {"w": 0.4852, "h": 0.2841, "x": 0.5, "y": 0.5579}, "img/s1/inst_m_piano.webp": {"w": 0.3672, "h": 0.52, "x": 0.5, "y": 0.44}, "img/s1/inst_m_saxos.webp": {"w": 0.1286, "h": 0.4875, "x": 0.5, "y": 0.4562}, "img/s1/inst_m_saxo2.webp": {"w": 0.1375, "h": 0.52, "x": 0.5, "y": 0.44}, "img/s1/inst_m_trompeta.webp": {"w": 0.0683, "h": 0.375, "x": 0.5, "y": 0.5125}};
+BLUES.CAPAS.tam = {"img/s1/inst_maracas.webp": {"w": 0.167, "h": 0.3, "x": 0.42, "y": 0.44}, "img/s1/inst_guacharaca.webp": {"w": 0.0681, "h": 0.3375, "x": 0.42, "y": 0.44}, "img/s1/inst_tambor.webp": {"w": 0.2781, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_llamador.webp": {"w": 0.1681, "h": 0.375, "x": 0.42, "y": 0.44}, "img/s1/inst_tambora.webp": {"w": 0.2305, "h": 0.45, "x": 0.42, "y": 0.435}, "img/s1/inst_bajo_h.webp": {"w": 0.4852, "h": 0.2866, "x": 0.42, "y": 0.44}, "img/s1/inst_contratiempo.webp": {"w": 0.3898, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_acordeon.webp": {"w": 0.2585, "h": 0.39, "x": 0.42, "y": 0.44}, "img/s1/inst_trompeta.webp": {"w": 0.0718, "h": 0.375, "x": 0.42, "y": 0.44}, "img/s1/inst_trombon.webp": {"w": 0.0904, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_m_guira.webp": {"w": 0.0808, "h": 0.3, "x": 0.42, "y": 0.44}, "img/s1/inst_m_tambora.webp": {"w": 0.1898, "h": 0.295, "x": 0.42, "y": 0.44}, "img/s1/inst_m_conga.webp": {"w": 0.155, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_m_bajo_h.webp": {"w": 0.4852, "h": 0.2819, "x": 0.42, "y": 0.44}, "img/s1/inst_m_piano.webp": {"w": 0.3676, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_m_saxos.webp": {"w": 0.1278, "h": 0.4875, "x": 0.42, "y": 0.4163}, "img/s1/inst_m_saxo2.webp": {"w": 0.1368, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_m_trompeta.webp": {"w": 0.0675, "h": 0.375, "x": 0.42, "y": 0.44}};
