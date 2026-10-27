@@ -26,6 +26,10 @@
     centro.style.setProperty('--c', color);
     const tarjeta = B.el('div', 's4-tarjeta'); centro.appendChild(tarjeta);
     const foto = B.el('div', 's4-foto'); foto.appendChild(S.imagen(op.img, nom, color));   // (27-oct, Iago) sin cuadrado de color: el PNG recortado
+    /* (27-oct noche, Iago: «el instrumento no cambia de lugar: se le presenta y se le anima en el mismo sitio» y «a tamaño real, el bajo
+       acostado») si el instrumento tiene caja en BLUES.CAPAS.tam, la foto va en esa misma caja de la pantalla (la de las capas) */
+    const tam = B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[op.img];
+    if (tam) { caja.classList.add('s4-tam'); caja.style.setProperty('--tx', tam.x); caja.style.setProperty('--ty', tam.y); caja.style.setProperty('--tw', tam.w); caja.style.setProperty('--th', tam.h); }
     tarjeta.appendChild(foto);
     const pieT = B.el('div', 's4-tpie'); tarjeta.appendChild(pieT);
     const nm = B.el('div', 's4-nombre'); nm.textContent = nom; pieT.appendChild(nm);
