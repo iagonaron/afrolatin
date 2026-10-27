@@ -27,7 +27,7 @@ BLUES.dia(1, {
   {
    "id": "s1_i2",
    "nombre": "Intro · el Atlántico",
-   "img": "img/s1/mapa_base.webp",
+   "img": "img/s1/mapa_atlantico.webp",
    "desc": "Mapa del Atlántico (estilo del icono): Europa, África y América, con las rutas de los barcos.",
    "amb": [
     {
@@ -187,7 +187,7 @@ BLUES.dia(1, {
   {
    "id": "s1_i5",
    "nombre": "Intro · las paradas",
-   "img": "img/s1/mapa_base.webp",
+   "img": "img/s1/mapa_atlantico.webp",
    "desc": "Mapa con las paradas encendidas por sabores (Colombia, R. Dominicana, Cuba, Brasil, Nueva York, Angola) y nueve siluetas a contraluz: un maestro de ceremonias por cada género.",
    "lineas": [
     {
@@ -232,7 +232,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c0",
    "nombre": "Viaje · a Colombia",
-   "img": "img/s1/mapa_base.webp",
+   "img": "img/s1/mapa_atlantico.webp",
    "desc": "Mapa cenital del Atlántico y el Caribe: la avioneta vuela de la península a la costa caribe de Colombia.",
    "amb": [
     {
@@ -243,40 +243,40 @@ BLUES.dia(1, {
    "mapa": {
     "ruta": [
      [
-      0.6317,
-      0.1644
+      0.724,
+      0.125
      ],
      [
-      0.5818,
-      0.2438
+      0.6625,
+      0.2077
      ],
      [
-      0.5297,
-      0.3148
+      0.5988,
+      0.2822
      ],
      [
-      0.4752,
-      0.3777
+      0.5329,
+      0.3483
      ],
      [
-      0.4185,
-      0.4324
+      0.4646,
+      0.4063
      ],
      [
-      0.3596,
-      0.4788
+      0.3942,
+      0.456
      ],
      [
-      0.2983,
-      0.517
+      0.3215,
+      0.4975
      ],
      [
-      0.2348,
-      0.5469
+      0.2465,
+      0.5306
      ],
      [
-      0.169,
-      0.5687
+      0.1693,
+      0.5556
      ]
     ],
     "desde": "A Coruña",
@@ -285,13 +285,14 @@ BLUES.dia(1, {
     "dur": 8,
     "vehiculo": "el avión",
     "encuadre": [
-     1.25,
-     0.4,
-     0.4019
+     1,
+     0.5,
+     0.5
     ],
-    "icono": "img/s1/avion_icono.webp",
-    "anchoIcono": 7,
-    "proporcionIcono": 0.5,
+    "icono": "img/s1/avion_cenital.webp",
+    "cenital": true,
+    "anchoIcono": 6.2,
+    "proporcionIcono": 0.9,
     "zoom": false,
     "musA": {
      "src": "mus/s1_viaje_cumbia.mp3",
@@ -1143,7 +1144,7 @@ BLUES.dia(1, {
   {
    "id": "s1_m0",
    "nombre": "Viaje · a la República Dominicana",
-   "img": "img/s1/mapa_base.webp",
+   "img": "img/s1/mapa_caribe_v3.webp",
    "desc": "El mismo mapa del Caribe: un barco cruza el mar Caribe de Cartagena de Indias a la República Dominicana (isla La Española).",
    "amb": [
     {
@@ -1154,32 +1155,32 @@ BLUES.dia(1, {
    "mapa": {
     "ruta": [
      [
-      0.169,
-      0.5687
+      0.3743,
+      0.7697
      ],
      [
-      0.1788,
-      0.5543
+      0.4361,
+      0.6959
      ],
      [
-      0.1869,
-      0.5382
+      0.4901,
+      0.6177
      ],
      [
-      0.1933,
-      0.5205
+      0.5363,
+      0.5351
      ],
      [
-      0.198,
-      0.5012
+      0.5747,
+      0.4479
      ],
      [
-      0.2009,
-      0.4803
+      0.6054,
+      0.3564
      ],
      [
-      0.2021,
-      0.4577
+      0.6283,
+      0.2604
      ]
     ],
     "desde": "Colombia",
@@ -1188,11 +1189,11 @@ BLUES.dia(1, {
     "dur": 7,
     "vehiculo": "el barco",
     "encuadre": [
-     3.4,
-     0.1862,
-     0.5123
+     1,
+     0.5,
+     0.5
     ],
-    "zoom": true,
+    "zoom": false,
     "musA": {
      "src": "mus/s1_viaje_merengue.mp3",
      "vol": 0.7

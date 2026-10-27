@@ -41,10 +41,11 @@
       s1_n02: [k(['¡Fuera el orden!'], .3)],
       s1_sch1: [pj(S, 'cruzado', 'der', .05)],
       s1_n03: [pj(S, 'piensa', 'der', .55)],
-      s1_008: [{ rotulos: [{ txt: 'A Coruña', x: .6317, y: .1644, clase: 'parada' }, { txt: 'Colombia', x: .169, y: .5687, clase: 'parada izq', en: .12 },
-                 { txt: 'R. Dominicana', x: .2021, y: .4577, clase: 'parada', en: .22 }, { txt: 'Cuba', x: .1669, y: .451, clase: 'parada izq', en: .32 },
-                 { txt: 'Brasil', x: .4069, y: .868, clase: 'parada', en: .42 }, { txt: 'Nueva York', x: .1793, y: .1972, clase: 'parada', en: .52 },
-                 { txt: 'Angola', x: .7807, y: .8041, clase: 'parada', en: .62 }] }, k(['Su tierra', 'Sus instrumentos', 'Su banda'], .72, .95, 'lista')],   // (Iago 23:22) en columna y centrados: no se amontonan a la izquierda
+      // (27-oct 23:55) posiciones sobre la carta pintada v3 (herramientas/mapas_s1_v3.py)
+      s1_008: [{ rotulos: [{ txt: 'A Coruña', x: 0.724, y: 0.125, clase: 'parada' }, { txt: 'Colombia', x: 0.1693, y: 0.5556, clase: 'parada izq', en: .12 },
+                 { txt: 'R. Dominicana', x: 0.2148, y: 0.4294, clase: 'parada', en: .22 }, { txt: 'Cuba', x: 0.181, y: 0.4167, clase: 'parada izq', en: .32 },
+                 { txt: 'Brasil', x: 0.459, y: 0.9491, clase: 'parada', en: .42 }, { txt: 'Nueva York', x: 0.1855, y: 0.1412, clase: 'parada', en: .52 },
+                 { txt: 'Angola', x: 0.8854, y: 0.9491, clase: 'parada izq', en: .62 }] }, k(['Su tierra', 'Sus instrumentos', 'Su banda'], .72, .95, 'lista')],   // (Iago 23:22) en columna y centrados: no se amontonan a la izquierda
       s1_009: [k(['1.ª parada: Colombia'], .1)],
       s1_010: [k(['Colombia'], 0), k(['Cartagena de Indias'], .35)],
       s1_011: [k(['Puerto de llegada', 'de africanos esclavizados'], .2, .5), k(['Sus tambores'], .8)],
