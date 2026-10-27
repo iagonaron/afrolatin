@@ -225,7 +225,7 @@ const HIT = (function () {
     h += (cartel ? '' : '</div>') + '<div class="port-pie">';
     if (pr.ultimo && B.DIAS[pr.ultimo.dia] && !(pr.ultimo.fin === 5) && HIT.abierto(pr.ultimo.dia)) {
       const u = pr.ultimo, d = B.DIAS[u.dia];
-      h += '<button class="bt prim" id="continuar">' + ICO.play + ' Continuar · ' + ETQc + ' ' + u.dia + (u.plano ? ', ' + (d.planos[u.plano] ? d.planos[u.plano].id : '') : '') + '</button>';
+      h += '<button class="bt prim" id="continuar">' + ICO.play + ' Continuar · ' + ETQc + ' ' + u.dia + (u.plano && d.planos[u.plano] ? ' · ' + (d.planos[u.plano].nombre || d.planos[u.plano].id) : '') + '</button>';
     } else h += '<span class="port-nota">Elige ' + (CF.elige || 'un acto') + ' · Espacio para seguir · P pausa · F pantalla completa</span>';
     h += '</div>';
     p.innerHTML = h;
