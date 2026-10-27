@@ -20,3 +20,11 @@
     s1_m2: colmado(), s1_m3: colmado(), s1_m4: colmado(), s1_m5: colmado(), s1_m6: colmado(), s1_m7: colmado(), s1_m8: colmado(), s1_m9: colmado()
   });
 })(window.BLUES);
+
+/* (27-oct noche) las velas y bombillas de cada lámina tintinean (data/luces_s1.js; herramientas/luces_s1.py) */
+(function (B) {
+  const L = B.LUCES || {}, V = B.VIDA || {};
+  const pon = (ids, img) => { if (!L[img]) return; ids.forEach(id => { V[id] = (V[id] || []).filter(x => x.t !== 'parpadeo').concat([{ t: 'luces', p: L[img] }]); }); };
+  pon(['s1_c3'], 'img/s1/c3_playa.webp');
+  pon(['s1_c6', 's1_c7', 's1_c8', 's1_c9', 's1_c10', 's1_c11', 's1_c12'], 'img/s1/v2_tarima.webp');
+})(window.BLUES);

@@ -21,6 +21,7 @@
       s1_m2: { pj: { q: Y, pose: 'guira', lado: 'der' } }, s1_m3: { pj: { q: Y, pose: 'explica', lado: 'der' } }, s1_m4: { oscuro: true, pj: { q: Y, pose: 'guira', lado: 'der' } },
       s1_m5: { oscuro: true, pj: { q: Y, pose: 'explica', lado: 'der' } }, s1_m6: { oscuro: true, pj: { q: Y, pose: 'baila', lado: 'der' } }, s1_m7: { oscuro: true, pj: { q: Y, pose: 'baila', lado: 'der' } },
       s1_m8: { pj: { q: Y, pose: 'pulgar', lado: 'der' } }, s1_m9: { pj: { q: Y, pose: 'brazos', lado: 'der' } },
+      s1_i4: { oscuro: true },
       s1_i4c: { pj: { q: S, pose: 'reloj', lado: 'der', alto: .8 } }
     },
     lineas: {

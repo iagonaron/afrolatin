@@ -87,7 +87,7 @@ BLUES.dia(1, {
   {
    "id": "s1_i4",
    "nombre": "Intro · el ritmo manda",
-   "img": "img/s1/fondo_ritmo.webp",
+   "img": "img/s1/v2_ritmo.webp",
    "desc": "Tres percusiones sobre una mesa de madera: guacharaca, tambor y un teclado; huellas de pies de baile en la arena.",
    "lineas": [
     {
@@ -314,7 +314,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c1",
    "nombre": "Cartagena de Indias",
-   "img": "img/s1/v2_calle.webp",
+   "img": "img/s1/v2_puerto.webp",
    "desc": "Cartagena de Indias: murallas de piedra, balcones de colores, palenqueras con fruta en la cabeza.",
    "amb": [
     {
@@ -332,19 +332,19 @@ BLUES.dia(1, {
      "quien": "NARR",
      "texto": "¡Colombia! En su costa caribe, Cartagena de Indias: murallas de piedra, balcones de colores y olor a fruta y a mar.",
      "voz": "voz/s1/s1_010.mp3",
-     "rehacer": true
+     "rehacer": true,
+     "var": "RECURSO_CALLE",
+     "fijo": true
     },
     {
      "id": "s1_011",
      "quien": "NARR",
      "texto": "Por este puerto entraron, hace siglos, miles de africanos esclavizados… y con ellos, sus tambores.",
-     "voz": "voz/s1/s1_011.mp3",
-     "var": "RECURSO_PUERTO",
-     "fijo": true
+     "voz": "voz/s1/s1_011.mp3"
     }
    ],
    "var": {
-    "RECURSO_PUERTO": "img/s1/v2_puerto.webp"
+    "RECURSO_CALLE": "img/s1/v2_calle.webp"
    },
    "mus": {
     "src": "mus/s1_cumbia_fondo.mp3",
@@ -496,8 +496,8 @@ BLUES.dia(1, {
     "RECURSO_RUEDA": "img/s1/v2_rueda.webp"
    },
    "mus": {
-    "src": "mus/s1_cumbia_fondo.mp3",
-    "vol": 0.4,
+    "src": "mus/s1_gaitas.mp3",
+    "vol": 0.5,
     "bucle": true
    }
   },
@@ -666,7 +666,7 @@ BLUES.dia(1, {
      "tipo": "instrumento",
      "id": "bajo",
      "nom": "Tambor + bajo",
-     "img": "img/s1/inst_bajo.webp",
+     "img": "img/s1/inst_bajo_h.webp",
      "loop": "loops/s1/cumbia_tambor_bajo_2c.mp3",
      "color": "#3E7D4F",
      "bpm": 90,
@@ -896,11 +896,6 @@ BLUES.dia(1, {
       "txt": "manos teclista"
      },
      {
-      "t": 48.0,
-      "img": "img/s1/vc_c_22_teclista_contratiempo.webp",
-      "txt": "teclista contratiempo"
-     },
-     {
       "t": 50.51,
       "img": "img/s1/vc_c_37_cande_senala_teclista.webp",
       "txt": "cande senala teclista"
@@ -947,8 +942,8 @@ BLUES.dia(1, {
      },
      {
       "t": 80.09,
-      "img": "img/s1/vc_c_43_cande_rie_final.webp",
-      "txt": "cande rie final"
+      "img": "img/s1/vc_c_27_cande_canta.webp",
+      "txt": "cande canta"
      },
      {
       "t": 84.0,
@@ -1245,7 +1240,7 @@ BLUES.dia(1, {
   {
    "id": "s1_m2",
    "nombre": "Yunior nos recibe",
-   "img": "img/s1/m2_yunior_colmado.webp",
+   "img": "img/s1/m2b_calle.webp",
    "desc": "Yunior en la puerta de un colmado de Santiago de los Caballeros: gorra, camisa abierta de colores, sonrisa de pillo; señores jugando al dominó.",
    "amb": [
     {
@@ -1449,7 +1444,7 @@ BLUES.dia(1, {
      "tipo": "instrumento",
      "id": "bajo",
      "nom": "Bajo",
-     "img": "img/s1/inst_m_bajo.webp",
+     "img": "img/s1/inst_m_bajo_h.webp",
      "loop": "loops/s1/merengue_bajo.mp3",
      "color": "#3E7D4F",
      "bpm": 140,
@@ -1874,7 +1869,7 @@ BLUES.dia(1, {
     }
    ],
    "var": {
-    "RECURSO_FIN": "img/s1/m3e_charla.webp"
+    "RECURSO_FIN": "img/s1/m2h_patrimonio.webp"
    }
   },
   {
