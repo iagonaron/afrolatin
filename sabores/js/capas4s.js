@@ -27,7 +27,7 @@
   /* ── maestro de ceremonias en PNG ── */
   function ponPj(o) {
     asegura();
-    if (!o) { if (pjEl) { const v = pjEl; v.classList.remove('on'); setTimeout(() => v.remove(), 600); pjEl = null; pjAct = null; } return; }
+    if (!o) { if (pjEl) { pjEl.remove(); pjEl = null; pjAct = null; } return; }
     const q = o.q || (pjAct && pjAct.q), poses = PJ(q), pose = o.pose || (pjAct && pjAct.q === q && pjAct.pose) || poses._ || Object.keys(poses).find(k => k !== '_');
     const src = poses[pose] || poses[poses._]; if (!src) return;
     const lado = o.lado || (pjAct && pjAct.lado) || 'der', alto = o.alto || (pjAct && pjAct.alto) || .82;
@@ -36,19 +36,24 @@
     const im = B.el('img', 'c4-pj ' + lado + (mismo ? ' cambio' : '')); im.src = url(src); im.alt = ''; im.draggable = false;
     im.style.setProperty('--alto', alto);
     capa.appendChild(im); void im.offsetWidth; im.classList.add('on');
-    if (pjEl) { const v = pjEl; v.classList.add('sale'); v.classList.remove('on'); setTimeout(() => v.remove(), mismo ? 380 : 650); }
+    if (pjEl) pjEl.remove();   // (27-oct 22:28, Iago) el cambio de reacción es súbito, sin fundido
     pjEl = im; pjAct = { q, pose, lado, alto };
     capa.classList.toggle('pj-izq', lado === 'izq'); capa.classList.toggle('pj-der', lado === 'der');
   }
   /* ── palabras clave ── */
+  let fijos = [];
   function ponClaves(it, dur, c) {
-    asegura(); quitaClaves();
-    const box = B.el('div', 'c4-claves ' + (it.estilo || 'fila')); clavesEl = box; capa.appendChild(box);
-    const xs = B.arr(it.claves), n = xs.length, t0 = (it.en || 0) * dur, t1 = Math.max(t0 + .2, (it.hasta == null ? .62 : it.hasta) * dur);
+    asegura();
+    /* (27-oct noche, Iago: en el resumen, «el texto en su lado, y que se quede, como una recopilación de repasos») fijo: no se quita al
+       cambiar de frase (solo al cambiar de plano); lado: 'izq' | 'der' */
+    if (!it.fijo) quitaClaves();
+    const box = B.el('div', 'c4-claves ' + (it.estilo || 'fila') + (it.fijo ? ' fijo' : '') + (it.lado ? ' ' + it.lado : ''));
+    if (it.fijo) fijos.push(box); else clavesEl = box; capa.appendChild(box);
+    const xs = B.arr(it.claves), n = xs.length, t0 = it.t != null ? it.t : (it.en || 0) * dur, t1 = Math.max(t0 + .2, (it.hasta == null ? .62 : it.hasta) * dur);
     xs.forEach((x, i) => {
       const sep = x === '+' || x === '=' || x === '→' || x === '·';
       const ch = B.el('span', sep ? 'c4-sep' : 'c4-clave'); ch.textContent = x; box.appendChild(ch);
-      const t = n > 1 ? t0 + (t1 - t0) * i / (n - 1) : t0;
+      const t = it.ts ? it.ts[i] : n > 1 ? t0 + (t1 - t0) * i / (n - 1) : t0;   // (27-oct noche) it.ts: segundo exacto de cada palabra en el audio
       B.espera(t, c).then(ok => { if (ok && box.isConnected) ch.classList.add('on'); });
     });
   }
@@ -57,9 +62,12 @@
   function ponImg(it, c) {
     asegura();
     if (it.solo !== false) quitaSueltas();
-    const w = B.el('div', 'c4-suelta'); w.style.setProperty('--x', it.x == null ? .5 : it.x); w.style.setProperty('--y', it.y == null ? .5 : it.y); w.style.setProperty('--h', it.h || .5);
+    const tam = it.caja && B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[it.img];   // (27-oct noche) caja de «tamaño real», la misma de la interacción
+    const w = B.el('div', 'c4-suelta' + (tam ? ' caja' : ''));
+    if (tam) { w.style.setProperty('--x', tam.x); w.style.setProperty('--y', tam.y); w.style.setProperty('--w', tam.w); w.style.setProperty('--h', tam.h); }
+    else { w.style.setProperty('--x', it.x == null ? .5 : it.x); w.style.setProperty('--y', it.y == null ? .5 : it.y); w.style.setProperty('--h', it.h || .5); }
     const im = B.el('img'); im.src = url(it.img); im.alt = it.nom || ''; w.appendChild(im);
-    if (it.nom) { const nm = B.el('b'); nm.textContent = it.nom; w.appendChild(nm); }
+    if (it.nom) { const nm = B.el('b'); nm.textContent = it.nom; if (it.tn) nm.style.fontSize = 'calc(var(--u)*' + it.tn + ')'; w.appendChild(nm); }
     capa.appendChild(w); void w.offsetWidth; w.classList.add('on'); sueltas.push(w);
   }
   function quitaSueltas() { sueltas.splice(0).forEach(v => { v.classList.remove('on'); setTimeout(() => v.remove(), 500); }); }
@@ -82,7 +90,7 @@
       if (it.col || f.col) p.style.stroke = f.col || it.col;
       p.setAttribute('marker-end', 'url(#c4pk)'); s.appendChild(p);
       const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
-      B.espera((f.en == null ? (it.en || 0) : f.en) * dur, c).then(ok => { if (ok && p.isConnected) { p.style.transition = 'stroke-dashoffset ' + (f.tarda || 1.6) + 's cubic-bezier(.45,.05,.3,1)'; p.style.strokeDashoffset = 0; } });
+      B.espera(f.t != null ? f.t : (f.en == null ? (it.en || 0) : f.en) * dur, c).then(ok => { if (ok && p.isConnected) { p.style.transition = 'stroke-dashoffset ' + (f.tarda || 1.6) + 's cubic-bezier(.45,.05,.3,1)'; p.style.strokeDashoffset = 0; } });
     });
   }
   function ponRotulos(it, dur, c) {
@@ -91,7 +99,7 @@
       const d = B.el('div', 'c4-rotulo' + (r.clase ? ' ' + r.clase : '')); d.textContent = r.txt;
       d.style.setProperty('--x', r.x); d.style.setProperty('--y', r.y); if (r.tam) d.style.setProperty('--tam', r.tam);
       capa.appendChild(d); sueltas.push(d);
-      B.espera((r.en == null ? (it.en || 0) : r.en) * dur, c).then(ok => { if (ok && d.isConnected) d.classList.add('on'); });
+      B.espera(r.t != null ? r.t : (r.en == null ? (it.en || 0) : r.en) * dur, c).then(ok => { if (ok && d.isConnected) d.classList.add('on'); });
     });
   }
   /* ── rejillas: varios patrones de 16 casillas que se encienden a la vez, como piezas de un puzle (intro «el ritmo manda») ── */
@@ -105,7 +113,7 @@
       const cs = []; const pat = String(f.patron || '').replace(/\s+/g, '');
       for (let k = 0; k < 16; k++) { const ce = B.el('i', (k % 4 === 0 ? 'tp ' : '') + (pat[k] === 'X' ? 'h2' : pat[k] === 'x' ? 'h1' : '')); row.appendChild(ce); cs.push(ce); }
       box.appendChild(row);
-      B.espera(((it.en || 0) + (it.paso || .14) * i) * dur, c).then(ok => ok && row.classList.add('on'));
+      B.espera(it.ts ? it.ts[i] : ((it.en || 0) + (it.paso || .14) * i) * dur, c).then(ok => ok && row.classList.add('on'));
       return cs;
     });
     const bpm = it.bpm || 96, t0 = performance.now();
@@ -120,7 +128,7 @@
   }
   /* ── lo llama el motor ── */
   C.plano = function (p) {
-    asegura(); quitaClaves(); quitaSueltas();
+    asegura(); quitaClaves(); quitaSueltas(); fijos.splice(0).forEach(v => v.remove());
     if (svg) { svg.remove(); svg = null; }
     const d = B.CAPAS && B.CAPAS.planos && B.CAPAS.planos[p.id];
     if (d && 'pj' in d) ponPj(d.pj); else ponPj(null);
@@ -130,7 +138,7 @@
     const xs = (B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l.id]) || [];
     if (!xs.some(x => x.claves) && !xs.some(x => x.mantener)) quitaClaves();
     xs.forEach(it => {
-      const t = (it.en || 0) * dur;
+      const t = it.t != null ? it.t : (it.en || 0) * dur;
       if ('pj' in it) B.espera(t, c).then(ok => ok && ponPj(it.pj));
       if (it.claves) ponClaves(it, dur, c);
       if (it.img) B.espera(t, c).then(ok => ok && ponImg(it, c));
@@ -147,5 +155,5 @@
     return r;
   };
   C.sinSubt = () => !!(B.CAPAS && B.CAPAS.sinSubtitulos);
-  C.limpia = function () { quitaClaves(); quitaSueltas(); ponPj(null); if (svg) { svg.remove(); svg = null; } };
+  C.limpia = function () { quitaClaves(); quitaSueltas(); fijos.splice(0).forEach(v => v.remove()); ponPj(null); if (svg) { svg.remove(); svg = null; } };
 })(window.BLUES);

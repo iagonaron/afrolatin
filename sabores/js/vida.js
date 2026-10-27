@@ -147,6 +147,17 @@
         pinta(L, M, W, H) { const R = (o.r || .05) * W * 2.6; L.globalAlpha = Math.min(1, .6 * this.v); L.drawImage(S.halo, ((o.x + this.dx) * W - R) * K, (o.y * H - R) * K, 2 * R * K, 2 * R * K); }
       };
     },
+    luces(o) {   // (4 Sabores, 27-oct noche, Iago: «aprovecha las velas para hacer tintineo… animación sutil de las luces») cada vela o bombilla
+      //   de la lámina (data/luces_s1.js) con su halo: las velas (abajo) tiemblan rápido y a saltos; las bombillas y farolillos respiran despacio
+      const ps = B.arr(o.p).map(([x, y, r, vela]) => ({ x, y, r, vela, f: az(.5, 1.4), ph: az(0, TAU), n: 0, obj: 0, prox: 0, v: 1 }));
+      return {
+        paso(dt, t) { ps.forEach(q => {
+          if (q.vela) { q.prox -= dt; if (q.prox <= 0) { q.obj = az(-1, 1); q.prox = az(.05, .22); } q.n += (q.obj - q.n) * Math.min(1, dt * 14); q.v = .78 + .22 * q.n; }
+          else q.v = .86 + .14 * Math.sin(t * q.f + q.ph);
+        }); },
+        pinta(L, M, W, H) { const k = o.k || 1; ps.forEach(q => { const R = q.r * W * (q.vela ? 3.2 : 2.4); L.globalAlpha = Math.max(0, Math.min(1, (q.vela ? .42 : .3) * k * q.v)); L.drawImage(S.halo, (q.x * W - R) * K, (q.y * H - R) * K, 2 * R * K, 2 * R * K); }); }
+      };
+    },
     parpadeo(o) {   // (4 Sabores, 27-oct, Iago: «que la iluminación tenga algo de vida») luz de velas/bombillas de toda la escena:
       //   un velo cálido casi invisible que respira y tiembla un poco (sin posiciones: vale para cualquier lámina con luz cálida)
       const k = o.k || 1, col = o.col || '255,170,80'; let n1 = 0, obj = 0, prox = 0;

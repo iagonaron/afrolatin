@@ -358,7 +358,7 @@ const HIT = (function () {
     if (B.agacha) B.agacha(false);
     subt.classList.remove('on');
     cartaBox.classList.remove('on', 'leyendo'); escena.classList.remove('con-carta');
-    interBox.classList.remove('on'); interBox.innerHTML = '';
+    interBox.classList.remove('on'); interBox.innerHTML = ''; escena.classList.remove('con-inter', 'subt-abajo');
     escena.classList.remove('con-inter', 'subt-abajo');
     visAnt = null;
     $('#rotulo').innerHTML = '';
@@ -398,16 +398,22 @@ const HIT = (function () {
     pintaPuntos();
     if (p.titulo && !directo) { await tituloDia(p, c); if (c.muerto) return; }
     if (!directo) for (const l of B.arr(p.lineas)) { await M.di(l, c); if (c.muerto) return; }
-    for (const it of B.arr(p.inter)) {
+    /* (27-oct 22:45, Iago: «al terminar una sección interactiva y darle a seguir todavía se ve un frame de lo anterior… si sigues, sigues»)
+       si la interacción es lo último del plano, su pantalla se queda hasta que entra el plano siguiente, sin espera */
+    const its = B.arr(p.inter); let siguePegado = false;
+    for (let k = 0; k < its.length; k++) {
+      const it = its[k];
       if (!directo) for (const l of B.arr(it.antes)) { await M.di(l, c); if (c.muerto) return; }
-      await M.interaccion(it, c); if (c.muerto) return;
+      const queda = k === its.length - 1 && !B.arr(p.despues).length && !p.mapa && i + 1 < dia.planos.length;
+      await M.interaccion(it, c, queda); if (c.muerto) return;
+      siguePegado = queda;
     }
     for (const l of B.arr(p.despues)) { await M.di(l, c); if (c.muerto) return; }
     const sig = dia.planos[i + 1], vis = planoEl && planoEl._vis;
     if (!(sig && vis && B.arr(sig.inter).some(it => it && it.previa === vis))) ponVariante(null);   // (ronda 5) la lata de P1.1 sigue en pantalla hasta abrirla en P1.2
     if (p.mapa && planoEl && planoEl._mapa) { await planoEl._mapa.viaje(c); if (c.muerto) return; }   // (ronda 5) el viaje lo hace el alumno
     B.progreso.plano(dia.n, i, p.id); pintaPuntos();
-    const ok = await esperaSaltable(p.mapa ? (p.mapa.tras == null ? 3.2 : p.mapa.tras) : p.espera == null ? 1.4 : p.espera, c);
+    const ok = siguePegado ? true : await esperaSaltable(p.mapa ? (p.mapa.tras == null ? 3.2 : p.mapa.tras) : p.espera == null ? 1.4 : p.espera, c);
     if (c.muerto) return;
     if (i + 1 < dia.planos.length) correPlano(i + 1); else finDia();
   }
@@ -920,7 +926,7 @@ const HIT = (function () {
   }
 
   /* ══════════ interacciones ══════════ */
-  M.interaccion = async function (it, c) {
+  M.interaccion = async function (it, c, queda) {
     const f = B.inter[it.tipo];
     if (!f) { console.warn('Interacción sin módulo:', it.tipo); return; }
     ponVariante(null);
@@ -937,7 +943,7 @@ const HIT = (function () {
     catch (e) { console.error('Interacción', it.tipo, e); }
     sub.matar();
     if (planoEl && it.previa && planoEl._base === it.previa) { planoEl._base = null; ponVariante(null); }   // corte seco a la lámina de después
-    if (c.muerto) return;
+    if (c.muerto || queda) return;   // queda: la quita limpiaPlano al montar el plano siguiente (en el mismo instante)
     interBox.classList.remove('on'); interBox.innerHTML = '';
     subt.classList.remove('on');
     escena.classList.remove('con-inter', 'subt-abajo');
