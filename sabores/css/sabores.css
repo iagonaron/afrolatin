@@ -142,3 +142,5 @@
 #portada.s4p .port-pie{left:auto;right:calc(var(--u)*5.16);top:calc(var(--u)*10.6);bottom:auto;justify-content:flex-end}
 #portada.s4p .port-pie:has(.port-nota){left:0;right:0;top:auto;bottom:calc(var(--u)*1.1);justify-content:center}
 #portada.s4p .port-nota{color:rgba(255,233,199,.6);font-family:'DM Sans',sans-serif;font-size:calc(var(--u)*.78)}
+/* (27-oct noche) si hay un instrumento en PNG en el centro, las palabras clave suben arriba para no taparse (Iago vio la tambora encima de «Mano + palito») */
+.c4-capa:has(.c4-suelta.on) .c4-claves{top:12%;transform:none}
