@@ -13,7 +13,7 @@
 'use strict';
 (function (B) {
   const C = B.capas = {};
-  let capa = null, pjEl = null, pjAct = null, clavesEl = null, sueltas = [];
+  let capa = null, pjEl = null, pjAct = null, clavesEl = null, sueltas = []; let veloAnt = null;
   const PJ = q => (B.CAPAS && B.CAPAS.poses && B.CAPAS.poses[q]) || {};
   const NS = 'http://www.w3.org/2000/svg';
   function asegura() {
@@ -52,12 +52,15 @@
     const xs = B.arr(it.claves), n = xs.length, t0 = it.t != null ? it.t : (it.en || 0) * dur, t1 = Math.max(t0 + .2, (it.hasta == null ? .62 : it.hasta) * dur);
     xs.forEach((x, i) => {
       const sep = x === '+' || x === '=' || x === '→' || x === '·';
-      const ch = B.el('span', sep ? 'c4-sep' : 'c4-clave'); ch.textContent = x; box.appendChild(ch);
+      /* (27-oct 23:22, Iago: «que alguno sea en título grande… con una tipografía complementaria, fina, tipo Gotham») estilo 'titulo':
+         el primer trozo, titular grande; los demás, subtítulo fino en mayúsculas espaciadas */
+      const cls = sep ? 'c4-sep' : it.estilo === 'titulo' ? (i === 0 ? 'c4-clave c4-tit' : 'c4-clave c4-subt') : 'c4-clave';
+      const ch = B.el('span', cls); ch.textContent = x; box.appendChild(ch);
       const t = it.ts ? it.ts[i] : n > 1 ? t0 + (t1 - t0) * i / (n - 1) : t0;   // (27-oct noche) it.ts: segundo exacto de cada palabra en el audio
       B.espera(t, c).then(ok => { if (ok && box.isConnected) ch.classList.add('on'); });
     });
   }
-  function quitaClaves() { if (clavesEl) { const v = clavesEl; v.classList.add('sale'); setTimeout(() => v.remove(), 450); clavesEl = null; } }
+  function quitaClaves(ya) { if (clavesEl) { const v = clavesEl; if (ya) v.remove(); else { v.classList.add('sale'); setTimeout(() => v.remove(), 450); } clavesEl = null; } }
   /* ── imagen suelta (instrumento en PNG) ── */
   function ponImg(it, c) {
     asegura();
@@ -70,7 +73,7 @@
     if (it.nom) { const nm = B.el('b'); nm.textContent = it.nom; if (it.tn) nm.style.fontSize = 'calc(var(--u)*' + it.tn + ')'; w.appendChild(nm); }
     capa.appendChild(w); void w.offsetWidth; w.classList.add('on'); sueltas.push(w);
   }
-  function quitaSueltas() { sueltas.splice(0).forEach(v => { v.classList.remove('on'); setTimeout(() => v.remove(), 500); }); }
+  function quitaSueltas() { sueltas.splice(0).forEach(v => v.remove()); }   // (27-oct 23:20, Iago) de golpe: ni un fotograma de lo anterior (las rejillas del puzle se veían medio segundo)
   /* ── flechas y rótulos (mapas) ── */
   let svg = null;
   function asegSvg() {
@@ -128,11 +131,22 @@
   }
   /* ── lo llama el motor ── */
   C.plano = function (p) {
-    asegura(); quitaClaves(); quitaSueltas(); fijos.splice(0).forEach(v => v.remove());
+    asegura(); quitaClaves(true); quitaSueltas(); fijos.splice(0).forEach(v => v.remove());
     if (svg) { svg.remove(); svg = null; }
     const d = B.CAPAS && B.CAPAS.planos && B.CAPAS.planos[p.id];
     if (d && 'pj' in d) ponPj(d.pj); else ponPj(null);
     capa.dataset.plano = p.id; capa.classList.toggle('oscuro', !!(d && d.oscuro));
+    /* (27-oct 23:20, Iago: «cuando una imagen va a tener cosas encima, oscurécela un poco… pero que no se esté oscureciendo y aclarando
+       constantemente») velo suave TODO el plano si en él salen imágenes sueltas o 3+ carteles; con el mismo fondo que el plano de antes,
+       el velo se queda como estaba (no parpadea) */
+    let n = 0, img = false;
+    B.arr(p.lineas).concat(B.arr(p.despues)).forEach(l => { ((B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l.id]) || []).forEach(it => {
+      if (it.img && !it.caja) img = true; if (it.claves) n += it.estilo === 'titulo' ? 3 : B.arr(it.claves).length; if (it.rotulos) n += it.rotulos.length; }); });
+    let velo = !(d && d.oscuro) && (img || n >= 3 || !!(d && d.velo));
+    if (!velo && veloAnt && veloAnt.img === p.img && !(d && d.oscuro)) velo = true;
+    capa.classList.toggle('velo', velo); veloAnt = { img: p.img, velo };
+    /* (27-oct 23:45) personajes de medio cuerpo: en los planos con instrumento, algo más pequeños para dejar sitio a la rejilla (todo el plano igual) */
+    capa.classList.toggle('con-inst', B.arr(p.inter).some(x => x && x.tipo === 'instrumento'));
   };
   C.linea = function (l, dur, c) {
     const xs = (B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l.id]) || [];
@@ -155,5 +169,5 @@
     return r;
   };
   C.sinSubt = () => !!(B.CAPAS && B.CAPAS.sinSubtitulos);
-  C.limpia = function () { quitaClaves(); quitaSueltas(); fijos.splice(0).forEach(v => v.remove()); ponPj(null); if (svg) { svg.remove(); svg = null; } };
+  C.limpia = function () { quitaClaves(true); quitaSueltas(); fijos.splice(0).forEach(v => v.remove()); ponPj(null); if (svg) { svg.remove(); svg = null; } };
 })(window.BLUES);
