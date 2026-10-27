@@ -7,7 +7,7 @@ BLUES.dia(1, {
    "id": "s1_i1",
    "nombre": "Intro · el puerto",
    "titulo": true,
-   "img": "img/s1/i1_puerto.webp",
+   "img": "img/s1/v2_maleta.webp",
    "desc": "Un puerto al amanecer: maletas, un mapa antiguo sobre una mesa y el título 4 SABORES.",
    "amb": [],
    "lineas": [
@@ -60,7 +60,7 @@ BLUES.dia(1, {
   {
    "id": "s1_i3",
    "nombre": "Intro · tres mundos",
-   "img": "img/s1/i3_tres_mundos.webp",
+   "img": "img/s1/v2_mesa.webp",
    "desc": "Tres láminas que se juntan: tambores africanos · guitarra y coplas de España y Portugal · flautas de caña y maracas indígenas.",
    "amb": [],
    "lineas": [
@@ -114,7 +114,7 @@ BLUES.dia(1, {
   {
    "id": "s1_i4b",
    "nombre": "Intro · pistas, no leyes",
-   "img": "img/s1/i4b_libertad.webp",
+   "img": "img/s1/v2_revista.webp",
    "desc": "Una pista de baile en la arena, gente bailando cada uno a su manera; colores, libertad.",
    "amb": [
     {
@@ -133,14 +133,9 @@ BLUES.dia(1, {
      "id": "s1_n02",
      "quien": "NARR",
      "texto": "Así que olvídate del orden y del control: vamos justo al mundo contrario.",
-     "voz": "voz/s1/s1_n02.mp3",
-     "var": "RECURSO_FIESTA",
-     "fijo": true
+     "voz": "voz/s1/s1_n02.mp3"
     }
    ],
-   "var": {
-    "RECURSO_FIESTA": "img/s1/c3b_velas_pies.webp"
-   },
    "mus": {
     "src": "mus/s1_intro.mp3",
     "vol": 0.55,
@@ -212,7 +207,7 @@ BLUES.dia(1, {
   {
    "id": "s1_i6",
    "nombre": "Intro · dentro del avión",
-   "img": "img/s1/i6_avion.webp",
+   "img": "img/s1/v2_avion.webp",
    "desc": "Dentro del avión, antes del primer viaje: asientos, ventanilla con el mar. EASTER EGG (1.er cameo, Iago 13:05): Schoenberg/Antónico muy escondido al fondo, mirando con sospecha por encima de un periódico.",
    "amb": [
     {
@@ -319,7 +314,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c1",
    "nombre": "Cartagena de Indias",
-   "img": "img/s1/c1_cartagena.webp",
+   "img": "img/s1/v2_calle.webp",
    "desc": "Cartagena de Indias: murallas de piedra, balcones de colores, palenqueras con fruta en la cabeza.",
    "amb": [
     {
@@ -343,9 +338,14 @@ BLUES.dia(1, {
      "id": "s1_011",
      "quien": "NARR",
      "texto": "Por este puerto entraron, hace siglos, miles de africanos esclavizados… y con ellos, sus tambores.",
-     "voz": "voz/s1/s1_011.mp3"
+     "voz": "voz/s1/s1_011.mp3",
+     "var": "RECURSO_PUERTO",
+     "fijo": true
     }
    ],
+   "var": {
+    "RECURSO_PUERTO": "img/s1/v2_puerto.webp"
+   },
    "mus": {
     "src": "mus/s1_cumbia_fondo.mp3",
     "vol": 0.45,
@@ -355,7 +355,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c2",
    "nombre": "Montes de María",
-   "img": "img/s1/c2_gaiteros.webp",
+   "img": "img/s1/v2_gaiteros.webp",
    "desc": "Montes de María: gaiteros con sus flautas largas de caña, a la sombra.",
    "amb": [
     {
@@ -409,7 +409,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c4",
    "nombre": "Doña Cande nos recibe",
-   "img": "img/s1/c3_playa.webp",
+   "img": "img/s1/v2_calle_tarde.webp",
    "desc": "Doña Cande en su chiringuito de la playa: pollera colorá, flores en el pelo, sonrisa pícara.",
    "amb": [
     {
@@ -436,18 +436,21 @@ BLUES.dia(1, {
      "quien": "CANDE",
      "texto": "Aquí la vida va despacio, con calor y con brisa: patacón, arroz con coco, se habla cantando… y se baila descalzo en la arena.",
      "voz": "voz/s1/s1_015.mp3",
-     "var": "RECURSO_FIESTA",
+     "var": "RECURSO_MERCADO",
      "fijo": true
     },
     {
      "id": "s1_016",
      "quien": "CANDE",
      "texto": "Pero lo más bacano de esta tierra es su música. ¡Eche, vengan, que les enseño mi tarima!",
-     "voz": "voz/s1/s1_016.mp3"
+     "voz": "voz/s1/s1_016.mp3",
+     "var": "RECURSO_CAMINO",
+     "fijo": true
     }
    ],
    "var": {
-    "RECURSO_FIESTA": "img/s1/c3b_velas_pies.webp"
+    "RECURSO_MERCADO": "img/s1/v2_mercado.webp",
+    "RECURSO_CAMINO": "img/s1/v2_camino.webp"
    },
    "mus": {
     "src": "mus/s1_cumbia_fondo.mp3",
@@ -458,7 +461,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c5",
    "nombre": "La tarima",
-   "img": "img/s1/c5_tarima.webp",
+   "img": "img/s1/v2_camino.webp",
    "desc": "La tarima vacía en la playa: guacharaca, maracas, tambor, teclado, bajo, acordeón, guitarra y trompetas colocados en sillas, sin músicos.",
    "amb": [
     {
@@ -484,9 +487,14 @@ BLUES.dia(1, {
      "id": "s1_018",
      "quien": "CANDE",
      "texto": "Al principio era un baile en rueda, y las mujeres llevaban velas encendidas en la mano. Hoy la tocamos con acordeón y bajo eléctrico… ¡y se baila de México a Argentina!",
-     "voz": "voz/s1/s1_018.mp3"
+     "voz": "voz/s1/s1_018.mp3",
+     "var": "RECURSO_RUEDA",
+     "fijo": true
     }
    ],
+   "var": {
+    "RECURSO_RUEDA": "img/s1/v2_rueda.webp"
+   },
    "mus": {
     "src": "mus/s1_cumbia_fondo.mp3",
     "vol": 0.4,
@@ -496,7 +504,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c6",
    "nombre": "Reconocerla · el tempo",
-   "img": "img/s1/c5_tarima.webp",
+   "img": "img/s1/v2_tarima.webp",
    "desc": "La tarima; Doña Cande señala las maracas.",
    "amb": [
     {
@@ -536,7 +544,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c7",
    "nombre": "Reconocerla · la guacharaca",
-   "img": "img/s1/c5_tarima.webp",
+   "img": "img/s1/v2_tarima.webp",
    "desc": "Primer plano de la guacharaca.",
    "amb": [
     {
@@ -576,7 +584,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c8",
    "nombre": "Reconocerla · el contratiempo",
-   "img": "img/s1/c5_tarima.webp",
+   "img": "img/s1/v2_tarima.webp",
    "desc": "Primer plano del piano (vertical, humilde, de la tarima).",
    "amb": [
     {
@@ -617,7 +625,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c9",
    "nombre": "Reconocerla · tambor y bajo",
-   "img": "img/s1/c5_tarima.webp",
+   "img": "img/s1/v2_tarima.webp",
    "desc": "El tambor y el bajo.",
    "amb": [
     {
@@ -675,7 +683,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c10",
    "nombre": "Reconocerla · el acordeón",
-   "img": "img/s1/c5_tarima.webp",
+   "img": "img/s1/v2_tarima.webp",
    "desc": "El acordeón sobre una silla.",
    "amb": [
     {
@@ -714,7 +722,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c11",
    "nombre": "Mezclador de cumbia",
-   "img": "img/s1/c5_tarima.webp",
+   "img": "img/s1/v2_tarima.webp",
    "desc": "La tarima.",
    "amb": [
     {
@@ -802,7 +810,7 @@ BLUES.dia(1, {
   {
    "id": "s1_c12",
    "nombre": "Concierto de Doña Cande",
-   "img": "img/s1/c5_tarima.webp",
+   "img": "img/s1/v2_tarima.webp",
    "desc": "La banda de Doña Cande sube a la tarima.",
    "amb": [
     {
@@ -829,8 +837,8 @@ BLUES.dia(1, {
     "planos": [
      {
       "t": 0,
-      "img": "img/s1/vc_c_26_banda_arrancando.webp",
-      "txt": "banda arrancando"
+      "img": "img/s1/vc_c_00_musicos_llegan.webp",
+      "txt": "musicos llegan"
      },
      {
       "t": 3.07,

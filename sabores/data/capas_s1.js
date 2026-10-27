@@ -29,7 +29,9 @@
                { rotulos: [{ txt: 'Europa', x: .772, y: .1 }, { txt: 'África', x: .814, y: .586 }, { txt: 'América', x: .276, y: .77 }, { txt: 'Océano Atlántico', x: .43, y: .4, clase: 'mar', tam: 1.7 }], en: .08 },
                { flechas: [{ de: [.6414, .1935], a: [.6069, .5245], comba: -.22, en: .2 }, { de: [.5862, .5613], a: [.2759, .5123], comba: .14, en: .48 }, { de: [.731, .6716], a: [.4414, .7697], comba: -.12, en: .6 }] }],
       s1_003: [k(['Una gran injusticia'], .05, .2), k(['Su música', 'viajó con ellos'], .55, .8)],
-      s1_004: [k(['Tambores de África', '+', 'Guitarras de España y Portugal', '+', 'Flautas y maracas indígenas'], .12, .82)],
+      s1_004: [ins('img/s1/v2_postal_africa.webp', 'África · tambores', .1, { x: .2, y: .44, h: .36 }),   // (27-oct noche) las tres postales sobre la mesa
+               ins('img/s1/v2_postal_iberica.webp', 'Europa · guitarras', .45, { x: .5, y: .44, h: .36, solo: false }),
+               ins('img/s1/v2_postal_indigena.webp', 'Indígenas · flautas', .78, { x: .8, y: .44, h: .36, solo: false })],
       s1_005: [k(['= música latina'], .2)],
       s1_006: [k(['El ritmo manda'], 0, 0, 'arriba'), { rejillas: [{ patron: 'XxxxXxxxXxxxXxxx', color: '#E2A33F' }, { patron: 'X.xxX.xxX.xxX.xx', color: '#1F9AA0' },
                { patron: '..X...X...X...X.', color: '#C9603F' }, { patron: 'x.x.x.X.x.X.x.x.', color: '#B07A4F' }], en: .22, paso: .12, bpm: 90 }],
