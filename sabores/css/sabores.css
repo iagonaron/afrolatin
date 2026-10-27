@@ -1,0 +1,144 @@
+/* 4 SABORES · piel del portal sobre el motor del Blues (21-oct-2026, provisional hasta el piloto aprobado).
+   Paleta del icono AFROLATIN: arena, turquesa caribe, mostaza, terracota, verde palmera; noche caribeña de fondo. */
+@font-face{font-family:'Kaushan Script';src:url(../fonts/kaushan-script-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Nunito';src:url(../fonts/nunito-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Nunito';src:url(../fonts/nunito-latin-600-normal.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Nunito';src:url(../fonts/nunito-latin-800-normal.woff2) format('woff2');font-weight:800;font-display:swap}
+:root{
+  --tinta:#10201E; --tinta2:#172B28; --tinta3:#203A35;
+  --crema:#F3E6C8; --crema2:#E2D2AE; --crema3:#B8A67F;
+  --oro:#E2A33F; --oro-hi:#F2C46A; --oro-lo:#9A6A1E; --oro-a:rgba(226,163,63,.38);
+  --rojo:#C9603F; --rojo-hi:#E07A55;
+  --otra:#1F9AA0;
+  --f-deco:'Kaushan Script','Brush Script MT',cursive;
+  --f-fina:'Nunito','Helvetica Neue',Arial,sans-serif;
+  --f-carta:'Nunito','Helvetica Neue',Arial,sans-serif;
+  --f-ui:'Nunito','Helvetica Neue',Arial,sans-serif;
+  --a1:#E2A33F; --a2:#9A6A1E; --a-soft:#F2C46A;
+}
+.port-tit{letter-spacing:.01em!important;text-transform:none!important}
+.td-t,.fd-tit,.pc-tit,.bi-tit{letter-spacing:.01em}
+
+/* (27-oct, C1 · Iago 26-oct 20:03) videoclip con algo de movimiento: cada imagen se acerca o se desliza MUY despacio
+   (más vivo en el merengue: --kbd más corto). Con «reducir movimiento», quieto. */
+.s4-plano.kb .s4-img{animation:kb0 var(--kbd,11s) cubic-bezier(.35,.1,.45,1) both;transform-origin:50% 45%;will-change:transform}
+.s4-plano.kb1 .s4-img{animation-name:kb1;transform-origin:40% 50%}
+.s4-plano.kb2 .s4-img{animation-name:kb2}
+.s4-plano.kb3 .s4-img{animation-name:kb3;transform-origin:60% 40%}
+@keyframes kb0{from{transform:scale(1.02)}to{transform:scale(1.11)}}
+@keyframes kb1{from{transform:scale(1.11)}to{transform:scale(1.03)}}
+@keyframes kb2{from{transform:scale(1.08) translateX(-2.2%)}to{transform:scale(1.08) translateX(2.2%)}}
+@keyframes kb3{from{transform:scale(1.07) translateY(1.6%)}to{transform:scale(1.1) translateY(-1.6%)}}
+@media (prefers-reduced-motion:reduce){.s4-plano.kb .s4-img{animation:none}}
+
+/* ══ (27-oct, C1 · Iago) CAPAS ANIMADAS: palabras clave, maestros de ceremonias en PNG, instrumentos sueltos, flechas y rótulos
+   (js/capas4s.js). Sin halos ni sombras: cristal oscuro liso y movimiento corto. La letra la pone --f-clave. ══ */
+:root{--f-clave:'Jost','Nunito',sans-serif}
+.c4-capa{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+#escena.con-inter .c4-capa .c4-claves{opacity:0}
+.c4-claves{position:absolute;left:6%;right:6%;top:50%;transform:translateY(-50%);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:calc(var(--u)*1.1);transition:opacity .4s}
+.c4-capa.pj-der .c4-claves{right:34%}.c4-capa.pj-izq .c4-claves{left:34%}
+.c4-claves.lista{flex-direction:column}
+.c4-claves.sale{opacity:0}
+.c4-clave{font-family:var(--f-clave);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#FFF7EA;font-size:calc(var(--u)*3.1);line-height:1.05;
+  padding:calc(var(--u)*.85) calc(var(--u)*1.5);border-radius:calc(var(--u)*.7);background:rgba(14,18,20,.62);border:1px solid rgba(255,240,220,.22);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;transform:translateY(calc(var(--u)*1.2)) scale(.94);transition:opacity .45s ease,transform .55s cubic-bezier(.2,.9,.3,1.25)}
+.c4-clave.on{opacity:1;transform:none}
+.c4-sep{font-family:var(--f-clave);font-weight:600;color:#FFE3B0;font-size:calc(var(--u)*3.4);opacity:0;transition:opacity .4s}
+.c4-sep.on{opacity:.9}
+.c4-pj{position:absolute;bottom:0;height:calc(var(--alto,.82)*100%);width:auto;opacity:0;transition:opacity .5s ease,transform .6s cubic-bezier(.2,.8,.3,1)}
+.c4-pj.der{right:3%;transform:translateX(8%)}.c4-pj.izq{left:3%;transform:translateX(-8%)}
+.c4-pj.cambio{transform:none;transition:opacity .32s ease}
+.c4-pj.on{opacity:1;transform:none;animation:c4-respira 4.8s ease-in-out .7s infinite}
+.c4-pj.sale{opacity:0}
+@keyframes c4-respira{0%,100%{transform:none}50%{transform:translateY(-.35%) scale(1.004)}}
+.c4-suelta{position:absolute;left:calc(var(--x)*100%);top:calc(var(--y)*100%);height:calc(var(--h)*100%);transform:translate(-50%,-50%) scale(.9);opacity:0;
+  display:flex;flex-direction:column;align-items:center;transition:opacity .45s,transform .6s cubic-bezier(.2,.9,.3,1.2)}
+.c4-suelta.on{opacity:1;transform:translate(-50%,-50%)}
+.c4-suelta img{height:100%;width:auto;object-fit:contain}
+.c4-suelta b{margin-top:calc(var(--u)*.6);font-family:var(--f-clave);font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#FFF7EA;font-size:calc(var(--u)*2)}
+.c4-svg{position:absolute;inset:0;width:100%;height:100%}
+.c4-flecha{fill:none;stroke:#FFF1D6;stroke-width:.55;stroke-linecap:round;opacity:.92}
+.c4-rotulo{position:absolute;left:calc(var(--x)*100%);top:calc(var(--y)*100%);transform:translate(-50%,-50%);font-family:var(--f-clave);font-weight:600;
+  letter-spacing:.32em;text-transform:uppercase;font-size:calc(var(--u)*var(--tam,2.2));color:#5A3E20;opacity:0;transition:opacity .8s}
+.c4-rotulo.on{opacity:.75}
+.c4-rotulo.mar{color:#CFEDEB;letter-spacing:.42em}.c4-rotulo.mar.on{opacity:.45}
+@media (prefers-reduced-motion:reduce){.c4-pj.on{animation:none}}
+.c4-rotulo.parada{transform:translate(0,-50%);font-family:'Nunito',sans-serif;font-weight:800;letter-spacing:.02em;text-transform:none;font-size:calc(var(--u)*1.9);
+  color:#FFF6E2;padding:calc(var(--u)*.25) calc(var(--u)*.7) calc(var(--u)*.25) calc(var(--u)*1.9);background:rgba(14,30,34,.7);border-radius:calc(var(--u)*.5)}
+.c4-rotulo.parada::before{content:'';position:absolute;left:calc(var(--u)*-.55);top:50%;width:calc(var(--u)*1.1);height:calc(var(--u)*1.1);margin-top:calc(var(--u)*-.55);border-radius:50%;background:#F2C46A;border:2px solid #2A1A0C}
+.c4-rotulo.parada.izq{transform:translate(-100%,-50%);padding:calc(var(--u)*.25) calc(var(--u)*1.9) calc(var(--u)*.25) calc(var(--u)*.7)}
+.c4-rotulo.parada.izq::before{left:auto;right:calc(var(--u)*-.55)}
+.c4-rotulo.parada.on{opacity:1}
+/* (27-oct) planos de «cómo reconocerla»: el fondo, oscurecido y quieto; el instrumento en PNG delante */
+.c4-capa.oscuro::before{content:'';position:absolute;inset:0;background:rgba(6,9,10,.58);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+
+/* (27-oct, Iago) «cómo reconocerla» y mezclador: el instrumento en PNG recortado, sin cuadrado de color, sin halos ni sombras;
+   en el mezclador, todos apagados y en gris al empezar; debajo, sus cuadraditos (patrón) o la línea de volumen */
+.s4-instrumento .s4-tarjeta{background:none;box-shadow:none;border:0;padding:0;width:calc(var(--u)*30)}
+.s4-instrumento .s4-foto{width:calc(var(--u)*30);height:calc(var(--u)*24);background:none!important;overflow:visible}
+.s4-instrumento .s4-nombre{color:#FFF7EA;font-family:var(--f-clave);text-transform:uppercase;letter-spacing:.1em}
+.s4-instrumento .s4-tpie{background:none}
+.s4-mezclador .s4-cuad{background:none!important;box-shadow:none!important;border:0!important}
+.s4-mezclador .s4-cuad .s4-img{object-fit:contain}
+.s4-mezclador .s4-pista:not(.on) .s4-cuad .s4-img{filter:grayscale(1) brightness(.55);opacity:.75;transition:filter .3s,opacity .3s}
+.s4-mezclador .s4-pista.on .s4-cuad .s4-img{filter:none;opacity:1;transition:filter .3s,opacity .3s}
+.s4-mrej{display:grid;grid-template-columns:repeat(16,1fr);gap:2px;width:100%;margin-top:calc(var(--u)*.6)}
+.s4-mrej i{height:calc(var(--u)*.9);border-radius:2px;background:rgba(255,255,255,.12)}
+.s4-mrej i.tp{margin-left:2px}
+.s4-mrej i.h1{background:color-mix(in srgb,var(--c) 45%,transparent)}.s4-mrej i.h2{background:var(--c)}
+.s4-pista:not(.on) .s4-mrej i.h1,.s4-pista:not(.on) .s4-mrej i.h2{background:rgba(255,255,255,.28)}
+.s4-mrej i.act{outline:2px solid #FFF7EA;outline-offset:-1px}
+.s4-niv.con-rej{display:none}
+#escena.con-inter .c4-suelta{opacity:0!important}
+#escena:has(.s4-mezclador) .c4-pj,#escena:has(.s4-concierto) .c4-pj{opacity:0!important}
+.c4-claves.arriba{top:7%;transform:none}
+/* (27-oct, Iago) videoclip: solo la letra, más grande, sin barra de karaoke ni frase siguiente */
+.s4-concierto .s4-lbar,.s4-concierto .s4-lsig{display:none!important}
+.s4-concierto .s4-lact{font-family:var(--f-clave);font-weight:600;font-size:calc(var(--u)*3.4);letter-spacing:.01em;color:#FFF7EA}
+.c4-rejillas{position:absolute;left:50%;top:50%;transform:translate(-50%,-46%);display:flex;flex-direction:column;gap:calc(var(--u)*1.1);width:calc(var(--u)*62)}
+.c4-rf{display:grid;grid-template-columns:repeat(16,1fr);gap:calc(var(--u)*.35);align-items:center;opacity:0;transform:translateX(calc(var(--u)*-2));transition:opacity .5s,transform .6s cubic-bezier(.2,.9,.3,1.2)}
+.c4-rf.on{opacity:1;transform:none}
+.c4-rf b{display:none;font-family:var(--f-clave);font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:calc(var(--u)*1.5);color:#FFF7EA}
+.c4-rf i{height:calc(var(--u)*2.4);border-radius:calc(var(--u)*.35);background:rgba(255,255,255,.08)}
+.c4-rf i.tp{margin-left:calc(var(--u)*.35)}
+.c4-rf i.h1{background:color-mix(in srgb,var(--c) 45%,transparent)}.c4-rf i.h2{background:var(--c)}
+.c4-rf i.act{outline:2px solid rgba(255,247,234,.85);outline-offset:-2px}
+.c4-rf i.act.h1,.c4-rf i.act.h2{filter:brightness(1.35)}
+
+/* ══ PORTADA «cartel» (27-oct, propuesta A de C1 con los cambios de Iago: sin personajes, fondo caribeño, bodegón de instrumentos
+   por sabor, tarjetas iguales con icono). Medidas en --u (1/100 del ancho de la escena). ══ */
+@font-face{font-family:'Shrikhand';src:url(../fonts/shrikhand-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(../fonts/dm-sans-latin-500-normal.woff2) format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'DM Sans';src:url(../fonts/dm-sans-latin-700-normal.woff2) format('woff2');font-weight:700;font-display:swap}
+#portada.s4p{background:#140b06;font-family:'DM Sans',sans-serif}
+.s4p-fondo{position:absolute;inset:0;background:linear-gradient(170deg,#F4A35A 0%,#E2667A 38%,#2C6F86 70%,#0E2A33 100%) center/cover}
+.s4p-velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(20,10,5,.30) 0%,rgba(20,10,5,.45) 48%,rgba(20,10,5,.88) 86%)}
+.s4p-tit{position:absolute;left:calc(var(--u)*5);top:calc(var(--u)*5.3);margin:0;font-family:'Shrikhand',serif;font-weight:400;font-size:calc(var(--u)*10.3);line-height:.92;color:#FFE9C7}
+.s4p-tit span{display:block;color:#FF8A3D}
+.s4p-sub{position:absolute;left:calc(var(--u)*5.47);top:calc(var(--u)*25.8);font-weight:700;letter-spacing:.32em;font-size:calc(var(--u)*1.17);color:#FFE9C7;text-transform:uppercase}
+.s4p-esq{position:absolute;right:calc(var(--u)*5.16);top:calc(var(--u)*5.16);text-align:right;color:#FFE9C7;font-size:calc(var(--u)*1.1);letter-spacing:.18em;font-weight:700;opacity:.85;line-height:1.45}
+.s4p-fila{position:absolute;left:calc(var(--u)*5);right:calc(var(--u)*5);bottom:calc(var(--u)*3.9);display:grid;grid-template-columns:repeat(4,1fr);gap:calc(var(--u)*1.56)}
+.s4p-carta{position:relative;border:0;padding:0;cursor:pointer;text-align:left;font:inherit;border-radius:calc(var(--u)*1.1);overflow:hidden;background:var(--c);
+  display:flex;flex-direction:column;transition:transform .25s ease}
+.s4p-carta:hover{transform:translateY(calc(var(--u)*-.5))}
+.s4p-carta:focus-visible{outline:calc(var(--u)*.2) solid #FFE9C7;outline-offset:calc(var(--u)*.2)}
+.s4p-im{height:calc(var(--u)*13.9);background:rgba(26,15,10,.18) center 45%/cover no-repeat}
+.s4p-fr{height:calc(var(--u)*6.7);display:flex;align-items:center;gap:calc(var(--u)*.94);padding:0 calc(var(--u)*1.1);color:#1A0F0A}
+.s4p-ic{flex:0 0 calc(var(--u)*4.06);height:calc(var(--u)*4.06);border-radius:calc(var(--u)*.78);background:rgba(26,15,10,.14);display:flex;align-items:center;justify-content:center}
+.s4p-ic svg{width:calc(var(--u)*2.8);height:calc(var(--u)*2.8);fill:none;stroke:#1A0F0A;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.s4p-tx i{display:block;font-style:normal;font-size:calc(var(--u)*.86);letter-spacing:.24em;font-weight:700;opacity:.72}
+.s4p-tx em{display:block;font-style:normal;font-family:'Shrikhand',serif;font-size:calc(var(--u)*1.64);line-height:1.05;margin-top:calc(var(--u)*.23)}
+.s4p-sello{position:absolute;right:calc(var(--u)*.8);top:calc(var(--u)*.8);font-weight:700;font-size:calc(var(--u)*.8);letter-spacing:.2em;color:#1A0F0A;
+  background:var(--c);border-radius:calc(var(--u)*.35);padding:calc(var(--u)*.25) calc(var(--u)*.6);opacity:0}
+.s4p-carta.hecho .s4p-sello{opacity:1}
+.s4p-carta.sigue{box-shadow:0 0 0 calc(var(--u)*.22) #FFE9C7}
+.s4p-carta.cerrado{cursor:default}
+.s4p-carta.cerrado .s4p-im{filter:grayscale(1) brightness(.55)}
+.s4p-carta.cerrado:hover{transform:none}
+.s4p-cerrado{position:absolute;left:0;right:0;top:0;height:calc(var(--u)*13.9);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:calc(var(--u)*.5);
+  color:#FFE9C7;font-weight:700;font-size:calc(var(--u)*.86);letter-spacing:.2em;text-transform:uppercase}
+.s4p-cerrado svg{width:calc(var(--u)*2.6);height:calc(var(--u)*2.6);fill:none;stroke:currentColor;stroke-width:1.8}
+#portada.s4p .port-pie{left:auto;right:calc(var(--u)*5.16);top:calc(var(--u)*10.6);bottom:auto;justify-content:flex-end}
+#portada.s4p .port-pie:has(.port-nota){left:0;right:0;top:auto;bottom:calc(var(--u)*1.1);justify-content:center}
+#portada.s4p .port-nota{color:rgba(255,233,199,.6);font-family:'DM Sans',sans-serif;font-size:calc(var(--u)*.78)}
