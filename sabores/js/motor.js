@@ -556,7 +556,7 @@ const HIT = (function () {
       barco.append(cuerpo);
     } else if (m.icono) {   // (ronda 4, Iago: «el icono del barco no me gusta») el vapor pintado (recorte de ChatGPT) en vez del dibujo
       const an = (m.anchoIcono || 9) * k, al = an * (m.proporcionIcono || .5);
-      barco.append(mk('image', { href: resImg(m.icono), x: -an / 2, y: -al * .78, width: an, height: al, class: 'mapa-barco-img', preserveAspectRatio: 'xMidYMid meet' }));
+      barco.append(mk('image', { href: resImg(m.icono), x: -an / 2, y: m.cenital ? -al / 2 : -al * .78, width: an, height: al, class: 'mapa-barco-img', preserveAspectRatio: 'xMidYMid meet' }));   // (27-oct, Iago: «las alas van al revés») cenital: visto desde arriba, el morro hacia ARRIBA en la imagen
     } else barco.append(mk('circle', { r: 2.2 * k, class: 'onda' }), mk('path', { d: 'M-1.6 0 L1.6 0 L1.1 .8 L-1.1 .8 Z M-.25 -1.2 L.35 -1.2 L.35 0 L-.25 0 Z', transform: 'scale(' + k + ')' }));
     svg.append(barco); capa.appendChild(svg); kbEl.appendChild(capa);
     const plano = kbEl.parentNode;
@@ -586,6 +586,7 @@ const HIT = (function () {
           const q2 = ruta.getPointAtLength(Math.min(L, L * s + .8)), q1 = ruta.getPointAtLength(Math.max(0, L * s - .8));
           const dx = q2.x - q1.x, ang = B.clamp(Math.atan2(q2.y - q1.y, Math.abs(dx) || .001) * 180 / Math.PI, -14, 14) * (dx > 0 ? 1 : -1) * .5;
           esp = ' rotate(' + (ang + Math.sin(ahora * 1.7) * 1.6).toFixed(2) + ')' + (dx > .05 ? ' scale(-1 1)' : '');
+          if (m.cenital) esp = ' rotate(' + (Math.atan2(q2.y - q1.y, q2.x - q1.x) * 180 / Math.PI + 90 + Math.sin(ahora * 1.3) * .8).toFixed(2) + ')';   // apunta hacia donde va
         }
         barco.setAttribute('transform', 'translate(' + q.x.toFixed(2) + ' ' + (q.y + Math.sin(ahora * 2.1) * .12 * k).toFixed(2) + ')' + esp);
       }
