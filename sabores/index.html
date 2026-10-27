@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Sentry (17-sep-2026): errores JS en produccion. Sin datos personales: solo el id anonimo de la cuenta como etiqueta. -->
+<script src="https://browser.sentry-cdn.com/10.70.0/bundle.min.js" crossorigin="anonymous"></script>
+<script>
+if(window.Sentry && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){
+  Sentry.init({ dsn:'https://c2f1bb8373171bd486ca2ec64d472b33@o4512064125861888.ingest.de.sentry.io/4512064142704720',
+    release:'sabores@2026-10-21', environment:'production', sendDefaultPii:false,
+    initialScope:{ tags:{ app:'sabores' } },
+    ignoreErrors:['ResizeObserver loop','Non-Error promise rejection','AbortError','Load failed','NetworkError','Failed to fetch'],
+    beforeSend:function(ev){
+      try{ var s=(JSON.parse(localStorage.getItem('lmeav_session')||localStorage.getItem('lmpro_session')||'null')||window.__LM_SES||null); if(s&&s.id){ ev.tags=ev.tags||{}; ev.tags.cuenta=String(s.id); } }catch(e){}
+      if(ev.user) delete ev.user;
+      return ev;
+    }
+  });
+}
+</script>
+
+<meta charset="utf-8">
+<!-- LM at home · SELECCIONADOR DE VOLUNTARIOS (cargador común de los portales, 14-oct-2026; el Blues, 20-oct-2026). Solo con la
+     cuenta Protester: el medallero de gp.lmathome.es abre este portal con «#c=<cuenta>»; aquí se quita de la dirección, se guarda
+     en este navegador y se carga el seleccionador de https://gp.lmathome.es/voluntarios/. Al acabar la precarga de los actos 1–4,
+     en la hora de clase, sale «Seleccionar voluntario» con la estética del acto (js/motor.js, M.empezarDia). A los alumnos no les
+     hace nada. Quitarlo de este portal: borrar este bloque. -->
+<script>
+window.LM_VOL_CONFIG = function () {
+  return {
+      portal: 'sabores', tema: 'telegrafo', engancha: false,
+      sonidos: { campana: 'sfx/d1/campana_barco.mp3', raspa: ['sfx/d2/tabla_raspa_abajo.mp3', 'sfx/d2/tabla_raspa_arriba.mp3'], golpe: 'sfx/d2/tabla_golpe.mp3',
+                 pagina: 'sfx/ui/pagina.mp3', papel: 'sfx/d4/papel.mp3', aplauso: 'sfx/d3/aplauso_corto.mp3', tecla: 'sfx/ui/tecla.mp3' },
+      // si un acto está en marcha, se pone en pausa (al cerrar la ruleta, P o Esp para seguir)
+      alAbrir: function () { try { var B = window.BLUES; if (B && B.motor && B.motor.dia() && !B.pausado) B.pausa(true); } catch (x) {} }
+    };
+};
+(function () {
+  try {
+    var m = /(?:^#|&)c=([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/i.exec(location.hash || ''), c = null;
+    if (m) {
+      c = m[1].toLowerCase(); try { localStorage.setItem('lm_vol_cuenta', c); } catch (e) {}
+      try { var h = location.hash.replace(/^#/, '').split('&').filter(function (p) { return p && !/^c=/.test(p); }).join('&');
+            history.replaceState(history.state, '', location.pathname + location.search + (h ? '#' + h : '')); } catch (e) {}
+    } else { try { c = localStorage.getItem('lm_vol_cuenta'); } catch (e) {} }
+    if (!c) return;
+    return;   /* (4 Sabores, 21-oct) seleccionador de voluntarios APAGADO hasta adaptarlo (sus sonidos son los del Blues). Para encenderlo: quitar esta línea */
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://gp.lmathome.es/voluntarios/lm-voluntarios.js?h=' + Math.floor(Date.now() / 36e5);
+    s.onload = function () {
+      var ir = function () { try { if (window.LMVoluntarios) window.LMVoluntarios.monta(window.LM_VOL_CONFIG()); } catch (e) {} };
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ir); else ir();
+    };
+    document.head.appendChild(s);
+  } catch (e) {}
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Afro Latin · Unidad 7</title>
+<meta name="theme-color" content="#10201E">
+<meta name="description" content="4 Sabores. Unidad 7 de Lenguaje Musical (2.º GP): un viaje por nueve géneros afrolatinos — de dónde vienen, cómo reconocerlos y cómo suenan por dentro.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Afro Latin">
+<link rel="preload" href="fonts/kaushan-script-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/nunito-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/blues.css?v=20261021s">
+<link rel="stylesheet" href="css/inter4s.css?v=20261021s">
+<link rel="stylesheet" href="css/sabores.css?v=20261027c">
+</head>
+<body>
+
+<div id="gira"><b>AFRO LATIN</b>Gira el móvil: el portal se ve en horizontal.</div>
+<div id="marco">
+  <div id="escena" class="arrancando" aria-live="polite">
+    <div id="pelicula"></div>
+    <div id="velo"></div>
+    <div id="grano"></div>
+    <div id="carta"></div>
+    <div id="subt"><div class="subt-caja"><b class="subt-quien"></b><span class="subt-texto"></span></div></div>
+    <div id="hechos"></div>
+    <div id="inter"></div>
+    <div id="rotulo"></div>
+    <div id="aviso"></div>
+    <div id="precarga"></div>
+    <div id="findia"></div>
+    <div id="portada"></div>
+    <div id="marca"><a class="lmBrand" href="https://gp.lmathome.es" title="Volver a LM at home"><span class="lmArrow">&lsaquo;</span><span class="lmMark"><b>LM<i>at home</i></b><small>Grado Profesional</small></span></a></div>
+    <div id="controles"></div>
+    <div id="pausa"><div class="pausa-caja"><span class="pausa-t">Pausa</span><span class="pausa-s">P o Esc para seguir</span></div></div>
+    <div id="tarjeta"></div>
+  </div>
+</div>
+
+<!-- núcleo y componentes (4 Sabores: el motor del Blues + data/config.js + interacciones nuevas) -->
+<script src="js/nucleo.js?v=20261021s"></script>
+<script src="data/config.js?v=20261021s"></script>
+<script src="js/instrumentos.js?v=20261021s"></script>
+<script src="js/teclado.js?v=20261021s"></script>
+<script src="js/partitura.js?v=20261021s"></script>
+<script src="js/banda.js?v=20261021s"></script>
+<script src="js/motor.js?v=20261021s"></script>
+<script src="js/vida.js?v=20261027c"></script>
+<script src="js/capas4s.js?v=20261027c"></script>
+<script src="js/inter/comun.js?v=20261021s"></script>
+<script src="js/inter/objetos.js?v=20261021s"></script>
+<script src="js/inter/base4s.js?v=20261021s"></script>
+<script src="js/inter/mezcla.js?v=20261021s"></script>
+<script src="js/inter/instrumento.js?v=20261021s"></script>
+<script src="js/inter/concierto.js?v=20261027c"></script>
+<script src="js/inter/ejemplos.js?v=20261021s"></script>
+<script src="js/inter/llamada.js?v=20261021s"></script>
+<script src="data/recursos.js?v=20261027c"></script>
+<script src="data/vozpaq_s1.js?v=20261021s"></script>
+<script src="data/personajes.js?v=20261021s"></script>
+<script src="data/hechos.js?v=20261021s"></script>
+<script src="data/sabor1.js?v=20261027c"></script>
+<script src="data/vida_s1.js?v=20261027c"></script>
+<script src="data/capas_s1.js?v=20261027c"></script>
+
+<script>BLUES.motor.iniciar();</script>
+
+<!-- (17-sep-2026, Iago) PENTAGRAMAS QUE CABEN. VexFlow dibuja el pentagrama con un
+     ancho fijo metido en el propio SVG (style="width:920px"), que pisa al CSS. En iPad en
+     vertical la caja es mas estrecha y tiene el desplazamiento bloqueado, asi que las
+     ultimas notas quedaban cortadas y sin forma de llegar a ellas (lo que una alumna
+     describio como "no me deja avanzar a la derecha", 16-sep-2026). Aqui se le quita ese
+     ancho fijo y se deja que el viewBox escale el MISMO dibujo al ancho que haya.
+     Solo toca los SVG grandes: los iconos (24 px) no se tocan. -->
+<script>
+(function(){
+  function ajusta(sv){
+    try{
+      if(!sv || !sv.style) return;
+      var w=parseFloat(sv.getAttribute('width')||sv.style.width||0);
+      if(!w || w < 300) return;                       // iconos y cosas pequenas, fuera
+      if(!sv.getAttribute('viewBox')){
+        var h=parseFloat(sv.getAttribute('height')||sv.style.height||0);
+        if(!h) return;
+        sv.setAttribute('viewBox','0 0 '+w+' '+h);
+      }
+      sv.setAttribute('preserveAspectRatio','xMinYMin meet');
+      sv.removeAttribute('width'); sv.removeAttribute('height');
+      sv.style.width='100%'; sv.style.height='auto'; sv.style.maxWidth='100%';
+    }catch(e){}
+  }
+  function pasada(){ try{ document.querySelectorAll('svg').forEach(ajusta); }catch(e){} }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',pasada); else pasada();
+  addEventListener('load',pasada);
+  try{
+    new MutationObserver(function(ms){
+      for(var i=0;i<ms.length;i++){
+        var m=ms[i];
+        if(m.type==='attributes'){ if(m.target && String(m.target.tagName).toLowerCase()==='svg') ajusta(m.target); continue; }
+        var a=m.addedNodes;
+        for(var j=0;j<a.length;j++){
+          var n=a[j]; if(!n || n.nodeType!==1) continue;
+          if(String(n.tagName).toLowerCase()==='svg') ajusta(n);
+          else if(n.querySelectorAll) n.querySelectorAll('svg').forEach(ajusta);
+        }
+      }
+    }).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['width','height','style']});
+  }catch(e){}
+})();
+</script>
+<script src="https://ge.lmathome.es/piel/latido.js?v=1" defer></script><!-- (15-oct-2026, Iago) trabajo por libre: el latido para la campana del Diario. Para quitarlo: borrar esta línea -->
+</body></html>
