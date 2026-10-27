@@ -10,10 +10,10 @@
   --oro:#E2A33F; --oro-hi:#F2C46A; --oro-lo:#9A6A1E; --oro-a:rgba(226,163,63,.38);
   --rojo:#C9603F; --rojo-hi:#E07A55;
   --otra:#1F9AA0;
-  --f-deco:'Kaushan Script','Brush Script MT',cursive;
-  --f-fina:'Nunito','Helvetica Neue',Arial,sans-serif;
-  --f-carta:'Nunito','Helvetica Neue',Arial,sans-serif;
-  --f-ui:'Nunito','Helvetica Neue',Arial,sans-serif;
+  --f-deco:'Shrikhand','Kaushan Script',Georgia,serif;   /* (27-oct 22:28, Iago) la tipografía, la del título de la portada */
+  --f-fina:'DM Sans','Helvetica Neue',Arial,sans-serif;
+  --f-carta:'DM Sans','Helvetica Neue',Arial,sans-serif;
+  --f-ui:'DM Sans','Helvetica Neue',Arial,sans-serif;
   --a1:#E2A33F; --a2:#9A6A1E; --a-soft:#F2C46A;
 }
 .port-tit{letter-spacing:.01em!important;text-transform:none!important}
@@ -33,7 +33,7 @@
 
 /* ══ (27-oct, C1 · Iago) CAPAS ANIMADAS: palabras clave, maestros de ceremonias en PNG, instrumentos sueltos, flechas y rótulos
    (js/capas4s.js). Sin halos ni sombras: cristal oscuro liso y movimiento corto. La letra la pone --f-clave. ══ */
-:root{--f-clave:'Jost','Nunito',sans-serif}
+:root{--f-clave:'DM Sans','Jost',sans-serif}
 .c4-capa{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
 #escena.con-inter .c4-capa .c4-claves{opacity:0}
 .c4-claves{position:absolute;left:6%;right:6%;top:50%;transform:translateY(-50%);display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:calc(var(--u)*1.1);transition:opacity .4s}
@@ -56,7 +56,7 @@
   display:flex;flex-direction:column;align-items:center;transition:opacity .45s,transform .6s cubic-bezier(.2,.9,.3,1.2)}
 .c4-suelta.on{opacity:1;transform:translate(-50%,-50%)}
 .c4-suelta img{height:100%;width:auto;object-fit:contain}
-.c4-suelta b{margin-top:calc(var(--u)*.6);font-family:var(--f-clave);font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#FFF7EA;font-size:calc(var(--u)*2)}
+.c4-suelta b{max-width:100%;text-align:center;line-height:1.15;margin-top:calc(var(--u)*.6);font-family:var(--f-clave);font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#FFF7EA;font-size:calc(var(--u)*2)}
 .c4-svg{position:absolute;inset:0;width:100%;height:100%}
 .c4-flecha{fill:none;stroke:#FFF1D6;stroke-width:.55;stroke-linecap:round;opacity:.92}
 .c4-rotulo{position:absolute;left:calc(var(--x)*100%);top:calc(var(--y)*100%);transform:translate(-50%,-50%);font-family:var(--f-clave);font-weight:600;
@@ -64,7 +64,7 @@
 .c4-rotulo.on{opacity:.75}
 .c4-rotulo.mar{color:#CFEDEB;letter-spacing:.42em}.c4-rotulo.mar.on{opacity:.45}
 @media (prefers-reduced-motion:reduce){.c4-pj.on{animation:none}}
-.c4-rotulo.parada{transform:translate(0,-50%);font-family:'Nunito',sans-serif;font-weight:800;letter-spacing:.02em;text-transform:none;font-size:calc(var(--u)*1.9);
+.c4-rotulo.parada{transform:translate(0,-50%);font-family:'DM Sans',sans-serif;font-weight:700;letter-spacing:.02em;text-transform:none;font-size:calc(var(--u)*1.9);
   color:#FFF6E2;padding:calc(var(--u)*.25) calc(var(--u)*.7) calc(var(--u)*.25) calc(var(--u)*1.9);background:rgba(14,30,34,.7);border-radius:calc(var(--u)*.5)}
 .c4-rotulo.parada::before{content:'';position:absolute;left:calc(var(--u)*-.55);top:50%;width:calc(var(--u)*1.1);height:calc(var(--u)*1.1);margin-top:calc(var(--u)*-.55);border-radius:50%;background:#F2C46A;border:2px solid #2A1A0C}
 .c4-rotulo.parada.izq{transform:translate(-100%,-50%);padding:calc(var(--u)*.25) calc(var(--u)*1.9) calc(var(--u)*.25) calc(var(--u)*.7)}
@@ -144,3 +144,55 @@
 #portada.s4p .port-nota{color:rgba(255,233,199,.6);font-family:'DM Sans',sans-serif;font-size:calc(var(--u)*.78)}
 /* (27-oct noche) si hay un instrumento en PNG en el centro, las palabras clave suben arriba para no taparse (Iago vio la tambora encima de «Mano + palito») */
 .c4-capa:has(.c4-suelta.on) .c4-claves{top:12%;transform:none}
+
+/* (27-oct 22:27, Iago: «sin animación») los PNG de los personajes, quietos: sin respirar ni deslizarse; solo aparecen y se van */
+.c4-pj,.c4-pj.der,.c4-pj.izq,.c4-pj.on{transform:none!important;animation:none!important;transition:none!important}
+
+/* (27-oct noche) INSTRUMENTOS A TAMAÑO REAL y QUIETOS: la misma caja (x, y = centro; w, h en fracciones de la escena) en las capas y en la
+   interacción, así que al empezar a sonar el instrumento no se mueve. Aparece y se va con un fundido, sin escalar. */
+.c4-suelta{transform:translate(-50%,-50%)!important;transition:opacity .35s ease!important}
+.c4-suelta.caja{width:calc(var(--w)*100%);height:calc(var(--h)*100%)}
+.c4-suelta.caja img{width:100%;height:100%;object-fit:contain}
+.c4-suelta.caja b{position:absolute;left:50%;top:calc(100% + var(--u)*.84);transform:translateX(-50%);white-space:nowrap;margin:0}
+.c4-capa:has(.c4-suelta.on) .c4-claves{top:4%}
+.s4-instrumento.s4-tam .s4-centro{position:absolute;inset:0;display:block}
+.s4-instrumento.s4-tam .s4-tarjeta{position:absolute;left:calc(var(--tx)*100%);top:calc(var(--ty)*100%);transform:translate(-50%,-50%);width:calc(var(--tw)*100%);height:calc(var(--th)*100%);padding:0}
+.s4-instrumento.s4-tam .s4-foto{width:100%;height:100%}
+.s4-instrumento.s4-tam .s4-foto img{width:100%;height:100%;object-fit:contain}
+.s4-instrumento.s4-tam .s4-tpie{position:absolute;left:50%;top:calc(100% + var(--u)*.84);transform:translateX(-50%);white-space:nowrap;padding:0}
+.s4-instrumento.s4-tam .s4-tpie .s4-nombre{font-size:calc(var(--u)*2)!important;font-weight:600;letter-spacing:.1em}
+.s4-instrumento.s4-tam .s4-rej,.s4-instrumento.s4-tam .s4-nivel{position:absolute;left:50%;transform:translateX(-50%);top:77%}
+/* (27-oct 22:35, Iago) la letra de la canción, con contorno y sin fondo oscuro */
+.s4-concierto .s4-letra{background:none!important;box-shadow:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:0!important}
+.s4-concierto .s4-lact{-webkit-text-stroke:calc(var(--u)*.16) #140b06;paint-order:stroke fill;color:#FFF7EA}
+
+/* (27-oct 22:39, Iago: «no me convence el fondo negro difuminado y todo mayúsculas… ¿la del título? ¿sin fondo? o otro tipo de fondo»)
+   LETREROS con la tipografía del título (Shrikhand), en minúscula, sobre una pastilla lisa del naranja de la portada, sin difuminar */
+.c4-clave{font-family:'Shrikhand',serif!important;font-weight:400!important;text-transform:none!important;letter-spacing:0!important;
+  color:#1A0F0A!important;background:#FF8A3D!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:none!important;
+  border:0!important;border-radius:calc(var(--u)*.7)!important;padding:calc(var(--u)*.55) calc(var(--u)*1.3) calc(var(--u)*.75)!important;font-size:calc(var(--u)*2.7)!important}
+.c4-sep{font-family:'Shrikhand',serif!important;color:#FFE9C7!important;-webkit-text-stroke:calc(var(--u)*.14) #140b06;paint-order:stroke fill}
+.c4-suelta b,.s4-instrumento.s4-tam .s4-tpie .s4-nombre{font-family:'Shrikhand',serif!important;font-weight:400!important;text-transform:none!important;letter-spacing:0!important;
+  color:#FFE9C7!important;-webkit-text-stroke:calc(var(--u)*.14) #140b06;paint-order:stroke fill}
+.c4-suelta.caja b,.s4-instrumento.s4-tam .s4-tpie .s4-nombre{font-size:calc(var(--u)*2.3)!important}
+/* (27-oct 22:42, Iago) «las transiciones entre imágenes, sin animación»: los cambios de lámina y de plano del videoclip, por corte */
+.plano{transition:none!important}
+.s4-plano{transition:none!important}
+/* las postales (3:2): el rótulo cabe en su ancho */
+.c4-suelta:not(.caja){width:calc(var(--h)*var(--u)*56.25*1.5)}
+
+/* resumen: cada maestro de ceremonias, su repaso a su lado, y se queda */
+.c4-claves.fijo{top:14%;transform:none;flex-direction:column;align-items:stretch;gap:calc(var(--u)*.7);width:25%}
+.c4-claves.fijo.izq{left:2.5%;right:auto}.c4-claves.fijo.der{right:2.5%;left:auto}
+.c4-claves.fijo .c4-clave{font-size:calc(var(--u)*1.75)!important;text-align:left;line-height:1.15}
+.c4-claves.fijo .c4-clave:first-child{font-size:calc(var(--u)*2.6)!important;background:#FFE9C7!important}
+/* (27-oct 23:00) con personaje PNG a un lado, la rejilla del instrumento se aparta de él y los botones van en columna a su lado
+   (abajo los tapaba la barra de controles y antes le tapaban la falda) */
+body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .s4-rej,body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .s4-nivel{left:34%;width:calc(var(--u)*54)}
+body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .s4-rej,body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .s4-nivel{left:66%;width:calc(var(--u)*54)}
+body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .i-pie,body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .i-pie{top:77%;bottom:auto;flex-direction:column;align-items:stretch}
+body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .i-pie{right:auto;left:calc(34% + var(--u)*28.2)}
+body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .i-pie{left:auto;right:calc(34% + var(--u)*28.2)}
+body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .s4-rej,body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .s4-rej{padding:calc(var(--u)*1.1) calc(var(--u)*1.4)}
+body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .s4-c,body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .s4-c{width:calc(var(--u)*2.75);height:calc(var(--u)*2.75)}
+body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .s4-gr,body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .s4-gr{gap:calc(var(--u)*.4)}
