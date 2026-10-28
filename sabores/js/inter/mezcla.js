@@ -176,7 +176,22 @@
     const N = pistas.length;
     const estado = {};
     pistas.forEach(p => { estado[p.id] = B.arr(op.inicial).indexOf(p.id) >= 0; });
-    const m = M.crea({ bpm, compases: comp, pistas, inicial: B.arr(op.inicial) });
+    /* (28-oct, Sabor 4 · Iago 21-oct 17:07: «mezclador con SELECTOR ESTROFA / ESTRIBILLO: que se vea y se oiga cómo cada percusionista
+       cambia de instrumento») op.selector = [{id, nom}], p.loops = {seccion: url} y p.imgsec = {seccion: img}: cada pista suena con el
+       loop de la sección elegida; el cambio entra en el siguiente compás. Sin selector, todo como antes */
+    const secs = B.arr(op.selector).filter(x => x && x.id);
+    let sec = secs.length ? (op.seccion_inicial || secs[0].id) : null;
+    const internas = [], deP = {};
+    pistas.forEach(p => {
+      deP[p.id] = [];
+      if (secs.length && p.loops) {
+        const porLoop = {};
+        secs.forEach(x => { const u = p.loops[x.id]; if (u) (porLoop[u] = porLoop[u] || []).push(x.id); });
+        Object.keys(porLoop).forEach((u, j) => { const iid = p.id + '@' + j; internas.push({ id: iid, loop: u, vol: p.vol, color: p.color }); deP[p.id].push({ iid, secs: porLoop[u] }); });
+      } else { internas.push(p); deP[p.id].push({ iid: p.id, secs: null }); }
+    });
+    const suena = (pid, t) => !!estado[pid] && (!t.secs || t.secs.indexOf(sec) >= 0);
+    const m = M.crea({ bpm, compases: comp, pistas: internas, inicial: pistas.reduce((a, p) => a.concat(deP[p.id].filter(t => suena(p.id, t)).map(t => t.iid)), []) });
 
     /* ── piezas ── */
     caja.appendChild(B.el('div', 's4-fondo'));
@@ -202,7 +217,8 @@
       const b = B.el('button', 's4-pista'); b.type = 'button'; b.dataset.id = p.id;
       b.style.setProperty('--c', p.color);
       const cu = B.el('div', 's4-cuad');
-      cu.appendChild(S.imagen(p.img, p.nom || p.id, p.color));
+      const imgDe = x => (p.imgsec && x && p.imgsec[x]) || p.img;
+      let imEl = S.imagen(imgDe(sec), p.nom || p.id, p.color); cu.appendChild(imEl);
       if (i < 9) { const k = B.el('span', 's4-tec'); k.textContent = i + 1; cu.appendChild(k); }
       const nv = B.el('div', 's4-niv'); const nvi = B.el('i'); nv.appendChild(nvi);
       const nm = B.el('div', 's4-nom'); nm.textContent = p.nom || p.id;
@@ -213,7 +229,9 @@
       b.addEventListener('click', e => { e.stopPropagation(); B.ac(); alterna(p.id); });
       if (inv) { const [c, r, w, h] = p.celda; b.style.gridArea = r + ' / ' + c + ' / span ' + h + ' / span ' + w; }
       fila.appendChild(b);
-      el[p.id] = { b, cu, nvi, nv, nivel: 0, mc, pat, sAnt: -1, k: p.nivK || 1 };
+      el[p.id] = { b, cu, nvi, nv, nivel: 0, mc, pat, sAnt: -1, k: p.nivK || 1,
+        cambiaImg: x => { const n = S.imagen(imgDe(x), p.nom || p.id, p.color); cu.replaceChild(n, imEl); imEl = n; } };
+      if (p.loops && secs.length) b.classList.toggle('s4-callada', !deP[p.id].some(t => !t.secs || t.secs.indexOf(sec) >= 0));
     });
     const carga = B.el('div', 's4-carga', 'Cargando…'); caja.appendChild(carga);
     const pie = B.el('div', 'i-pie'); caja.appendChild(pie);
@@ -221,6 +239,24 @@
     const bTodos = U.boton('Todos', '', () => pistas.forEach(p => alterna(p.id, true)));
     const bNinguno = U.boton('Ninguno', '', () => pistas.forEach(p => alterna(p.id, false)));
     pieIzq.appendChild(bTodos); pieIzq.appendChild(bNinguno);
+    const bSec = {};
+    function cambiaSec(x) {
+      if (!secs.length || x === sec) return;
+      sec = x;
+      const dC = 240 / bpm, r = m.reloj(), en = m.cuando0 == null || r < 0 ? null : Math.ceil((r + .06) / dC) * dC;   // en el siguiente compás
+      pistas.forEach(p => {
+        deP[p.id].forEach(t => { if (t.secs) m.ganancia(t.iid, suena(p.id, t) ? 1 : 0, .03, en == null ? undefined : en); });
+        if (p.imgsec) el[p.id].cambiaImg(sec);
+        if (p.loops) el[p.id].b.classList.toggle('s4-callada', !deP[p.id].some(t => !t.secs || t.secs.indexOf(sec) >= 0));   // (los metales, solo en el estribillo)
+      });
+      secs.forEach(y => bSec[y.id].classList.toggle('on', y.id === sec));
+      tit.textContent = (op.tit || 'Mezclador') + ' · ' + secs.find(y => y.id === sec).nom;
+    }
+    if (secs.length) {
+      const gr = B.el('div', 's4-secciones'); pieIzq.appendChild(gr);
+      secs.forEach(x => { bSec[x.id] = U.boton(x.nom, '', () => cambiaSec(x.id)); bSec[x.id].classList.add('s4-sec'); bSec[x.id].classList.toggle('on', x.id === sec); gr.appendChild(bSec[x.id]); });
+      tit.textContent = (op.tit || 'Mezclador') + ' · ' + secs.find(y => y.id === sec).nom;
+    }
 
     function pinta(id) {
       const e = el[id], on = estado[id];
@@ -231,12 +267,13 @@
       if (!el[id]) return;
       if (on == null) on = !estado[id];
       if (on === estado[id]) return;
-      estado[id] = on; m.ganancia(id, on ? 1 : 0, .03); pinta(id);
+      estado[id] = on; deP[id].forEach(t => m.ganancia(t.iid, suena(id, t) ? 1 : 0, .03)); pinta(id);
     }
     pistas.forEach(p => pinta(p.id));
 
     /* teclas 1–9 */
     const quitaK = B.captura.poner(e => {
+      if (!e.repeat && secs.length > 1 && (e.key === 'e' || e.key === 'E')) { const i = secs.findIndex(y => y.id === sec); cambiaSec(secs[(i + 1) % secs.length].id); return true; }   // E: estrofa ↔ estribillo
       if (e.repeat || !/^[1-9]$/.test(e.key)) return false;
       const p = pistas[+e.key - 1]; if (!p) return false;
       alterna(p.id); return true;
@@ -252,7 +289,7 @@
       const pulso = Math.exp(-fase * 5.5);
       pistas.forEach(p => {
         if (!estado[p.id]) return;
-        const e = el[p.id], lv = m.nivel(p.id);
+        const e = el[p.id], lv = Math.max.apply(null, deP[p.id].map(t => m.nivel(t.iid)));
         e.nivel = lv > e.nivel ? lv : e.nivel * .86 + lv * .14;
         e.nvi.style.width = Math.min(100, e.nivel * e.k * 100).toFixed(1) + '%';
         if (e.pat) { const dC = 240 / bpm, s16 = Math.min(15, Math.floor((x % dC) / (dC / 16))); if (s16 !== e.sAnt) { if (e.sAnt >= 0) e.mc[e.sAnt].classList.remove('act'); e.mc[s16].classList.add('act'); e.sAnt = s16; } }
@@ -268,7 +305,7 @@
       m.parar(.25);
     };
     ctl.alMorir.push(limpia);
-    B.inter.mezclador.ultimo = { m, estado, alterna, pistas };
+    B.inter.mezclador.ultimo = { m, estado, alterna, pistas, cambiaSec, seccion: () => sec };
 
     /* carga y arranque */
     tCarga = setTimeout(() => carga.classList.add('on'), 160);
