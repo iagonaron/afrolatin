@@ -43,7 +43,7 @@ window.LM_VOL_CONFIG = function () {
             history.replaceState(history.state, '', location.pathname + location.search + (h ? '#' + h : '')); } catch (e) {}
     } else { try { c = localStorage.getItem('lm_vol_cuenta'); } catch (e) {} }
     if (!c) return;
-    return;   /* (4 Sabores, 21-oct) seleccionador de voluntarios APAGADO hasta adaptarlo (sus sonidos son los del Blues). Para encenderlo: quitar esta línea */
+    return;   /* (4 Sabores) seleccionador de voluntarios APAGADO para siempre (Iago, 28-oct 12:45: «en este portal no hace falta: no da mucho pie a interacción; ya lo hago yo») */
     var s = document.createElement('script'); s.async = true;
     s.src = 'https://gp.lmathome.es/voluntarios/lm-voluntarios.js?h=' + Math.floor(Date.now() / 36e5);
     s.onload = function () {
@@ -68,9 +68,9 @@ window.LM_VOL_CONFIG = function () {
 <meta name="apple-mobile-web-app-title" content="Afro Latin">
 <link rel="preload" href="fonts/kaushan-script-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/nunito-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/blues.css?v=202610281007">
-<link rel="stylesheet" href="css/inter4s.css?v=202610281007">
-<link rel="stylesheet" href="css/sabores.css?v=202610281007">
+<link rel="stylesheet" href="css/blues.css?v=202610281259">
+<link rel="stylesheet" href="css/inter4s.css?v=202610281259">
+<link rel="stylesheet" href="css/sabores.css?v=202610281259">
 </head>
 <body>
 
@@ -97,34 +97,34 @@ window.LM_VOL_CONFIG = function () {
 </div>
 
 <!-- núcleo y componentes (4 Sabores: el motor del Blues + data/config.js + interacciones nuevas) -->
-<script src="js/nucleo.js?v=202610281007"></script>
-<script src="data/config.js?v=202610281007"></script>
-<script src="js/instrumentos.js?v=202610281007"></script>
-<script src="js/teclado.js?v=202610281007"></script>
-<script src="js/partitura.js?v=202610281007"></script>
-<script src="js/banda.js?v=202610281007"></script>
-<script src="js/portada_vida.js?v=202610281007"></script>
-<script src="js/motor.js?v=202610281007"></script>
-<script src="js/vida.js?v=202610281007"></script>
-<script src="js/capas4s.js?v=202610281007"></script>
-<script src="js/inter/comun.js?v=202610281007"></script>
-<script src="js/inter/objetos.js?v=202610281007"></script>
-<script src="js/inter/base4s.js?v=202610281007"></script>
-<script src="js/inter/mezcla.js?v=202610281007"></script>
-<script src="js/inter/instrumento.js?v=202610281007"></script>
-<script src="js/inter/concierto.js?v=202610281007"></script>
-<script src="js/inter/ejemplos.js?v=202610281007"></script>
-<script src="js/inter/llamada.js?v=202610281007"></script>
-<script src="data/recursos.js?v=202610281007"></script>
-<script src="data/vozpaq_s1.js?v=202610281007"></script>
-<script src="data/personajes.js?v=202610281007"></script>
-<script src="data/hechos.js?v=202610281007"></script>
-<script src="data/sabor1.js?v=202610281007"></script>
-<script src="data/luces_s1.js?v=202610281007"></script>
-<script src="data/luces_vc.js?v=202610281007"></script>
-<script src="data/vida_s1.js?v=202610281007"></script>
-<script src="data/capas_s1.js?v=202610281007"></script>
-<script src="data/capas_s1_t.js?v=202610281007"></script>
+<script src="js/nucleo.js?v=202610281259"></script>
+<script src="data/config.js?v=202610281259"></script>
+<script src="js/instrumentos.js?v=202610281259"></script>
+<script src="js/teclado.js?v=202610281259"></script>
+<script src="js/partitura.js?v=202610281259"></script>
+<script src="js/banda.js?v=202610281259"></script>
+<script src="js/portada_vida.js?v=202610281259"></script>
+<script src="js/motor.js?v=202610281259"></script>
+<script src="js/vida.js?v=202610281259"></script>
+<script src="js/capas4s.js?v=202610281259"></script>
+<script src="js/inter/comun.js?v=202610281259"></script>
+<script src="js/inter/objetos.js?v=202610281259"></script>
+<script src="js/inter/base4s.js?v=202610281259"></script>
+<script src="js/inter/mezcla.js?v=202610281259"></script>
+<script src="js/inter/instrumento.js?v=202610281259"></script>
+<script src="js/inter/concierto.js?v=202610281259"></script>
+<script src="js/inter/ejemplos.js?v=202610281259"></script>
+<script src="js/inter/llamada.js?v=202610281259"></script>
+<script src="data/recursos.js?v=202610281259"></script>
+<script src="data/vozpaq_s1.js?v=202610281259"></script>
+<script src="data/personajes.js?v=202610281259"></script>
+<script src="data/hechos.js?v=202610281259"></script>
+<script src="data/sabor1.js?v=202610281259"></script>
+<script src="data/luces_s1.js?v=202610281259"></script>
+<script src="data/luces_vc.js?v=202610281259"></script>
+<script src="data/vida_s1.js?v=202610281259"></script>
+<script src="data/capas_s1.js?v=202610281259"></script>
+<script src="data/capas_s1_t.js?v=202610281259"></script>
 
 <script>BLUES.motor.iniciar();</script>
 
