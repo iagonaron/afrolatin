@@ -317,3 +317,6 @@
 .s4-instrumento.s4-tam .i-pie .bt{white-space:nowrap!important;font-size:calc(var(--u)*.88)!important}
 /* (09:12, Iago: «que ocupe toda la pantalla») las casillas del inventario, más grandes */
 .s4-mezclador .s4-pistas.s4-inv{--cel:min(calc(var(--u)*10.6),calc((var(--u)*56.25 - var(--u)*21) / 3))!important}
+/* (10:00) el consejo final, titular arriba en lugar del «Repaso» */
+.c4-claves.fijo.cabeza.cierre .c4-tit{font-size:calc(var(--u)*4.6)!important}
+.c4-claves.fijo.sale{opacity:0;transition:opacity .45s}
