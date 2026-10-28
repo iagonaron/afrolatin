@@ -351,6 +351,10 @@
 /* (28-oct 19:23, Iago: «el texto con fondo, en el Sabor 2 en verde, como su portada») */
 #escena[data-sabor="2"] .c4-clave{background:#1F7A4D!important}
 #escena[data-sabor="2"] .c4-claves.fijo .c4-clave:first-child{background:#135A37!important}
+.s4-instrumento .s4-foto.dos.tres{width:calc(var(--u)*54);gap:calc(var(--u)*1.2)}
+/* (28-oct, Sabor 3) los carteles con fondo, en el color de su portada (amarillo de samba, oscurecido para que el blanco se lea) */
+#escena[data-sabor="3"] .c4-clave{background:#A8690F!important}
+#escena[data-sabor="3"] .c4-claves.fijo .c4-clave:first-child{background:#7A4A06!important}
 .s4-instrumento .s4-foto.dos .s4-pips{right:auto;left:50%;transform:translateX(-50%);top:calc(var(--u)*-3.2)}   /* el contador de compases, entre los dos y por encima */
 
 /* (28-oct 20:41, Iago: en el iPad no se ven las fotos de los sabores) la foto de cada carta, un <img> que llena su caja; la caja, a todo el
