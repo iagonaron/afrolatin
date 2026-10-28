@@ -187,6 +187,14 @@
     const nP = comp * 4;
     for (let k = 0; k < nP; k++) { const i = B.el('i', k % 4 === 0 ? 'fuerte' : ''); tira.appendChild(i); }
     const fila = B.el('div', 's4-pistas'); centro.appendChild(fila);
+    /* (28-oct, Iago: «como el inventario de Resident Evil») op.inventario = [columnas, filas]: cada pista en su parcela (p.celda =
+       [col, fila, ancho, alto]); las casillas que sobran, vacías */
+    const inv = Array.isArray(op.inventario) && pistas.every(p => Array.isArray(p.celda));
+    if (inv) {
+      const [nc, nf] = op.inventario; fila.classList.add('s4-inv'); fila.style.setProperty('--nc', nc); fila.style.setProperty('--nf', nf);
+      const ocupa = new Set(); pistas.forEach(p => { const [c, r, w, h] = p.celda; for (let i = 0; i < w; i++) for (let j = 0; j < h; j++) ocupa.add((c + i) + ',' + (r + j)); });
+      for (let c = 1; c <= nc; c++) for (let r = 1; r <= nf; r++) if (!ocupa.has(c + ',' + r)) { const v = B.el('div', 's4-vacia'); v.style.gridArea = r + ' / ' + c + ' / span 1 / span 1'; fila.appendChild(v); }
+    }
     fila.style.setProperty('--s', 'min(calc(var(--u)*15), calc((var(--u)*92 - var(--u)*1.4*' + Math.max(0, N - 1) + ') / ' + Math.max(1, N) + '))');
     const el = {};
     pistas.forEach((p, i) => {
@@ -202,6 +210,7 @@
       if (pat) { mr = B.el('div', 's4-mrej'); for (let k = 0; k < 16; k++) { const c = B.el('i', (k % 4 === 0 ? 'tp ' : '') + (pat[0][k] === 2 ? 'h2' : pat[0][k] === 1 ? 'h1' : '')); mr.appendChild(c); mc.push(c); } nv.classList.add('con-rej'); }
       b.appendChild(cu); if (mr) b.appendChild(mr); b.appendChild(nv); b.appendChild(nm);
       b.addEventListener('click', e => { e.stopPropagation(); B.ac(); alterna(p.id); });
+      if (inv) { const [c, r, w, h] = p.celda; b.style.gridArea = r + ' / ' + c + ' / span ' + h + ' / span ' + w; }
       fila.appendChild(b);
       el[p.id] = { b, cu, nvi, nv, nivel: 0, mc, pat, sAnt: -1, k: p.nivK || 1 };
     });
@@ -246,7 +255,7 @@
         e.nivel = lv > e.nivel ? lv : e.nivel * .86 + lv * .14;
         e.nvi.style.width = Math.min(100, e.nivel * e.k * 100).toFixed(1) + '%';
         if (e.pat) { const dC = 240 / bpm, s16 = Math.min(15, Math.floor((x % dC) / (dC / 16))); if (s16 !== e.sAnt) { if (e.sAnt >= 0) e.mc[e.sAnt].classList.remove('act'); e.mc[s16].classList.add('act'); e.sAnt = s16; } }
-        e.cu.style.transform = 'scale(' + (1 + .06 * pulso).toFixed(4) + ')';
+        if (inv) e.b.classList.toggle('golpe', fase < .18); else e.cu.style.transform = 'scale(' + (1 + .06 * pulso).toFixed(4) + ')';   // inventario: el pulso, de golpe (pantalla del aula)
       });
     });
 

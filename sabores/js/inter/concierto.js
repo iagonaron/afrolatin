@@ -67,7 +67,7 @@
     const bloques = B.arr(op.bloques).map(b => B.arr(b));
     const nB = bloques.length;
     const planos = B.arr(op.planos).filter(p => p && p.t != null).sort((a, b) => a.t - b.t);
-    const letra = B.arr(op.letra).filter(p => p && p.t != null).map(p => ({ t: +p.t, txt: p.txt == null ? '' : String(p.txt), t1: p.t1 == null ? null : +p.t1, d: null })).sort((a, b) => a.t - b.t);
+    const letra = B.arr(op.letra).filter(p => p && p.t != null).map(p => ({ t: +p.t, txt: p.txt == null ? '' : String(p.txt), t1: p.t1 == null ? null : +p.t1, d: null, w: Array.isArray(p.w) ? p.w.map(x => [+x[0], String(x[1])]) : null })).sort((a, b) => a.t - b.t);
     const fundido = op.fundido == null ? 2.5 : op.fundido;
     /* ciclo de fondos y botones de cierre (v3); sin imágenes en el ciclo, no hay ciclo */
     const cicloImgs = op.ciclo ? B.arr(op.ciclo.imgs).filter(x => x && (x.img || x.txt)) : [];
@@ -197,6 +197,10 @@
       if (dur !== .4) capa.style.transitionDuration = dur + 's';
       if (op.kb) { capa.classList.add('kb', 'kb' + (i % 4)); capa.style.setProperty('--kbd', (op.bpm > 120 ? 7 : 11) + 's'); }   // (27-oct, Iago) movimiento lento de cámara en el videoclip
       capa.appendChild(S.imagen(p.img, p.txt || ('Plano ' + (i + 1)), S.CICLO[i % S.CICLO.length], 's4-pl'));
+      /* (28-oct, Iago: «me falta animación de fondos en el videoclip: velas, mar…») sus luces titilan (js/portada_vida.js; puntos en
+         BLUES.LUCES_VC, herramientas/luces_s1.py); el lienzo lleva la misma clase que la imagen para moverse con ella */
+      const LV = B.LUCES_VC && B.LUCES_VC[p.img];
+      if (LV && LV.length && B.vidaLienzo) { const cv = B.el('canvas', 's4-img s4-vida-vc'); capa.appendChild(cv); B.vidaLienzo(cv, { luces: LV, rMin: .014, rK: 1.15 }); }
       esc.appendChild(capa); void capa.offsetWidth;
       capa.classList.add('on');
       const ant = capaAct; capaAct = capa; capas.push(capa);
@@ -229,7 +233,7 @@
     }
 
     /* ── letra: línea actual según el reloj de la canción; la barra se llena sola (sin parpadeos al cambiar) ── */
-    let lAnt = -2, lFill = -1, lVis = false;
+    let lAnt = -2, lFill = -1, lVis = false, lSpans = null;
     function pintaLetra(tc) {
       let k = -1;
       for (let j = letra.length - 1; j >= 0; j--) if (tc >= letra[j].t) { k = j; break; }
@@ -237,11 +241,16 @@
       if (k !== lAnt) {
         lAnt = k; lFill = -1;
         const sg = letra[k + 1];
-        lTxt.textContent = txt; lSig.textContent = txt && sg ? sg.txt : '';
+        /* (28-oct, Iago: «como un karaoke») con palabras cronometradas (l.w), cada una se enciende cuando se canta */
+        lSpans = null;
+        if (l && l.w && l.w.length) { lTxt.textContent = ''; lSpans = l.w.map(([tw, w], j) => { const sp = B.el('span', 's4-kw'); sp.textContent = w + (j < l.w.length - 1 ? ' ' : ''); lTxt.appendChild(sp); return [tw, sp]; }); }
+        else lTxt.textContent = txt;
+        lSig.textContent = txt && sg ? sg.txt : '';
         subt.dataset.txt = txt; subt.dataset.sig = lSig.textContent;
         if (!!txt !== lVis) { lVis = !!txt; subt.classList.toggle('on', lVis); }
         if (txt) { lAct.classList.remove('cambia'); void lAct.offsetWidth; lAct.classList.add('cambia'); }
       }
+      if (lSpans) for (let j = 0; j < lSpans.length; j++) { const on = tc >= lSpans[j][0] - .03; if (lSpans[j][2] !== on) { lSpans[j][2] = on; lSpans[j][1].classList.toggle('on', on); } }
       if (txt) {
         const d = l.d == null ? 5 : l.d, x = d > 0 ? Math.max(0, Math.min(1, (tc - l.t) / d)) : 1;
         if (Math.abs(x - lFill) > .002 || (x === 1 && lFill !== 1)) { lFill = x; lBarI.style.transform = 'scaleX(' + x.toFixed(4) + ')'; subt.dataset.fill = x.toFixed(3); }

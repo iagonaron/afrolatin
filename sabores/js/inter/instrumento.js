@@ -29,7 +29,7 @@
     /* (27-oct noche, Iago: «el instrumento no cambia de lugar: se le presenta y se le anima en el mismo sitio» y «a tamaño real, el bajo
        acostado») si el instrumento tiene caja en BLUES.CAPAS.tam, la foto va en esa misma caja de la pantalla (la de las capas) */
     const tam = B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[op.img];
-    if (tam) { caja.classList.add('s4-tam'); caja.style.setProperty('--tx', tam.x); caja.style.setProperty('--ty', tam.y); caja.style.setProperty('--tw', tam.w); caja.style.setProperty('--th', tam.h); }
+    if (tam) { caja.classList.add('s4-tam'); caja.style.setProperty('--tx', tam.x); caja.style.setProperty('--ty', tam.y); caja.style.setProperty('--tw', tam.w); caja.style.setProperty('--th', tam.h); if (tam.ry != null) caja.style.setProperty('--ry', tam.ry); }
     tarjeta.appendChild(foto);
     const pieT = B.el('div', 's4-tpie'); tarjeta.appendChild(pieT);
     const nm = B.el('div', 's4-nombre'); nm.textContent = nom; pieT.appendChild(nm);
@@ -79,7 +79,7 @@
     async function reproduce() {
       if (limpio) return;
       const mia = ++gen;
-      if (est) { est.m.parar(.04); est = null; apagaRejilla(); pAnt = -1; cAnt = -1; }
+      if (est) { est.m.parar(.04); paraClaq(est); est = null; apagaRejilla(); pAnt = -1; cAnt = -1; }
       const m = B.mezcla.crea({ bpm, compases: comp, pistas: [{ id: 'p', nom, loop: op.loop, color, vol: op.vol }], inicial: ['p'] });
       if (!cargado) {
         const tc = setTimeout(() => carga.classList.add('on'), 160);
@@ -90,11 +90,20 @@
       if (limpio || mia !== gen) { m.parar(0); return; }
       const cu = m.arrancar(B.ac().currentTime + .12);
       m.pararEn(vueltas * L, .03);
-      est = { m, cu, mia };
+      /* (28-oct, Iago: «en la parte en la que nos muestra los instrumentos, que haya claqueta marcando el pulso») un golpe de baqueta en
+         cada tiempo (más fuerte en el 1 de cada compás), en el reloj del audio y en su propio canal para poder cortarlo */
+      let claq = null;
+      if (op.claqueta !== false && B.sint && B.sint.baqueta) {
+        const C = B.ac(); claq = C.createGain(); claq.gain.value = op.volClaq == null ? .9 : op.volClaq; claq.connect((B.bus && B.bus.sfx) || C.destination);
+        const p = 60 / bpm, n = Math.round(vueltas * comp * 4);
+        for (let k = 0; k < n; k++) B.sint.baqueta(cu + k * p, k % 4 === 0 ? .62 : .36, claq);
+      }
+      est = { m, cu, mia, claq };
       B.inter.instrumento.ultimo = est;      // gancho de pruebas
       B.enTiempo(cu + vueltas * L + espera, () => { if (auto && mia === gen && !limpio) resolver('auto'); }, ctl);
     }
 
+    function paraClaq(e) { const g = e && e.claq; if (!g) return; try { g.gain.setTargetAtTime(0, B.ac().currentTime, .01); } catch (x) { } setTimeout(() => { try { g.disconnect(); } catch (x) { } }, 400); e.claq = null; }
     /* reloj visual: casilla actual (semicorchea), compás y nivel */
     const quitaF = B.alFotograma(t => {
       const e = est; if (!e) return;
@@ -122,7 +131,7 @@
     const limpia = () => {
       if (limpio) return; limpio = true; gen++;
       quitaF(); quitaK();
-      if (est) { est.m.parar(.15); est = null; }
+      if (est) { est.m.parar(.15); paraClaq(est); est = null; }
       resolver(null);
     };
     ctl.alMorir.push(limpia);
