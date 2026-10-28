@@ -272,7 +272,9 @@ const HIT = (function () {
       const d = B.DIAS[n] || { titulo: TIT_DIA[n] }, im = 'img/portada/sabor_' + n + '.webp';
       const sigue = pr.ultimo && pr.ultimo.dia === n && !pr.dias[n], cerrado = !HIT.abierto(n);
       h += '<button class="s4p-carta' + (pr.dias[n] ? ' hecho' : '') + (sigue && !cerrado ? ' sigue' : '') + (cerrado ? ' cerrado' : '') + '" data-dia="' + n + '" style="--c:' + COL[n] + '"' + (cerrado ? ' aria-disabled="true"' : '') + '>' +
-        '<div class="s4p-im"' + (B.existe(im) ? ' style="background-image:url(' + im + ')"' : '') + '></div>' +
+        /* (28-oct 20:41, Iago en el iPad: «siguen sin verse las fotos de los 4 sabores») la foto, como <img> (no como fondo CSS de un <div>
+           vacío dentro de un <button>, que en Safari puede quedarse sin ancho) */
+        '<div class="s4p-im">' + (B.existe(im) ? '<img src="' + im + '" alt="" draggable="false" decoding="async">' : '') + '</div>' +
         '<div class="s4p-fr"><div class="s4p-ic">' + (IC[n] || '') + '</div><div class="s4p-tx"><i>' + B.esc(ETQ) + ' ' + n + '</i><em>' + B.esc(d.titulo || TIT_DIA[n]) + '</em></div></div>' +
         '<div class="s4p-sello">VISTO</div>' + (cerrado ? '<div class="s4p-cerrado">' + CANDADO + '<span>Se abre en clase</span></div>' : '') + '</button>';
     }
