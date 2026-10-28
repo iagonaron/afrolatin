@@ -114,12 +114,12 @@ BLUES.dia(1, {
   {
    "id": "s1_i4b",
    "nombre": "Intro · pistas, no leyes",
-   "img": "img/s1/v2_revista.webp",
+   "img": "img/s1/i4c_aeropuerto.webp",
    "desc": "Una pista de baile en la arena, gente bailando cada uno a su manera; colores, libertad.",
    "amb": [
     {
-     "src": "sfx/s1/gente_fiesta.mp3",
-     "vol": 0.25
+     "src": "sfx/s1/calle_gente_es.mp3",
+     "vol": 0.08
     }
    ],
    "lineas": [
@@ -753,24 +753,24 @@ BLUES.dia(1, {
       "color": "#E2A33F",
       "patron": "X.xxX.xxX.xxX.xx",
       "celda": [
-       2,
+       7,
        3,
-       1,
+       2,
        1
       ]
      },
      {
       "id": "guacharaca",
       "nom": "Guacharaca",
-      "img": "img/s1/inst_guacharaca.webp",
+      "img": "img/s1/inst_guacharaca_h.webp",
       "loop": "loops/s1/cumbia_guacharaca.mp3",
       "color": "#1F9AA0",
       "patron": "X.xxX.xxX.xxX.xx",
       "celda": [
-       1,
-       1,
-       1,
-       3
+       5,
+       3,
+       2,
+       1
       ]
      },
      {
@@ -781,9 +781,9 @@ BLUES.dia(1, {
       "color": "#C9603F",
       "patron": "..X...X...X...X.",
       "celda": [
-       6,
+       5,
        1,
-       3,
+       4,
        2
       ]
      },
@@ -796,7 +796,7 @@ BLUES.dia(1, {
       "patron": "X.x.X.x.X.x.X.x.",
       "nivK": 0.6,
       "celda": [
-       2,
+       1,
        1,
        2,
        2
@@ -810,9 +810,9 @@ BLUES.dia(1, {
       "color": "#3E7D4F",
       "nivK": 0.6,
       "celda": [
+       1,
        3,
-       3,
-       3,
+       4,
        1
       ]
      },
@@ -823,7 +823,7 @@ BLUES.dia(1, {
       "loop": "loops/s1/cumbia_acordeon.mp3",
       "color": "#B04A6A",
       "celda": [
-       4,
+       3,
        1,
        2,
        2
@@ -879,112 +879,107 @@ BLUES.dia(1, {
       "txt": "musicos llegan"
      },
      {
-      "t": 3.07,
+      "t": 2.58,
       "img": "img/s1/vc_c_27_cande_canta.webp",
       "txt": "cande canta"
      },
      {
-      "t": 8.17,
+      "t": 7.9,
       "img": "img/s1/vc_c_28_pies_cumbia.webp",
       "txt": "pies cumbia"
      },
      {
-      "t": 12.97,
+      "t": 13.221,
       "img": "img/s1/vc_c_29_maracas_musico.webp",
       "txt": "maracas musico"
      },
      {
-      "t": 18.57,
+      "t": 18.541,
       "img": "img/s1/vc_c_30_tambor_y_bajo_se_miran.webp",
       "txt": "tambor y bajo se miran"
      },
      {
-      "t": 21.27,
-      "img": "img/s1/vc_c_31_guacharaca_accion.webp",
-      "txt": "guacharaca accion"
-     },
-     {
-      "t": 24.27,
+      "t": 22.531,
       "img": "img/s1/vc_c_32_guacharaquero_rie.webp",
       "txt": "guacharaquero rie"
      },
      {
-      "t": 27.27,
+      "t": 27.852,
       "img": "img/s1/vc_c_20_guacharaca.webp",
       "txt": "guacharaca"
      },
      {
-      "t": 30.27,
+      "t": 30.512,
       "img": "img/s1/vc_c_33_cande_y_coristas.webp",
       "txt": "cande y coristas"
      },
      {
-      "t": 35.41,
+      "t": 35.832,
       "img": "img/s1/vc_c_49_gente_llega.webp",
       "txt": "gente llega"
      },
      {
-      "t": 40.0,
+      "t": 39.822,
       "img": "img/s1/vc_c_48_coristas.webp",
       "txt": "coristas"
      },
      {
-      "t": 45.31,
+      "t": 45.143,
       "img": "img/s1/vc_c_36_manos_teclista.webp",
       "txt": "manos teclista"
      },
      {
-      "t": 50.51,
+      "t": 50.463,
       "img": "img/s1/vc_c_37_cande_senala_teclista.webp",
       "txt": "cande senala teclista"
      },
      {
-      "t": 55.91,
+      "t": 55.783,
       "img": "img/s1/vc_c_38_acordeon_encima.webp",
       "txt": "acordeon encima"
      },
      {
-      "t": 60.71,
+      "t": 61.104,
       "img": "img/s1/vc_c_39_metales.webp",
       "txt": "metales"
      },
      {
-      "t": 65.11,
+      "t": 65.094,
       "img": "img/s1/vc_c_46_banderines_luces.webp",
       "txt": "banderines luces"
      },
      {
-      "t": 68.0,
+      "t": 67.754,
       "img": "img/s1/vc_c_47_baterista.webp",
       "txt": "baterista"
      },
      {
-      "t": 70.61,
+      "t": 70.414,
       "img": "img/s1/vc_c_41_velas_mar_banda_fondo.webp",
       "txt": "velas mar banda fondo"
      },
      {
-      "t": 73.4,
+      "t": 73.075,
       "img": "img/s1/vc_c_35_solo_medio_teclista.webp",
       "txt": "solo medio teclista"
      },
      {
-      "t": 75.79,
+      "t": 75.735,
       "img": "img/s1/vc_c_42_cande_brazos_abiertos.webp",
       "txt": "cande brazos abiertos"
      },
      {
-      "t": 78.0,
+      "t": 78.395,
       "img": "img/s1/vc_c_19_maracas.webp",
       "txt": "maracas"
      },
      {
-      "t": 80.09,
+      "t": 79.725,
       "img": "img/s1/vc_c_27_cande_canta.webp",
       "txt": "cande canta"
      },
      {
-      "t": 84.0,
+      "t": 83.715,
       "img": "img/s1/vc_c_44_aplausos.webp",
       "txt": "aplausos"
      }
@@ -1675,6 +1670,7 @@ BLUES.dia(1, {
      "videos/cumbia-1.mp4",
      "videos/cumbia-2.mp4"
     ],
+    "fundidoPlanos": 0.18,
     "kb": false
    },
    "despues": [
@@ -2122,7 +2118,7 @@ BLUES.dia(1, {
    "inter": {
     "tipo": "instrumento",
     "id": "saxos",
-    "nom": "Saxos (jaleo)",
+    "nom": "Saxo",
     "img": "img/s1/inst_m_saxos.webp",
     "loop": "loops/s1/merengue_saxos.mp3",
     "color": "#D9B44A",
@@ -2167,15 +2163,15 @@ BLUES.dia(1, {
      {
       "id": "guira",
       "nom": "Güira",
-      "img": "img/s1/inst_m_guira.webp",
+      "img": "img/s1/inst_m_guira_h.webp",
       "loop": "loops/s1/merengue_guira.mp3",
       "color": "#1F9AA0",
       "patron": "X.xxX.xxX.xxX.xx",
       "celda": [
+       7,
+       3,
        2,
-       1,
-       1,
-       2
+       1
       ]
      },
      {
@@ -2214,9 +2210,9 @@ BLUES.dia(1, {
       "color": "#3E7D4F",
       "nivK": 0.6,
       "celda": [
-       2,
        3,
        3,
+       4,
        1
       ]
      },
@@ -2229,21 +2225,21 @@ BLUES.dia(1, {
       "celda": [
        5,
        1,
-       3,
+       4,
        2
       ]
      },
      {
       "id": "saxos",
-      "nom": "Saxos (jaleo)",
+      "nom": "Saxo",
       "img": "img/s1/inst_m_saxos.webp",
       "loop": "loops/s1/merengue_saxos.mp3",
       "color": "#D9B44A",
       "celda": [
-       8,
+       2,
        1,
        1,
-       2
+       3
       ]
      }
     ],
@@ -2296,112 +2292,112 @@ BLUES.dia(1, {
       "txt": "orquesta arranca"
      },
      {
-      "t": 1.7,
+      "t": 1.573,
       "img": "img/s1/vc_m_18_yunior_canta.webp",
       "txt": "yunior canta"
      },
      {
-      "t": 5.76,
+      "t": 5.706,
       "img": "img/s1/vc_m_30_baile_calle.webp",
       "txt": "baile calle"
      },
      {
-      "t": 9.45,
+      "t": 9.012,
       "img": "img/s1/vc_m_20_guira_cc.webp",
       "txt": "guira cc"
      },
      {
-      "t": 12.51,
+      "t": 12.318,
       "img": "img/s1/vc_m_21_guira_manos.webp",
       "txt": "guira manos"
      },
      {
-      "t": 17.52,
+      "t": 17.277,
       "img": "img/s1/vc_m_22_estribillo.webp",
       "txt": "estribillo"
      },
      {
-      "t": 21.15,
+      "t": 21.409,
       "img": "img/s1/vc_m_17_yunior_guira.webp",
       "txt": "yunior guira"
      },
      {
-      "t": 23.91,
+      "t": 23.889,
       "img": "img/s1/vc_m_23_tambora_cc.webp",
       "txt": "tambora cc"
      },
      {
-      "t": 27.44,
+      "t": 27.195,
       "img": "img/s1/vc_m_24_bandera.webp",
       "txt": "bandera"
      },
      {
-      "t": 30.69,
+      "t": 30.501,
       "img": "img/s1/vc_m_31_orquesta_entera.webp",
       "txt": "orquesta entera"
      },
      {
-      "t": 33.04,
+      "t": 32.98,
       "img": "img/s1/vc_m_25_bajo_cc.webp",
       "txt": "bajo cc"
      },
      {
-      "t": 35.2,
+      "t": 35.46,
       "img": "img/s1/vc_m_26_piano.webp",
       "txt": "piano"
      },
      {
-      "t": 37.47,
+      "t": 37.113,
       "img": "img/s1/vc_m_27_saxos.webp",
       "txt": "saxos"
      },
      {
-      "t": 41.21,
+      "t": 41.245,
       "img": "img/s1/vc_m_28_trompetas.webp",
       "txt": "trompetas"
      },
      {
-      "t": 43.0,
+      "t": 42.898,
       "img": "img/s1/vc_m_29_conga_cc.webp",
       "txt": "conga cc"
      },
      {
-      "t": 44.9,
+      "t": 44.551,
       "img": "img/s1/vc_m_35_pies_bailando.webp",
       "txt": "pies bailando"
      },
      {
-      "t": 47.2,
+      "t": 47.031,
       "img": "img/s1/vc_m_34_guirnaldas_banderines.webp",
       "txt": "guirnaldas banderines"
      },
      {
-      "t": 49.58,
+      "t": 49.51,
       "img": "img/s1/vc_m_33_mesa_colmado.webp",
       "txt": "mesa colmado"
      },
      {
-      "t": 53.02,
+      "t": 52.816,
       "img": "img/s1/vc_m_16_hoja_banda.webp",
       "txt": "hoja banda"
      },
      {
-      "t": 56.17,
+      "t": 56.122,
       "img": "img/s1/vc_m_23_tambora_cc.webp",
       "txt": "tambora cc"
      },
      {
-      "t": 59.79,
+      "t": 59.428,
       "img": "img/s1/vc_m_24_bandera.webp",
       "txt": "bandera"
      },
      {
-      "t": 63.04,
+      "t": 62.734,
       "img": "img/s1/vc_m_30_baile_calle.webp",
       "txt": "baile calle"
      },
      {
-      "t": 65.87,
+      "t": 66.04,
       "img": "img/s1/vc_m_32_yunior_final.webp",
       "txt": "yunior final"
      }
@@ -3217,6 +3213,7 @@ BLUES.dia(1, {
      "videos/merengue-2.mp4",
      "videos/merengue-3.mp4"
     ],
+    "fundidoPlanos": 0.18,
     "kb": false
    },
    "despues": [
@@ -3224,14 +3221,9 @@ BLUES.dia(1, {
      "id": "s1_m13",
      "quien": "YUNIOR",
      "texto": "¡Diache, qué nivel! Ya son unos tígueres del merengue.",
-     "voz": "voz/s1/s1_m13.mp3",
-     "var": "RECURSO_FIN",
-     "fijo": true
+     "voz": "voz/s1/s1_m13.mp3"
     }
-   ],
-   "var": {
-    "RECURSO_FIN": "img/s1/m2h_patrimonio.webp"
-   }
+   ]
   },
   {
    "id": "s1_r1",

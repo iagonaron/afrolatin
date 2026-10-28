@@ -15,11 +15,11 @@
     },
     planos: {
       s1_c4: { pj: { q: C, pose: 'brazos', lado: 'der' } }, s1_c5: { pj: { q: C, pose: 'explica', lado: 'der' } },
-      s1_c6: { oscuro: true, pj: { q: C, pose: 'oreja', lado: 'der' } }, s1_c7: { oscuro: true, pj: { q: C, pose: 'explica', lado: 'der' } }, s1_c8: { oscuro: true, pj: { q: C, pose: 'oreja', lado: 'der' } },
-      s1_c9: { oscuro: true, pj: { q: C, pose: 'explica', lado: 'der' } }, s1_c10: { oscuro: true, pj: { q: C, pose: 'brazos', lado: 'der' } }, s1_c11: { pj: { q: C, pose: 'pulgar', lado: 'der' } },
+      s1_c6: { pj: { q: C, pose: 'oreja', lado: 'der' } }, s1_c7: { pj: { q: C, pose: 'explica', lado: 'der' } }, s1_c8: { pj: { q: C, pose: 'oreja', lado: 'der' } },
+      s1_c9: { pj: { q: C, pose: 'explica', lado: 'der' } }, s1_c10: { pj: { q: C, pose: 'brazos', lado: 'der' } }, s1_c11: { pj: { q: C, pose: 'pulgar', lado: 'der' } },
       s1_c12: { pj: { q: C, pose: 'brazos', lado: 'der' } },
-      s1_m2: { pj: { q: Y, pose: 'guira', lado: 'der' } }, s1_m3: { pj: { q: Y, pose: 'explica', lado: 'der' } }, s1_m4: { oscuro: true, pj: { q: Y, pose: 'guira', lado: 'der' } },
-      s1_m5: { oscuro: true, pj: { q: Y, pose: 'explica', lado: 'der' } }, s1_m6: { oscuro: true, pj: { q: Y, pose: 'baila', lado: 'der' } }, s1_m7: { oscuro: true, pj: { q: Y, pose: 'baila', lado: 'der' } },
+      s1_m2: { pj: { q: Y, pose: 'guira', lado: 'der' } }, s1_m3: { pj: { q: Y, pose: 'explica', lado: 'der' } }, s1_m4: { pj: { q: Y, pose: 'guira', lado: 'der' } },
+      s1_m5: { pj: { q: Y, pose: 'explica', lado: 'der' } }, s1_m6: { pj: { q: Y, pose: 'baila', lado: 'der' } }, s1_m7: { pj: { q: Y, pose: 'baila', lado: 'der' } },
       s1_m8: { pj: { q: Y, pose: 'pulgar', lado: 'der' } }, s1_m9: { pj: { q: Y, pose: 'brazos', lado: 'der' } },
       s1_i4: { oscuro: true },
       s1_i4c: { pj: { q: S, pose: 'cruzado', lado: 'der', alto: .8 } }
