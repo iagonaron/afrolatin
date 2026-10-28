@@ -179,7 +179,7 @@
     /* (28-oct 07:47 y 09:09, Iago: «no la oscurezcas… solo donde nos muestran los instrumentos»; «la cumbia nació aquí… que el fondo no
        esté oscurecido, de verdad») velo SOLO en los planos de «cómo reconocerla» (con interacción de instrumento); con el mismo fondo
        que el plano de antes, se queda como estaba (no parpadea); si el plano lo estrena, entra con el primer instrumento */
-    const sigueVelo = !!(veloAnt && veloAnt.velo && veloAnt.img === p.img) && !(d && d.oscuro);
+    const sigueVelo = !!(veloAnt && veloAnt.velo && veloAnt.img === p.img) && !(d && d.oscuro) && !(d && d.velo === false);   // (28-oct) velo:false → la llegada de los músicos y el concierto, a todo color
     const quiere = !(d && d.oscuro) && (B.arr(p.inter).some(x => x && x.tipo === 'instrumento') || !!(d && d.velo));
     const ya = sigueVelo || (quiere && !!(d && d.velo));
     veloPend = quiere && !ya;
@@ -194,7 +194,13 @@
     xs.forEach((it, k) => {
       const t = it.t != null ? it.t : (it.en || 0) * dur;
       if ('pj' in it && k > ad) B.espera(t, c).then(ok => ok && ponPj(it.pj));
-      if (it.claves) ponClaves(it, dur, c);
+      /* (28-oct, C1) cada cartel se crea cuando le toca (antes se creaban todos al empezar la frase y cada uno quitaba al anterior: en las
+         frases con dos o tres carteles solo se veía el último, p. ej. el titular «República Dominicana · Santo Domingo») */
+      if (it.claves) {
+        const t0 = it.t != null ? it.t : 0;
+        if (!it.fijo && it.ts && t0 > .06) B.espera(t0 - .05, c).then(ok => ok && ponClaves(Object.assign({}, it, { t: .05, ts: it.ts.map(x => Math.max(0, x - t0 + .05)) }), dur, c));
+        else ponClaves(it, dur, c);
+      }
       if (it.img) B.espera(t, c).then(ok => ok && ponImg(it, c));
       if (it.flechas) ponFlechas(it, dur, c);
       if (it.rotulos) ponRotulos(it, dur, c);
