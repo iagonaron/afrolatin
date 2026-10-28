@@ -200,7 +200,7 @@
       /* (28-oct, Iago: «me falta animación de fondos en el videoclip: velas, mar…») sus luces titilan (js/portada_vida.js; puntos en
          BLUES.LUCES_VC, herramientas/luces_s1.py); el lienzo lleva la misma clase que la imagen para moverse con ella */
       const LV = B.LUCES_VC && B.LUCES_VC[p.img];
-      if (LV && LV.length && B.vidaLienzo) { const cv = B.el('canvas', 's4-img s4-vida-vc'); capa.appendChild(cv); B.vidaLienzo(cv, { luces: LV, rMin: .014, rK: 1.15 }); }
+      if (B.vidaLienzo && (LV && LV.length || op.planos)) { const cv = B.el('canvas', 's4-img s4-vida-vc'); capa.appendChild(cv); B.vidaLienzo(cv, { luces: LV || [], rMin: .014, rK: 1.15, caen: 22 }); }   // (28-oct 09:13) y motitas que caen en todos los planos
       esc.appendChild(capa); void capa.offsetWidth;
       capa.classList.add('on');
       const ant = capaAct; capaAct = capa; capas.push(capa);
@@ -229,7 +229,7 @@
       }
       let k = -1;
       for (let j = planos.length - 1; j >= 0; j--) if (tc >= planos[j].t) { k = j; break; }
-      if (k >= 0 && 'p' + k !== pAct) { pAct = 'p' + k; ponPlano(planos[k], k); delete esc.dataset.ciclo; }
+      if (k >= 0 && 'p' + k !== pAct) { pAct = 'p' + k; ponPlano(planos[k], k, +op.fundidoPlanos || .4); delete esc.dataset.ciclo; }   // (28-oct 09:16) fundidoPlanos: corte corto, al pulso
     }
 
     /* ── letra: línea actual según el reloj de la canción; la barra se llena sola (sin parpadeos al cambiar) ── */
