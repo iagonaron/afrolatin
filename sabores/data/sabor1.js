@@ -532,7 +532,7 @@ BLUES.dia(1, {
     "compases": 2,
     "vueltas": 1,
     "espera": 0.6,
-    "patron": "XxxxXxxxXxxxXxxx",
+    "patron": "X.xxX.xxX.xxX.xx",
     "recursos": [
      "loops/s1/cumbia_maracas_2c.mp3",
      "img/s1/inst_maracas.webp"
@@ -654,7 +654,7 @@ BLUES.dia(1, {
      "compases": 2,
      "vueltas": 1,
      "espera": 0.6,
-     "patron": "x.x.x.X.x.X.x.x.",
+     "patron": "X.x.X.x.X.x.X.x.",
      "recursos": [
       "loops/s1/cumbia_tambor_2c.mp3",
       "img/s1/inst_tambor.webp"
@@ -751,7 +751,13 @@ BLUES.dia(1, {
       "img": "img/s1/inst_maracas.webp",
       "loop": "loops/s1/cumbia_maracas.mp3",
       "color": "#E2A33F",
-      "patron": "XxxxXxxxXxxxXxxx"
+      "patron": "X.xxX.xxX.xxX.xx",
+      "celda": [
+       2,
+       3,
+       1,
+       1
+      ]
      },
      {
       "id": "guacharaca",
@@ -759,7 +765,13 @@ BLUES.dia(1, {
       "img": "img/s1/inst_guacharaca.webp",
       "loop": "loops/s1/cumbia_guacharaca.mp3",
       "color": "#1F9AA0",
-      "patron": "X.xxX.xxX.xxX.xx"
+      "patron": "X.xxX.xxX.xxX.xx",
+      "celda": [
+       1,
+       1,
+       1,
+       3
+      ]
      },
      {
       "id": "contratiempo",
@@ -767,7 +779,13 @@ BLUES.dia(1, {
       "img": "img/s1/inst_contratiempo.webp",
       "loop": "loops/s1/cumbia_contratiempo.mp3",
       "color": "#C9603F",
-      "patron": "..X...X...X...X."
+      "patron": "..X...X...X...X.",
+      "celda": [
+       6,
+       1,
+       3,
+       2
+      ]
      },
      {
       "id": "tambor",
@@ -775,23 +793,41 @@ BLUES.dia(1, {
       "img": "img/s1/inst_tambor.webp",
       "loop": "loops/s1/cumbia_tambor.mp3",
       "color": "#8A5A3C",
-      "patron": "x.x.x.X.x.X.x.x.",
-      "nivK": 0.6
+      "patron": "X.x.X.x.X.x.X.x.",
+      "nivK": 0.6,
+      "celda": [
+       2,
+       1,
+       2,
+       2
+      ]
      },
      {
       "id": "bajo",
       "nom": "Bajo",
-      "img": "img/s1/inst_bajo.webp",
+      "img": "img/s1/inst_bajo_h.webp",
       "loop": "loops/s1/cumbia_bajo.mp3",
       "color": "#3E7D4F",
-      "nivK": 0.6
+      "nivK": 0.6,
+      "celda": [
+       3,
+       3,
+       3,
+       1
+      ]
      },
      {
       "id": "acordeon",
       "nom": "Acordeón",
       "img": "img/s1/inst_acordeon.webp",
       "loop": "loops/s1/cumbia_acordeon.mp3",
-      "color": "#B04A6A"
+      "color": "#B04A6A",
+      "celda": [
+       4,
+       1,
+       2,
+       2
+      ]
      }
     ],
     "inicial": [],
@@ -802,6 +838,10 @@ BLUES.dia(1, {
      "loops/s1/cumbia_tambor.mp3",
      "loops/s1/cumbia_bajo.mp3",
      "loops/s1/cumbia_acordeon.mp3"
+    ],
+    "inventario": [
+     8,
+     3
     ]
    }
   },
@@ -880,8 +920,8 @@ BLUES.dia(1, {
      },
      {
       "t": 35.41,
-      "img": "img/s1/vc_c_34_publico_baila_rueda.webp",
-      "txt": "publico baila rueda"
+      "img": "img/s1/vc_c_49_gente_llega.webp",
+      "txt": "gente llega"
      },
      {
       "t": 40.0,
@@ -910,8 +950,8 @@ BLUES.dia(1, {
      },
      {
       "t": 65.11,
-      "img": "img/s1/vc_c_40_banda_general.webp",
-      "txt": "banda general"
+      "img": "img/s1/vc_c_46_banderines_luces.webp",
+      "txt": "banderines luces"
      },
      {
       "t": 68.0,
@@ -951,100 +991,666 @@ BLUES.dia(1, {
     ],
     "letra": [
      {
-      "t": 3.14,
+      "t": 2.45,
       "txt": "Escucha bien, mijito, que te voy a enseñar:",
-      "t1": 7.24
+      "t1": 7.28,
+      "w": [
+       [
+        2.6,
+        "Escucha"
+       ],
+       [
+        3.39,
+        "bien,"
+       ],
+       [
+        3.73,
+        "mijito,"
+       ],
+       [
+        5.19,
+        "que"
+       ],
+       [
+        5.69,
+        "te"
+       ],
+       [
+        5.87,
+        "voy"
+       ],
+       [
+        6.11,
+        "a"
+       ],
+       [
+        6.29,
+        "enseñar:"
+       ]
+      ]
      },
      {
-      "t": 8.23,
+      "t": 7.8,
       "txt": "la cumbia no se corre, la cumbia es pa' caminar.",
-      "t1": 12.44
+      "t1": 12.56,
+      "w": [
+       [
+        7.95,
+        "la"
+       ],
+       [
+        8.58,
+        "cumbia"
+       ],
+       [
+        8.92,
+        "no"
+       ],
+       [
+        9.01,
+        "se"
+       ],
+       [
+        9.27,
+        "corre,"
+       ],
+       [
+        10.45,
+        "la"
+       ],
+       [
+        10.71,
+        "cumbia"
+       ],
+       [
+        11.03,
+        "es"
+       ],
+       [
+        11.38,
+        "pa'"
+       ],
+       [
+        11.56,
+        "caminar."
+       ]
+      ]
      },
      {
-      "t": 13.0,
+      "t": 12.9,
       "txt": "Las maracas sin parar van marcando el compás,",
-      "t1": 18.09
+      "t1": 18.12,
+      "w": [
+       [
+        13.05,
+        "Las"
+       ],
+       [
+        13.59,
+        "maracas"
+       ],
+       [
+        14.07,
+        "sin"
+       ],
+       [
+        14.45,
+        "parar"
+       ],
+       [
+        15.77,
+        "van"
+       ],
+       [
+        16.23,
+        "marcando"
+       ],
+       [
+        16.83,
+        "el"
+       ],
+       [
+        17.08,
+        "compás,"
+       ]
+      ]
      },
      {
-      "t": 18.6,
+      "t": 18.14,
       "txt": "y el tambor con el bajo caminan por detrás.",
-      "t1": 20.74
+      "t1": 22.82,
+      "w": [
+       [
+        18.29,
+        "y"
+       ],
+       [
+        18.71,
+        "el"
+       ],
+       [
+        19.04,
+        "tambor"
+       ],
+       [
+        19.54,
+        "con"
+       ],
+       [
+        19.69,
+        "el"
+       ],
+       [
+        19.89,
+        "bajo"
+       ],
+       [
+        21.35,
+        "caminan"
+       ],
+       [
+        21.76,
+        "por"
+       ],
+       [
+        22.25,
+        "detrás."
+       ]
+      ]
      },
      {
-      "t": 21.23,
-      "txt": "Una larga y dos cortas, ¡chá-chiqui, chá-chiqui!"
+      "t": 22.84,
+      "txt": "Una larga y dos cortas, ¡chá-chiqui, chá-chiqui!",
+      "t1": 25.28,
+      "w": [
+       [
+        22.99,
+        "Una"
+       ],
+       [
+        23.13,
+        "larga"
+       ],
+       [
+        23.57,
+        "y"
+       ],
+       [
+        23.71,
+        "dos"
+       ],
+       [
+        23.88,
+        "cortas,"
+       ],
+       [
+        24.38,
+        "¡chá-chiqui,"
+       ],
+       [
+        24.94,
+        "chá-chiqui!"
+       ]
+      ]
      },
      {
-      "t": 24.33,
-      "txt": "La guacharaca lo dice, lo dice siempre así."
+      "t": 25.3,
+      "txt": "La guacharaca lo dice, lo dice siempre así.",
+      "t1": 28.06,
+      "w": [
+       [
+        25.45,
+        "La"
+       ],
+       [
+        25.55,
+        "guacharaca"
+       ],
+       [
+        26.22,
+        "lo"
+       ],
+       [
+        26.53,
+        "dice,"
+       ],
+       [
+        27.03,
+        "lo"
+       ],
+       [
+        27.15,
+        "dice"
+       ],
+       [
+        27.41,
+        "siempre"
+       ],
+       [
+        27.73,
+        "así."
+       ]
+      ]
      },
      {
-      "t": 27.84,
-      "txt": "Una larga y dos cortas, ¡chá-chiqui, chá-chiqui!"
+      "t": 28.08,
+      "txt": "Una larga y dos cortas, ¡chá-chiqui, chá-chiqui!",
+      "t1": 30.62,
+      "w": [
+       [
+        28.23,
+        "Una"
+       ],
+       [
+        28.43,
+        "larga"
+       ],
+       [
+        28.89,
+        "y"
+       ],
+       [
+        29.05,
+        "dos"
+       ],
+       [
+        29.21,
+        "cortas,"
+       ],
+       [
+        29.7,
+        "¡chá-chiqui,"
+       ],
+       [
+        30.25,
+        "chá-chiqui!"
+       ]
+      ]
      },
      {
-      "t": 30.34,
+      "t": 30.64,
       "txt": "Esa es la cumbia, mijo, la cumbia de aquí.",
-      "t1": 33.75
+      "t1": 33.8,
+      "w": [
+       [
+        30.79,
+        "Esa"
+       ],
+       [
+        31.19,
+        "es"
+       ],
+       [
+        31.27,
+        "la"
+       ],
+       [
+        31.5,
+        "cumbia,"
+       ],
+       [
+        31.93,
+        "mijo,"
+       ],
+       [
+        32.41,
+        "la"
+       ],
+       [
+        32.49,
+        "cumbia"
+       ],
+       [
+        32.97,
+        "de"
+       ],
+       [
+        33.15,
+        "aquí."
+       ]
+      ]
      },
      {
-      "t": 34.15,
+      "t": 33.85,
       "txt": ""
      },
      {
-      "t": 36.02,
-      "txt": "¡Esa es la cumbia, mijo, la cumbia de aquí!",
-      "t1": 44.57
-     },
-     {
-      "t": 45.24,
+      "t": 42.16,
       "txt": "Oye bien el teclado: nunca cae en el tiempo,",
-      "t1": 50.33
+      "t1": 47.48,
+      "w": [
+       [
+        42.31,
+        "Oye"
+       ],
+       [
+        43.09,
+        "bien"
+       ],
+       [
+        43.49,
+        "el"
+       ],
+       [
+        43.68,
+        "teclado:"
+       ],
+       [
+        44.95,
+        "nunca"
+       ],
+       [
+        45.64,
+        "cae"
+       ],
+       [
+        46.15,
+        "en"
+       ],
+       [
+        46.31,
+        "el"
+       ],
+       [
+        46.55,
+        "tiempo,"
+       ]
+      ]
      },
      {
-      "t": 50.57,
+      "t": 47.68,
       "txt": "siempre justo después: eso es contratiempo.",
-      "t1": 55.35
+      "t1": 52.19,
+      "w": [
+       [
+        47.83,
+        "siempre"
+       ],
+       [
+        48.31,
+        "justo"
+       ],
+       [
+        48.84,
+        "después:"
+       ],
+       [
+        50.5,
+        "eso"
+       ],
+       [
+        51.03,
+        "es"
+       ],
+       [
+        51.37,
+        "contratiempo."
+       ]
+      ]
      },
      {
-      "t": 56.0,
+      "t": 52.21,
       "txt": "El acordeón costeño le canta por encima,",
-      "t1": 60.31
+      "t1": 57.88,
+      "w": [
+       [
+        52.36,
+        "El"
+       ],
+       [
+        53.45,
+        "acordeón"
+       ],
+       [
+        54.14,
+        "costeño"
+       ],
+       [
+        55.21,
+        "le"
+       ],
+       [
+        56.14,
+        "canta"
+       ],
+       [
+        56.39,
+        "por"
+       ],
+       [
+        56.85,
+        "encima,"
+       ]
+      ]
      },
      {
-      "t": 60.76,
+      "t": 58.0,
       "txt": "y suenan los metales cuando la fiesta se anima.",
-      "t1": 64.51
+      "t1": 62.77,
+      "w": [
+       [
+        58.15,
+        "y"
+       ],
+       [
+        58.62,
+        "suenan"
+       ],
+       [
+        59.05,
+        "los"
+       ],
+       [
+        59.47,
+        "metales"
+       ],
+       [
+        60.62,
+        "cuando"
+       ],
+       [
+        61.01,
+        "la"
+       ],
+       [
+        61.43,
+        "fiesta"
+       ],
+       [
+        61.94,
+        "se"
+       ],
+       [
+        62.46,
+        "anima."
+       ]
+      ]
      },
      {
-      "t": 65.28,
-      "txt": "Una larga y dos cortas, ¡chá-chiqui, chá-chiqui!"
+      "t": 62.79,
+      "txt": "Una larga y dos cortas, ¡chá-chiqui, chá-chiqui!",
+      "t1": 65.16,
+      "w": [
+       [
+        62.94,
+        "Una"
+       ],
+       [
+        63.01,
+        "larga"
+       ],
+       [
+        63.47,
+        "y"
+       ],
+       [
+        63.61,
+        "dos"
+       ],
+       [
+        63.8,
+        "cortas,"
+       ],
+       [
+        64.3,
+        "¡chá-chiqui,"
+       ],
+       [
+        64.95,
+        "chá-chiqui!"
+       ]
+      ]
      },
      {
-      "t": 70.75,
-      "txt": "La guacharaca lo dice…",
-      "t1": 73.63
+      "t": 65.18,
+      "txt": "La guacharaca lo dice, lo dice siempre así.",
+      "t1": 67.98,
+      "w": [
+       [
+        65.33,
+        "La"
+       ],
+       [
+        65.43,
+        "guacharaca"
+       ],
+       [
+        66.14,
+        "lo"
+       ],
+       [
+        66.43,
+        "dice,"
+       ],
+       [
+        66.91,
+        "lo"
+       ],
+       [
+        67.07,
+        "dice"
+       ],
+       [
+        67.29,
+        "siempre"
+       ],
+       [
+        67.63,
+        "así."
+       ]
+      ]
      },
      {
-      "t": 74.03,
+      "t": 68.0,
+      "txt": "Una larga y dos cortas, ¡chá-chiqui, chá-chiqui!",
+      "t1": 70.5,
+      "w": [
+       [
+        68.15,
+        "Una"
+       ],
+       [
+        68.35,
+        "larga"
+       ],
+       [
+        68.79,
+        "y"
+       ],
+       [
+        68.95,
+        "dos"
+       ],
+       [
+        69.11,
+        "cortas,"
+       ],
+       [
+        69.65,
+        "¡chá-chiqui,"
+       ],
+       [
+        70.11,
+        "chá-chiqui!"
+       ]
+      ]
+     },
+     {
+      "t": 70.52,
+      "txt": "Esa es la cumbia, mijo, la cumbia de aquí.",
+      "t1": 73.64,
+      "w": [
+       [
+        70.67,
+        "Esa"
+       ],
+       [
+        71.05,
+        "es"
+       ],
+       [
+        71.17,
+        "la"
+       ],
+       [
+        71.42,
+        "cumbia,"
+       ],
+       [
+        71.83,
+        "mijo,"
+       ],
+       [
+        72.25,
+        "la"
+       ],
+       [
+        72.39,
+        "cumbia"
+       ],
+       [
+        72.75,
+        "de"
+       ],
+       [
+        72.99,
+        "aquí."
+       ]
+      ]
+     },
+     {
+      "t": 73.69,
       "txt": ""
      },
      {
-      "t": 75.84,
-      "txt": "…¡la cumbia de aquí!",
-      "t1": 76.83
-     },
-     {
-      "t": 77.23,
-      "txt": ""
-     },
-     {
-      "t": 80.15,
+      "t": 74.66,
       "txt": "¡Eche! ¡Eso es cumbia, mijo!",
-      "t1": 87.52
+      "t1": 82.4,
+      "w": [
+       [
+        74.81,
+        "¡Eche!"
+       ],
+       [
+        79.61,
+        "¡Eso"
+       ],
+       [
+        80.31,
+        "es"
+       ],
+       [
+        80.55,
+        "cumbia,"
+       ],
+       [
+        81.55,
+        "mijo!"
+       ]
+      ]
      },
      {
-      "t": 87.92,
+      "t": 82.45,
       "txt": ""
      }
     ],
@@ -1069,7 +1675,7 @@ BLUES.dia(1, {
      "videos/cumbia-1.mp4",
      "videos/cumbia-2.mp4"
     ],
-    "kb": true
+    "kb": false
    },
    "despues": [
     {
@@ -1564,7 +2170,13 @@ BLUES.dia(1, {
       "img": "img/s1/inst_m_guira.webp",
       "loop": "loops/s1/merengue_guira.mp3",
       "color": "#1F9AA0",
-      "patron": "X.xxX.xxX.xxX.xx"
+      "patron": "X.xxX.xxX.xxX.xx",
+      "celda": [
+       2,
+       1,
+       1,
+       2
+      ]
      },
      {
       "id": "tambora",
@@ -1572,7 +2184,13 @@ BLUES.dia(1, {
       "img": "img/s1/inst_m_tambora.webp",
       "loop": "loops/s1/merengue_tambora.mp3",
       "color": "#C9603F",
-      "nivK": 0.6
+      "nivK": 0.6,
+      "celda": [
+       3,
+       1,
+       2,
+       2
+      ]
      },
      {
       "id": "conga",
@@ -1580,29 +2198,53 @@ BLUES.dia(1, {
       "img": "img/s1/inst_m_conga.webp",
       "loop": "loops/s1/merengue_conga.mp3",
       "color": "#8A5A3C",
-      "nivK": 0.6
+      "nivK": 0.6,
+      "celda": [
+       1,
+       1,
+       1,
+       3
+      ]
      },
      {
       "id": "bajo",
       "nom": "Bajo",
-      "img": "img/s1/inst_m_bajo.webp",
+      "img": "img/s1/inst_m_bajo_h.webp",
       "loop": "loops/s1/merengue_bajo.mp3",
       "color": "#3E7D4F",
-      "nivK": 0.6
+      "nivK": 0.6,
+      "celda": [
+       2,
+       3,
+       3,
+       1
+      ]
      },
      {
       "id": "piano",
       "nom": "Piano",
       "img": "img/s1/inst_m_piano.webp",
       "loop": "loops/s1/merengue_piano.mp3",
-      "color": "#5B6FA8"
+      "color": "#5B6FA8",
+      "celda": [
+       5,
+       1,
+       3,
+       2
+      ]
      },
      {
       "id": "saxos",
       "nom": "Saxos (jaleo)",
       "img": "img/s1/inst_m_saxos.webp",
       "loop": "loops/s1/merengue_saxos.mp3",
-      "color": "#D9B44A"
+      "color": "#D9B44A",
+      "celda": [
+       8,
+       1,
+       1,
+       2
+      ]
      }
     ],
     "inicial": [],
@@ -1613,6 +2255,10 @@ BLUES.dia(1, {
      "loops/s1/merengue_bajo.mp3",
      "loops/s1/merengue_piano.mp3",
      "loops/s1/merengue_saxos.mp3"
+    ],
+    "inventario": [
+     8,
+     3
     ]
    }
   },
@@ -1762,180 +2408,786 @@ BLUES.dia(1, {
     ],
     "letra": [
      {
-      "t": 1.8,
+      "t": 1.56,
       "txt": "Oye, mi pana, mira esto:",
-      "t1": 3.82
+      "t1": 3.43,
+      "w": [
+       [
+        1.71,
+        "Oye,"
+       ],
+       [
+        2.26,
+        "mi"
+       ],
+       [
+        2.47,
+        "pana,"
+       ],
+       [
+        2.75,
+        "mira"
+       ],
+       [
+        3.03,
+        "esto:"
+       ]
+      ]
      },
      {
-      "t": 4.0,
+      "t": 3.45,
       "txt": "si la cumbia va despacio,",
-      "t1": 5.7
+      "t1": 5.18,
+      "w": [
+       [
+        3.6,
+        "si"
+       ],
+       [
+        3.91,
+        "la"
+       ],
+       [
+        4.11,
+        "cumbia"
+       ],
+       [
+        4.28,
+        "va"
+       ],
+       [
+        4.58,
+        "despacio,"
+       ]
+      ]
      },
      {
-      "t": 5.88,
+      "t": 5.2,
       "txt": "el merengue va corriendo,",
-      "t1": 7.34
+      "t1": 6.7,
+      "w": [
+       [
+        5.35,
+        "el"
+       ],
+       [
+        5.55,
+        "merengue"
+       ],
+       [
+        6.19,
+        "va"
+       ],
+       [
+        6.34,
+        "corriendo,"
+       ]
+      ]
      },
      {
-      "t": 7.52,
+      "t": 6.72,
       "txt": "¡a toda pastilla, papá!",
-      "t1": 9.39
+      "t1": 8.35,
+      "w": [
+       [
+        6.87,
+        "¡a"
+       ],
+       [
+        7.0,
+        "toda"
+       ],
+       [
+        7.22,
+        "pastilla,"
+       ],
+       [
+        8.01,
+        "papá!"
+       ]
+      ]
      },
      {
-      "t": 9.57,
+      "t": 8.37,
       "txt": "La güira no se detiene:",
-      "t1": 11.21
+      "t1": 10.11,
+      "w": [
+       [
+        8.52,
+        "La"
+       ],
+       [
+        8.7,
+        "güira"
+       ],
+       [
+        9.08,
+        "no"
+       ],
+       [
+        9.37,
+        "se"
+       ],
+       [
+        9.45,
+        "detiene:"
+       ]
+      ]
      },
      {
-      "t": 11.39,
+      "t": 10.13,
       "txt": "una larga y dos cortas,",
-      "t1": 12.46
+      "t1": 11.74,
+      "w": [
+       [
+        10.28,
+        "una"
+       ],
+       [
+        10.5,
+        "larga"
+       ],
+       [
+        11.03,
+        "y"
+       ],
+       [
+        11.3,
+        "dos"
+       ],
+       [
+        11.43,
+        "cortas,"
+       ]
+      ]
      },
      {
-      "t": 12.64,
+      "t": 11.76,
       "txt": "chiqui-chiqui, chiqui-chá,",
-      "t1": 13.96
+      "t1": 13.26,
+      "w": [
+       [
+        11.91,
+        "chiqui-chiqui,"
+       ],
+       [
+        12.73,
+        "chiqui-chá,"
+       ]
+      ]
      },
      {
-      "t": 14.14,
+      "t": 13.28,
       "txt": "¡qué rápido se menea!",
-      "t1": 15.34
+      "t1": 15.51,
+      "w": [
+       [
+        13.43,
+        "¡qué"
+       ],
+       [
+        13.56,
+        "rápido"
+       ],
+       [
+        14.1,
+        "se"
+       ],
+       [
+        14.57,
+        "menea!"
+       ]
+      ]
      },
      {
-      "t": 15.74,
+      "t": 16.21,
+      "txt": "¡Merengue, merengue!",
+      "t1": 17.35,
+      "w": [
+       [
+        16.36,
+        "¡Merengue,"
+       ],
+       [
+        16.8,
+        "merengue!"
+       ]
+      ]
+     },
+     {
+      "t": 17.37,
+      "txt": "La cumbia a toda pastilla.",
+      "t1": 19.77,
+      "w": [
+       [
+        17.52,
+        "La"
+       ],
+       [
+        17.75,
+        "cumbia"
+       ],
+       [
+        18.27,
+        "a"
+       ],
+       [
+        18.43,
+        "toda"
+       ],
+       [
+        18.62,
+        "pastilla."
+       ]
+      ]
+     },
+     {
+      "t": 19.86,
+      "txt": "¡Merengue, merengue!",
+      "t1": 20.99,
+      "w": [
+       [
+        20.01,
+        "¡Merengue,"
+       ],
+       [
+        20.54,
+        "merengue!"
+       ]
+      ]
+     },
+     {
+      "t": 21.01,
+      "txt": "La güira no se cansa.",
+      "t1": 22.52,
+      "w": [
+       [
+        21.16,
+        "La"
+       ],
+       [
+        21.48,
+        "güira"
+       ],
+       [
+        21.64,
+        "no"
+       ],
+       [
+        22.08,
+        "se"
+       ],
+       [
+        22.3,
+        "cansa."
+       ]
+      ]
+     },
+     {
+      "t": 22.54,
+      "txt": "La tambora, mano y palo:",
+      "t1": 24.12,
+      "w": [
+       [
+        22.69,
+        "La"
+       ],
+       [
+        22.91,
+        "tambora,"
+       ],
+       [
+        23.55,
+        "mano"
+       ],
+       [
+        23.75,
+        "y"
+       ],
+       [
+        23.92,
+        "palo:"
+       ]
+      ]
+     },
+     {
+      "t": 24.14,
+      "txt": "¡pa-cu-tá, pa-cu-tá!",
+      "t1": 26.03,
+      "w": [
+       [
+        24.29,
+        "¡pa-cu-tá,"
+       ],
+       [
+        25.17,
+        "pa-cu-tá!"
+       ]
+      ]
+     },
+     {
+      "t": 26.05,
+      "txt": "¡Merengue, merengue,",
+      "t1": 27.06,
+      "w": [
+       [
+        26.2,
+        "¡Merengue,"
+       ],
+       [
+        26.73,
+        "merengue,"
+       ]
+      ]
+     },
+     {
+      "t": 27.08,
+      "txt": "de la República Dominicana!",
+      "t1": 29.95,
+      "w": [
+       [
+        27.23,
+        "de"
+       ],
+       [
+        27.68,
+        "la"
+       ],
+       [
+        27.8,
+        "República"
+       ],
+       [
+        28.26,
+        "Dominicana!"
+       ]
+      ]
+     },
+     {
+      "t": 30.0,
       "txt": ""
      },
      {
-      "t": 17.65,
-      "txt": "¡Merengue, merengue!",
-      "t1": 18.9
-     },
-     {
-      "t": 19.08,
-      "txt": "La cumbia a toda pastilla.",
-      "t1": 21.08
-     },
-     {
-      "t": 21.26,
-      "txt": "¡Merengue, merengue!",
-      "t1": 22.43
-     },
-     {
-      "t": 22.61,
-      "txt": "La güira no se cansa.",
-      "t1": 23.85
-     },
-     {
-      "t": 24.03,
-      "txt": "La tambora, mano y palo:",
-      "t1": 25.95
-     },
-     {
-      "t": 26.13,
-      "txt": "¡pa-cu-tá, pa-cu-tá!",
-      "t1": 27.36
-     },
-     {
-      "t": 27.54,
-      "txt": "¡Merengue, merengue,",
-      "t1": 28.41
-     },
-     {
-      "t": 28.59,
-      "txt": "de la República Dominicana!",
-      "t1": 33.01
-     },
-     {
-      "t": 33.12,
+      "t": 34.3,
       "txt": "El bajo salta y salta,",
-      "t1": 34.48
+      "t1": 36.27,
+      "w": [
+       [
+        34.45,
+        "El"
+       ],
+       [
+        35.1,
+        "bajo"
+       ],
+       [
+        35.22,
+        "salta"
+       ],
+       [
+        35.91,
+        "y"
+       ],
+       [
+        36.11,
+        "salta,"
+       ]
+      ]
      },
      {
-      "t": 35.38,
+      "t": 36.29,
       "txt": "el piano pone el sabor,",
-      "t1": 37.4
+      "t1": 37.93,
+      "w": [
+       [
+        36.44,
+        "el"
+       ],
+       [
+        36.71,
+        "piano"
+       ],
+       [
+        36.95,
+        "pone"
+       ],
+       [
+        37.48,
+        "el"
+       ],
+       [
+        37.75,
+        "sabor,"
+       ]
+      ]
      },
      {
-      "t": 37.58,
+      "t": 37.95,
       "txt": "y cuando llega el jaleo",
-      "t1": 39.03
+      "t1": 39.61,
+      "w": [
+       [
+        38.1,
+        "y"
+       ],
+       [
+        38.38,
+        "cuando"
+       ],
+       [
+        38.61,
+        "llega"
+       ],
+       [
+        39.11,
+        "el"
+       ],
+       [
+        39.26,
+        "jaleo"
+       ]
+      ]
      },
      {
-      "t": 39.21,
+      "t": 39.63,
       "txt": "los saxos suben el calor.",
-      "t1": 41.13
+      "t1": 41.04,
+      "w": [
+       [
+        39.78,
+        "los"
+       ],
+       [
+        40.03,
+        "saxos"
+       ],
+       [
+        40.42,
+        "suben"
+       ],
+       [
+        40.87,
+        "el"
+       ],
+       [
+        41.07,
+        "calor."
+       ]
+      ]
      },
      {
-      "t": 41.31,
+      "t": 41.06,
       "txt": "Trompetas en el coro,",
-      "t1": 42.83
+      "t1": 42.85,
+      "w": [
+       [
+        41.21,
+        "Trompetas"
+       ],
+       [
+        42.11,
+        "en"
+       ],
+       [
+        42.31,
+        "el"
+       ],
+       [
+        42.55,
+        "coro,"
+       ]
+      ]
      },
      {
-      "t": 43.01,
+      "t": 42.88,
       "txt": "la conga no se calla,",
-      "t1": 44.81
+      "t1": 44.52,
+      "w": [
+       [
+        43.02,
+        "la"
+       ],
+       [
+        43.24,
+        "conga"
+       ],
+       [
+        43.55,
+        "no"
+       ],
+       [
+        43.76,
+        "se"
+       ],
+       [
+        44.17,
+        "calla,"
+       ]
+      ]
      },
      {
-      "t": 44.99,
+      "t": 44.54,
       "txt": "y to' el mundo en la calle",
-      "t1": 47.18
+      "t1": 46.17,
+      "w": [
+       [
+        44.69,
+        "y"
+       ],
+       [
+        44.9,
+        "to'"
+       ],
+       [
+        44.97,
+        "el"
+       ],
+       [
+        45.2,
+        "mundo"
+       ],
+       [
+        45.39,
+        "en"
+       ],
+       [
+        45.63,
+        "la"
+       ],
+       [
+        45.84,
+        "calle"
+       ]
+      ]
      },
      {
-      "t": 47.36,
+      "t": 46.19,
       "txt": "¡bailando hasta que salga el sol!",
-      "t1": 49.24
+      "t1": 48.38,
+      "w": [
+       [
+        46.34,
+        "¡bailando"
+       ],
+       [
+        46.84,
+        "hasta"
+       ],
+       [
+        47.08,
+        "que"
+       ],
+       [
+        47.26,
+        "salga"
+       ],
+       [
+        47.68,
+        "el"
+       ],
+       [
+        47.9,
+        "sol!"
+       ]
+      ]
      },
      {
-      "t": 49.45,
+      "t": 49.27,
       "txt": "¡Merengue, merengue!",
-      "t1": 50.72
+      "t1": 50.45,
+      "w": [
+       [
+        49.42,
+        "¡Merengue,"
+       ],
+       [
+        49.87,
+        "merengue!"
+       ]
+      ]
      },
      {
-      "t": 50.9,
+      "t": 50.47,
       "txt": "La cumbia a toda pastilla.",
-      "t1": 52.96
+      "t1": 52.53,
+      "w": [
+       [
+        50.62,
+        "La"
+       ],
+       [
+        50.8,
+        "cumbia"
+       ],
+       [
+        51.31,
+        "a"
+       ],
+       [
+        51.49,
+        "toda"
+       ],
+       [
+        51.63,
+        "pastilla."
+       ]
+      ]
      },
      {
-      "t": 53.14,
+      "t": 52.55,
       "txt": "¡Merengue, merengue!",
-      "t1": 54.64
+      "t1": 53.62,
+      "w": [
+       [
+        52.7,
+        "¡Merengue,"
+       ],
+       [
+        53.18,
+        "merengue!"
+       ]
+      ]
      },
      {
-      "t": 54.82,
+      "t": 53.64,
       "txt": "La güira no se cansa.",
-      "t1": 56.09
+      "t1": 55.6,
+      "w": [
+       [
+        53.79,
+        "La"
+       ],
+       [
+        54.11,
+        "güira"
+       ],
+       [
+        54.71,
+        "no"
+       ],
+       [
+        55.03,
+        "se"
+       ],
+       [
+        55.13,
+        "cansa."
+       ]
+      ]
      },
      {
-      "t": 56.27,
+      "t": 55.62,
       "txt": "La tambora, mano y palo:",
-      "t1": 57.72
+      "t1": 57.2,
+      "w": [
+       [
+        55.77,
+        "La"
+       ],
+       [
+        55.96,
+        "tambora,"
+       ],
+       [
+        56.37,
+        "mano"
+       ],
+       [
+        56.79,
+        "y"
+       ],
+       [
+        56.9,
+        "palo:"
+       ]
+      ]
      },
      {
-      "t": 57.9,
+      "t": 57.22,
       "txt": "¡pa-cu-tá, pa-cu-tá!",
-      "t1": 59.71
+      "t1": 59.1,
+      "w": [
+       [
+        57.38,
+        "¡pa-cu-tá,"
+       ],
+       [
+        58.22,
+        "pa-cu-tá!"
+       ]
+      ]
      },
      {
-      "t": 59.89,
+      "t": 59.12,
       "txt": "¡Merengue, merengue,",
-      "t1": 60.94
+      "t1": 60.26,
+      "w": [
+       [
+        59.27,
+        "¡Merengue,"
+       ],
+       [
+        59.79,
+        "merengue,"
+       ]
+      ]
      },
      {
-      "t": 61.12,
+      "t": 60.28,
       "txt": "de la República Dominicana!",
-      "t1": 63.57
+      "t1": 62.94,
+      "w": [
+       [
+        60.43,
+        "de"
+       ],
+       [
+        60.71,
+        "la"
+       ],
+       [
+        60.79,
+        "República"
+       ],
+       [
+        61.33,
+        "Dominicana!"
+       ]
+      ]
      },
      {
-      "t": 63.97,
+      "t": 62.99,
       "txt": ""
      },
      {
-      "t": 66.12,
+      "t": 64.89,
       "txt": "¡Diache! ¡Eso es merengue, tíguere!",
-      "t1": 69.85
+      "t1": 69.69,
+      "w": [
+       [
+        65.04,
+        "¡Diache!"
+       ],
+       [
+        66.35,
+        "¡Eso"
+       ],
+       [
+        67.73,
+        "es"
+       ],
+       [
+        68.26,
+        "merengue,"
+       ],
+       [
+        68.84,
+        "tíguere!"
+       ]
+      ]
      },
      {
-      "t": 70.25,
+      "t": 69.74,
       "txt": ""
      }
     ],
@@ -1965,7 +3217,7 @@ BLUES.dia(1, {
      "videos/merengue-2.mp4",
      "videos/merengue-3.mp4"
     ],
-    "kb": true
+    "kb": false
    },
    "despues": [
     {

@@ -124,7 +124,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "nom": "Los tambores y los ritmos de África",
 "t": 3.67,
 "x": 0.2,
-"y": 0.42,
+"y": 0.54,
 "h": 0.36,
 "tn": 1.85
 },
@@ -133,7 +133,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "nom": "Las guitarras, el idioma y las canciones de España y Portugal",
 "t": 6.29,
 "x": 0.5,
-"y": 0.42,
+"y": 0.54,
 "h": 0.36,
 "solo": false,
 "tn": 1.85
@@ -143,7 +143,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "nom": "Las flautas y las maracas de los pueblos indígenas",
 "t": 10.17,
 "x": 0.8,
-"y": 0.42,
+"y": 0.54,
 "h": 0.36,
 "solo": false,
 "tn": 1.85
@@ -174,7 +174,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "rejillas": [
 {
-"patron": "XxxxXxxxXxxxXxxx",
+"patron": "X.xxX.xxX.xxX.xx",
 "color": "#E2A33F"
 },
 {
@@ -186,7 +186,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "color": "#C9603F"
 },
 {
-"patron": "x.x.x.X.x.X.x.x.",
+"patron": "X.x.X.x.X.x.X.x.",
 "color": "#B07A4F"
 }
 ],
@@ -1113,4 +1113,4 @@ Object.assign(BLUES.CAPAS.lineas, {
 }
 ]
 });
-BLUES.CAPAS.tam = {"img/s1/inst_maracas.webp": {"w": 0.167, "h": 0.3, "x": 0.42, "y": 0.44}, "img/s1/inst_guacharaca.webp": {"w": 0.0681, "h": 0.3375, "x": 0.42, "y": 0.44}, "img/s1/inst_tambor.webp": {"w": 0.2781, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_llamador.webp": {"w": 0.1681, "h": 0.375, "x": 0.42, "y": 0.44}, "img/s1/inst_tambora.webp": {"w": 0.2305, "h": 0.45, "x": 0.42, "y": 0.435}, "img/s1/inst_bajo_h.webp": {"w": 0.4852, "h": 0.2866, "x": 0.42, "y": 0.44}, "img/s1/inst_contratiempo.webp": {"w": 0.3898, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_acordeon.webp": {"w": 0.2585, "h": 0.39, "x": 0.42, "y": 0.44}, "img/s1/inst_trompeta.webp": {"w": 0.0718, "h": 0.375, "x": 0.42, "y": 0.44}, "img/s1/inst_trombon.webp": {"w": 0.0904, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_m_guira.webp": {"w": 0.0808, "h": 0.3, "x": 0.42, "y": 0.44}, "img/s1/inst_m_tambora.webp": {"w": 0.1898, "h": 0.295, "x": 0.42, "y": 0.44}, "img/s1/inst_m_conga.webp": {"w": 0.155, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_m_bajo_h.webp": {"w": 0.4852, "h": 0.2819, "x": 0.42, "y": 0.44}, "img/s1/inst_m_piano.webp": {"w": 0.3676, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_m_saxos.webp": {"w": 0.1278, "h": 0.4875, "x": 0.42, "y": 0.4163}, "img/s1/inst_m_saxo2.webp": {"w": 0.1368, "h": 0.52, "x": 0.42, "y": 0.4}, "img/s1/inst_m_trompeta.webp": {"w": 0.0675, "h": 0.375, "x": 0.42, "y": 0.44}};
+BLUES.CAPAS.tam = {"img/s1/inst_maracas.webp": {"w": 0.1183, "h": 0.2125, "x": 0.5, "y": 0.3488, "ry": 0.5501}, "img/s1/inst_guacharaca.webp": {"w": 0.0685, "h": 0.4675, "x": 0.5, "y": 0.3488, "ry": 0.6776}, "img/s1/inst_tambor.webp": {"w": 0.2674, "h": 0.5, "x": 0.5, "y": 0.3488, "ry": 0.6938}, "img/s1/inst_llamador.webp": {"w": 0.1905, "h": 0.425, "x": 0.5, "y": 0.3488, "ry": 0.6563}, "img/s1/inst_tambora.webp": {"w": 0.2561, "h": 0.5, "x": 0.5, "y": 0.3488, "ry": 0.6938}, "img/s1/inst_bajo_h.webp": {"w": 0.5, "h": 0.2954, "x": 0.5, "y": 0.3488, "ry": 0.5915}, "img/s1/inst_contratiempo.webp": {"w": 0.3748, "h": 0.5, "x": 0.5, "y": 0.3488, "ry": 0.6938}, "img/s1/inst_acordeon.webp": {"w": 0.2929, "h": 0.442, "x": 0.5, "y": 0.3488, "ry": 0.6648}, "img/s1/inst_trompeta.webp": {"w": 0.0814, "h": 0.425, "x": 0.5, "y": 0.3488, "ry": 0.6563}, "img/s1/inst_trombon.webp": {"w": 0.0869, "h": 0.5, "x": 0.5, "y": 0.3488, "ry": 0.6938}, "img/s1/inst_m_guira.webp": {"w": 0.0733, "h": 0.272, "x": 0.5, "y": 0.3488, "ry": 0.5798}, "img/s1/inst_m_tambora.webp": {"w": 0.2152, "h": 0.3344, "x": 0.5, "y": 0.3488, "ry": 0.611}, "img/s1/inst_m_conga.webp": {"w": 0.149, "h": 0.5, "x": 0.5, "y": 0.3488, "ry": 0.6938}, "img/s1/inst_m_bajo_h.webp": {"w": 0.5, "h": 0.2905, "x": 0.5, "y": 0.3488, "ry": 0.5891}, "img/s1/inst_m_piano.webp": {"w": 0.3535, "h": 0.5, "x": 0.5, "y": 0.3488, "ry": 0.6938}, "img/s1/inst_m_saxos.webp": {"w": 0.1311, "h": 0.5, "x": 0.5, "y": 0.3488, "ry": 0.6938}, "img/s1/inst_m_saxo2.webp": {"w": 0.1315, "h": 0.5, "x": 0.5, "y": 0.3488, "ry": 0.6938}, "img/s1/inst_m_trompeta.webp": {"w": 0.0765, "h": 0.425, "x": 0.5, "y": 0.3488, "ry": 0.6563}};

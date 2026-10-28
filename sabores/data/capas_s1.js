@@ -22,7 +22,7 @@
       s1_m5: { oscuro: true, pj: { q: Y, pose: 'explica', lado: 'der' } }, s1_m6: { oscuro: true, pj: { q: Y, pose: 'baila', lado: 'der' } }, s1_m7: { oscuro: true, pj: { q: Y, pose: 'baila', lado: 'der' } },
       s1_m8: { pj: { q: Y, pose: 'pulgar', lado: 'der' } }, s1_m9: { pj: { q: Y, pose: 'brazos', lado: 'der' } },
       s1_i4: { oscuro: true },
-      s1_i4c: { pj: { q: S, pose: 'reloj', lado: 'der', alto: .8 } }
+      s1_i4c: { pj: { q: S, pose: 'cruzado', lado: 'der', alto: .8 } }
     },
     lineas: {
       s1_001: [k(['4 sesiones', '4 sabores', '9 bailes'], .15, .75)],
@@ -34,8 +34,8 @@
                ins('img/s1/v2_postal_iberica.webp', 'Europa · guitarras', .45, { x: .5, y: .44, h: .36, solo: false }),
                ins('img/s1/v2_postal_indigena.webp', 'Indígenas · flautas', .78, { x: .8, y: .44, h: .36, solo: false })],
       s1_005: [k(['= música latina'], .2)],
-      s1_006: [k(['El ritmo manda'], 0, 0, 'arriba'), { rejillas: [{ patron: 'XxxxXxxxXxxxXxxx', color: '#E2A33F' }, { patron: 'X.xxX.xxX.xxX.xx', color: '#1F9AA0' },
-               { patron: '..X...X...X...X.', color: '#C9603F' }, { patron: 'x.x.x.X.x.X.x.x.', color: '#B07A4F' }], en: .22, paso: .12, bpm: 90 }],
+      s1_006: [k(['El ritmo manda'], 0, 0, 'arriba'), { rejillas: [{ patron: 'X.xxX.xxX.xxX.xx', color: '#E2A33F' }, { patron: 'X.xxX.xxX.xxX.xx', color: '#1F9AA0' },
+               { patron: '..X...X...X...X.', color: '#C9603F' }, { patron: 'X.x.X.x.X.x.X.x.', color: '#B07A4F' }], en: .22, paso: .12, bpm: 90 }],
       s1_007: [k(['Escucha los patrones', '→', 'nuestra brújula'], .25, .8, 'arriba'), { mantener: true }],
       s1_n01: [k(['Pistas, no leyes'], .1), k(['Libertad', 'Mezcla', 'Sin reglas fijas'], .45, .85)],
       s1_n02: [k(['¡Fuera el orden!'], .3)],
@@ -44,8 +44,8 @@
       // (27-oct 23:55) posiciones sobre la carta pintada v3 (herramientas/mapas_s1_v3.py)
       s1_008: [{ rotulos: [{ txt: 'A Coruña', x: 0.724, y: 0.125, clase: 'parada' }, { txt: 'Colombia', x: 0.1693, y: 0.5556, clase: 'parada izq', en: .12 },
                  { txt: 'R. Dominicana', x: 0.2148, y: 0.4294, clase: 'parada', en: .22 }, { txt: 'Cuba', x: 0.181, y: 0.4167, clase: 'parada izq', en: .32 },
-                 { txt: 'Brasil', x: 0.459, y: 0.9491, clase: 'parada', en: .42 }, { txt: 'Nueva York', x: 0.1855, y: 0.1412, clase: 'parada', en: .52 },
-                 { txt: 'Angola', x: 0.8854, y: 0.9491, clase: 'parada izq', en: .62 }] }, k(['Su tierra', 'Sus instrumentos', 'Su banda'], .72, .95, 'lista')],   // (Iago 23:22) en columna y centrados: no se amontonan a la izquierda
+                 { txt: 'Brasil', x: 0.4635, y: 0.8565, clase: 'parada', en: .42 }, { txt: 'Nueva York', x: 0.1855, y: 0.1412, clase: 'parada', en: .52 },
+                 { txt: 'Angola', x: 0.8841, y: 0.8854, clase: 'parada izq', en: .62 }] }, k(['Su tierra', 'Sus instrumentos', 'Su banda'], .72, .95, 'lista')],   // (Iago 23:22) en columna y centrados: no se amontonan a la izquierda
       s1_009: [k(['1.ª parada: Colombia'], .1)],
       s1_010: [k(['Colombia'], 0), k(['Cartagena de Indias'], .35)],
       s1_011: [k(['Puerto de llegada', 'de africanos esclavizados'], .2, .5), k(['Sus tambores'], .8)],
