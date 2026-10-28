@@ -108,7 +108,12 @@
       if (op.claqueta !== false && B.sint && B.sint.baqueta) {
         const C = B.ac(); claq = C.createGain(); claq.gain.value = op.volClaq == null ? .9 : op.volClaq; claq.connect((B.bus && B.bus.sfx) || C.destination);
         const p = 60 / bpm, n = Math.round(vueltas * comp * 4);
-        for (let k = 0; k < n; k++) B.sint.baqueta(cu + k * p, k % 4 === 0 ? .62 : .36, claq);
+        /* (28-oct 20:44, Iago: «que suene la claqueta también en el bolero, y en todos») con maracas o güira, la baqueta sola se confundía con
+           ellas (el mismo ruido agudo en el mismo sitio): ahora lleva además un «tic» afinado (más agudo en el 1), que se oye encima de todo */
+        const tic = (t, f) => { const o = C.createOscillator(), g = C.createGain(); o.type = 'sine'; o.frequency.value = f ? 1760 : 1320;
+          g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(f ? .26 : .17, t + .002); g.gain.exponentialRampToValueAtTime(.0005, t + .055);
+          o.connect(g); g.connect(claq); o.start(t); o.stop(t + .07); };
+        for (let k = 0; k < n; k++) { B.sint.baqueta(cu + k * p, k % 4 === 0 ? .62 : .36, claq); tic(cu + k * p, k % 4 === 0); }
       }
       est = { m, cu, mia, claq };
       B.inter.instrumento.ultimo = est;      // gancho de pruebas
