@@ -324,3 +324,7 @@
 #marco.con-bandas::before{content:'';position:absolute;inset:-6%;background:var(--amb,none) center/cover no-repeat;filter:blur(28px) brightness(.5) saturate(1.1);pointer-events:none}
 #marco.con-bandas #escena{box-shadow:0 0 calc(var(--u)*3) rgba(0,0,0,.55)}
 .mapa-cartel .mc-ciudad{font-family:'Shrikhand',serif;font-size:calc(var(--u)*2.1);color:#FFE3B8;margin:calc(var(--u)*.2) 0 calc(var(--u)*.5);text-align:center}
+
+/* (28-oct, C1 · Sabor 2) inventario de 2 filas (la bachata, 8×2): casillas más altas que anchas para llenar la pantalla; las proporciones
+   entre instrumentos las ponen sus parcelas (bajo y guitarras 4×1, güira y bongó 2×1) */
+.s4-mezclador .s4-pistas.s4-inv.nf2{--cel:calc(var(--u)*11.2)!important;grid-template-rows:repeat(2,min(calc(var(--u)*15),calc((var(--u)*56.25 - var(--u)*21) / 2)))!important}
