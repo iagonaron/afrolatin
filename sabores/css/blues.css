@@ -627,7 +627,7 @@ a{color:var(--oro-hi)}
 .billete .bi-talon{height:23%}
 
 /* ── (ronda 5, Iago) mapas interactivos: cartel previo, pista y el barco/tren que lleva el alumno ── */
-.mapa-ruta-guia{fill:none;stroke:rgba(138,36,20,.55);stroke-linecap:round;transition:opacity .6s}
+.mapa-ruta-guia{fill:none;stroke:rgba(138,36,20,.85);stroke-linecap:round;transition:opacity .6s}   /* (28-oct 19:22, Iago: «que la ruta ya venga en discontinua: así el alumno sabe por dónde llevarlo») más visible */
 .mapa-guia{fill:rgba(233,205,138,.22);stroke:#E9CD8A;stroke-width:.3;transform-box:fill-box;transform-origin:center;animation:mapaGuia 1.3s ease-in-out infinite}
 @keyframes mapaGuia{0%,100%{opacity:.35;transform:scale(.82)}50%{opacity:.95;transform:scale(1.12)}}
 .mapa-previo{position:absolute;left:50%;top:50%;transform:translate(-50%,-46%);opacity:0;transition:opacity .5s ease,transform .5s ease;z-index:6;

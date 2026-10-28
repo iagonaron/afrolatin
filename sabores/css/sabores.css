@@ -328,3 +328,21 @@
 /* (28-oct, C1 · Sabor 2) inventario de 2 filas (la bachata, 8×2): casillas más altas que anchas para llenar la pantalla; las proporciones
    entre instrumentos las ponen sus parcelas (bajo y guitarras 4×1, güira y bongó 2×1) */
 .s4-mezclador .s4-pistas.s4-inv.nf2{--cel:calc(var(--u)*11.2)!important;grid-template-rows:repeat(2,min(calc(var(--u)*15),calc((var(--u)*56.25 - var(--u)*21) / 2)))!important}
+
+/* (28-oct 19:13, Iago) el tresillo de semicorcheas en la rejilla: una corchea (dos casillas) con tres golpecitos bajo una llave y un 3 */
+.s4-c.tres,.s4-c.tres2{background:var(--s4-arena2)!important;transform:none!important}
+.s4-c.tres2{opacity:.35}
+.s4-c.tres{position:relative;z-index:2}
+.s4-tresillo{position:absolute;left:0;top:0;height:100%;width:calc(200% + var(--u)*.26);display:flex;gap:7%;padding:0 6%;box-sizing:border-box;align-items:center;pointer-events:none}
+.s4-tresillo i{flex:1;height:64%;border-radius:calc(var(--u)*.22);background:var(--c);transition:transform .05s}
+.s4-tresillo i.on{background:var(--s4-tinta);transform:scale(1.15)}
+.s4-tresillo b{position:absolute;left:6%;right:6%;top:calc(var(--u)*-.75);height:calc(var(--u)*.45);border:2px solid #FFE9C7;border-bottom:none;border-radius:2px 2px 0 0}
+.s4-tresillo b::after{content:'3';position:absolute;left:50%;top:calc(var(--u)*-1.15);transform:translateX(-50%);font:800 calc(var(--u)*1.05)/1 'DM Sans',sans-serif;color:#FFE9C7;text-shadow:0 0 calc(var(--u)*.3) rgba(10,6,3,.9)}
+
+/* (28-oct 19:23, Iago) dos instrumentos a la vez (güira + bongó): los dos iconos, uno al lado del otro */
+.s4-instrumento .s4-foto.dos{display:flex;align-items:center;justify-content:center;gap:calc(var(--u)*2);width:calc(var(--u)*46)}
+.s4-instrumento .s4-foto.dos>img,.s4-instrumento .s4-foto.dos>.s4-img{flex:1 1 0;min-width:0;width:auto!important;height:100%!important;object-fit:contain}
+/* (28-oct 19:23, Iago: «el texto con fondo, en el Sabor 2 en verde, como su portada») */
+#escena[data-sabor="2"] .c4-clave{background:#1F7A4D!important}
+#escena[data-sabor="2"] .c4-claves.fijo .c4-clave:first-child{background:#135A37!important}
+.s4-instrumento .s4-foto.dos .s4-pips{right:auto;left:50%;transform:translateX(-50%);top:calc(var(--u)*-3.2)}   /* el contador de compases, entre los dos y por encima */
