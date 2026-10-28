@@ -24,7 +24,11 @@
     const mide = () => { const r = cv.getBoundingClientRect(), k = 1; W = Math.round(r.width * k); H = Math.round(r.height * k); cv.width = W; cv.height = H; };
     mide();
     const luces = (V.luces || []).map(l => ({ x: l[0], y: l[1], r: Math.max(l[2], V.rMin || 0) * (V.rK || 1), ph: Math.random() * 6.3, w: l[3] ? 5 + Math.random() * 4 : .9 + Math.random() * 1.2, vela: !!l[3], fl: 0 }));   // las velas tiemblan rápido; las bombillas respiran
-    const glints = []; let ant = 0, ultimoGlint = 0;
+    const glints = []; let ant = 0, ultimoGlint = 0, tAnt = 0;
+    /* (28-oct 09:13, Iago: «partículas como que caigan del cielo… en el videoclip echo de menos esas animacioncitas sutiles») V.caen = n.º
+       de motitas de luz que bajan despacio, meciéndose, y se apagan cerca del suelo */
+    const nuevaM = arriba => ({ x: Math.random(), y: arriba ? -Math.random() * .08 : Math.random() * .9, vy: .012 + Math.random() * .022, s: .7 + Math.random() * 1.3, f: .4 + Math.random() * .9, p: Math.random() * 6.3, am: .004 + Math.random() * .008 });
+    const motas = []; for (let i = 0; i < (V.caen || 0); i++) motas.push(nuevaM(false));
     const R = () => Math.random();
     function nuevoGlint(t) {
       const M = V.mar, s = M.sol && R() < .68;
@@ -65,6 +69,14 @@
           cx.fillStyle = g; cx.beginPath(); cx.arc(x, y, L * .7, 0, 6.3); cx.fill();
         }
       }
+      if (motas.length) {
+        const dt = tAnt ? Math.min(.1, t - tAnt) : 0; cx.fillStyle = '#FFE9C4';
+        motas.forEach((m, i) => { m.y += m.vy * dt; m.x += m.am * Math.cos(t * m.f + m.p) * dt; if (m.y > .9) { motas[i] = nuevaM(true); return; }
+          const fin = Math.max(0, Math.min(1, (.9 - m.y) / .12, (m.y + .08) / .1)); cx.globalAlpha = .5 * fin * (.6 + .4 * Math.sin(t * m.f * 2 + m.p));
+          const z = m.s * Math.max(1, u * .11); cx.fillRect(m.x * W - z / 2, m.y * H - z / 2, z, z); });
+        cx.globalAlpha = 1;
+      }
+      tAnt = t;
       cx.globalCompositeOperation = 'source-over';
     }
     raf = requestAnimationFrame(tic);

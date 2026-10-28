@@ -34,12 +34,14 @@
     if (pjEl && pjAct && pjAct.q === q && pjAct.lado === lado && pjAct.pose === pose) return;
     const mismo = pjEl && pjAct && pjAct.q === q && pjAct.lado === lado;
     const im = B.el('img', 'c4-pj ' + lado + (mismo ? ' cambio' : '')); im.src = url(src); im.alt = ''; im.draggable = false;
-    im.style.setProperty('--alto', alto);
+    im.style.setProperty('--alto', alto); im.dataset.pose = q + '_' + pose;
     /* (28-oct, Iago: «un movimiento rápido y extraño de Antónico… como que carga antes otra pose») la pose nueva entra cuando YA está
        decodificada (antes se quitaba la vieja y durante un instante no había ninguna) */
     const viejo = pjEl; pjEl = im; pjAct = { q, pose, lado, alto };
+    /* (28-oct 09:05, Iago: «la primera aparición de Antónico: se ve el fondo sin él y al siguiente fotograma aparece») las poses ya
+       descodificadas (C.predecodifica, al empezar el sabor) entran en el MISMO fotograma que la lámina; solo las que no, esperan */
     const pon = () => { if (pjEl !== im) return; capa.appendChild(im); im.classList.add('on'); capa.querySelectorAll('.c4-pj').forEach(e => { if (e !== im) e.remove(); }); };
-    if (im.decode) im.decode().then(pon, pon); else pon();
+    if (LISTAS.has(src) || !im.decode) pon(); else im.decode().then(pon, pon);
     capa.classList.toggle('pj-izq', lado === 'izq'); capa.classList.toggle('pj-der', lado === 'der');
   }
   /* ── palabras clave ── */
@@ -70,7 +72,7 @@
   function ponImg(it, c) {
     asegura();
     if (it.solo !== false) quitaSueltas();
-    if (it.caja) quitaClaves(true);   // (28-oct, Iago: «se camina, no se corre: una vez que sale, que ya no aparezca»)
+    if (it.caja) { quitaClaves(true); ponVelo(); }   // (28-oct, Iago: «se camina, no se corre: una vez que sale, que ya no aparezca»)
     const tam = it.caja && B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[it.img];   // (27-oct noche) caja de «tamaño real», la misma de la interacción
     const w = B.el('div', 'c4-suelta' + (tam ? ' caja' : ''));
     if (tam) { w.style.setProperty('--x', tam.x); w.style.setProperty('--y', tam.y); w.style.setProperty('--w', tam.w); w.style.setProperty('--h', tam.h); }
@@ -136,14 +138,34 @@
     rejT = requestAnimationFrame(tic);
   }
   /* ── lo llama el motor ── */
+  const tDe = (it, dur) => it.t != null ? it.t : (it.en || 0) * dur;
+  /* (28-oct 09:07) el motor avisa cuando una frase cambia la lámina (plano recurso, vuelta al plano general): su primera reacción,
+     si cae en su primera mitad, se adelanta a ESE fotograma (la de su momento ya no cambia nada: es la misma pose) */
+  /* la primera reacción de la frase que CAMBIA algo (otra pose u otro personaje): si la frase empieza con la misma pose que ya se ve y
+     cambia más tarde (s1_018: «explica» y, a los 6 s, «baila»), la que entra con el fondo es la que cambia */
+  const primeraNueva = xs => { const ps = B.arr(xs).filter(it => it && 'pj' in it && it.pj);
+    return ps.find(it => !pjAct || (it.pj.q || pjAct.q) !== pjAct.q || (it.pj.pose && it.pj.pose !== pjAct.pose)) || ps[0]; };
+  let adel = null;   // la reacción adelantada al cambio de fondo: las de antes en esa frase ya no se ponen (no se vuelve atrás)
+  C.fondo = function (l, dur) {
+    const xs = (B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l.id]) || [], it = primeraNueva(xs);
+    if (it) { ponPj(it.pj); adel = { id: l.id, k: xs.indexOf(it) }; }   // (09:22) sin límite de tiempo: la prioridad es que cambien a la vez
+  };
+  /* (28-oct 09:09, Iago: «el fondo de los instrumentos, sin músicos, con todo su brillo y su color, y que empiece a oscurecer cuando
+     Doña Cande empiece a mostrar los instrumentos») el velo de un plano nuevo entra (fundido de 3 s) con el primer instrumento */
+  let veloPend = false;
+  const ponVelo = () => { if (veloPend && capa) { veloPend = false; capa.classList.add('velo'); if (veloAnt) veloAnt.velo = true; } };
+  C.alInter = function (it) { if (it && it.tipo === 'instrumento') ponVelo(); };
   C.plano = function (p) {
-    asegura(); quitaClaves(true); quitaSueltas(); fijos.splice(0).forEach(v => v.remove());
+    asegura(); if (!GUARDA.length) C.predecodifica(); quitaClaves(true); quitaSueltas(); fijos.splice(0).forEach(v => v.remove());
     if (svg) { svg.remove(); svg = null; }
     const d = B.CAPAS && B.CAPAS.planos && B.CAPAS.planos[p.id];
     /* si la primera frase cambia de pose nada más empezar, se entra ya con esa pose (sin enseñar la del plano un instante) */
     let pj0 = d && 'pj' in d ? d.pj : null;
     const l0 = B.arr(p.lineas)[0], xs0 = l0 && B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l0.id];
-    B.arr(xs0).forEach(it => { if (it && 'pj' in it && (it.t || 0) <= .6 && it.pj) pj0 = Object.assign({}, pj0 || {}, it.pj); });
+    /* (28-oct 09:07, Iago: «en un cambio de fondo, la prioridad es que las imágenes cambien a la vez») la primera reacción de la primera
+       frase, si cae en su primera mitad, entra YA con la lámina */
+    const p0 = primeraNueva(xs0);
+    if (p0) { pj0 = Object.assign({}, pj0 || {}, p0.pj); adel = { id: l0.id, k: B.arr(xs0).indexOf(p0) }; } else adel = null;   // (09:22) sin límite: en un cambio de fondo, la pose cambia con él
     if (!pj0 && pjAct) {   // (28-oct, Iago: «entre una reacción y otra, ningún fotograma sin personaje») el mismo personaje vuelve en este plano: se queda
       const sigue = B.arr(p.lineas).some(l => B.arr(B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l.id]).some(it => it && it.pj && it.pj.q === pjAct.q));
       if (sigue) pj0 = pjAct;
@@ -153,33 +175,50 @@
     /* (27-oct 23:20, Iago: «cuando una imagen va a tener cosas encima, oscurécela un poco… pero que no se esté oscureciendo y aclarando
        constantemente») velo suave TODO el plano si en él salen imágenes sueltas o 3+ carteles; con el mismo fondo que el plano de antes,
        el velo se queda como estaba (no parpadea) */
-    let n = 0, img = false;
-    B.arr(p.lineas).concat(B.arr(p.despues)).forEach(l => { ((B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l.id]) || []).forEach(it => {
-      if (it.img && it.caja) img = true; if (it.claves) n += it.estilo === 'titulo' ? 3 : B.arr(it.claves).length; if (it.rotulos) n += it.rotulos.length; }); });
-    let velo = !(d && d.oscuro) && (img || B.arr(p.inter).some(x => x && x.tipo === 'instrumento') || !!(d && d.velo));   // (28-oct, Iago: «no la oscurezcas… sólo donde nos muestran los instrumentos») solo con imágenes encima, no por carteles
-    if (!velo && veloAnt && veloAnt.img === p.img && !(d && d.oscuro)) velo = true;
-    capa.classList.toggle('velo', velo); veloAnt = { img: p.img, velo };
+    /* (28-oct 07:47 y 09:09, Iago: «no la oscurezcas… solo donde nos muestran los instrumentos»; «la cumbia nació aquí… que el fondo no
+       esté oscurecido, de verdad») velo SOLO en los planos de «cómo reconocerla» (con interacción de instrumento); con el mismo fondo
+       que el plano de antes, se queda como estaba (no parpadea); si el plano lo estrena, entra con el primer instrumento */
+    const sigueVelo = !!(veloAnt && veloAnt.velo && veloAnt.img === p.img) && !(d && d.oscuro);
+    const quiere = !(d && d.oscuro) && (B.arr(p.inter).some(x => x && x.tipo === 'instrumento') || !!(d && d.velo));
+    const ya = sigueVelo || (quiere && !!(d && d.velo));
+    veloPend = quiere && !ya;
+    capa.classList.toggle('velo', ya); veloAnt = { img: p.img, velo: ya };
     /* (27-oct 23:45) personajes de medio cuerpo: en los planos con instrumento, algo más pequeños para dejar sitio a la rejilla (todo el plano igual) */
     capa.classList.toggle('con-inst', B.arr(p.inter).some(x => x && x.tipo === 'instrumento'));
   };
   C.linea = function (l, dur, c) {
     const xs = (B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l.id]) || [];
     if (!xs.some(x => x.claves) && !xs.some(x => x.mantener)) quitaClaves();
-    xs.forEach(it => {
+    const ad = adel && adel.id === l.id ? adel.k : -1; if (adel && adel.id === l.id) adel = null;
+    xs.forEach((it, k) => {
       const t = it.t != null ? it.t : (it.en || 0) * dur;
-      if ('pj' in it) B.espera(t, c).then(ok => ok && ponPj(it.pj));
+      if ('pj' in it && k > ad) B.espera(t, c).then(ok => ok && ponPj(it.pj));
       if (it.claves) ponClaves(it, dur, c);
       if (it.img) B.espera(t, c).then(ok => ok && ponImg(it, c));
       if (it.flechas) ponFlechas(it, dur, c);
       if (it.rotulos) ponRotulos(it, dur, c);
       if (it.rejillas) ponRejillas(it, dur, c);
+      if (it.son) B.espera(t, c).then(ok => ok && suenaEjemplo(it, c));
     });
+  };
+  /* (28-oct 09:23, Iago: «en el resumen, cuando están diciendo las cosas, quiero que se escuchen») { son: [bucles], t, dur, vol }: el
+     ejemplo suena (desde su primer tiempo: los bucles traen 0,5 s de margen) mientras se nombra, y se funde al acabar */
+  function suenaEjemplo(it, c) {
+    const hs = B.arr(it.son).map(src => B.suena(src, { vol: it.vol || .42, offset: .5, fade: .06 })).filter(Boolean);
+    const para = () => hs.forEach(h => h.parar(.35));
+    B.espera(it.dur || 3, c).then(para); if (c && c.alMorir) c.alMorir.push(para);
+  }
+  const LISTAS = new Set(), GUARDA = [];
+  C.predecodifica = function () {
+    const P = (B.CAPAS && B.CAPAS.poses) || {};
+    Object.keys(P).forEach(q => Object.keys(P[q]).forEach(k => { const src = P[q][k]; if (k === '_' || LISTAS.has(src)) return;
+      const im = new Image(); im.src = url(src); GUARDA.push(im); (im.decode ? im.decode() : Promise.resolve()).then(() => LISTAS.add(src), () => { }); }));
   };
   C.recursos = function () {
     const r = [], P = (B.CAPAS && B.CAPAS.poses) || {};
     Object.keys(P).forEach(q => Object.keys(P[q]).forEach(k => k !== '_' && r.push(P[q][k])));
     const L = (B.CAPAS && B.CAPAS.lineas) || {};
-    Object.keys(L).forEach(k => B.arr(L[k]).forEach(it => it.img && r.push(it.img)));
+    Object.keys(L).forEach(k => B.arr(L[k]).forEach(it => { if (it.img) r.push(it.img); B.arr(it.son).forEach(x => r.push(x)); }));
     return r;
   };
   C.sinSubt = () => !!(B.CAPAS && B.CAPAS.sinSubtitulos);

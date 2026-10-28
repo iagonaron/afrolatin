@@ -65,6 +65,17 @@
         pinta(L, M, W, H) { L.fillStyle = brasa ? '#FFB066' : '#FFF1D2'; ms.forEach(m => { L.globalAlpha = (brasa ? .55 : .38) * (.55 + .45 * Math.sin(this.t * m.f + m.p)); L.fillRect(m.x * W * K, m.y * H * K, m.s * K * 1.5, m.s * K * 1.5); }); }
       };
     },
+    caen(o) {   // (28-oct 09:13, Iago: «en cada plano con mar o velas, un poquito de animación y partículas como que caigan del cielo») motitas de
+      //   luz que bajan despacio, meciéndose, y se apagan al acercarse al suelo
+      const z = o.zona || [0, 0, 1, .85], ms = [], n = o.n || 26;
+      const nueva = arriba => ({ x: az(z[0], z[2]), y: arriba ? z[1] - az(0, .08) : az(z[1], z[3]), vy: az(.012, .032), s: az(.7, 1.9), f: az(.4, 1.3), p: az(0, TAU), am: az(.004, .012) });
+      for (let i = 0; i < n; i++) ms.push(nueva(false));
+      return {
+        paso(dt, t) { ms.forEach((m, i) => { m.y += m.vy * dt; m.x += m.am * Math.cos(t * m.f + m.p) * dt; if (m.y > z[3]) ms[i] = nueva(true); }); this.t = t; },
+        pinta(L, M, W, H) { L.fillStyle = o.col || '#FFE9C4'; ms.forEach(m => { const fin = Math.min(1, (z[3] - m.y) / .12, (m.y - z[1] + .08) / .1);
+          L.globalAlpha = Math.max(0, (o.alfa || .5) * fin * (.6 + .4 * Math.sin(this.t * m.f * 2 + m.p))); const s = m.s * K * 1.6; L.fillRect(m.x * W * K - s / 2, m.y * H * K - s / 2, s, s); }); }
+      };
+    },
     brillos(o) {   // destellos del sol o de la luna en el agua
       const z = o.zona || [0, .6, 1, 1], bs = [], n = o.n || 14;
       return {
@@ -152,10 +163,13 @@
       const ps = B.arr(o.p).map(([x, y, r, vela]) => ({ x, y, r, vela, f: az(.5, 1.4), ph: az(0, TAU), n: 0, obj: 0, prox: 0, v: 1 }));
       return {
         paso(dt, t) { ps.forEach(q => {
-          if (q.vela) { q.prox -= dt; if (q.prox <= 0) { q.obj = az(-1, 1); q.prox = az(.05, .22); } q.n += (q.obj - q.n) * Math.min(1, dt * 14); q.v = .78 + .22 * q.n; }
+          if (q.vela === 2) {   // (28-oct 09:09, Iago: «anima las lucecitas») guirnalda de bombillitas: respiran y, a ratos, una chispa
+            q.prox -= dt; if (q.prox <= 0) { q.pico = 1; q.prox = az(.8, 4.5); } q.pico = Math.max(0, (q.pico || 0) - dt * 2.4);
+            q.v = .62 + .22 * Math.sin(t * q.f * 2.2 + q.ph) + .9 * q.pico; }
+          else if (q.vela) { q.prox -= dt; if (q.prox <= 0) { q.obj = az(-1, 1); q.prox = az(.05, .22); } q.n += (q.obj - q.n) * Math.min(1, dt * 14); q.v = .78 + .22 * q.n; }
           else q.v = .86 + .14 * Math.sin(t * q.f + q.ph);
         }); },
-        pinta(L, M, W, H) { const k = o.k || 1; ps.forEach(q => { const R = q.r * W * (q.vela ? 3.2 : 2.4); L.globalAlpha = Math.max(0, Math.min(1, (q.vela ? .42 : .3) * k * q.v)); L.drawImage(S.halo, (q.x * W - R) * K, (q.y * H - R) * K, 2 * R * K, 2 * R * K); }); }
+        pinta(L, M, W, H) { const k = o.k || 1; ps.forEach(q => { const R = q.r * W * (q.vela === 2 ? 2.8 : q.vela ? 3.2 : 2.4); L.globalAlpha = Math.max(0, Math.min(1, (q.vela === 2 ? .5 : q.vela ? .42 : .3) * k * q.v)); L.drawImage(S.halo, (q.x * W - R) * K, (q.y * H - R) * K, 2 * R * K, 2 * R * K); }); }
       };
     },
     parpadeo(o) {   // (4 Sabores, 27-oct, Iago: «que la iluminación tenga algo de vida») luz de velas/bombillas de toda la escena:

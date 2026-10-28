@@ -411,7 +411,9 @@ const HIT = (function () {
     }
     for (const l of B.arr(p.despues)) { await M.di(l, c); if (c.muerto) return; }
     const sig = dia.planos[i + 1], vis = planoEl && planoEl._vis;
-    if (!(sig && vis && B.arr(sig.inter).some(it => it && it.previa === vis))) ponVariante(null);   // (ronda 5) la lata de P1.1 sigue en pantalla hasta abrirla en P1.2
+    /* (28-oct 09:09, Iago: «antes del fondo de los instrumentos vuelves a poner un segundo el plano de la playa; quiero que el último sea el
+       de las chicas bailando») un plano recurso se queda hasta que entra el plano siguiente */
+    if (!(planoEl && planoEl._recurso) && !(sig && vis && B.arr(sig.inter).some(it => it && it.previa === vis))) ponVariante(null);   // (ronda 5) la lata de P1.1 sigue en pantalla hasta abrirla en P1.2
     if (p.mapa && planoEl && planoEl._mapa) { await planoEl._mapa.viaje(c); if (c.muerto) return; }   // (ronda 5) el viaje lo hace el alumno
     B.progreso.plano(dia.n, i, p.id); pintaPuntos();
     const ok = siguePegado ? true : await esperaSaltable(p.mapa ? (p.mapa.tras == null ? 3.2 : p.mapa.tras) : p.espera == null ? 1.4 : p.espera, c);
@@ -487,6 +489,8 @@ const HIT = (function () {
     } else kbEl.appendChild(provisional(p, rM));
     pelicula.appendChild(el);
     if (B.vida && B.VIDA) B.vida.pon(el, B.VIDA[p.id]);
+    if (B.vida && B.VIDA) Object.keys(p.var || {}).forEach(q => { const cf = B.VIDA[p.id + ':' + q]; if (!cf) return;   // (28-oct) vida de una variante (p. ej. las velas de la rueda)
+      const w = B.el('div', 'vida-var'); w.dataset.q = q; el.appendChild(w); B.vida.pon(w, cf); });
     if (B.capas) B.capas.plano(p);   // (4 Sabores, 27-oct) palabras clave, personajes en PNG, flechas (js/capas4s.js)   // (Iago, 19-oct) fuego, luces, humo, pájaros… (js/vida.js + data/vida.js)
     void el.offsetWidth; el.classList.add('on');
     if (viejo) { viejo.classList.remove('on'); setTimeout(() => viejo.remove(), 1000); }
@@ -707,6 +711,7 @@ const HIT = (function () {
     const corte = !!q && esCorte(planoAct, q);   // un primer plano o un plano recurso manda incluso sobre la lámina «previa»
     const vis = corte ? q : base ? base : (q || null);
     B.$$('.lam.var', planoEl).forEach(v => v.classList.toggle('on', !!vis && v.dataset.q === vis));
+    B.$$('.vida-var', planoEl).forEach(v => v.classList.toggle('on', !!vis && v.dataset.q === vis));
     /* (ronda 5) qué lámina se ve: en un plano recurso o un primer plano no hay bocadillo (no se ve a quien habla) y la vida
        del plano general (fuego, lámpara, polvo…) se apaga para no brillar donde no toca */
     const hay = !!vis && !!planoEl.querySelector('.lam.var[data-q="' + vis + '"]');
@@ -831,7 +836,12 @@ const HIT = (function () {
       const dv = (l.voz && B.buf[l.voz] ? B.buf[l.voz].duration : durTexto(l.texto)) + (l.espera || 0);
       let v = l.var !== undefined ? l.var : l.quien;
       if (v && v !== '-') v = eligePlano(v, l, dv);
+      const lamAnt = planoEl && (planoEl.querySelector('.lam.var.on') || planoEl.querySelector('.lam.maestra'));
       ponVariante(v && v !== '-' ? v : null);
+      /* (28-oct 09:07, Iago: «muy importante: cuando hay un cambio de fondo, la imagen del personaje cambia en el MISMO fotograma que el
+         fondo; normalmente mando la voz, pero en un cambio de fondo, la prioridad es que cambien a la vez») */
+      const lamNue = planoEl && (planoEl.querySelector('.lam.var.on') || planoEl.querySelector('.lam.maestra'));
+      if (lamAnt && lamNue && lamAnt !== lamNue && B.capas && B.capas.fondo) B.capas.fondo(l, dv);
       const g = esperaLamina();
       if (g) g.then(() => { if (c && c.muerto) return res(false); arranca(); }); else arranca();
       function arranca() {
@@ -932,6 +942,7 @@ const HIT = (function () {
     const f = B.inter[it.tipo];
     if (!f) { console.warn('Interacción sin módulo:', it.tipo); return; }
     ponVariante(null);
+    if (B.capas && B.capas.alInter) B.capas.alInter(it);
     subt.classList.remove('on');
     escena.classList.add('con-inter');
     escena.classList.toggle('subt-abajo', !!(f.subtAbajo || it.subtAbajo));   // (ronda 6, Iago) el alumno mira abajo, donde toca: el texto, ahí
