@@ -136,7 +136,7 @@ const HIT = (function () {
   }
   /* (28-oct 12:40, Iago: «al darle a pantalla completa, al menos en mi ordenador, no ocupa todo») la escena es 16:9; si la pantalla tiene
      otra proporción (o Chrome enseña una barra arriba), las franjas que sobran ya no son negras: la misma imagen, desenfocada y oscura */
-  M.ambiente = function (src) { const m = document.getElementById('marco'); if (m) m.style.setProperty('--amb', src ? 'url("' + src + '")' : 'none'); };
+  M.ambiente = function (src) { const m = document.getElementById('marco'); let u = src; try { if (u && !/^(blob|data):/.test(u)) u = new URL(u, location.href).href; } catch (e) { } if (m) m.style.setProperty('--amb', u ? 'url("' + u + '")' : 'none'); };   // (28-oct) ruta absoluta: dentro de una variable CSS se leía desde css/
   const bandas = () => { const m = document.getElementById('marco'); if (m) m.classList.toggle('con-bandas', Math.abs(innerWidth / Math.max(1, innerHeight) - 16 / 9) > .015); };
   addEventListener('resize', bandas); document.addEventListener('fullscreenchange', bandas); document.addEventListener('webkitfullscreenchange', bandas); setTimeout(bandas, 0);
   M.pantallaCompleta = function () {
@@ -251,15 +251,15 @@ const HIT = (function () {
     }
     const c = $('#continuar', p);
     if (c) c.addEventListener('click', () => { B.ac(); const u = B.progreso.leer().ultimo; M.empezarDia(u.dia, u.plano || 0); });
-    /* ambiente suave de portada, al primer clic */
+    /* ambiente suave de portada: suena en cuanto el navegador deja (en el ordenador, al cargar; en el iPad, con el primer toque en
+       cualquier sitio) — (28-oct 19:09, Iago) antes esperaba a un «pointerdown» sobre la portada, que Safari no acepta para el sonido */
     const amb = () => {
-      p.removeEventListener('pointerdown', amb);
-      B.ac();
+      if (amb.hecho) return; amb.hecho = true;
       if (!escena.classList.contains('en-portada')) return;
       if (B.existe('mus/portada.mp3')) B.precarga(['mus/portada.mp3']).then(() => { if (escena.classList.contains('en-portada')) B.musica({ src: 'mus/portada.mp3', vol: .5, bucle: true }); });
       else if (B.sint && !M._crepita) M._crepita = B.sint.crepitar(.5);
     };
-    p.addEventListener('pointerdown', amb);
+    if (B.alSonido) { try { B.ac(); } catch (e) { } B.alSonido(amb); } else p.addEventListener('pointerdown', amb);
     if (B.hayAudio() && !M._crepita && B.sint && !B.existe('mus/portada.mp3')) M._crepita = B.sint.crepitar(.5);
   };
   function portadaCartel(pr) {
@@ -291,7 +291,7 @@ const HIT = (function () {
     dia = d; idx = -1;
     mideRes();
     if (B.banda && B.banda.config) B.banda.config(d.banda);
-    escena.classList.remove('en-portada'); escena.classList.add('precargando');
+    escena.classList.remove('en-portada'); escena.classList.add('precargando'); escena.dataset.sabor = n;   // (19:23) la piel de cada sabor (rótulos verdes en el 2)
     const pc = $('#precarga');
     pc.innerHTML = '<div class="pc-caja"><div class="pc-dia">' + ETQ + ' ' + n + '</div><div class="pc-tit">' + B.esc(d.titulo) + '</div>' +
       '<div class="pc-barra"><i></i></div><div class="pc-mb">Preparando…</div><div class="pc-det"></div></div>';
@@ -345,7 +345,7 @@ const HIT = (function () {
     /* (20-oct) el chisporroteo de verdad del cilindro, si el día tiene cilindro (líneas «cilindro» o la interacción del fonógrafo) */
     if (d.planos.some(p => B.arr(p.lineas).concat(B.arr(p.despues)).some(l => l.cilindro) || B.arr(p.inter).some(it => it.tipo === 'fonografo'))) r.push('sfx/d4/cilindro.mp3');
     if (B.banda && B.banda.rutas && d.banda) r.push.apply(r, B.banda.rutas(d.banda));
-    if (B.capas && B.capas.recursos) r.push.apply(r, B.capas.recursos());   // (4 Sabores, 27-oct) PNG de personajes e instrumentos de las capas
+    if (B.capas && B.capas.recursos) r.push.apply(r, B.capas.recursos(d));   // (28-oct 19:10) solo lo de ESTE sabor   // (4 Sabores, 27-oct) PNG de personajes e instrumentos de las capas
     return r.filter(Boolean);
   }
   /* imágenes: img/dN/p1_1.webp (1920) y, si existe, img/dN/1280/p1_1.webp para pantallas pequeñas */
@@ -467,7 +467,7 @@ const HIT = (function () {
       if (!r || !B.img[r]) return;
       const im = new Image(); im.src = B.img[r]; prepara(im); guardadas.push(im);
     });
-    while (guardadas.length > 30) guardadas.shift();
+    while (guardadas.length > 12) guardadas.shift();   // (28-oct 19:10) 12 láminas preparadas como mucho (en el iPad, 30 de 1920×1080 eran ~250 MB)
   }
   let visAnt = null;
   function esperaLamina() {
@@ -498,9 +498,14 @@ const HIT = (function () {
     if (B.vida && B.VIDA) B.vida.pon(el, B.VIDA[p.id]);
     if (B.vida && B.VIDA) Object.keys(p.var || {}).forEach(q => { const cf = B.VIDA[p.id + ':' + q]; if (!cf) return;   // (28-oct) vida de una variante (p. ej. las velas de la rueda)
       const w = B.el('div', 'vida-var'); w.dataset.q = q; el.appendChild(w); B.vida.pon(w, cf); });
-    if (B.capas) B.capas.plano(p);   // (4 Sabores, 27-oct) palabras clave, personajes en PNG, flechas (js/capas4s.js)   // (Iago, 19-oct) fuego, luces, humo, pájaros… (js/vida.js + data/vida.js)
-    void el.offsetWidth; el.classList.add('on');
-    if (viejo) { viejo.classList.remove('on'); setTimeout(() => viejo.remove(), 1000); }
+    const capasPlano = () => { if (B.capas) B.capas.plano(p); };   // (19:22) entran con la lámina, no antes · (4 Sabores, 27-oct) palabras clave, personajes en PNG, flechas (js/capas4s.js)   // (Iago, 19-oct) fuego, luces, humo, pájaros… (js/vida.js + data/vida.js)
+    /* (28-oct 19:12, Iago: «hay un fotograma sin fondo antes del salón») el plano nuevo entra cuando su lámina ya está descodificada
+       (como mucho 0,7 s); mientras, se queda el de antes */
+    const imM = kbEl.querySelector('.lam.maestra');
+    const muestra = () => { if (el._visto) return; el._visto = true; capasPlano(); void el.offsetWidth; el.classList.add('on'); if (viejo) { viejo.classList.remove('on'); setTimeout(() => viejo.remove(), 1000); } };
+    /* (19:22, Iago: «cuidado, fotograma sin fondo cuando aparece Ramoncito») SIEMPRE se espera a la descodificación (en Safari, «complete» no
+       quiere decir pintable); si ya lo está, es inmediato */
+    if (viejo && imM && imM.decode) Promise.race([imM.decode().catch(() => { }), new Promise(r => setTimeout(r, 700))]).then(muestra); else muestra();
     planoEl = el; el._kb = kbEl;
     B.$$('.lam', kbEl).forEach(prepara);   // (ronda 6) descodificar ya todas las láminas del plano (gestos, cortes, recursos)
     if (p.mapa) montaMapa(p, kbEl);
@@ -549,7 +554,7 @@ const HIT = (function () {
       svg.append(g); ruta.style.opacity = 0; svg.append(ruta);
     } else svg.append(sombra, ruta);
     /* la ruta que falta, en punteado tenue: el alumno ve por dónde tiene que llevarlo */
-    const guiaRuta = mk('path', { d, class: 'mapa-ruta-guia', 'stroke-width': .38 * k, 'stroke-dasharray': (.9 * k) + ' ' + (1.1 * k) });
+    const guiaRuta = mk('path', { d, class: 'mapa-ruta-guia', 'stroke-width': .62 * k, 'stroke-dasharray': (1.5 * k) + ' ' + (1.25 * k) });   // (19:22, Iago) más gruesa y más visible
     svg.insertBefore(guiaRuta, svg.firstChild.nextSibling || null);
     const sitio = (q, txt, cls) => {
       const g = mk('g', { class: 'mapa-sitio ' + cls }); let o = (m.etiq && m.etiq[cls]) || [1.6, .7];

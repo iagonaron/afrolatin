@@ -62,10 +62,28 @@ window.BLUES = window.BLUES || {};
     } catch (e) { iosSon = false; }
   }
   ['touchend', 'pointerdown', 'keydown'].forEach(ev => document.addEventListener(ev, sonIOS, { passive: true, capture: true }));
+  /* (28-oct 19:09, Iago en el iPad: «tardó varios clics en que se reproduzca la música; que suene sola, sea cual sea el dispositivo»)
+     Ningún navegador deja sonar una página antes del primer toque (el iPad/iPhone, nunca; el ordenador, a veces sí). Así que: el audio
+     se intenta arrancar nada más cargar (en el ordenador suele bastar) y, si el navegador no deja, el PRIMER toque o tecla, en
+     cualquier sitio, lo desbloquea (en Safari, «pointerdown» no vale: hace falta «touchend»/«click»), con un sonido mudo de una muestra
+     dentro del gesto. Lo que espera al sonido (la música de la portada) se apunta con B.alSonido(fn) y arranca en cuanto se pueda. */
+  const enSonido = [];
+  const sueltaSonido = () => { if (AC && AC.state === 'running') enSonido.splice(0).forEach(f => { try { f(); } catch (e) { console.warn(e); } }); };
+  B.alSonido = fn => { enSonido.push(fn); sueltaSonido(); };
+  function desbloquea() {
+    if (B.pausado) return;
+    try {
+      const C = B.ac();
+      const b = C.createBuffer(1, 1, 22050), s = C.createBufferSource(); s.buffer = b; s.connect(C.destination); s.start(0);
+      if (C.state !== 'running' && C.resume) C.resume().then(sueltaSonido, () => { }); else sueltaSonido();
+    } catch (e) { }
+  }
+  ['touchend', 'pointerup', 'click', 'keydown'].forEach(ev => document.addEventListener(ev, desbloquea, { passive: true, capture: true }));
   B.ac = function () {
     sonIOS();
     if (!AC) {
       AC = new (window.AudioContext || window.webkitAudioContext)();
+      try { AC.onstatechange = () => sueltaSonido(); } catch (e) { }
       const master = AC.createGain(); master.gain.value = .9;
       const comp = AC.createDynamicsCompressor();
       comp.threshold.value = -12; comp.knee.value = 20; comp.ratio.value = 3.5;

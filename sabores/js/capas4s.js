@@ -215,21 +215,31 @@
   /* (28-oct 09:23, Iago: «en el resumen, cuando están diciendo las cosas, quiero que se escuchen») { son: [bucles], t, dur, vol }: el
      ejemplo suena (desde su primer tiempo: los bucles traen 0,5 s de margen) mientras se nombra, y se funde al acabar */
   function suenaEjemplo(it, c) {
-    const hs = B.arr(it.son).map(src => B.suena(src, { vol: it.vol || .42, offset: .5, fade: .06 })).filter(Boolean);
+    const hs = B.arr(it.son).map(src => B.suena(src, { vol: it.vol || .42, offset: it.off != null ? it.off : .5, fade: .06 })).filter(Boolean);
     const para = () => hs.forEach(h => h.parar(.35));
     B.espera(it.dur || 3, c).then(para); if (c && c.alMorir) c.alMorir.push(para);
   }
   const LISTAS = new Set(), GUARDA = [];
+  /* (28-oct 19:10, Iago en el iPad: «no se me han cargado las imágenes») antes se precargaban y descodificaban los personajes, los
+     instrumentos y los ejemplos de TODOS los sabores al empezar cualquiera (con el Sabor 2, el doble): en el iPad se quedaba sin memoria.
+     Ahora, solo lo del sabor que se juega (sus frases y los personajes que salen en ellas) */
+  let QS = null;
   C.predecodifica = function () {
     const P = (B.CAPAS && B.CAPAS.poses) || {};
-    Object.keys(P).forEach(q => Object.keys(P[q]).forEach(k => { const src = P[q][k]; if (k === '_' || LISTAS.has(src)) return;
-      const im = new Image(); im.src = url(src); GUARDA.push(im); (im.decode ? im.decode() : Promise.resolve()).then(() => LISTAS.add(src), () => { }); }));
+    Object.keys(P).forEach(q => { if (QS && !QS.has(q)) return; Object.keys(P[q]).forEach(k => { const src = P[q][k]; if (k === '_' || LISTAS.has(src)) return;
+      const im = new Image(); im.src = url(src); GUARDA.push(im); (im.decode ? im.decode() : Promise.resolve()).then(() => LISTAS.add(src), () => { }); }); });
   };
-  C.recursos = function () {
-    const r = [], P = (B.CAPAS && B.CAPAS.poses) || {};
-    Object.keys(P).forEach(q => Object.keys(P[q]).forEach(k => k !== '_' && r.push(P[q][k])));
-    const L = (B.CAPAS && B.CAPAS.lineas) || {};
-    Object.keys(L).forEach(k => B.arr(L[k]).forEach(it => { if (it.img) r.push(it.img); B.arr(it.son).forEach(x => r.push(x)); if (it.musica) r.push(it.musica.src); }));
+  C.recursos = function (d) {
+    const r = [], P = (B.CAPAS && B.CAPAS.poses) || {}, L = (B.CAPAS && B.CAPAS.lineas) || {}, PL = (B.CAPAS && B.CAPAS.planos) || {};
+    const ids = d ? new Set() : null, qs = new Set();
+    if (d) B.arr(d.planos).forEach(p => {
+      const pd = PL[p.id]; if (pd && pd.pj && pd.pj.q) qs.add(pd.pj.q);
+      B.arr(p.lineas).concat(B.arr(p.despues)).forEach(l => l && ids.add(l.id));
+      B.arr(p.inter).forEach(it => { if (it && Array.isArray(it.lineas)) it.lineas.forEach(l => l && ids.add(l.id)); });
+    });
+    Object.keys(L).forEach(k => { if (ids && !ids.has(k)) return; B.arr(L[k]).forEach(it => { if (it.pj && it.pj.q) qs.add(it.pj.q); if (it.img) r.push(it.img); B.arr(it.son).forEach(x => r.push(x)); if (it.musica) r.push(it.musica.src); }); });
+    Object.keys(P).forEach(q => { if (d && !qs.has(q)) return; Object.keys(P[q]).forEach(k => k !== '_' && r.push(P[q][k])); });
+    if (d) { QS = qs; GUARDA.splice(0); LISTAS.clear(); }   // al cambiar de sabor, se sueltan los del anterior
     return r;
   };
   C.sinSubt = () => !!(B.CAPAS && B.CAPAS.sinSubtitulos);
