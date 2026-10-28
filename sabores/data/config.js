@@ -10,7 +10,7 @@ BLUES.CFG = {
   portada: 'cartel', titPortada: 'Afro<span>Latin</span>', subPortada: 'Unidad 7 · Un viaje en 4 sabores', esquina: 'DE COLOMBIA A ANGOLA<br>2.º GP · LM AT HOME',
   coloresPortada: { 1: '#FF8A3D', 2: '#7ED3A8', 3: '#FFC94D', 4: '#F46FA0' },   // (28-oct, Iago) los colores del 2 y el 3, intercambiados
   /* (28-oct, Iago: «el fondo de la portada, animarlo un poco: luces, algún brillo del mar, un pelín de vida») js/portada_vida.js */
-  vidaPortada: { caen: 18,   // (28-oct 09:13) motitas que caen
+  vidaPortada: { caen: 34,   // (28-oct 09:13) motitas que caen
     luces: [[.681, .031, .022], [.709, .067, .022], [.742, .086, .022], [.784, .094, .022], [.831, .083, .022], [.891, .053, .022], [.958, .014, .022],
             [.923, .169, .02], [.9526, .231, .05], [.988, .296, .04]],
     sol: [.235, .47, .075],

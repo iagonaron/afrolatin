@@ -1799,7 +1799,11 @@ BLUES.dia(1, {
     "musA": {
      "src": "mus/s1_viaje_merengue.mp3",
      "vol": 0.7
-    }
+    },
+    "icono": "img/s1/barco_cenital.webp",
+    "cenital": true,
+    "anchoIcono": 2.3,
+    "proporcionIcono": 3.286
    },
    "mus": {
     "src": "mus/s1_viaje_cumbia.mp3",
@@ -2277,7 +2281,9 @@ BLUES.dia(1, {
      "id": "s1_m12",
      "quien": "YUNIOR",
      "texto": "¡Muchachos, pa' arriba, que esto se prende!",
-     "voz": "voz/s1/s1_m12.mp3"
+     "voz": "voz/s1/s1_m12.mp3",
+     "var": "RECURSO_LLEGAN",
+     "fijo": true
     }
    ],
    "inter": {
@@ -3223,7 +3229,10 @@ BLUES.dia(1, {
      "texto": "¡Diache, qué nivel! Ya son unos tígueres del merengue.",
      "voz": "voz/s1/s1_m13.mp3"
     }
-   ]
+   ],
+   "var": {
+    "RECURSO_LLEGAN": "img/s1/m9b_musicos_llegan.webp"
+   }
   },
   {
    "id": "s1_r1",
