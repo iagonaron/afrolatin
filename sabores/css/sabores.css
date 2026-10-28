@@ -187,16 +187,6 @@
 .c4-claves.fijo.izq{left:2.5%;right:auto}.c4-claves.fijo.der{right:2.5%;left:auto}
 .c4-claves.fijo .c4-clave{font-size:calc(var(--u)*1.75)!important;text-align:left;line-height:1.15}
 .c4-claves.fijo .c4-clave:first-child{font-size:calc(var(--u)*2.6)!important;background:#FFE9C7!important}
-/* (27-oct 23:00) con personaje PNG a un lado, la rejilla del instrumento se aparta de él y los botones van en columna a su lado
-   (abajo los tapaba la barra de controles y antes le tapaban la falda) */
-body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .s4-rej,body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .s4-nivel{left:34%;width:calc(var(--u)*54)}
-body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .s4-rej,body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .s4-nivel{left:66%;width:calc(var(--u)*54)}
-body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .i-pie,body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .i-pie{top:77%;bottom:auto;flex-direction:column;align-items:stretch}
-body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .i-pie{right:auto;left:calc(34% + var(--u)*28.2)}
-body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .i-pie{left:auto;right:calc(34% + var(--u)*28.2)}
-body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .s4-rej,body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .s4-rej{padding:calc(var(--u)*1.1) calc(var(--u)*1.4)}
-body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .s4-c,body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .s4-c{width:calc(var(--u)*2.75);height:calc(var(--u)*2.75)}
-body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .s4-gr,body:has(#capas4s.pj-izq) .s4-instrumento.s4-tam .s4-gr{gap:calc(var(--u)*.4)}
 /* (27-oct 23:19, Iago: «no me gusta que el texto sea negro en los cartelitos naranjas: ponlo blanco») texto blanco; el naranja, un punto
    más hondo para que el blanco se lea (contraste ≥ 3:1, letra grande); la cabecera del resumen, igual pero más oscura */
 .c4-clave{color:#FFFFFF!important;background:#D9541A!important}
@@ -220,3 +210,73 @@ body:has(#capas4s.pj-der) .s4-instrumento.s4-tam .s4-gr,body:has(#capas4s.pj-izq
 .c4-capa.pj-der .c4-claves:not(.fijo){right:42%}.c4-capa.pj-izq .c4-claves:not(.fijo){left:42%}
 .c4-capa.con-inst .c4-pj{height:64%!important}
 .c4-pj.der{right:2%}.c4-pj.izq{left:2%}
+/* (28-oct) lienzo de la vida de la portada: entre el fondo y el velo */
+.s4p-vida{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* (28-oct, Iago: «está todo muy arriba, sobre todo los títulos») los carteles de arriba y los que van sobre postales, más abajo;
+   las postales, recortadas por su papel, con su sombra */
+.c4-claves.arriba{top:14%}
+.c4-capa:has(.c4-suelta.on) .c4-claves{top:12%}
+.c4-suelta:not(.caja) img{filter:drop-shadow(0 calc(var(--u)*.35) calc(var(--u)*.7) rgba(0,0,0,.55))}
+/* (28-oct, Iago: «los títulos más centrados en general… Colombia · Cartagena de Indias, en el centro») los titulares, SIEMPRE en el
+   centro de la pantalla (aunque haya personaje a un lado) */
+.c4-capa .c4-claves.titulo,.c4-capa.pj-der .c4-claves.titulo,.c4-capa.pj-izq .c4-claves.titulo{left:6%!important;right:6%!important;top:50%!important;transform:translateY(-50%)!important}
+/* (28-oct) cada cartel en una línea */
+.c4-clave{white-space:nowrap}
+.c4-claves.fijo .c4-clave{white-space:normal}
+/* (28-oct, Iago: «el fondo del escenario, un fundido a oscuro y borroso poco a poco cuando Cande empieza a describirlo») el velo entra
+   despacio (3 s) y oscurece y desenfoca; al cambiar a una lámina sin velo, se va de golpe */
+.c4-capa::before{content:'';position:absolute;inset:0;pointer-events:none;background:rgba(10,6,3,.42);opacity:0;transition:none}
+/* el desenfoque, en la propia lámina (un filtro sobre una imagen quieta; más barato que backdrop-filter en el ordenador del aula) */
+#escena .plano .lam{transition:none}
+#escena:has(#capas4s.velo) .plano .lam{filter:blur(4px);transition:filter 3s ease}
+.c4-capa.velo::before{opacity:1;transition:opacity 3s ease}
+.c4-capa.oscuro::before{opacity:1;transition:none;background:rgba(6,9,10,.58)}
+.c4-capa.oscuro::before,.c4-capa.velo::before{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+
+/* (28-oct, Iago: «centra en x y en y todos estos momentos, también Otra vez y Seguir, y que entre los dos botones tengan la misma
+   altura que la animación de los pulsos») bloque centrado: instrumento arriba (caja de BLUES.CAPAS.tam), rejilla en --ry y los dos
+   botones en columna a su derecha, del mismo alto; rejilla + botones, centrados en x */
+.s4-instrumento.s4-tam{--rw:calc(var(--u)*46);--bw:calc(var(--u)*10.5);--bh:calc(var(--u)*6.6);--bg:calc(var(--u)*1.2)}
+.s4-instrumento.s4-tam .s4-rej,.s4-instrumento.s4-tam .s4-nivel{position:absolute;top:calc(var(--ry,.72)*100%);left:calc(50% - (var(--rw) + var(--bg) + var(--bw))/2);transform:none;
+  width:var(--rw);height:var(--bh);box-sizing:border-box;padding:0 calc(var(--u)*1.3);align-items:center}
+.s4-instrumento.s4-tam .s4-c{width:calc(var(--u)*2.3);height:calc(var(--u)*2.3)}
+.s4-instrumento.s4-tam .s4-gr{gap:calc(var(--u)*.35)}
+.s4-instrumento.s4-tam .s4-nivel i{height:calc(var(--u)*3.6)}
+.s4-instrumento.s4-tam .i-pie{position:absolute;top:calc(var(--ry,.72)*100%);bottom:auto;right:auto;left:calc(50% - (var(--rw) + var(--bg) + var(--bw))/2 + var(--rw) + var(--bg));
+  transform:none;width:var(--bw);height:var(--bh);display:flex;flex-direction:column;gap:calc(var(--u)*.6)}
+.s4-instrumento.s4-tam .i-pie .bt{flex:1 1 0;min-height:0;height:auto;width:100%;padding:0 calc(var(--u)*.6);font-size:calc(var(--u)*1.05)}
+/* (28-oct) mezclador «inventario»: rejilla de casillas cuadradas; cada instrumento en su parcela, del tamaño de sus proporciones */
+.s4-mezclador .s4-pistas.s4-inv{--cel:min(calc(var(--u)*9.4),calc((var(--u)*56.25 - var(--u)*24) / 3));display:grid;grid-template-columns:repeat(var(--nc),var(--cel));
+  grid-template-rows:repeat(var(--nf),var(--cel));gap:calc(var(--u)*.7);justify-content:center;margin-top:calc(var(--u)*1.4)}
+.s4-inv .s4-vacia,.s4-inv .s4-pista{border-radius:calc(var(--u)*.7);background:rgba(14,10,7,.55);border:calc(var(--u)*.14) solid rgba(243,230,200,.2)}
+.s4-inv .s4-vacia{background:rgba(14,10,7,.32)}
+.s4-inv .s4-pista{width:auto;height:auto;position:relative;display:block;padding:calc(var(--u)*.7) calc(var(--u)*.7) calc(var(--u)*2.6);box-sizing:border-box}
+.s4-inv .s4-pista .s4-cuad{width:100%;height:100%;transform:none!important}
+.s4-inv .s4-pista.on{border-color:var(--c);background:rgba(14,10,7,.35)}
+.s4-inv .s4-pista.on.golpe{box-shadow:0 0 0 calc(var(--u)*.22) var(--c)}
+.s4-inv .s4-nom{position:absolute;left:calc(var(--u)*.8);bottom:calc(var(--u)*.6);font-size:calc(var(--u)*1.2)!important;text-align:left;white-space:nowrap;margin:0}
+.s4-inv .s4-tec{top:calc(var(--u)*.5);right:calc(var(--u)*.5);left:auto}
+.s4-inv .s4-niv{position:absolute;left:calc(var(--u)*.8);right:calc(var(--u)*.8);bottom:calc(var(--u)*2.15);height:calc(var(--u)*.35);margin:0}
+.s4-inv .s4-mrej{position:absolute;right:calc(var(--u)*.7);bottom:calc(var(--u)*.6);width:calc(var(--u)*7.2);margin:0}
+.s4-inv .s4-pista[style*="span 1 / span 1"] .s4-mrej{display:none}
+.s4-plano .s4-vida-vc{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* (28-oct) karaoke: la palabra que aún no se canta, en blanco tenue; al cantarla, dorada */
+.s4-concierto .s4-kw{color:rgba(255,247,234,.62)}
+.s4-concierto .s4-kw.on{color:#FFD36B}
+/* (28-oct) inventario: el instrumento ocupa toda su parcela (el nombre va encima, abajo a la izquierda) y apagado se sigue viendo */
+.s4-inv .s4-pista{padding:calc(var(--u)*.45)}
+.s4-inv .s4-nom{background:rgba(14,10,7,.72);padding:calc(var(--u)*.15) calc(var(--u)*.5);border-radius:calc(var(--u)*.35);bottom:calc(var(--u)*.45);left:calc(var(--u)*.45)}
+.s4-inv .s4-niv{bottom:calc(var(--u)*.3);left:calc(var(--u)*.45);right:calc(var(--u)*.45)}
+.s4-mezclador .s4-inv .s4-pista:not(.on) .s4-cuad .s4-img{filter:grayscale(.75) brightness(.78);opacity:.9}
+.s4-inv .s4-mrej{bottom:calc(var(--u)*.55)}
+/* con instrumento, el personaje algo más pequeño y pegado al borde: el bloque centrado no le pisa */
+.c4-capa.con-inst .c4-pj{height:56%!important}
+.c4-capa.con-inst .c4-pj.der{right:.5%}.c4-capa.con-inst .c4-pj.izq{left:.5%}
+.c4-capa::before{background:rgba(10,6,3,.34)}
+.s4-instrumento.s4-tam{--rw:calc(var(--u)*40);--bw:calc(var(--u)*9.5);--bg:calc(var(--u)*1)}
+.s4-instrumento.s4-tam .s4-c{width:calc(var(--u)*2.05);height:calc(var(--u)*2.05)}
+.s4-instrumento.s4-tam .s4-gr{gap:calc(var(--u)*.3)}
+.c4-capa.con-inst .c4-pj{height:52%!important}
+/* (28-oct) iconos de la portada: el instrumento real, sin caja ni sombra */
+.s4p-ic:has(.s4p-icim){background:none!important}
+.s4p-ic .s4p-icim{width:118%;height:118%;object-fit:contain;filter:none}
