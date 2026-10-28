@@ -320,3 +320,7 @@
 /* (10:00) el consejo final, titular arriba en lugar del «Repaso» */
 .c4-claves.fijo.cabeza.cierre .c4-tit{font-size:calc(var(--u)*4.6)!important}
 .c4-claves.fijo.sale{opacity:0;transition:opacity .45s}
+/* (12:40) franjas de los lados (pantallas que no son 16:9): la imagen del plano, desenfocada y oscura, en vez de negro */
+#marco.con-bandas::before{content:'';position:absolute;inset:-6%;background:var(--amb,none) center/cover no-repeat;filter:blur(28px) brightness(.5) saturate(1.1);pointer-events:none}
+#marco.con-bandas #escena{box-shadow:0 0 calc(var(--u)*3) rgba(0,0,0,.55)}
+.mapa-cartel .mc-ciudad{font-family:'Shrikhand',serif;font-size:calc(var(--u)*2.1);color:#FFE3B8;margin:calc(var(--u)*.2) 0 calc(var(--u)*.5);text-align:center}
