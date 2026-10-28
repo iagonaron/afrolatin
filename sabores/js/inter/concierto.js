@@ -203,6 +203,8 @@
       if (B.vidaLienzo && (LV && LV.length || op.planos)) { const cv = B.el('canvas', 's4-img s4-vida-vc'); capa.appendChild(cv); B.vidaLienzo(cv, { luces: LV || [], rMin: .014, rK: 1.15, caen: 40 }); }   // (28-oct 09:13) y motitas que caen en todos los planos
       esc.appendChild(capa); void capa.offsetWidth;
       capa.classList.add('on');
+      /* (28-oct 21:03, Iago en el iPad: «fondos que parecen de otro tamaño») las franjas de fuera de la pantalla, con el plano que se ve */
+      if (B.motor && B.motor.ambiente) { const im = capa.querySelector('img'); B.motor.ambiente(im && im.src ? im.src : null); }
       const ant = capaAct; capaAct = capa; capas.push(capa);
       if (ant) {      // la anterior se queda debajo hasta que la nueva es opaca del todo; luego se quita
         const h = setTimeout(() => { temporizadores.delete(h); ant.remove(); const k = capas.indexOf(ant); if (k >= 0) capas.splice(k, 1); }, dur * 1000 + 80);
