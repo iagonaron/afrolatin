@@ -227,8 +227,14 @@
    despacio (3 s) y oscurece y desenfoca; al cambiar a una lámina sin velo, se va de golpe */
 .c4-capa::before{content:'';position:absolute;inset:0;pointer-events:none;background:rgba(10,6,3,.42);opacity:0;transition:none}
 /* el desenfoque, en la propia lámina (un filtro sobre una imagen quieta; más barato que backdrop-filter en el ordenador del aula) */
-#escena .plano .lam{transition:none}
-#escena:has(#capas4s.velo) .plano .lam{filter:blur(4px);transition:filter 3s ease}
+#escena .plano .lam{transition:transform 1s ease}   /* al quitar el velo, la nitidez vuelve de golpe y el 3 % de más se recoge en 1 s (sin salto) */
+/* (28-oct 21:03, Iago en el iPad: «hay planos, sobre todo en la bachata, en los que el fondo parece de otro tamaño, como un cambio de formato»)
+   en Safari el desenfoque deja los bordes de la lámina transparentes y se ve el negro de detrás (la imagen parece encogerse): mientras se
+   desenfoca, la lámina se agranda un 3 % a la vez, para que esos bordes queden fuera de la pantalla */
+#escena .plano{overflow:hidden}
+#escena:has(#capas4s.velo) .plano .lam{filter:blur(4px);transform:scale(1.03);transition:filter 3s ease,transform 3s ease}
+#escena .plano>.vida,#escena .plano>.vida-var{transition:transform 1s ease}
+#escena:has(#capas4s.velo) .plano>.vida,#escena:has(#capas4s.velo) .plano>.vida-var{transform:scale(1.03);transition:transform 3s ease}   /* las luces, pegadas a la lámina */
 .c4-capa.velo::before{opacity:1;transition:opacity 3s ease}
 .c4-capa.oscuro::before{opacity:1;transition:none;background:rgba(6,9,10,.58)}
 .c4-capa.oscuro::before,.c4-capa.velo::before{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
