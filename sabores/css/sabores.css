@@ -280,3 +280,8 @@
 /* (28-oct) iconos de la portada: el instrumento real, sin caja ni sombra */
 .s4p-ic:has(.s4p-icim){background:none!important}
 .s4p-ic .s4p-icim{width:118%;height:118%;object-fit:contain;filter:none}
+/* (28-oct 09:02, Iago: «donde pone América y Europa no se lee bien: en blanco, como Océano Atlántico») los continentes, en blanco y con
+   un halo oscuro suave para leerse sobre la carta pintada */
+.c4-rotulo:not(.mar):not(.parada){color:#FFF7EA;text-shadow:0 0 calc(var(--u)*.4) rgba(10,6,3,.85),0 0 calc(var(--u)*1.2) rgba(10,6,3,.55)}
+.c4-rotulo:not(.mar):not(.parada).on{opacity:.95}
+.c4-rotulo.mar{text-shadow:0 0 calc(var(--u)*.4) rgba(5,20,30,.7)}.c4-rotulo.mar.on{opacity:.7}
