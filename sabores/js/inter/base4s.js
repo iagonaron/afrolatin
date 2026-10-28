@@ -88,12 +88,12 @@
     return im;
   };
 
-  /* ── patrón de una rejilla: 'X.xx…' (16 por compás) separado por '|' → [[2,0,1,…16], …]  (X=2 fuerte, x=1 suave) ── */
+  /* ── patrón de una rejilla: 'X.xx…' (16 por compás) separado por '|' → [[2,0,1,…16], …]  (X=2 fuerte, x=1 suave, T=3 tresillo) ── */
   S.parsePatron = function (p) {
     if (!p || typeof p !== 'string') return null;
     const partes = p.split('|').map(s => s.replace(/\s+/g, '')).filter(Boolean);
     if (!partes.length) return null;
-    return partes.map(s => { const a = s.split('').slice(0, 16).map(ch => ch === 'X' ? 2 : ch === 'x' ? 1 : 0); while (a.length < 16) a.push(0); return a; });
+    return partes.map(s => { const a = s.split('').slice(0, 16).map(ch => ch === 'X' ? 2 : ch === 'x' ? 1 : ch === 'T' ? 3 : 0); while (a.length < 16) a.push(0); return a; });   // (28-oct) T = tresillo de semicorcheas (ocupa esta casilla y la siguiente)
   };
 
   /* ── reloj visual: tiempo del AudioContext menos la latencia de salida (lo que se OYE ahora) ── */

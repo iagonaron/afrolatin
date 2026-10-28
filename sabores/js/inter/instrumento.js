@@ -26,9 +26,11 @@
     centro.style.setProperty('--c', color);
     const tarjeta = B.el('div', 's4-tarjeta'); centro.appendChild(tarjeta);
     const foto = B.el('div', 's4-foto'); foto.appendChild(S.imagen(op.img, nom, color));   // (27-oct, Iago) sin cuadrado de color: el PNG recortado
+    /* (28-oct 19:23, Iago: «cuando suenan güira y bongó, que salgan los iconos de los dos») op.img2: el segundo instrumento, al lado */
+    if (op.img2) { foto.classList.add('dos'); foto.appendChild(S.imagen(op.img2, nom, color)); }
     /* (27-oct noche, Iago: «el instrumento no cambia de lugar: se le presenta y se le anima en el mismo sitio» y «a tamaño real, el bajo
        acostado») si el instrumento tiene caja en BLUES.CAPAS.tam, la foto va en esa misma caja de la pantalla (la de las capas) */
-    const tam = B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[op.img];
+    const tam = !op.img2 && B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[op.img];
     if (tam) { caja.classList.add('s4-tam'); caja.style.setProperty('--tx', tam.x); caja.style.setProperty('--ty', tam.y); caja.style.setProperty('--tw', tam.w); caja.style.setProperty('--th', tam.h); if (tam.ry != null) caja.style.setProperty('--ry', tam.ry); }
     tarjeta.appendChild(foto);
     const pieT = B.el('div', 's4-tpie'); tarjeta.appendChild(pieT);
@@ -70,9 +72,19 @@
     const pintaCompas = c => { if (pips) { const is = pips.children; for (let j = 0; j < is.length; j++) is[j].classList.toggle('act', j === c); } };
     const apagaRejilla = () => { celdas.forEach(c => c.classList.remove('act', 'golpe')); pintaCompas(-1); segs.forEach(s => s.classList.remove('on')); nivAnt = 0; };
     let pAnt = -1, cAnt = -1;
+    /* (28-oct 19:13, Iago: «quiero algún apunte en la parte animada cuando hay tresillo… tres semicorcheas de tresillo») una T en el
+       patrón = tresillo de semicorcheas en esa corchea (esta casilla y la siguiente): tres golpecitos bajo una llave con un 3 */
+    let tresAct = null;
     const pintaPatron = c => {
       const P = pat[c % pat.length];
-      celdas.forEach((ce, i) => { ce.classList.toggle('h2', P[i] === 2); ce.classList.toggle('h1', P[i] === 1); });
+      celdas.forEach((ce, i) => {
+        ce.classList.toggle('h2', P[i] === 2); ce.classList.toggle('h1', P[i] === 1);
+        const t = P[i] === 3, t2 = i > 0 && P[i - 1] === 3;
+        ce.classList.toggle('tres', t); ce.classList.toggle('tres2', t2);
+        let ov = ce.querySelector('.s4-tresillo');
+        if (t && !ov) { ov = B.el('div', 's4-tresillo'); ov.appendChild(B.el('b')); for (let k = 0; k < 3; k++) ov.appendChild(B.el('i')); ce.appendChild(ov); }
+        if (!t && ov) ov.remove();
+      });
     };
     if (pat) pintaPatron(0);
 
@@ -118,6 +130,11 @@
           pAnt = s; const ce = celdas[s]; ce.classList.add('act');
           if (ce.classList.contains('h1') || ce.classList.contains('h2')) ce.classList.add('golpe');
         }
+        /* el tresillo: se enciende cada uno de sus tres golpecitos a su tiempo */
+        const ce0 = celdas[s].classList.contains('tres') ? celdas[s] : (s > 0 && celdas[s].classList.contains('tres2') ? celdas[s - 1] : null);
+        const ov = ce0 && ce0.querySelector('.s4-tresillo');
+        if (ov) { const i0 = celdas.indexOf(ce0), d16 = dCompas / 16, k = Math.max(0, Math.min(2, Math.floor((p - c * dCompas - i0 * d16) / (d16 * 2 / 3)))); [...ov.querySelectorAll('i')].forEach((x, j) => x.classList.toggle('on', j === k)); tresAct = ov; }
+        else if (tresAct) { tresAct.querySelectorAll('i').forEach(x => x.classList.remove('on')); tresAct = null; }
       } else {
         const lv = e.m.nivel('p');
         nivAnt = lv > nivAnt ? lv : nivAnt * .88 + lv * .12;
