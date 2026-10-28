@@ -346,3 +346,9 @@
 #escena[data-sabor="2"] .c4-clave{background:#1F7A4D!important}
 #escena[data-sabor="2"] .c4-claves.fijo .c4-clave:first-child{background:#135A37!important}
 .s4-instrumento .s4-foto.dos .s4-pips{right:auto;left:50%;transform:translateX(-50%);top:calc(var(--u)*-3.2)}   /* el contador de compases, entre los dos y por encima */
+
+/* (28-oct 20:41, Iago: en el iPad no se ven las fotos de los sabores) la foto de cada carta, un <img> que llena su caja; la caja, a todo el
+   ancho de la carta (en Safari, un hijo vacío de un <button> flex puede quedarse con ancho 0) */
+.s4p-carta>.s4p-im,.s4p-carta>.s4p-fr{width:100%;align-self:stretch;flex:0 0 auto}
+.s4p-im{position:relative;overflow:hidden}
+.s4p-im>img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;pointer-events:none}
