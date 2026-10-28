@@ -362,3 +362,12 @@
 .s4p-carta>.s4p-im,.s4p-carta>.s4p-fr{width:100%;align-self:stretch;flex:0 0 auto}
 .s4p-im{position:relative;overflow:hidden}
 .s4p-im>img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;pointer-events:none}
+/* (28-oct, Sabor 4) mezclador con selector ESTROFA / ESTRIBILLO: los dos botones juntos, el elegido encendido; la pista que no suena en
+   esa sección (los metales en la estrofa), apagada y sin poder encenderse a la vista */
+.s4-mezclador .s4-secciones{display:inline-flex;gap:calc(var(--u)*.5);margin-left:calc(var(--u)*1.6)}
+.s4-mezclador .s4-sec.on{background:#FFE9C7!important;color:#2A1408!important;border-color:#FFE9C7!important}
+.s4-mezclador .s4-pista.s4-callada{opacity:.38;filter:grayscale(.7)}
+#escena[data-sabor="4"] .c4-clave{background:#B23A6E!important}
+#escena[data-sabor="4"] .c4-claves.fijo .c4-clave:first-child{background:#7E2148!important}
+/* (29-oct, C1 · Sabor 4) los carteles, SIEMPRE por encima del maestro de ceremonias: con los brazos estirados (señala) les tapaba el final */
+.c4-claves{z-index:2}.c4-pj{z-index:1}
