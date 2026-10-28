@@ -285,3 +285,35 @@
 .c4-rotulo:not(.mar):not(.parada){color:#FFF7EA;text-shadow:0 0 calc(var(--u)*.4) rgba(10,6,3,.85),0 0 calc(var(--u)*1.2) rgba(10,6,3,.55)}
 .c4-rotulo:not(.mar):not(.parada).on{opacity:.95}
 .c4-rotulo.mar{text-shadow:0 0 calc(var(--u)*.4) rgba(5,20,30,.7)}.c4-rotulo.mar.on{opacity:.7}
+
+/* ══ (28-oct, ronda 8) ══ */
+/* (09:12, Iago: «hay carteles que sigues poniendo de lado… el que canta sin palabras: en el centro») los carteles, SIEMPRE centrados en
+   la pantalla aunque haya personaje (los fijos del resumen siguen a su lado) */
+.c4-capa.pj-der .c4-claves:not(.fijo),.c4-capa.pj-izq .c4-claves:not(.fijo){left:8%!important;right:8%!important}
+/* (09:09) vida propia de un plano recurso (las velas de la rueda): solo mientras se ve su lámina */
+.vida-var{position:absolute;inset:0;pointer-events:none;opacity:0}
+.vida-var.on{opacity:1}
+.plano.en-corte .vida-var.on .vida{opacity:1}
+/* (09:16, Iago: «está mal cortado, mira su codo») la hoja del Taller cortaba el codo de «ríe»: en espejo y pegada al borde derecho de la
+   pantalla, el corte queda fuera (hasta que el Taller la repita) */
+.c4-pj[data-pose="CANDE_rie"].der{right:-.8%!important}
+/* (09:12) bloque del instrumento: rejilla y botones más pequeños (todo centrado; ver herramientas/capas_s1_tiempos.py) */
+.s4-instrumento.s4-tam{--rw:calc(var(--u)*34)!important;--bw:calc(var(--u)*8)!important;--bh:calc(var(--u)*5)!important;--bg:calc(var(--u)*.9)!important}
+.s4-instrumento.s4-tam .s4-c{width:calc(var(--u)*1.75)!important;height:calc(var(--u)*1.75)!important}
+.s4-instrumento.s4-tam .s4-gr{gap:calc(var(--u)*.26)!important}
+.s4-instrumento.s4-tam .s4-nivel i{height:calc(var(--u)*2.8)!important}
+.s4-instrumento.s4-tam .i-pie{gap:calc(var(--u)*.45)!important}
+.s4-instrumento.s4-tam .i-pie .bt{font-size:calc(var(--u)*.92)!important}
+/* (09:23) el título del repaso, arriba y centrado (las dos fichas, a sus lados) */
+.c4-capa .c4-claves.titulo.cabeza{top:5%!important;transform:none!important}
+.c4-claves.titulo.cabeza .c4-tit{font-size:calc(var(--u)*5)!important}
+.c4-claves.fijo.cabeza{left:0!important;right:0!important;width:auto!important;top:3.5%!important;align-items:center!important;gap:calc(var(--u)*.3)!important}
+.c4-claves.fijo.cabeza .c4-clave,.c4-claves.fijo.cabeza .c4-clave:first-child{background:none!important;text-align:center!important;padding:0!important}
+.c4-claves.fijo.cabeza .c4-tit{font-size:calc(var(--u)*5.2)!important;color:#FFF3E0!important}
+.c4-claves.fijo.cabeza .c4-subt{font-size:calc(var(--u)*1.7)!important}
+.c4-capa:has(.cabeza) .c4-claves.fijo:not(.cabeza){top:21%}
+/* (09:12) «Otra vez» en una línea */
+.s4-instrumento.s4-tam{--bw:calc(var(--u)*9.2)!important}
+.s4-instrumento.s4-tam .i-pie .bt{white-space:nowrap!important;font-size:calc(var(--u)*.88)!important}
+/* (09:12, Iago: «que ocupe toda la pantalla») las casillas del inventario, más grandes */
+.s4-mezclador .s4-pistas.s4-inv{--cel:min(calc(var(--u)*10.6),calc((var(--u)*56.25 - var(--u)*21) / 3))!important}
