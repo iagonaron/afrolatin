@@ -322,8 +322,10 @@ BLUES.dia(2, {
     "espera": 0.6,
     "recursos": [
      "loops/s2/bolero_guitarra_bajo.mp3",
+     "img/s2/inst_b_guitarra.webp",
      "img/s2/inst_b_guitarra.webp"
-    ]
+    ],
+    "img2": "img/s1/inst_m_bajo.webp"
    }
   },
   {
