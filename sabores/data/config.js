@@ -4,7 +4,7 @@ BLUES.CFG = {
   titulos: { 1: 'Cumbia y merengue', 2: 'Bolero y bachata', 3: 'Samba y bossa nova', 4: 'Salsa y kizomba' },
   colores: { 1: '#C9603F', 2: '#1F9AA0', 3: '#3E7D4F', 4: '#B9802A' },
   elige: 'un sabor', talon: 'PASE DE BAILE', serie: '4S·0', claveHitos: 'lm_sabores_hitos',
-  musCarga: { 1: { src: 'mus/s1_cumbia_carga.mp3', vol: .6 } },   // (Iago 23:19: «la de la carga no me acaba de convencer, haz otra») Suno «AfroLatin · Cumbia de carga»
+  musCarga: { 1: { src: 'mus/s1_cumbia_carga.mp3', vol: .6 }, 2: { src: 'mus/s2_bolero_carga.mp3', vol: .6 } },   // (28-oct) Sabor 2: Suno «AfroLatin · Bolero de carga»   // (Iago 23:19: «la de la carga no me acaba de convencer, haz otra») Suno «AfroLatin · Cumbia de carga»
   /* (27-oct) portada estilo «cartel» (propuesta A de C1, elegida por Iago con cambios: sin personajes, fondo caribeño, un bodegón de
      instrumentos por sabor en img/portada/sabor_N.webp y el fondo en img/portada/fondo.webp; tarjetas iguales con su icono) */
   portada: 'cartel', titPortada: 'Afro<span>Latin</span>', subPortada: 'Unidad 7 · Un viaje en 4 sabores', esquina: 'DE COLOMBIA A ANGOLA<br>2.º GP · LM AT HOME',
