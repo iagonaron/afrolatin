@@ -199,6 +199,10 @@
       if (it.rotulos) ponRotulos(it, dur, c);
       if (it.rejillas) ponRejillas(it, dur, c);
       if (it.son) B.espera(t, c).then(ok => ok && suenaEjemplo(it, c));
+      /* (28-oct 10:00, Iago: «que haya música para el cierre del capítulo: desde que Doña Cande lo recomienda… hasta que se pulse Portada o
+         Repetir el sabor») { musica: { src, vol, bucle } }: la música del plano cambia a esta (sigue sonando en la pantalla final) */
+      if (it.musica) B.espera(t, c).then(ok => ok && B.musica && B.musica(Object.assign({ bucle: true }, it.musica)));
+      if (it.quitaFijos) { const vs = fijos.slice(); B.espera(t, c).then(ok => { if (!ok) return; vs.forEach(v => { const k = fijos.indexOf(v); if (k >= 0) fijos.splice(k, 1); v.classList.add('sale'); setTimeout(() => v.remove(), 450); }); }); }   // solo las de antes de esta frase
     });
   };
   /* (28-oct 09:23, Iago: «en el resumen, cuando están diciendo las cosas, quiero que se escuchen») { son: [bucles], t, dur, vol }: el
@@ -218,7 +222,7 @@
     const r = [], P = (B.CAPAS && B.CAPAS.poses) || {};
     Object.keys(P).forEach(q => Object.keys(P[q]).forEach(k => k !== '_' && r.push(P[q][k])));
     const L = (B.CAPAS && B.CAPAS.lineas) || {};
-    Object.keys(L).forEach(k => B.arr(L[k]).forEach(it => { if (it.img) r.push(it.img); B.arr(it.son).forEach(x => r.push(x)); }));
+    Object.keys(L).forEach(k => B.arr(L[k]).forEach(it => { if (it.img) r.push(it.img); B.arr(it.son).forEach(x => r.push(x)); if (it.musica) r.push(it.musica.src); }));
     return r;
   };
   C.sinSubt = () => !!(B.CAPAS && B.CAPAS.sinSubtitulos);

@@ -1008,7 +1008,7 @@ const HIT = (function () {
     f.innerHTML = '<div class="fd-caja"><div class="fd-et">FIN DEL ' + ETQ + ' ' + n + '</div><div class="fd-tit">' + B.esc(dia.titulo) + '</div>' +
       '<div class="fd-sig">' + (sig ? 'Próxima sesión: ' + ETQc + ' ' + (n + 1) + ' · ' + B.esc(sig.titulo) : 'Fin de la historia. La sala de práctica sigue abierta.') + '</div>' +
       '<div class="fd-bt"><button class="bt" data-a="port">' + ICO.casa + ' Portada</button>' +
-      '<button class="bt" data-a="rep">Repetir el acto</button>' +
+      '<button class="bt" data-a="rep">Repetir el ' + ETQ.toLowerCase() + '</button>' +
       (sig && HIT.abierto(n + 1) ? '<button class="bt prim" data-a="sig">' + ETQc + ' ' + (n + 1) + ' ' + ICO.play + '</button>' : sig ? '<span class="fd-cerrado">' + CANDADO + 'El ' + ETQ.toLowerCase() + ' ' + (n + 1) + ' se abre en clase</span>' : '') + '</div></div>';
     f.classList.add('on');
     f.querySelector('[data-a=port]').addEventListener('click', () => { M.salir(); M.portada(); });

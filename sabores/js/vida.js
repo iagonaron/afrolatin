@@ -67,11 +67,13 @@
     },
     caen(o) {   // (28-oct 09:13, Iago: «en cada plano con mar o velas, un poquito de animación y partículas como que caigan del cielo») motitas de
       //   luz que bajan despacio, meciéndose, y se apagan al acercarse al suelo
-      const z = o.zona || [0, 0, 1, .85], ms = [], n = o.n || 26;
-      const nueva = arriba => ({ x: az(z[0], z[2]), y: arriba ? z[1] - az(0, .08) : az(z[1], z[3]), vy: az(.012, .032), s: az(.7, 1.9), f: az(.4, 1.3), p: az(0, TAU), am: az(.004, .012) });
+      const z = o.zona || [0, 0, 1, .85], ms = [], n = o.n || 40;
+      /* (28-oct 09:57, Iago: «añade más partículas en general: da vidilla y se siente brisa») más motitas y una brisa suave que las lleva de lado */
+      const br = o.brisa == null ? .022 : o.brisa;
+      const nueva = arriba => ({ x: az(z[0] - .1, z[2]), y: arriba ? z[1] - az(0, .08) : az(z[1], z[3]), vy: az(.012, .034), s: az(.7, 2), f: az(.4, 1.3), p: az(0, TAU), am: az(.006, .016), vx: br * az(.6, 1.4) });
       for (let i = 0; i < n; i++) ms.push(nueva(false));
       return {
-        paso(dt, t) { ms.forEach((m, i) => { m.y += m.vy * dt; m.x += m.am * Math.cos(t * m.f + m.p) * dt; if (m.y > z[3]) ms[i] = nueva(true); }); this.t = t; },
+        paso(dt, t) { const r = 1 + .6 * Math.sin(t * .23) * Math.sin(t * .11 + 1); ms.forEach((m, i) => { m.y += m.vy * dt; m.x += (m.vx * r + m.am * Math.cos(t * m.f + m.p)) * dt; if (m.y > z[3] || m.x > z[2] + .05) ms[i] = nueva(true); }); this.t = t; },   // la brisa va y viene (r)
         pinta(L, M, W, H) { L.fillStyle = o.col || '#FFE9C4'; ms.forEach(m => { const fin = Math.min(1, (z[3] - m.y) / .12, (m.y - z[1] + .08) / .1);
           L.globalAlpha = Math.max(0, (o.alfa || .5) * fin * (.6 + .4 * Math.sin(this.t * m.f * 2 + m.p))); const s = m.s * K * 1.6; L.fillRect(m.x * W * K - s / 2, m.y * H * K - s / 2, s, s); }); }
       };

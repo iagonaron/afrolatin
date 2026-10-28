@@ -27,7 +27,7 @@
     const glints = []; let ant = 0, ultimoGlint = 0, tAnt = 0;
     /* (28-oct 09:13, Iago: «partículas como que caigan del cielo… en el videoclip echo de menos esas animacioncitas sutiles») V.caen = n.º
        de motitas de luz que bajan despacio, meciéndose, y se apagan cerca del suelo */
-    const nuevaM = arriba => ({ x: Math.random(), y: arriba ? -Math.random() * .08 : Math.random() * .9, vy: .012 + Math.random() * .022, s: .7 + Math.random() * 1.3, f: .4 + Math.random() * .9, p: Math.random() * 6.3, am: .004 + Math.random() * .008 });
+    const nuevaM = arriba => ({ x: Math.random() * 1.1 - .1, y: arriba ? -Math.random() * .08 : Math.random() * .9, vy: .012 + Math.random() * .024, s: .7 + Math.random() * 1.4, f: .4 + Math.random() * .9, p: Math.random() * 6.3, am: .006 + Math.random() * .01, vx: .022 * (.6 + Math.random() * .8) });   // (09:57) con brisa
     const motas = []; for (let i = 0; i < (V.caen || 0); i++) motas.push(nuevaM(false));
     const R = () => Math.random();
     function nuevoGlint(t) {
@@ -71,7 +71,8 @@
       }
       if (motas.length) {
         const dt = tAnt ? Math.min(.1, t - tAnt) : 0; cx.fillStyle = '#FFE9C4';
-        motas.forEach((m, i) => { m.y += m.vy * dt; m.x += m.am * Math.cos(t * m.f + m.p) * dt; if (m.y > .9) { motas[i] = nuevaM(true); return; }
+        const rb = 1 + .6 * Math.sin(t * .23) * Math.sin(t * .11 + 1);
+        motas.forEach((m, i) => { m.y += m.vy * dt; m.x += (m.vx * rb + m.am * Math.cos(t * m.f + m.p)) * dt; if (m.y > .9 || m.x > 1.05) { motas[i] = nuevaM(true); return; }
           const fin = Math.max(0, Math.min(1, (.9 - m.y) / .12, (m.y + .08) / .1)); cx.globalAlpha = .5 * fin * (.6 + .4 * Math.sin(t * m.f * 2 + m.p));
           const z = m.s * Math.max(1, u * .11); cx.fillRect(m.x * W - z / 2, m.y * H - z / 2, z, z); });
         cx.globalAlpha = 1;
