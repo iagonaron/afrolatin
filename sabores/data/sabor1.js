@@ -781,10 +781,10 @@ BLUES.dia(1, {
       "color": "#C9603F",
       "patron": "..X...X...X...X.",
       "celda": [
-       5,
        1,
+       3,
        4,
-       2
+       1
       ]
      },
      {
@@ -810,10 +810,10 @@ BLUES.dia(1, {
       "color": "#3E7D4F",
       "nivK": 0.6,
       "celda": [
+       5,
        1,
-       3,
        4,
-       1
+       2
       ]
      },
      {
@@ -2210,10 +2210,10 @@ BLUES.dia(1, {
       "color": "#3E7D4F",
       "nivK": 0.6,
       "celda": [
-       3,
-       3,
+       5,
+       1,
        4,
-       1
+       2
       ]
      },
      {
@@ -2223,10 +2223,10 @@ BLUES.dia(1, {
       "loop": "loops/s1/merengue_piano.mp3",
       "color": "#5B6FA8",
       "celda": [
-       5,
-       1,
+       3,
+       3,
        4,
-       2
+       1
       ]
      },
      {
