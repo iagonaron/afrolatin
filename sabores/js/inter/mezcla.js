@@ -191,7 +191,8 @@
        [col, fila, ancho, alto]); las casillas que sobran, vacías */
     const inv = Array.isArray(op.inventario) && pistas.every(p => Array.isArray(p.celda));
     if (inv) {
-      const [nc, nf] = op.inventario; fila.classList.add('s4-inv'); fila.style.setProperty('--nc', nc); fila.style.setProperty('--nf', nf);
+      const [nc, nf] = op.inventario; fila.classList.add('s4-inv', 'nf' + nf);   // (28-oct, Sabor 2) nf2: dos filas más altas (la bachata)
+      fila.style.setProperty('--nc', nc); fila.style.setProperty('--nf', nf);
       const ocupa = new Set(); pistas.forEach(p => { const [c, r, w, h] = p.celda; for (let i = 0; i < w; i++) for (let j = 0; j < h; j++) ocupa.add((c + i) + ',' + (r + j)); });
       for (let c = 1; c <= nc; c++) for (let r = 1; r <= nf; r++) if (!ocupa.has(c + ',' + r)) { const v = B.el('div', 's4-vacia'); v.style.gridArea = r + ' / ' + c + ' / span 1 / span 1'; fila.appendChild(v); }
     }
