@@ -14,7 +14,7 @@
   B.inter.instrumento = async function (caja, op) {
     const ctl = op.ctl || B.control();
     caja.classList.add('s4', 's4-instrumento'); S.sinFoco(caja);
-    const bpm = op.bpm || 90, comp = op.compases || 4, L = S.durLoop(bpm, comp), vueltas = Math.max(1, op.vueltas || 2);
+    const bpm = op.bpm || 90, comp = op.compases || 4, L = S.durLoop(bpm, comp), vueltas = Math.max(.25, op.vueltas || 2);   // (28-oct 12:46, Iago: «los patrones se me hacen largos: ponlos a la mitad») vale media vuelta
     const auto = op.auto !== false, espera = op.espera == null ? 1.2 : op.espera;
     const color = S.color(op.color, 0), nom = op.nom || op.id || '';
     const pat = S.parsePatron(op.patron);
