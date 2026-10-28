@@ -181,7 +181,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "pj": {
 "q": "FAUSTINO",
-"pose": "sorpresa",
+"pose": "saluda",
 "lado": "der"
 },
 "t": 0
@@ -311,7 +311,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "pj": {
 "q": "FAUSTINO",
-"pose": "brazos",
+"pose": "corazon",
 "lado": "der"
 },
 "t": 5.6
@@ -1069,8 +1069,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "loops/s2/bolero_maracas.mp3"
 ],
 "t": 4.2,
-"dur": 2.7,
-"vol": 0.5
+"dur": 2.8,
+"vol": 0.5,
+"off": 3.15
 },
 {
 "son": [

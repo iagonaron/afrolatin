@@ -880,8 +880,8 @@ BLUES.dia(1, {
      },
      {
       "t": 2.58,
-      "img": "img/s1/vc_c_27_cande_canta.webp",
-      "txt": "cande canta"
+      "img": "img/s1/vc_c_50_cande_canta_pp.webp",
+      "txt": "cande canta pp"
      },
      {
       "t": 8.566,
@@ -2294,8 +2294,8 @@ BLUES.dia(1, {
      },
      {
       "t": 1.573,
-      "img": "img/s1/vc_m_18_yunior_canta.webp",
-      "txt": "yunior canta"
+      "img": "img/s1/vc_m_36_yunior_canta_pp.webp",
+      "txt": "yunior canta pp"
      },
      {
       "t": 5.706,

@@ -27,48 +27,44 @@ BLUES.dia(2, {
   {
    "id": "s2_b0",
    "nombre": "Viaje · a Cuba",
-   "img": "img/s1/mapa_caribe_v3.webp",
-   "desc": "El mapa del Caribe: el avión va de la República Dominicana a Santiago de Cuba.",
+   "img": "img/s2/mapa_cuba_rd.webp",
+   "desc": "La carta del Caribe, de cerca (Cuba oriental y La Española): el barco va de la costa norte de la República Dominicana a Santiago de Cuba por el Paso de los Vientos.",
    "amb": [
     {
-     "src": "sfx/s1/avion_cabina.mp3",
-     "vol": 0.28
+     "src": "sfx/s1/barco_mar.mp3",
+     "vol": 0.35
     }
    ],
    "mapa": {
     "desde": "República Dominicana",
     "hasta": "Cuba · Santiago de Cuba",
     "sub": "Cuba, Santiago de Cuba: aquí nació el bolero",
-    "dur": 7,
-    "vehiculo": "el avión",
+    "dur": 8,
+    "vehiculo": "el barco",
     "ruta": [
      [
-      0.6283,
-      0.2604
+      0.665,
+      0.425
      ],
      [
-      0.5999,
-      0.2354
+      0.57,
+      0.392
      ],
      [
-      0.5704,
-      0.2173
+      0.46,
+      0.385
      ],
      [
-      0.5396,
-      0.2061
+      0.385,
+      0.425
      ],
      [
-      0.5076,
-      0.2018
+      0.31,
+      0.468
      ],
      [
-      0.4744,
-      0.2045
-     ],
-     [
-      0.44,
-      0.214
+      0.205,
+      0.468
      ]
     ],
     "encuadre": [
@@ -76,18 +72,28 @@ BLUES.dia(2, {
      0.5,
      0.5
     ],
-    "icono": "img/s1/avion_cenital.webp",
+    "icono": "img/s1/barco_cenital.webp",
     "cenital": true,
-    "anchoIcono": 6.2,
-    "proporcionIcono": 0.9,
+    "anchoIcono": 2.9,
+    "proporcionIcono": 3.286,
     "zoom": false,
     "sfx": [
      {
-      "src": "sfx/s1/avion_pasa.mp3",
-      "vol": 0.55,
+      "src": "sfx/s1/barco_sirena.mp3",
+      "vol": 0.3,
       "t": 0
      }
     ],
+    "etiq": {
+     "desde": [
+      -14,
+      4.2
+     ],
+     "hasta": [
+      -1.5,
+      3.8
+     ]
+    },
     "musA": {
      "src": "mus/s2_bolero_fondo.mp3",
      "vol": 0.7
@@ -241,9 +247,9 @@ BLUES.dia(2, {
     "color": "#E2A33F",
     "bpm": 90,
     "compases": 4,
-    "vueltas": 0.5,
+    "vueltas": 1,
     "espera": 0.6,
-    "patron": "X.x.X.x.X.x.X.x.",
+    "patron": "X.x.X.x.X.x.X.x.|X.x.X.x.X.x.X.T.|X.x.X.x.X.x.X.x.|X.x.X.x.X.x.X.T.",
     "recursos": [
      "loops/s2/bolero_maracas.mp3",
      "img/s2/inst_b_maracas.webp"
@@ -276,7 +282,7 @@ BLUES.dia(2, {
     "color": "#8A5A3C",
     "bpm": 90,
     "compases": 2,
-    "vueltas": 0.5,
+    "vueltas": 1,
     "espera": 0.6,
     "patron": "x...x...x.X.X.X.",
     "recursos": [
@@ -311,7 +317,7 @@ BLUES.dia(2, {
     "loop": "loops/s2/bolero_guitarra_bajo.mp3",
     "color": "#5B6FA8",
     "bpm": 90,
-    "compases": 2,
+    "compases": 4,
     "vueltas": 1,
     "espera": 0.6,
     "recursos": [
@@ -377,7 +383,7 @@ BLUES.dia(2, {
       "img": "img/s2/inst_b_maracas.webp",
       "loop": "loops/s2/bolero_maracas.mp3",
       "color": "#E2A33F",
-      "patron": "X.x.X.x.X.x.X.x.",
+      "patron": "X.x.X.x.X.x.X.x.|X.x.X.x.X.x.X.T.|X.x.X.x.X.x.X.x.|X.x.X.x.X.x.X.T.",
       "celda": [
        8,
        2,
@@ -481,8 +487,8 @@ BLUES.dia(2, {
      },
      {
       "t": 4.97,
-      "img": "img/s2/vc_b_18_despacito_faustino_canta.webp",
-      "txt": "despacito faustino canta"
+      "img": "img/s2/vc_b_36_faustino_canta_pp.webp",
+      "txt": "faustino canta pp"
      },
      {
       "t": 10.741,
@@ -515,7 +521,7 @@ BLUES.dia(2, {
       "txt": "congas cc"
      },
      {
-      "t": 44.648,
+      "t": 45.369,
       "img": "img/s2/vc_b_24_congas_callan.webp",
       "txt": "congas callan"
      },
@@ -531,8 +537,8 @@ BLUES.dia(2, {
      },
      {
       "t": 62.683,
-      "img": "img/s2/vc_b_28_no_confundas_espana.webp",
-      "txt": "no confundas espana"
+      "img": "img/s2/vc_b_37_faustino_canta_pp.webp",
+      "txt": "faustino canta pp"
      },
      {
       "t": 67.733,
@@ -560,17 +566,17 @@ BLUES.dia(2, {
       "txt": "congas cc"
      },
      {
-      "t": 90.818,
+      "t": 91.54,
       "img": "img/s2/vc_b_30_salon_entero.webp",
       "txt": "salon entero"
      },
      {
       "t": 96.589,
-      "img": "img/s2/vc_b_17_faustino_micro.webp",
-      "txt": "faustino micro"
+      "img": "img/s2/vc_b_38_faustino_canta_pp.webp",
+      "txt": "faustino canta pp"
      },
      {
-      "t": 101.639,
+      "t": 103.082,
       "img": "img/s2/vc_b_32_eso_es_bolero.webp",
       "txt": "eso es bolero"
      },
@@ -582,7 +588,7 @@ BLUES.dia(2, {
     ],
     "letra": [
      {
-      "t": 4.36,
+      "t": 4.48,
       "txt": "Despacito, mi niña, que el bolero no corre:",
       "t1": 9.24,
       "w": [
@@ -621,16 +627,16 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 9.9,
+      "t": 10.18,
       "txt": "va en cuatro, sin prisa, para hablarte de amor.",
       "t1": 15.12,
       "w": [
        [
-        10.05,
+        10.21,
         "va"
        ],
        [
-        10.29,
+        10.33,
         "en"
        ],
        [
@@ -664,12 +670,12 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 15.36,
+      "t": 15.97,
       "txt": "La guitarra del trío me acompaña en la noche,",
-      "t1": 20.25,
+      "t1": 20.37,
       "w": [
        [
-        15.51,
+        16.0,
         "La"
        ],
        [
@@ -707,7 +713,7 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 20.27,
+      "t": 20.39,
       "txt": "y el bajo, muy suave, camina alrededor.",
       "t1": 26.26,
       "w": [
@@ -746,9 +752,9 @@ BLUES.dia(2, {
       "txt": ""
      },
      {
-      "t": 28.36,
+      "t": 28.48,
       "txt": "Maracas, maracas, corcheas de terciopelo,",
-      "t1": 32.6,
+      "t1": 32.72,
       "w": [
        [
         28.51,
@@ -773,7 +779,7 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 32.62,
+      "t": 32.74,
       "txt": "y cada cuatro compases, un tresillo al vuelo.",
       "t1": 39.12,
       "w": [
@@ -812,12 +818,12 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 39.33,
+      "t": 39.79,
       "txt": "Las congas se callan, y al final del compás,",
-      "t1": 43.94,
+      "t1": 44.46,
       "w": [
        [
-        39.48,
+        39.82,
         "Las"
        ],
        [
@@ -855,12 +861,12 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 43.96,
+      "t": 45.0,
       "txt": "tres golpes que dicen: no te vayas, ven acá.",
       "t1": 49.6,
       "w": [
        [
-        44.11,
+        45.03,
         "tres"
        ],
        [
@@ -902,12 +908,12 @@ BLUES.dia(2, {
       "txt": ""
      },
      {
-      "t": 49.7,
+      "t": 50.48,
       "txt": "Nació en Santiago de Cuba, con la trova y la guitarra,",
-      "t1": 55.34,
+      "t1": 55.86,
       "w": [
        [
-        49.85,
+        50.51,
         "Nació"
        ],
        [
@@ -953,12 +959,12 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 55.36,
+      "t": 56.39,
       "txt": "y cruzó hasta México de balcón en balcón.",
       "t1": 61.24,
       "w": [
        [
-        55.51,
+        56.42,
         "y"
        ],
        [
@@ -992,16 +998,16 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 61.62,
+      "t": 62.14,
       "txt": "No lo confundas, muchacho, con el bolero de España:",
-      "t1": 66.72,
+      "t1": 66.84,
       "w": [
        [
-        61.77,
+        62.17,
         "No"
        ],
        [
-        62.22,
+        62.29,
         "lo"
        ],
        [
@@ -1035,7 +1041,7 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 66.74,
+      "t": 66.86,
       "txt": "el nuestro va en cuatro y te toca el corazón.",
       "t1": 72.36,
       "w": [
@@ -1086,9 +1092,9 @@ BLUES.dia(2, {
       "txt": ""
      },
      {
-      "t": 74.67,
+      "t": 74.79,
       "txt": "Maracas, maracas, corcheas de terciopelo,",
-      "t1": 78.8,
+      "t1": 79.32,
       "w": [
        [
         74.82,
@@ -1113,12 +1119,12 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 78.82,
+      "t": 80.18,
       "txt": "y cada cuatro compases, un tresillo al vuelo.",
       "t1": 85.24,
       "w": [
        [
-        78.97,
+        80.21,
         "y"
        ],
        [
@@ -1152,12 +1158,12 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 85.55,
+      "t": 85.94,
       "txt": "Las congas se callan, y al final del compás,",
-      "t1": 90.28,
+      "t1": 90.94,
       "w": [
        [
-        85.7,
+        85.97,
         "Las"
        ],
        [
@@ -1195,12 +1201,12 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 90.3,
+      "t": 91.19,
       "txt": "tres golpes que dicen: no te vayas, ven acá.",
       "t1": 95.76,
       "w": [
        [
-        90.45,
+        91.22,
         "tres"
        ],
        [
@@ -1242,12 +1248,12 @@ BLUES.dia(2, {
       "txt": ""
      },
      {
-      "t": 101.62,
+      "t": 102.56,
       "txt": "¡Eso es bolero, jóvenes!",
       "t1": 104.16,
       "w": [
        [
-        101.77,
+        102.59,
         "¡Eso"
        ],
        [
@@ -1359,7 +1365,7 @@ BLUES.dia(2, {
      {
       "id": "s2_t04",
       "quien": "FAUSTINO",
-      "texto": "Pues ya tienen pasaje: ¡en avión, a la República Dominicana!",
+      "texto": "Pues ya tienen pasaje: ¡a la República Dominicana!",
       "voz": "voz/s2/s2_t04.mp3"
      }
     ]
@@ -1373,48 +1379,52 @@ BLUES.dia(2, {
   {
    "id": "s2_h0",
    "nombre": "Viaje · a Santo Domingo",
-   "img": "img/s1/mapa_caribe_v3.webp",
-   "desc": "El mapa del Caribe: el avión va de Santiago de Cuba a Santo Domingo.",
+   "img": "img/s2/mapa_cuba_rd.webp",
+   "desc": "La carta del Caribe, de cerca: el barco va de Santiago de Cuba a Santo Domingo, por el sur de La Española.",
    "amb": [
     {
-     "src": "sfx/s1/avion_cabina.mp3",
-     "vol": 0.28
+     "src": "sfx/s1/barco_mar.mp3",
+     "vol": 0.35
     }
    ],
    "mapa": {
     "desde": "Cuba",
     "hasta": "República Dominicana · Santo Domingo",
     "sub": "República Dominicana, Santo Domingo: aquí nació la bachata",
-    "dur": 7,
-    "vehiculo": "el avión",
+    "dur": 9,
+    "vehiculo": "el barco",
     "ruta": [
      [
-      0.44,
-      0.214
+      0.205,
+      0.468
      ],
      [
-      0.4753,
-      0.2533
+      0.285,
+      0.53
      ],
      [
-      0.5111,
-      0.2838
+      0.312,
+      0.635
      ],
      [
-      0.5475,
-      0.3055
+      0.4,
+      0.77
      ],
      [
-      0.5844,
-      0.3184
+      0.52,
+      0.8
      ],
      [
-      0.6219,
-      0.3226
+      0.615,
+      0.878
      ],
      [
-      0.66,
-      0.318
+      0.69,
+      0.8
+     ],
+     [
+      0.745,
+      0.712
      ]
     ],
     "encuadre": [
@@ -1422,18 +1432,28 @@ BLUES.dia(2, {
      0.5,
      0.5
     ],
-    "icono": "img/s1/avion_cenital.webp",
+    "icono": "img/s1/barco_cenital.webp",
     "cenital": true,
-    "anchoIcono": 6.2,
-    "proporcionIcono": 0.9,
+    "anchoIcono": 2.9,
+    "proporcionIcono": 3.286,
     "zoom": false,
     "sfx": [
      {
-      "src": "sfx/s1/avion_pasa.mp3",
-      "vol": 0.55,
+      "src": "sfx/s1/barco_sirena.mp3",
+      "vol": 0.3,
       "t": 0
      }
     ],
+    "etiq": {
+     "desde": [
+      -9,
+      -1.6
+     ],
+     "hasta": [
+      -26,
+      -9
+     ]
+    },
     "musA": {
      "src": "mus/s2_bachata_fondo.mp3",
      "vol": 0.7
@@ -1549,7 +1569,7 @@ BLUES.dia(2, {
      "color": "#1F9AA0",
      "bpm": 130,
      "compases": 2,
-     "vueltas": 0.5,
+     "vueltas": 1,
      "espera": 0.6,
      "patron": "X.x.X.x.X.x.X.x.",
      "recursos": [
@@ -1566,7 +1586,7 @@ BLUES.dia(2, {
      "color": "#C9603F",
      "bpm": 130,
      "compases": 2,
-     "vueltas": 0.5,
+     "vueltas": 1,
      "espera": 0.6,
      "patron": "X.x.X.x.X.x.X.x.",
      "recursos": [
@@ -1608,7 +1628,8 @@ BLUES.dia(2, {
     "recursos": [
      "loops/s2/bachata_breaks.mp3",
      "img/s2/inst_bongo.webp"
-    ]
+    ],
+    "img2": "img/s1/inst_m_guira.webp"
    }
   },
   {
@@ -1637,13 +1658,15 @@ BLUES.dia(2, {
     "color": "#1F9AA0",
     "bpm": 130,
     "compases": 4,
-    "vueltas": 0.5,
+    "vueltas": 1,
     "espera": 0.6,
     "patron": "X...X...X...X...",
     "recursos": [
      "loops/s2/bachata_estribillo.mp3",
-     "img/s1/inst_m_guira.webp"
-    ]
+     "img/s1/inst_m_guira.webp",
+     "img/s2/inst_bongo.webp"
+    ],
+    "img2": "img/s2/inst_bongo.webp"
    }
   },
   {
@@ -1672,7 +1695,7 @@ BLUES.dia(2, {
     "color": "#3E7D4F",
     "bpm": 130,
     "compases": 4,
-    "vueltas": 0.5,
+    "vueltas": 1,
     "espera": 0.6,
     "patron": "X.......X...X...",
     "recursos": [
@@ -1896,14 +1919,14 @@ BLUES.dia(2, {
       "txt": "hoja banda"
      },
      {
-      "t": 2.732,
+      "t": 3.669,
       "img": "img/s2/vc_h_17_ramoncito_micro.webp",
       "txt": "ramoncito micro"
      },
      {
       "t": 11.636,
-      "img": "img/s2/vc_h_30_baile_pegados.webp",
-      "txt": "baile pegados"
+      "img": "img/s2/vc_h_36_ramoncito_canta_pp.webp",
+      "txt": "ramoncito canta pp"
      },
      {
       "t": 14.916,
@@ -1931,12 +1954,17 @@ BLUES.dia(2, {
       "txt": "estribillo"
      },
      {
-      "t": 36.943,
+      "t": 34.599,
+      "img": "img/s2/vc_h_37_ramoncito_canta_pp.webp",
+      "txt": "ramoncito canta pp"
+     },
+     {
+      "t": 40.223,
       "img": "img/s2/vc_h_23_diabla_cc.webp",
       "txt": "diabla cc"
      },
      {
-      "t": 42.098,
+      "t": 43.504,
       "img": "img/s2/vc_h_24_bajo_cc.webp",
       "txt": "bajo cc"
      },
@@ -1949,6 +1977,11 @@ BLUES.dia(2, {
       "t": 50.533,
       "img": "img/s2/vc_h_35_pies_bailando.webp",
       "txt": "pies bailando"
+     },
+     {
+      "t": 53.345,
+      "img": "img/s2/vc_h_39_diabla_solo.webp",
+      "txt": "diabla solo"
      },
      {
       "t": 58.969,
@@ -1976,17 +2009,22 @@ BLUES.dia(2, {
       "txt": "guira caminando"
      },
      {
-      "t": 76.777,
-      "img": "img/s2/vc_h_30_baile_pegados.webp",
-      "txt": "baile pegados"
+      "t": 77.246,
+      "img": "img/s2/vc_h_22_estribillo.webp",
+      "txt": "estribillo"
      },
      {
-      "t": 83.807,
+      "t": 81.463,
+      "img": "img/s2/vc_h_38_ramoncito_canta_pp.webp",
+      "txt": "ramoncito canta pp"
+     },
+     {
+      "t": 87.087,
       "img": "img/s2/vc_h_23_diabla_cc.webp",
       "txt": "diabla cc"
      },
      {
-      "t": 88.962,
+      "t": 90.368,
       "img": "img/s2/vc_h_24_bajo_cc.webp",
       "txt": "bajo cc"
      },
@@ -2001,19 +2039,19 @@ BLUES.dia(2, {
       "txt": "ramoncito micro"
      },
      {
-      "t": 102.552,
+      "t": 103.489,
       "img": "img/s2/vc_h_32_eso_es_bachata.webp",
       "txt": "eso es bachata"
      }
     ],
     "letra": [
      {
-      "t": 2.75,
+      "t": 3.63,
       "txt": "Ay, mi amor, si te duele el corazón,",
-      "t1": 8.79,
+      "t1": 8.89,
       "w": [
        [
-        2.9,
+        3.66,
         "Ay,"
        ],
        [
@@ -2047,12 +2085,16 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 8.81,
+      "t": 8.94,
+      "txt": ""
+     },
+     {
+      "t": 10.85,
       "txt": "no llores sola, que suena esta canción:",
       "t1": 16.49,
       "w": [
        [
-        8.96,
+        10.88,
         "no"
        ],
        [
@@ -2082,12 +2124,16 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 17.19,
+      "t": 16.54,
+      "txt": ""
+     },
+     {
+      "t": 17.84,
       "txt": "la güira y el bongó, y nada más,",
-      "t1": 21.68,
+      "t1": 21.99,
       "w": [
        [
-        17.34,
+        17.87,
         "la"
        ],
        [
@@ -2121,16 +2167,16 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 21.7,
+      "t": 22.1,
       "txt": "¡y un break de locos a cada compás!",
       "t1": 25.69,
       "w": [
        [
-        21.85,
+        22.13,
         "¡y"
        ],
        [
-        22.11,
+        22.25,
         "un"
        ],
        [
@@ -2160,7 +2206,7 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 25.74,
+      "t": 25.86,
       "txt": "La güira camina, camina sin parar…",
       "t1": 29.27,
       "w": [
@@ -2191,7 +2237,7 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 29.53,
+      "t": 29.65,
       "txt": "¡que en el estribillo se queda en su lugar!",
       "t1": 33.39,
       "w": [
@@ -2234,9 +2280,9 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 34.27,
+      "t": 34.39,
       "txt": "Bachata, bachata, guitarra diabla,",
-      "t1": 37.88,
+      "t1": 38.17,
       "w": [
        [
         34.42,
@@ -2257,12 +2303,12 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 37.9,
+      "t": 38.19,
       "txt": "la que improvisa, la que me habla.",
-      "t1": 41.31,
+      "t1": 41.43,
       "w": [
        [
-        38.05,
+        38.22,
         "la"
        ],
        [
@@ -2292,9 +2338,9 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 41.33,
+      "t": 41.45,
       "txt": "El bajo te dice: una larga y dos cortas,",
-      "t1": 45.26,
+      "t1": 45.38,
       "w": [
        [
         41.48,
@@ -2335,7 +2381,7 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 45.28,
+      "t": 45.4,
       "txt": "y la güira, quietica, en negras se acomoda.",
       "t1": 50.51,
       "w": [
@@ -2378,12 +2424,12 @@ BLUES.dia(2, {
       "txt": ""
      },
      {
-      "t": 57.55,
+      "t": 58.16,
       "txt": "Nació en los barrios de Santo Domingo,",
-      "t1": 61.11,
+      "t1": 61.51,
       "w": [
        [
-        57.7,
+        58.19,
         "Nació"
        ],
        [
@@ -2413,12 +2459,12 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 61.13,
+      "t": 61.53,
       "txt": "música de amargue, de lunes a domingo.",
-      "t1": 64.69,
+      "t1": 64.81,
       "w": [
        [
-        61.28,
+        61.56,
         "música"
        ],
        [
@@ -2448,9 +2494,9 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 64.71,
+      "t": 64.83,
       "txt": "La rítmica acompaña, suave, a contratiempo,",
-      "t1": 68.66,
+      "t1": 68.78,
       "w": [
        [
         64.86,
@@ -2479,9 +2525,9 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 68.69,
+      "t": 68.81,
       "txt": "y la diabla puntea robándote el tiempo.",
-      "t1": 72.66,
+      "t1": 72.78,
       "w": [
        [
         68.84,
@@ -2514,7 +2560,7 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 72.68,
+      "t": 72.8,
       "txt": "La güira camina, camina sin parar…",
       "t1": 76.17,
       "w": [
@@ -2545,12 +2591,12 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 76.25,
+      "t": 76.56,
       "txt": "¡que en el estribillo se queda en su lugar!",
       "t1": 80.33,
       "w": [
        [
-        76.4,
+        76.59,
         "¡que"
        ],
        [
@@ -2558,7 +2604,7 @@ BLUES.dia(2, {
         "en"
        ],
        [
-        76.92,
+        76.98,
         "el"
        ],
        [
@@ -2588,9 +2634,9 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 80.97,
+      "t": 81.09,
       "txt": "Bachata, bachata, guitarra diabla,",
-      "t1": 84.85,
+      "t1": 84.97,
       "w": [
        [
         81.12,
@@ -2611,9 +2657,9 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 84.87,
+      "t": 84.99,
       "txt": "la que improvisa, la que me habla.",
-      "t1": 88.19,
+      "t1": 88.31,
       "w": [
        [
         85.02,
@@ -2646,9 +2692,9 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 88.21,
+      "t": 88.33,
       "txt": "El bajo te dice: una larga y dos cortas,",
-      "t1": 92.35,
+      "t1": 92.47,
       "w": [
        [
         88.36,
@@ -2689,7 +2735,7 @@ BLUES.dia(2, {
       ]
      },
      {
-      "t": 92.37,
+      "t": 92.49,
       "txt": "y la güira, quietica, en negras se acomoda.",
       "t1": 97.33,
       "w": [
@@ -2732,16 +2778,16 @@ BLUES.dia(2, {
       "txt": ""
      },
      {
-      "t": 102.38,
+      "t": 103.25,
       "txt": "¡Eso es bachata, mi gente!",
       "t1": 105.55,
       "w": [
        [
-        102.53,
+        103.28,
         "¡Eso"
        ],
        [
-        103.22,
+        103.4,
         "es"
        ],
        [
