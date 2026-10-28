@@ -134,6 +134,11 @@ const HIT = (function () {
       else if (k === 'f' || k === 'F') { e.preventDefault(); M.pantallaCompleta(); }
     });
   }
+  /* (28-oct 12:40, Iago: «al darle a pantalla completa, al menos en mi ordenador, no ocupa todo») la escena es 16:9; si la pantalla tiene
+     otra proporción (o Chrome enseña una barra arriba), las franjas que sobran ya no son negras: la misma imagen, desenfocada y oscura */
+  M.ambiente = function (src) { const m = document.getElementById('marco'); if (m) m.style.setProperty('--amb', src ? 'url("' + src + '")' : 'none'); };
+  const bandas = () => { const m = document.getElementById('marco'); if (m) m.classList.toggle('con-bandas', Math.abs(innerWidth / Math.max(1, innerHeight) - 16 / 9) > .015); };
+  addEventListener('resize', bandas); document.addEventListener('fullscreenchange', bandas); document.addEventListener('webkitfullscreenchange', bandas); setTimeout(bandas, 0);
   M.pantallaCompleta = function () {
     try {
       const d = document;
@@ -259,6 +264,7 @@ const HIT = (function () {
   };
   function portadaCartel(pr) {
     const IC = CF.iconos || {}, COL = CF.coloresPortada || COLOR_DIA, fo = 'img/portada/fondo.webp';
+    if (M.ambiente) M.ambiente(B.existe(fo) ? (B.img[fo] || fo) : null);
     let h = '<div class="s4p-fondo"' + (B.existe(fo) ? ' style="background-image:url(' + fo + ')"' : '') + '></div><div class="s4p-velo"></div>' +
       '<h1 class="s4p-tit">' + (CF.titPortada || B.esc(CF.tit || '')) + '</h1><div class="s4p-sub">' + B.esc(CF.subPortada || CF.sub || '') + '</div>' +
       '<div class="s4p-esq">' + (CF.esquina || B.esc(CF.ano || '')) + '</div><div class="s4p-fila">';
@@ -488,6 +494,7 @@ const HIT = (function () {
       });
     } else kbEl.appendChild(provisional(p, rM));
     pelicula.appendChild(el);
+    if (M.ambiente) M.ambiente(B.img[rM]);
     if (B.vida && B.VIDA) B.vida.pon(el, B.VIDA[p.id]);
     if (B.vida && B.VIDA) Object.keys(p.var || {}).forEach(q => { const cf = B.VIDA[p.id + ':' + q]; if (!cf) return;   // (28-oct) vida de una variante (p. ej. las velas de la rueda)
       const w = B.el('div', 'vida-var'); w.dataset.q = q; el.appendChild(w); B.vida.pon(w, cf); });
@@ -545,9 +552,17 @@ const HIT = (function () {
     const guiaRuta = mk('path', { d, class: 'mapa-ruta-guia', 'stroke-width': .38 * k, 'stroke-dasharray': (.9 * k) + ' ' + (1.1 * k) });
     svg.insertBefore(guiaRuta, svg.firstChild.nextSibling || null);
     const sitio = (q, txt, cls) => {
-      const g = mk('g', { class: 'mapa-sitio ' + cls }), o = (m.etiq && m.etiq[cls]) || [1.6, .7];
+      const g = mk('g', { class: 'mapa-sitio ' + cls }); let o = (m.etiq && m.etiq[cls]) || [1.6, .7];
       g.append(mk('circle', { cx: q[0], cy: q[1], r: .85 * k }));
-      const t = mk('text', { x: q[0] + o[0] * k, y: q[1] + o[1] * k, 'font-size': 2.5 * k }); t.textContent = txt; g.append(t); svg.append(g); return g;
+      /* (28-oct 12:49, Iago: «lo de República Dominicana… luego hay otro texto que empieza por S que no sale: desaparece por la derecha») cerca
+         del borde derecho, el rótulo va a la IZQUIERDA del punto; y «Lugar · Ciudad», en dos líneas (la ciudad más pequeña) */
+      const der = q[0] > 58 && !(m.etiq && m.etiq[cls]);
+      if (m.icono && !(m.etiq && m.etiq[cls])) o = [3.4, .7];   // con avión o barco pintados, el rótulo se aparta del vehículo
+      const t = mk('text', { x: der ? q[0] - o[0] * k : q[0] + o[0] * k, y: q[1] + o[1] * k, 'font-size': 2.5 * k, 'text-anchor': der ? 'end' : 'start' });
+      const tr = String(txt).split(' · ');
+      if (tr.length > 1) { const x = t.getAttribute('x'); tr.forEach((s, i) => { const sp = mk('tspan', { x, dy: i ? '1.15em' : 0 }); if (i) sp.setAttribute('font-size', 1.75 * k); sp.textContent = s; t.append(sp); }); }
+      else t.textContent = txt;
+      g.append(t); svg.append(g); return g;
     };
     sitio(P[0], m.desde || '', 'desde'); const gB = sitio(P[P.length - 1], m.hasta || '', 'hasta');
     /* (C2, 20-oct) paradas: el nombre de la ciudad sale cuando el tren pasa por el punto i de la ruta */
@@ -566,7 +581,9 @@ const HIT = (function () {
     svg.append(barco); capa.appendChild(svg); kbEl.appendChild(capa);
     const plano = kbEl.parentNode;
     const cartel = B.el('div', 'mapa-cartel'); cartel.innerHTML = '<div class="mc-lugar"></div><div class="mc-sub"></div>';
-    cartel.firstChild.textContent = m.hasta || ''; cartel.lastChild.textContent = m.sub || ''; plano.appendChild(cartel);
+    { const tr = String(m.hasta || '').split(' · '); cartel.firstChild.textContent = tr[0];   // (12:49) «Lugar · Ciudad»: el lugar grande y la ciudad debajo, más pequeña
+      if (tr[1]) { const c = B.el('div', 'mc-ciudad'); c.textContent = tr.slice(1).join(' · '); cartel.insertBefore(c, cartel.lastChild); } }
+    cartel.lastChild.textContent = m.sub || ''; plano.appendChild(cartel);
     const L = ruta.getTotalLength(); (tren ? [mascara] : [ruta, sombra]).forEach(r => { r.style.strokeDasharray = L; r.style.strokeDashoffset = L; });
     paradas.forEach(pa => { let dm = Infinity; for (let v = 0; v <= 1.0001; v += .002) { const q = ruta.getPointAtLength(L * Math.min(1, v)), dd = Math.hypot(q.x - P[pa.i][0], q.y - P[pa.i][1]); if (dd < dm) { dm = dd; pa.s = v; } } });
     const soloArrastre = m.arrastrar === 'solo';   // (Iago a C2) en el acto 2 el tren solo se mueve arrastrando (Protester puede saltar)
@@ -622,7 +639,7 @@ const HIT = (function () {
           const an = m.antes || (m.cartel ? { tit: m.cartel.titulo, txt: m.cartel.texto, et: m.cartel.et } : {}), pre = B.el('div', 'mapa-previo no-seguir');
           pre.innerHTML = '<div class="mp-et"></div><div class="mp-tit"></div><div class="mp-txt"></div><button class="bt prim mp-bt">Continuar ' + ICO.play + '</button>';
           pre.children[0].textContent = an.et || (tren ? 'Próxima estación' : 'Próxima escala');
-          pre.children[1].textContent = an.tit || ('Rumbo a ' + (m.hasta || ''));
+          pre.children[1].textContent = an.tit || ('Rumbo a ' + String(m.hasta || '').split(' · ')[0]);   // (12:49) sin la ciudad: cabía en 4 líneas
           pre.children[2].textContent = an.txt || m.sub || '';
           plano.appendChild(pre); void pre.offsetWidth; pre.classList.add('on');
           quitar.push(() => { pre.classList.remove('on'); setTimeout(() => pre.remove(), 600); });

@@ -78,6 +78,7 @@
     if (tam) { w.style.setProperty('--x', tam.x); w.style.setProperty('--y', tam.y); w.style.setProperty('--w', tam.w); w.style.setProperty('--h', tam.h); }
     else { w.style.setProperty('--x', it.x == null ? .5 : it.x); w.style.setProperty('--y', it.y == null ? .5 : it.y); w.style.setProperty('--h', it.h || .5); }
     const im = B.el('img'); im.src = url(it.img); im.alt = it.nom || ''; w.appendChild(im);
+    if (it.rot) im.style.transform = 'rotate(' + it.rot + 'deg)';   // (28-oct 12:41) las postales, un pelín giradas, como sobre la mesa
     if (it.nom) { const nm = B.el('b'); nm.textContent = it.nom; if (it.tn) nm.style.fontSize = 'calc(var(--u)*' + it.tn + ')'; w.appendChild(nm); }
     capa.appendChild(w); void w.offsetWidth; w.classList.add('on'); sueltas.push(w);
   }
