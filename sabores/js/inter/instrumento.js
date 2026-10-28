@@ -27,10 +27,12 @@
     const tarjeta = B.el('div', 's4-tarjeta'); centro.appendChild(tarjeta);
     const foto = B.el('div', 's4-foto'); foto.appendChild(S.imagen(op.img, nom, color));   // (27-oct, Iago) sin cuadrado de color: el PNG recortado
     /* (28-oct 19:23, Iago: «cuando suenan güira y bongó, que salgan los iconos de los dos») op.img2: el segundo instrumento, al lado */
-    if (op.img2) { foto.classList.add('dos'); foto.appendChild(S.imagen(op.img2, nom, color)); }
+    /* (28-oct, Sabor 3) op.imgs: varios a la vez (tamborim + caixa + pandeiro; la batucada entera) */
+    const extra = op.imgs || (op.img2 ? [op.img2] : []);
+    if (extra.length) { foto.classList.add('dos'); if (extra.length > 1) foto.classList.add('tres'); extra.forEach(x => foto.appendChild(S.imagen(x, nom, color))); }
     /* (27-oct noche, Iago: «el instrumento no cambia de lugar: se le presenta y se le anima en el mismo sitio» y «a tamaño real, el bajo
        acostado») si el instrumento tiene caja en BLUES.CAPAS.tam, la foto va en esa misma caja de la pantalla (la de las capas) */
-    const tam = !op.img2 && B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[op.img];
+    const tam = !extra.length && B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[op.img];
     if (tam) { caja.classList.add('s4-tam'); caja.style.setProperty('--tx', tam.x); caja.style.setProperty('--ty', tam.y); caja.style.setProperty('--tw', tam.w); caja.style.setProperty('--th', tam.h); if (tam.ry != null) caja.style.setProperty('--ry', tam.ry); }
     tarjeta.appendChild(foto);
     const pieT = B.el('div', 's4-tpie'); tarjeta.appendChild(pieT);
