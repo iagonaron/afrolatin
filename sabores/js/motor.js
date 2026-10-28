@@ -496,7 +496,6 @@ const HIT = (function () {
       });
     } else kbEl.appendChild(provisional(p, rM));
     pelicula.appendChild(el);
-    if (M.ambiente) M.ambiente(B.img[rM]);
     if (B.vida && B.VIDA) B.vida.pon(el, B.VIDA[p.id]);
     if (B.vida && B.VIDA) Object.keys(p.var || {}).forEach(q => { const cf = B.VIDA[p.id + ':' + q]; if (!cf) return;   // (28-oct) vida de una variante (p. ej. las velas de la rueda)
       const w = B.el('div', 'vida-var'); w.dataset.q = q; el.appendChild(w); B.vida.pon(w, cf); });
@@ -504,7 +503,7 @@ const HIT = (function () {
     /* (28-oct 19:12, Iago: «hay un fotograma sin fondo antes del salón») el plano nuevo entra cuando su lámina ya está descodificada
        (como mucho 0,7 s); mientras, se queda el de antes */
     const imM = kbEl.querySelector('.lam.maestra');
-    const muestra = () => { if (el._visto) return; el._visto = true; capasPlano(); void el.offsetWidth; el.classList.add('on'); if (viejo) { viejo.classList.remove('on'); setTimeout(() => viejo.remove(), 1000); } };
+    const muestra = () => { if (el._visto) return; el._visto = true; capasPlano(); if (M.ambiente) { const vv = el.querySelector('.lam.var.on') || imM; el._amb = vv ? vv.src : B.img[rM]; M.ambiente(el._amb); }   /* (21:03) las franjas de fuera, con la lámina a la vez */ void el.offsetWidth; el.classList.add('on'); if (viejo) { viejo.classList.remove('on'); setTimeout(() => viejo.remove(), 1000); } };
     /* (19:22, Iago: «cuidado, fotograma sin fondo cuando aparece Ramoncito») SIEMPRE se espera a la descodificación (en Safari, «complete» no
        quiere decir pintable); si ya lo está, es inmediato */
     if (viejo && imM && imM.decode) Promise.race([imM.decode().catch(() => { }), new Promise(r => setTimeout(r, 700))]).then(muestra); else muestra();
@@ -741,6 +740,9 @@ const HIT = (function () {
     const hay = !!vis && !!planoEl.querySelector('.lam.var[data-q="' + vis + '"]');
     planoEl._vis = hay ? vis : null; planoEl._recurso = hay && /^RECURSO_|_CERCA$/.test(vis);
     planoEl.classList.toggle('en-corte', planoEl._recurso);
+    /* (28-oct 21:03, Iago en el iPad: «en la bachata hay planos en los que el fondo parece de otro tamaño, como un cambio de formato») las
+       franjas de fuera de la pantalla (iPad 4:3) seguían con la lámina general mientras dentro se veía el plano recurso: ahora, la que se ve */
+    if (M.ambiente && planoAct && planoEl._visto) { const vv = hay ? planoEl.querySelector('.lam.var[data-q="' + vis + '"]') : planoEl.querySelector('.lam.maestra'); if (vv && vv.src && vv.src !== planoEl._amb) { planoEl._amb = vv.src; M.ambiente(vv.src); } }
     B.$$('.chapa', planoEl).forEach(v => v.classList.toggle('habla', !!q && v.dataset.q === q));
     const p = planoAct, f = q && p && ((p.foco && p.foco[q]) || (p.var && p.var[q] && p.var[q].foco));
     focoObj = { s: 0, x: .5, y: .5 };   // (Iago, 19-oct, 22:40) sin acercarse a la cara del que habla: NADA de movimientos de cámara (el foco solo sirve para los bocadillos)
