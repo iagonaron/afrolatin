@@ -27,7 +27,7 @@
     lineas: {
       s1_001: [k(['4 sesiones', '4 sabores', '9 bailes'], .15, .75)],
       s1_002: [k(['Siglos XVI–XIX'], .02, .1, 'arriba'),
-               { rotulos: [{ txt: 'Europa', x: .772, y: .1 }, { txt: 'África', x: .814, y: .586 }, { txt: 'América', x: .276, y: .77 }, { txt: 'Océano Atlántico', x: .43, y: .4, clase: 'mar', tam: 1.7 }], en: .08 },
+               { rotulos: [{ txt: 'Océano Atlántico', x: .43, y: .4, clase: 'mar', tam: 1.7 }], en: .08 },   // (09:51) sin Europa, África ni América
                { flechas: [{ de: [.6414, .1935], a: [.6069, .5245], comba: -.22, en: .2 }, { de: [.5862, .5613], a: [.2759, .5123], comba: .14, en: .48 }, { de: [.731, .6716], a: [.4414, .7697], comba: -.12, en: .6 }] }],
       s1_003: [k(['Una gran injusticia'], .05, .2), k(['Su música', 'viajó con ellos'], .55, .8)],
       s1_004: [ins('img/s1/v2_postal_africa.webp', 'África · tambores', .1, { x: .2, y: .44, h: .36 }),   // (27-oct noche) las tres postales sobre la mesa

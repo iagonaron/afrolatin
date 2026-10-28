@@ -36,24 +36,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "clase": "mar",
 "tam": 1.7,
 "t": 2.04
-},
-{
-"txt": "Europa",
-"x": 0.8398,
-"y": 0.1042,
-"t": 2.58
-},
-{
-"txt": "América",
-"x": 0.3646,
-"y": 0.8333,
-"t": 3.45
-},
-{
-"txt": "África",
-"x": 0.8464,
-"y": 0.4861,
-"t": 4.62
 }
 ]
 },
