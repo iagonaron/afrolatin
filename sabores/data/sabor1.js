@@ -530,7 +530,7 @@ BLUES.dia(1, {
     "color": "#E2A33F",
     "bpm": 90,
     "compases": 2,
-    "vueltas": 1,
+    "vueltas": 0.5,
     "espera": 0.6,
     "patron": "X.xxX.xxX.xxX.xx",
     "recursos": [
@@ -570,7 +570,7 @@ BLUES.dia(1, {
     "color": "#1F9AA0",
     "bpm": 90,
     "compases": 2,
-    "vueltas": 2,
+    "vueltas": 1,
     "espera": 0.6,
     "patron": "X.xxX.xxX.xxX.xx",
     "recursos": [
@@ -652,7 +652,7 @@ BLUES.dia(1, {
      "color": "#8A5A3C",
      "bpm": 90,
      "compases": 2,
-     "vueltas": 1,
+     "vueltas": 0.5,
      "espera": 0.6,
      "patron": "X.x.X.x.X.x.X.x.",
      "recursos": [
@@ -884,32 +884,27 @@ BLUES.dia(1, {
       "txt": "cande canta"
      },
      {
-      "t": 7.9,
+      "t": 8.566,
       "img": "img/s1/vc_c_28_pies_cumbia.webp",
       "txt": "pies cumbia"
      },
      {
-      "t": 13.221,
+      "t": 13.886,
       "img": "img/s1/vc_c_29_maracas_musico.webp",
       "txt": "maracas musico"
      },
      {
-      "t": 18.541,
+      "t": 19.206,
       "img": "img/s1/vc_c_30_tambor_y_bajo_se_miran.webp",
       "txt": "tambor y bajo se miran"
      },
      {
-      "t": 22.531,
+      "t": 23.196,
       "img": "img/s1/vc_c_32_guacharaquero_rie.webp",
       "txt": "guacharaquero rie"
      },
      {
-      "t": 27.852,
-      "img": "img/s1/vc_c_20_guacharaca.webp",
-      "txt": "guacharaca"
-     },
-     {
-      "t": 30.512,
+      "t": 31.177,
       "img": "img/s1/vc_c_33_cande_y_coristas.webp",
       "txt": "cande y coristas"
      },
@@ -924,7 +919,7 @@ BLUES.dia(1, {
       "txt": "coristas"
      },
      {
-      "t": 45.143,
+      "t": 43.813,
       "img": "img/s1/vc_c_36_manos_teclista.webp",
       "txt": "manos teclista"
      },
@@ -934,12 +929,12 @@ BLUES.dia(1, {
       "txt": "cande senala teclista"
      },
      {
-      "t": 55.783,
+      "t": 53.788,
       "img": "img/s1/vc_c_38_acordeon_encima.webp",
       "txt": "acordeon encima"
      },
      {
-      "t": 61.104,
+      "t": 59.774,
       "img": "img/s1/vc_c_39_metales.webp",
       "txt": "metales"
      },
@@ -949,17 +944,17 @@ BLUES.dia(1, {
       "txt": "banderines luces"
      },
      {
-      "t": 67.754,
+      "t": 69.084,
       "img": "img/s1/vc_c_47_baterista.webp",
       "txt": "baterista"
      },
      {
-      "t": 70.414,
+      "t": 71.079,
       "img": "img/s1/vc_c_41_velas_mar_banda_fondo.webp",
       "txt": "velas mar banda fondo"
      },
      {
-      "t": 73.075,
+      "t": 74.405,
       "img": "img/s1/vc_c_35_solo_medio_teclista.webp",
       "txt": "solo medio teclista"
      },
@@ -974,12 +969,12 @@ BLUES.dia(1, {
       "txt": "maracas"
      },
      {
-      "t": 79.725,
+      "t": 81.055,
       "img": "img/s1/vc_c_27_cande_canta.webp",
       "txt": "cande canta"
      },
      {
-      "t": 83.715,
+      "t": 85.045,
       "img": "img/s1/vc_c_44_aplausos.webp",
       "txt": "aplausos"
      }
@@ -1973,7 +1968,7 @@ BLUES.dia(1, {
      "color": "#1F9AA0",
      "bpm": 90,
      "compases": 2,
-     "vueltas": 1,
+     "vueltas": 0.5,
      "espera": 0.6,
      "patron": "X.xxX.xxX.xxX.xx",
      "recursos": [
@@ -1990,7 +1985,7 @@ BLUES.dia(1, {
      "color": "#1F9AA0",
      "bpm": 140,
      "compases": 4,
-     "vueltas": 1,
+     "vueltas": 0.5,
      "espera": 0.6,
      "patron": "X.xxX.xxX.xxX.xx",
      "recursos": [
@@ -2318,7 +2313,7 @@ BLUES.dia(1, {
       "txt": "guira manos"
      },
      {
-      "t": 17.277,
+      "t": 16.45,
       "img": "img/s1/vc_m_22_estribillo.webp",
       "txt": "estribillo"
      },
@@ -2328,12 +2323,12 @@ BLUES.dia(1, {
       "txt": "yunior guira"
      },
      {
-      "t": 23.889,
+      "t": 23.062,
       "img": "img/s1/vc_m_23_tambora_cc.webp",
       "txt": "tambora cc"
      },
      {
-      "t": 27.195,
+      "t": 28.021,
       "img": "img/s1/vc_m_24_bandera.webp",
       "txt": "bandera"
      },
@@ -2343,17 +2338,17 @@ BLUES.dia(1, {
       "txt": "orquesta entera"
      },
      {
-      "t": 32.98,
+      "t": 35.46,
       "img": "img/s1/vc_m_25_bajo_cc.webp",
       "txt": "bajo cc"
      },
      {
-      "t": 35.46,
+      "t": 36.699,
       "img": "img/s1/vc_m_26_piano.webp",
       "txt": "piano"
      },
      {
-      "t": 37.113,
+      "t": 40.005,
       "img": "img/s1/vc_m_27_saxos.webp",
       "txt": "saxos"
      },
@@ -2363,12 +2358,12 @@ BLUES.dia(1, {
       "txt": "trompetas"
      },
      {
-      "t": 42.898,
+      "t": 43.311,
       "img": "img/s1/vc_m_29_conga_cc.webp",
       "txt": "conga cc"
      },
      {
-      "t": 44.551,
+      "t": 45.378,
       "img": "img/s1/vc_m_35_pies_bailando.webp",
       "txt": "pies bailando"
      },
@@ -2393,17 +2388,17 @@ BLUES.dia(1, {
       "txt": "tambora cc"
      },
      {
-      "t": 59.428,
+      "t": 61.081,
       "img": "img/s1/vc_m_24_bandera.webp",
       "txt": "bandera"
      },
      {
-      "t": 62.734,
+      "t": 63.561,
       "img": "img/s1/vc_m_30_baile_calle.webp",
       "txt": "baile calle"
      },
      {
-      "t": 66.04,
+      "t": 65.214,
       "img": "img/s1/vc_m_32_yunior_final.webp",
       "txt": "yunior final"
      }

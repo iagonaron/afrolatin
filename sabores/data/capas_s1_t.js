@@ -105,30 +105,33 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img": "img/s1/v2_postal_africa.webp",
 "nom": "Los tambores y los ritmos de África",
 "t": 3.67,
-"x": 0.2,
-"y": 0.54,
-"h": 0.36,
-"tn": 1.85
+"x": 0.205,
+"y": 0.5,
+"h": 0.3,
+"tn": 1.45,
+"rot": -2.5
 },
 {
 "img": "img/s1/v2_postal_iberica.webp",
 "nom": "Las guitarras, el idioma y las canciones de España y Portugal",
 "t": 6.29,
 "x": 0.5,
-"y": 0.54,
-"h": 0.36,
+"y": 0.5,
+"h": 0.3,
 "solo": false,
-"tn": 1.85
+"tn": 1.45,
+"rot": 1.6
 },
 {
 "img": "img/s1/v2_postal_indigena.webp",
 "nom": "Las flautas y las maracas de los pueblos indígenas",
 "t": 10.17,
-"x": 0.8,
-"y": 0.54,
-"h": 0.36,
+"x": 0.795,
+"y": 0.5,
+"h": 0.3,
 "solo": false,
-"tn": 1.85
+"tn": 1.45,
+"rot": -1.4
 }
 ],
 "s1_005": [
