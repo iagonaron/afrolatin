@@ -229,6 +229,7 @@ const HIT = (function () {
     } else h += '<span class="port-nota">Elige ' + (CF.elige || 'un acto') + ' · Espacio para seguir · P pausa · F pantalla completa</span>';
     h += '</div>';
     p.innerHTML = h;
+    if (cartel && B.portadaVida) B.portadaVida(p);   // (28-oct) luces que respiran y brillos en el mar (js/portada_vida.js)
     B.$$('.billete, .s4p-carta', p).forEach(b => b.addEventListener('click', () => {
       B.ac(); const n = +b.dataset.dia;
       if (!HIT.abierto(n)) { M.aviso('El ' + ETQ.toLowerCase() + ' ' + n + ' se abre al acabar la clase en que lo veáis.', 3.2); return; }

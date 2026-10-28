@@ -27,7 +27,7 @@
   /* ── maestro de ceremonias en PNG ── */
   function ponPj(o) {
     asegura();
-    if (!o) { if (pjEl) { pjEl.remove(); pjEl = null; pjAct = null; } return; }
+    if (!o) { capa.querySelectorAll('.c4-pj').forEach(e => e.remove()); pjEl = null; pjAct = null; capa.classList.remove('pj-izq', 'pj-der'); return; }   // (28-oct) sin personaje, sin el hueco para él (los carteles del mapa se iban a la izquierda)
     const q = o.q || (pjAct && pjAct.q), poses = PJ(q), pose = o.pose || (pjAct && pjAct.q === q && pjAct.pose) || poses._ || Object.keys(poses).find(k => k !== '_');
     const src = poses[pose] || poses[poses._]; if (!src) return;
     const lado = o.lado || (pjAct && pjAct.lado) || 'der', alto = o.alto || (pjAct && pjAct.alto) || .82;
@@ -35,9 +35,11 @@
     const mismo = pjEl && pjAct && pjAct.q === q && pjAct.lado === lado;
     const im = B.el('img', 'c4-pj ' + lado + (mismo ? ' cambio' : '')); im.src = url(src); im.alt = ''; im.draggable = false;
     im.style.setProperty('--alto', alto);
-    capa.appendChild(im); void im.offsetWidth; im.classList.add('on');
-    if (pjEl) pjEl.remove();   // (27-oct 22:28, Iago) el cambio de reacción es súbito, sin fundido
-    pjEl = im; pjAct = { q, pose, lado, alto };
+    /* (28-oct, Iago: «un movimiento rápido y extraño de Antónico… como que carga antes otra pose») la pose nueva entra cuando YA está
+       decodificada (antes se quitaba la vieja y durante un instante no había ninguna) */
+    const viejo = pjEl; pjEl = im; pjAct = { q, pose, lado, alto };
+    const pon = () => { if (pjEl !== im) return; capa.appendChild(im); im.classList.add('on'); capa.querySelectorAll('.c4-pj').forEach(e => { if (e !== im) e.remove(); }); };
+    if (im.decode) im.decode().then(pon, pon); else pon();
     capa.classList.toggle('pj-izq', lado === 'izq'); capa.classList.toggle('pj-der', lado === 'der');
   }
   /* ── palabras clave ── */
@@ -59,12 +61,16 @@
       const t = it.ts ? it.ts[i] : n > 1 ? t0 + (t1 - t0) * i / (n - 1) : t0;   // (27-oct noche) it.ts: segundo exacto de cada palabra en el audio
       B.espera(t, c).then(ok => { if (ok && box.isConnected) ch.classList.add('on'); });
     });
+    /* (28-oct, Iago: «no me gusta cómo queda lo de España en dos líneas») cada cartel en UNA línea: si no cabe, letra un poco más pequeña */
+    requestAnimationFrame(() => { const W = box.clientWidth; box.querySelectorAll('.c4-clave').forEach(ch => {
+      if (W && ch.offsetWidth > W) { const fs = parseFloat(getComputedStyle(ch).fontSize); ch.style.setProperty('font-size', (fs * W / ch.offsetWidth * .97).toFixed(1) + 'px', 'important'); } }); });
   }
   function quitaClaves(ya) { if (clavesEl) { const v = clavesEl; if (ya) v.remove(); else { v.classList.add('sale'); setTimeout(() => v.remove(), 450); } clavesEl = null; } }
   /* ── imagen suelta (instrumento en PNG) ── */
   function ponImg(it, c) {
     asegura();
     if (it.solo !== false) quitaSueltas();
+    if (it.caja) quitaClaves(true);   // (28-oct, Iago: «se camina, no se corre: una vez que sale, que ya no aparezca»)
     const tam = it.caja && B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[it.img];   // (27-oct noche) caja de «tamaño real», la misma de la interacción
     const w = B.el('div', 'c4-suelta' + (tam ? ' caja' : ''));
     if (tam) { w.style.setProperty('--x', tam.x); w.style.setProperty('--y', tam.y); w.style.setProperty('--w', tam.w); w.style.setProperty('--h', tam.h); }
@@ -134,15 +140,23 @@
     asegura(); quitaClaves(true); quitaSueltas(); fijos.splice(0).forEach(v => v.remove());
     if (svg) { svg.remove(); svg = null; }
     const d = B.CAPAS && B.CAPAS.planos && B.CAPAS.planos[p.id];
-    if (d && 'pj' in d) ponPj(d.pj); else ponPj(null);
+    /* si la primera frase cambia de pose nada más empezar, se entra ya con esa pose (sin enseñar la del plano un instante) */
+    let pj0 = d && 'pj' in d ? d.pj : null;
+    const l0 = B.arr(p.lineas)[0], xs0 = l0 && B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l0.id];
+    B.arr(xs0).forEach(it => { if (it && 'pj' in it && (it.t || 0) <= .6 && it.pj) pj0 = Object.assign({}, pj0 || {}, it.pj); });
+    if (!pj0 && pjAct) {   // (28-oct, Iago: «entre una reacción y otra, ningún fotograma sin personaje») el mismo personaje vuelve en este plano: se queda
+      const sigue = B.arr(p.lineas).some(l => B.arr(B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l.id]).some(it => it && it.pj && it.pj.q === pjAct.q));
+      if (sigue) pj0 = pjAct;
+    }
+    if (pj0) ponPj(pj0); else ponPj(null);
     capa.dataset.plano = p.id; capa.classList.toggle('oscuro', !!(d && d.oscuro));
     /* (27-oct 23:20, Iago: «cuando una imagen va a tener cosas encima, oscurécela un poco… pero que no se esté oscureciendo y aclarando
        constantemente») velo suave TODO el plano si en él salen imágenes sueltas o 3+ carteles; con el mismo fondo que el plano de antes,
        el velo se queda como estaba (no parpadea) */
     let n = 0, img = false;
     B.arr(p.lineas).concat(B.arr(p.despues)).forEach(l => { ((B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l.id]) || []).forEach(it => {
-      if (it.img && !it.caja) img = true; if (it.claves) n += it.estilo === 'titulo' ? 3 : B.arr(it.claves).length; if (it.rotulos) n += it.rotulos.length; }); });
-    let velo = !(d && d.oscuro) && (img || n >= 3 || !!(d && d.velo));
+      if (it.img && it.caja) img = true; if (it.claves) n += it.estilo === 'titulo' ? 3 : B.arr(it.claves).length; if (it.rotulos) n += it.rotulos.length; }); });
+    let velo = !(d && d.oscuro) && (img || B.arr(p.inter).some(x => x && x.tipo === 'instrumento') || !!(d && d.velo));   // (28-oct, Iago: «no la oscurezcas… sólo donde nos muestran los instrumentos») solo con imágenes encima, no por carteles
     if (!velo && veloAnt && veloAnt.img === p.img && !(d && d.oscuro)) velo = true;
     capa.classList.toggle('velo', velo); veloAnt = { img: p.img, velo };
     /* (27-oct 23:45) personajes de medio cuerpo: en los planos con instrumento, algo más pequeños para dejar sitio a la rejilla (todo el plano igual) */
