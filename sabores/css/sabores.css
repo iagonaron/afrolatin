@@ -444,3 +444,18 @@
 .c4-tira.der{left:auto!important;right:3%!important;justify-content:flex-end!important}
 .c4-tira.der{left:auto!important;right:2.5%!important;top:15%;bottom:5%!important;width:19%!important;height:auto!important;flex-direction:column;justify-content:flex-end!important;align-items:center;gap:calc(var(--u)*.9)}
 .c4-tira.der img{height:auto;max-height:calc(var(--u)*8.2);max-width:100%;min-height:0;flex:0 1 auto}
+/* (Iago 29-oct 22:48: «la letra… ya no tiene el problema del contorno, pero no se lee demasiado») detrás de la letra, una caja de cristal
+   oscuro semitransparente (como sus tarjetas), sin desenfoque (la pantalla del aula) */
+.s4-concierto .s4-letra{background:rgba(12,8,5,.62)!important;border-radius:calc(var(--u)*1.1)!important;padding:calc(var(--u)*.7) calc(var(--u)*2.2) calc(var(--u)*.8)!important}
+.s4-concierto .s4-lact{font-weight:700!important;color:#FFFAF0!important;text-shadow:0 0 calc(var(--u)*.25) rgba(0,0,0,.85)!important}
+/* (Iago 29-oct 22:46) repasos del principio: la tira, del lado de la columna del texto; abajo a la derecha (derb) o a la izquierda, y en
+   los del mapa (conpj) el personaje que presenta el género detrás y los instrumentos delante, a la altura de su cintura */
+.c4-tira.derb{left:auto!important;right:3%!important;justify-content:flex-end!important}
+.c4-tira.conpj{bottom:0!important;height:calc(var(--u)*27)!important;width:46%!important;align-items:flex-end;padding-bottom:calc(var(--u)*1.2);box-sizing:border-box;padding-left:calc(var(--u)*9.5)}
+.c4-tira.conpj.derb{padding-left:0;padding-right:calc(var(--u)*9.5)}
+.c4-tira.conpj img{position:relative;z-index:1;height:calc(var(--u)*10.5)!important;max-width:calc(var(--u)*15)}
+.c4-tira.conpj img.c4-tpj{position:absolute;z-index:0;bottom:0;left:0;height:100%!important;max-width:none;width:auto}
+.c4-tira.conpj.derb img.c4-tpj{left:auto;right:0}
+.c4-tira.conpj img:not(.c4-tpj){flex:0 1 auto;min-width:0;object-fit:contain}
+/* con un instrumento a tamaño real en pantalla (caja), los carteles van arriba, sin tapar ni el instrumento ni su nombre */
+.c4-capa.con-caja .c4-claves:not(.fijo):not(.c4-pais){top:7%!important;transform:none!important}
