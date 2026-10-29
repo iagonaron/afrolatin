@@ -352,9 +352,9 @@
 #escena[data-sabor="2"] .c4-clave{background:#1F7A4D!important}
 #escena[data-sabor="2"] .c4-claves.fijo .c4-clave:first-child{background:#135A37!important}
 .s4-instrumento .s4-foto.dos.tres{width:calc(var(--u)*54);gap:calc(var(--u)*1.2)}
-/* (28-oct, Sabor 3) los carteles con fondo, en el color de su portada (amarillo de samba, oscurecido para que el blanco se lea) */
-#escena[data-sabor="3"] .c4-clave{background:#A8690F!important}
-#escena[data-sabor="3"] .c4-claves.fijo .c4-clave:first-child{background:#7A4A06!important}
+/* (28-oct, Sabor 3) los carteles con fondo, en el color de su portada (29-oct, Iago: «quiero que el sabor 3 sea rosa»: rosa; el amarillo pasa al Sabor 4) */
+#escena[data-sabor="3"] .c4-clave{background:#B23A6E!important}
+#escena[data-sabor="3"] .c4-claves.fijo .c4-clave:first-child{background:#7E2148!important}
 .s4-instrumento .s4-foto.dos .s4-pips{right:auto;left:50%;transform:translateX(-50%);top:calc(var(--u)*-3.2)}   /* el contador de compases, entre los dos y por encima */
 
 /* (28-oct 20:41, Iago: en el iPad no se ven las fotos de los sabores) la foto de cada carta, un <img> que llena su caja; la caja, a todo el
@@ -367,7 +367,33 @@
 .s4-mezclador .s4-secciones{display:inline-flex;gap:calc(var(--u)*.5);margin-left:calc(var(--u)*1.6)}
 .s4-mezclador .s4-sec.on{background:#FFE9C7!important;color:#2A1408!important;border-color:#FFE9C7!important}
 .s4-mezclador .s4-pista.s4-callada{opacity:.38;filter:grayscale(.7)}
-#escena[data-sabor="4"] .c4-clave{background:#B23A6E!important}
-#escena[data-sabor="4"] .c4-claves.fijo .c4-clave:first-child{background:#7E2148!important}
+#escena[data-sabor="4"] .c4-clave{background:#1E6BB0!important}
+#escena[data-sabor="4"] .c4-claves.fijo .c4-clave:first-child{background:#0F4478!important}
 /* (29-oct, C1 · Sabor 4) los carteles, SIEMPRE por encima del maestro de ceremonias: con los brazos estirados (señala) les tapaba el final */
 .c4-claves{z-index:2}.c4-pj{z-index:1}
+/* (29-oct, Iago: «los textos aparecen con animación y creo que eso no es buena idea de cara a mi pantalla») carteles, títulos, listas,
+   instrumentos en PNG y la letra del karaoke, DE GOLPE: sin fundidos ni movimientos (la pantalla del aula va a pocos fotogramas) */
+.c4-claves,.c4-claves.sale,.c4-claves.fijo.sale,.c4-clave,.c4-clave.on,.c4-sep,.c4-suelta,.c4-rf{transition:none!important;animation:none!important}
+.c4-clave,.c4-clave.on,.c4-rf{transform:none!important}
+.s4-lact.cambia{animation:none!important}.s4-concierto .s4-letra{transition:none!important}
+/* (29-oct, Iago: «los cuadraditos tapan el silbato… pasa en algunos más») el contador de compases, ENCIMA de la foto del instrumento, centrado, sin tocarla */
+.s4-instrumento .s4-foto .s4-pips,.s4-instrumento .s4-foto.dos .s4-pips{right:auto;left:50%;transform:translateX(-50%);top:auto;bottom:calc(100% + var(--u)*.9)}
+/* (29-oct, Iago: «en grande el país siempre, y en pequeño, si acaso, la ubicación más concreta») la ciudad, debajo del país, pequeña */
+.c4-clave .c4-lugar{display:block;font-family:'DM Sans',sans-serif!important;font-weight:600;font-size:.52em;letter-spacing:.05em;line-height:1.15;margin-top:.2em;opacity:.92}
+
+/* (29-oct, r12) «Arma la banda»: selector estrofa / estribillo arriba, grande, como un interruptor de dos posiciones */
+.s4-mezclador .s4-secciones.arriba{flex:0 0 auto;display:flex;justify-content:center;gap:0;margin:calc(var(--u)*.6) auto calc(var(--u)*1.1);width:max-content;border:calc(var(--u)*.22) solid #FFE9C7;border-radius:calc(var(--u)*1.1);overflow:hidden}
+.s4-mezclador .s4-secciones.arriba .s4-sec{font-size:calc(var(--u)*2.3)!important;letter-spacing:.12em;padding:calc(var(--u)*.85) calc(var(--u)*3.4)!important;min-width:calc(var(--u)*19);border:0!important;border-radius:0!important;background:rgba(20,10,4,.55)!important;color:#FFE9C7!important;transition:none!important}
+.s4-mezclador .s4-secciones.arriba .s4-sec.on{background:#FFE9C7!important;color:#2A1408!important}
+/* (Iago 29-oct 07:21 y 07:53) varios instrumentos a la vez, CENTRADOS (antes se salían por la derecha de la tarjeta) */
+.s4-instrumento .s4-foto.dos{position:relative;left:50%;transform:translateX(-50%);align-items:flex-end}
+/* (Iago 29-oct 07:56) los títulos de lugar (países): letra elegante y fina, grande, sin fondo, y que duren (capas4s.js: .c4-pais) */
+.c4-claves.titulo .c4-tit{font-family:'Cormorant Garamond',serif!important;font-weight:500!important;font-size:calc(var(--u)*9.2)!important;letter-spacing:.03em!important;
+  -webkit-text-stroke:0!important;color:#FFF8EC!important;text-shadow:0 0 calc(var(--u)*.4) rgba(8,5,2,.95),0 0 calc(var(--u)*1.4) rgba(8,5,2,.75),0 0 calc(var(--u)*3) rgba(8,5,2,.5)!important}
+.c4-capa .c4-claves.titulo.c4-pais.arriba{top:4%!important;transform:none!important}
+.c4-capa .c4-claves.titulo.c4-pais.arriba .c4-tit{font-size:calc(var(--u)*6.4)!important}
+/* (r12) con el selector arriba, las casillas un poco más pequeñas para que el inventario no se meta debajo de los botones de abajo */
+.s4-mezclador.con-selector .s4-pistas.s4-inv,.con-selector .s4-mezclador .s4-pistas.s4-inv{--cel:min(calc(var(--u)*9.2),calc((var(--u)*56.25 - var(--u)*29) / 3))!important;margin-top:calc(var(--u)*.4)!important}
+.s4-mezclador .s4-secciones.arriba{margin:calc(var(--u)*.3) auto calc(var(--u)*.8)!important}
+.s4-mezclador .s4-secciones.arriba .s4-sec{font-size:calc(var(--u)*2.05)!important;padding:calc(var(--u)*.7) calc(var(--u)*3.2)!important}
+#escena[data-sabor] .c4-claves.titulo .c4-clave,#escena[data-sabor] .c4-claves.titulo .c4-clave:first-child{background:none!important;box-shadow:none!important;padding:0!important}
