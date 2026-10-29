@@ -424,3 +424,23 @@
 .bt-vc.listo svg{fill:#7ED3A8}
 #escena:not(.en-portada) .bt-vc{display:none}
 .bt-vc.bajando{width:auto!important;padding:0 calc(var(--u)*.7)!important}
+/* (Iago 29-oct 20:52) «en la portada los instrumentos están más cortados; la pandereta de samba sale cortada»: el icono iba al 118 % de su
+   hueco y se salía por el borde de la carta. Ahora cabe entero (al 100 %, en un hueco algo mayor) y sin el cuadrado de fondo (Chrome 94
+   no entiende :has(), y ahí se veía) */
+.s4p-ic{flex:0 0 calc(var(--u)*4.7)!important;height:calc(var(--u)*4.7)!important;background:none!important}
+.s4p-ic .s4p-icim{width:100%!important;height:100%!important;object-fit:contain}
+/* (Iago 29-oct 20:59) mientras la interacción del instrumento aún no ha pintado su PNG, el de la frase sigue a la vista (sin fotograma vacío) */
+#escena.con-inter.inter-espera .c4-suelta.on{opacity:1!important}
+/* (Iago 29-oct 21:10, «en la pantalla del aula la letra de las canciones se veía rara, su contorno»; «en mi iPad no me ocurre»): el Chrome 94
+   del aula no entiende paint-order en el texto y pinta el trazo ENCIMA de la letra. Fuera todos los trazos: sombra suave, que va en todos */
+.s4-concierto .s4-lact,.c4-claves.titulo .c4-tit,.c4-sep,.c4-suelta b{-webkit-text-stroke:0!important}
+.s4-concierto .s4-lact{text-shadow:0 0 calc(var(--u)*.3) rgba(10,6,3,.95),0 0 calc(var(--u)*.9) rgba(10,6,3,.75),0 0 calc(var(--u)*1.8) rgba(10,6,3,.45)!important}
+/* (Iago 29-oct 21:06) «los nombres de los países, ya desde el principio arriba, para no moverlos, y todo en mayúscula» */
+.c4-claves.titulo.c4-pais .c4-tit{text-transform:uppercase!important;letter-spacing:.1em!important}
+/* (Iago 29-oct 20:54) repasos: los iconos de lo que suena, en una tira abajo (capas4s.js: it.ico) */
+.c4-tira{position:absolute;left:24%;right:24%;bottom:5%;height:calc(var(--u)*10.5);display:flex;justify-content:center;align-items:flex-end;gap:calc(var(--u)*1.6);pointer-events:none;z-index:2}
+.c4-tira img{height:100%;width:auto;max-width:calc(var(--u)*16);object-fit:contain}
+.c4-tira{left:3%!important;right:auto!important;width:46%;justify-content:flex-start!important;height:calc(var(--u)*12)!important}   /* abajo a la izquierda: los personajes del repaso van a la derecha */
+.c4-tira.der{left:auto!important;right:3%!important;justify-content:flex-end!important}
+.c4-tira.der{left:auto!important;right:2.5%!important;top:15%;bottom:5%!important;width:19%!important;height:auto!important;flex-direction:column;justify-content:flex-end!important;align-items:center;gap:calc(var(--u)*.9)}
+.c4-tira.der img{height:auto;max-height:calc(var(--u)*8.2);max-width:100%;min-height:0;flex:0 1 auto}
