@@ -10,26 +10,26 @@ Object.assign(BLUES.CAPAS.lineas, {
 "estilo": "titulo",
 "fijo": true,
 "lado": "cabeza",
-"t": 3.1,
+"t": 3.3,
 "ts": [
-3.1,
-3.45
+3.3,
+3.65
 ]
 },
 {
 "claves": [
-"Colombia: la cumbia",
+"Colombia: la cumbia · Cartagena de Indias",
 "tranquila",
 "con su guacharaca",
 "el contratiempo del piano"
 ],
 "ts": [
-5.12,
-7.45,
-7.65,
-8.6
+5.16,
+6.84,
+7.8,
+8.8
 ],
-"t": 5.12,
+"t": 5.16,
 "estilo": "lista",
 "fijo": true,
 "lado": "izq"
@@ -39,123 +39,136 @@ Object.assign(BLUES.CAPAS.lineas, {
 "loops/s1/cumbia_maracas_2c.mp3",
 "loops/s1/cumbia_tambor_bajo_2c.mp3"
 ],
-"t": 7.51,
-"dur": 1.5,
-"vol": 0.42
+"t": 6.78,
+"dur": 3.8,
+"vol": 0.4,
+"grupo": "s3_n01:cumbia:0",
+"ciclo": 5.3333
 },
 {
 "son": [
 "loops/s1/cumbia_guacharaca_2c.mp3"
 ],
-"t": 7.71,
-"dur": 1.5,
-"vol": 0.5
+"t": 7.74,
+"dur": 2.84,
+"vol": 0.4,
+"grupo": "s3_n01:cumbia:0",
+"ciclo": 5.3333
 },
 {
 "son": [
 "loops/s1/cumbia_contratiempo_2c.mp3"
 ],
-"t": 8.57,
+"t": 8.48,
 "dur": 2.1,
-"vol": 0.5
+"vol": 0.4,
+"grupo": "s3_n01:cumbia:0",
+"ciclo": 5.3333
 },
 {
 "claves": [
-"R. Dominicana: el merengue",
+"República Dominicana: el merengue · Santiago de los Caballeros",
 "¡la cumbia a toda pastilla!",
 "con güira y tambora"
 ],
 "ts": [
-10.69,
-13.59,
-14.97
+10.72,
+13.22,
+15.06
 ],
-"t": 10.69,
+"t": 10.72,
 "estilo": "lista",
 "fijo": true,
 "lado": "der"
 },
 {
 "son": [
-"loops/s1/merengue_guira.mp3",
-"loops/s1/merengue_tambora.mp3",
 "loops/s1/merengue_bajo_piano.mp3"
 ],
-"t": 13.65,
-"dur": 1.5,
-"vol": 0.42
+"t": 13.16,
+"dur": 3.76,
+"vol": 0.4,
+"grupo": "s3_n01:merengue:1",
+"ciclo": 6.8571
 },
 {
 "son": [
 "loops/s1/merengue_guira.mp3",
 "loops/s1/merengue_tambora.mp3"
 ],
-"t": 15.03,
-"dur": 2.73,
-"vol": 0.5
+"t": 15.0,
+"dur": 1.92,
+"vol": 0.4,
+"grupo": "s3_n01:merengue:1",
+"ciclo": 6.8571
 },
 {
 "quitaFijos": true,
-"t": 17.68
+"t": 16.84
 },
 {
 "claves": [
-"Cuba: el bolero",
+"Cuba: el bolero · Santiago de Cuba",
 "lento y elegante",
 "el tresillo de las maracas",
 "el remate de las congas"
 ],
 "ts": [
-17.78,
-19.2,
-20.27,
-22.49
+17.06,
+18.92,
+20.34,
+22.14
 ],
-"t": 17.78,
+"t": 17.06,
 "estilo": "lista",
 "fijo": true,
 "lado": "izq"
 },
 {
 "son": [
-"loops/s2/bolero_maracas.mp3",
 "loops/s2/bolero_guitarra_bajo.mp3"
 ],
-"t": 19.26,
-"dur": 1.5,
-"vol": 0.42
+"t": 18.86,
+"dur": 5.28,
+"vol": 0.4,
+"fase0": 3.3333,
+"grupo": "s3_n01:bolero:2",
+"ciclo": 10.6667
 },
 {
 "son": [
 "loops/s2/bolero_maracas.mp3"
 ],
-"t": 20.33,
-"dur": 2.01,
-"vol": 0.5,
-"off": 5.05
+"t": 20.28,
+"dur": 3.86,
+"vol": 0.4,
+"grupo": "s3_n01:bolero:2",
+"ciclo": 10.6667
 },
 {
 "son": [
 "loops/s2/bolero_congas.mp3"
 ],
-"t": 22.42,
-"dur": 1.88,
-"vol": 0.5
+"t": 21.54,
+"dur": 2.6,
+"vol": 0.4,
+"grupo": "s3_n01:bolero:2",
+"ciclo": 10.6667
 },
 {
 "claves": [
-"Santo Domingo: la bachata",
+"República Dominicana: la bachata · Santo Domingo",
 "bongó, breaks locos",
 "el bajo: una larga y dos cortas",
 "la guitarra diabla"
 ],
 "ts": [
-25.05,
-27.44,
-28.74,
-31.18
+24.78,
+26.2,
+28.86,
+30.84
 ],
-"t": 25.05,
+"t": 24.78,
 "estilo": "lista",
 "fijo": true,
 "lado": "der"
@@ -164,25 +177,31 @@ Object.assign(BLUES.CAPAS.lineas, {
 "son": [
 "loops/s2/bachata_breaks.mp3"
 ],
-"t": 27.5,
-"dur": 1.5,
-"vol": 0.5
+"t": 26.14,
+"dur": 8.24,
+"vol": 0.4,
+"grupo": "s3_n01:bachata:3",
+"ciclo": 7.3846
 },
 {
 "son": [
 "loops/s2/bachata_bajo.mp3"
 ],
 "t": 28.8,
-"dur": 2.36,
-"vol": 0.5
+"dur": 5.58,
+"vol": 0.4,
+"grupo": "s3_n01:bachata:3",
+"ciclo": 7.3846
 },
 {
 "son": [
 "loops/s2/bachata_diabla.mp3"
 ],
-"t": 31.24,
+"t": 30.78,
 "dur": 3.6,
-"vol": 0.5
+"vol": 0.4,
+"grupo": "s3_n01:bachata:3",
+"ciclo": 7.3846
 }
 ],
 "s3_n02": [
@@ -195,9 +214,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "¡nos vamos a Brasil!"
 ],
 "ts": [
-0.79
+0.46
 ],
-"t": 0.79
+"t": 0.46
 }
 ],
 "s3_n03": [
@@ -206,78 +225,57 @@ Object.assign(BLUES.CAPAS.lineas, {
 "Brasil"
 ],
 "ts": [
-0
+0.12
 ],
-"t": 0,
+"t": 0.12,
 "estilo": "titulo"
 },
 {
 "claves": [
-"El país más grande de Sudamérica",
-"donde se habla portugués"
+"El país más grande de Sudamérica"
 ],
 "ts": [
-0.4,
-2.69
+1.06
 ],
-"t": 0.4
+"t": 1.06
 },
 {
 "claves": [
-"Río de Janeiro",
-"entre playas y morros"
+"Río de Janeiro"
 ],
 "ts": [
-5.14,
-6.07
+5.22
 ],
-"t": 5.14
+"t": 5.22
 },
 {
 "claves": [
-"la fiesta más famosa del mundo",
-"el carnaval"
+"la fiesta más famosa del mundo"
 ],
 "ts": [
-8.33,
-10.28
+8.5
 ],
-"t": 8.33
+"t": 8.5
 }
 ],
 "s3_n04": [
 {
 "claves": [
-"La samba bajó de Bahía",
-"a los cerros de Río"
+"La samba bajó de Bahía"
 ],
 "ts": [
-0,
-1.06
+0.12
 ],
-"t": 0
+"t": 0.12
 },
 {
 "claves": [
-"descendientes de africanos",
-"de Angola y el Congo"
+"escuelas de samba"
 ],
 "ts": [
-2.46,
-3.8
+6.76
 ],
-"t": 2.46
-},
-{
-"claves": [
-"escuelas de samba",
-"con cientos de tambores"
-],
-"ts": [
-6.36,
-7.37
-],
-"t": 6.36
+"t": 6.76
 }
 ],
 "s3_s01": [
@@ -294,9 +292,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "¡Soy Ritinha!"
 ],
 "ts": [
-1.92
+2.0
 ],
-"t": 1.92
+"t": 2.0
 },
 {
 "pj": {
@@ -304,18 +302,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "brazos",
 "lado": "der"
 },
-"t": 3.33
-},
-{
-"claves": [
-"Bienvenidos a Río",
-"¡y al carnaval!"
-],
-"ts": [
-3.25,
-4.78
-],
-"t": 3.25
+"t": 3.24
 },
 {
 "pj": {
@@ -323,7 +310,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "baila",
 "lado": "der"
 },
-"t": 4.86
+"t": 4.46
 }
 ],
 "s3_s02": [
@@ -337,14 +324,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"en A Coruña, en carnaval",
-"también salen batucadas"
+"en A Coruña, en carnaval"
 ],
 "ts": [
-2.13,
-3.75
+2.02
 ],
-"t": 2.13
+"t": 2.02
 },
 {
 "pj": {
@@ -352,16 +337,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "rie",
 "lado": "der"
 },
-"t": 6.52
+"t": 6.34
 },
 {
 "claves": [
 "¡Pues eso es samba, gente!"
 ],
 "ts": [
-6.44
+6.38
 ],
-"t": 6.44
+"t": 6.38
 },
 {
 "pj": {
@@ -369,16 +354,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "senala",
 "lado": "der"
 },
-"t": 8.68
+"t": 8.74
 },
 {
 "claves": [
 "una escuela de samba en pequeñito"
 ],
 "ts": [
-9.61
+9.84
 ],
-"t": 9.61
+"t": 9.84
 }
 ],
 "s3_s03": [
@@ -392,14 +377,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"Primera pista",
-"suena a carnaval en la calle"
+"Primera pista"
 ],
 "ts": [
-0,
-1.12
+0.12
 ],
-"t": 0
+"t": 0.12
 },
 {
 "pj": {
@@ -407,16 +390,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "brazos",
 "lado": "der"
 },
-"t": 3.62
-},
-{
-"claves": [
-"¡Una montaña de percusión!"
-],
-"ts": [
-3.54
-],
-"t": 3.54
+"t": 3.66
 },
 {
 "pj": {
@@ -424,16 +398,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "oreja",
 "lado": "der"
 },
-"t": 6.6
+"t": 7.36
 },
 {
 "claves": [
 "¿no les suena a una locomotora?"
 ],
 "ts": [
-6.52
+7.4
 ],
-"t": 6.52
+"t": 7.4
 },
 {
 "pj": {
@@ -441,16 +415,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "baila",
 "lado": "der"
 },
-"t": 8.95
+"t": 10.0
 },
 {
 "claves": [
 "¡Tucuchaca tucuchaca!"
 ],
 "ts": [
-8.87
+10.04
 ],
-"t": 8.87
+"t": 10.04
 }
 ],
 "s3_s04": [
@@ -465,7 +439,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "img": "img/s3/inst_s_surdo_grave.webp",
 "nom": "Surdo grave",
-"t": 0.97,
+"t": 1.04,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -476,20 +450,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "El corazón son los surdos"
 ],
 "ts": [
-0
+0.12
 ],
-"t": 0
-},
-{
-"claves": [
-"dos tambores grandes",
-"que hablan entre ellos"
-],
-"ts": [
-2.02,
-3.34
-],
-"t": 2.02
+"t": 0.12
 },
 {
 "pj": {
@@ -497,7 +460,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "oreja",
 "lado": "der"
 },
-"t": 3.42
+"t": 3.32
 }
 ],
 "s3_s05": [
@@ -512,7 +475,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "img": "img/s3/inst_s_apito.webp",
 "nom": "Apito",
-"t": 0.07,
+"t": 0.2,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -520,23 +483,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"el silbato",
-"es el que manda"
+"el silbato"
 ],
 "ts": [
-0.77,
-1.61
+1.0
 ],
-"t": 0.77
-},
-{
-"claves": [
-"avisa de las entradas y de los cortes"
-],
-"ts": [
-3.15
-],
-"t": 3.15
+"t": 1.0
 },
 {
 "pj": {
@@ -544,18 +496,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "explica",
 "lado": "der"
 },
-"t": 5.63
+"t": 5.4
 },
 {
 "claves": [
-"saltando entre dos notas",
-"de cuarta o de quinta"
+"saltando entre dos notas"
 ],
 "ts": [
-5.55,
-7.89
+5.44
 ],
-"t": 5.55
+"t": 5.44
 },
 {
 "pj": {
@@ -563,7 +513,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "aplaude",
 "lado": "der"
 },
-"t": 9.76
+"t": 9.7
 }
 ],
 "s3_s05b": [
@@ -578,7 +528,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "img": "img/s3/inst_s_agogo.webp",
 "nom": "Agogô",
-"t": 2.14,
+"t": 2.24,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -589,20 +539,18 @@ Object.assign(BLUES.CAPAS.lineas, {
 "el agogô"
 ],
 "ts": [
-2.38
+2.48
 ],
-"t": 2.38
+"t": 2.48
 },
 {
 "claves": [
-"dos campanas de metal",
-"que también saltan entre dos notas"
+"dos campanas de metal"
 ],
 "ts": [
-3.56,
-4.99
+3.52
 ],
-"t": 3.56
+"t": 3.52
 }
 ],
 "s3_s06": [
@@ -619,29 +567,18 @@ Object.assign(BLUES.CAPAS.lineas, {
 "todo sincopado"
 ],
 "ts": [
-0.86
+0.96
 ],
-"t": 0.86
+"t": 0.96
 },
 {
 "img": "img/s3/inst_s_tamborim.webp",
 "nom": "Tamborim",
-"t": 2.18,
+"t": 2.26,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
 "caja": true
-},
-{
-"claves": [
-"el tamborim, la caixa y el pandeiro",
-"rellenan cada hueco"
-],
-"ts": [
-2.18,
-4.61
-],
-"t": 2.18
 },
 {
 "pj": {
@@ -649,16 +586,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "baila",
 "lado": "der"
 },
-"t": 6.35
-},
-{
-"claves": [
-"¡nada cuadriculado!"
-],
-"ts": [
-6.27
-],
-"t": 6.27
+"t": 6.3
 },
 {
 "pj": {
@@ -666,16 +594,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "pulgar",
 "lado": "der"
 },
-"t": 7.68
+"t": 7.98
 },
 {
 "claves": [
 "suena tan brasileño"
 ],
 "ts": [
-8.64
+8.72
 ],
-"t": 8.64
+"t": 8.72
 }
 ],
 "s3_s07": [
@@ -692,9 +620,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "Arma tu batucada"
 ],
 "ts": [
-0.92
+1.06
 ],
-"t": 0.92
+"t": 1.06
 }
 ],
 "s3_s08": [
@@ -721,20 +649,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "¡Todos al tren, gente!"
 ],
 "ts": [
-0
+0.12
 ],
-"t": 0
-},
-{
-"claves": [
-"Nos vamos a Ipanema",
-"a conocer a Seu Tom"
-],
-"ts": [
-1.68,
-3.05
-],
-"t": 1.68
+"t": 0.12
 },
 {
 "pj": {
@@ -742,16 +659,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "piensa",
 "lado": "der"
 },
-"t": 5.07
+"t": 4.82
 },
 {
 "claves": [
 "¿Se acuerdan de la locomotora?"
 ],
 "ts": [
-4.99
+4.86
 ],
-"t": 4.99
+"t": 4.86
 },
 {
 "pj": {
@@ -759,30 +676,23 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "baila",
 "lado": "der"
 },
-"t": 7.49
+"t": 7.64
 },
 {
 "son": [
 "loops/s3/samba_batucada.mp3"
 ],
-"t": 7.47,
-"dur": 3.42,
-"vol": 0.4
-},
-{
-"claves": [
-"toca bajar revoluciones"
-],
-"ts": [
-11.85
-],
-"t": 11.85
+"t": 7.62,
+"dur": 2.32,
+"vol": 0.4,
+"grupo": "s3_t01:samba:0",
+"ciclo": 8.0
 },
 {
 "son": [
 "sfx/s3/tren_frena.mp3"
 ],
-"t": 12.34,
+"t": 11.14,
 "dur": 4.5,
 "vol": 0.45,
 "off": 0
@@ -793,16 +703,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "rie",
 "lado": "der"
 },
-"t": 15.84
+"t": 16.08
 },
 {
 "claves": [
 "Seu Tom es de lo más tranquilo"
 ],
 "ts": [
-16.07
+16.35
 ],
-"t": 16.07
+"t": 16.35
 }
 ],
 "s3_n05": [
@@ -811,9 +721,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "Ipanema"
 ],
 "ts": [
-0
+0.12
 ],
-"t": 0,
+"t": 0.12,
 "estilo": "titulo"
 },
 {
@@ -821,51 +731,27 @@ Object.assign(BLUES.CAPAS.lineas, {
 "A finales de los años 50"
 ],
 "ts": [
-1.73
+2.46
 ],
-"t": 1.73
+"t": 2.46
 },
 {
 "claves": [
-"Tom Jobim y João Gilberto"
+"una manera nueva de tocar la samba"
 ],
 "ts": [
-5.3
+7.48
 ],
-"t": 5.3
+"t": 7.48
 },
 {
 "claves": [
-"una manera nueva de tocar la samba",
-"suave, en voz bajita"
+"«La chica de Ipanema»"
 ],
 "ts": [
-7.76,
-10.48
+17.2
 ],
-"t": 7.76
-},
-{
-"claves": [
-"Bossa nova",
-"«La nueva onda»"
-],
-"ts": [
-12.81,
-14.12
-],
-"t": 12.81
-},
-{
-"claves": [
-"«La chica de Ipanema»",
-"una de las canciones más grabadas de la historia"
-],
-"ts": [
-16.91,
-18.26
-],
-"t": 16.91
+"t": 17.2
 }
 ],
 "s3_b01": [
@@ -883,18 +769,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "brazos",
 "lado": "der"
 },
-"t": 1.84
+"t": 3.06
 },
 {
 "claves": [
-"Siéntense, siéntense",
-"que aquí no hay prisa"
+"Siéntense, siéntense"
 ],
 "ts": [
-1.76,
-3.97
+3.1
 ],
-"t": 1.76
+"t": 3.1
 },
 {
 "pj": {
@@ -902,16 +786,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "corazon",
 "lado": "der"
 },
-"t": 6.55
+"t": 6.6
 },
 {
 "claves": [
 "Yo soy Seu Tom"
 ],
 "ts": [
-6.47
+6.64
 ],
-"t": 6.47
+"t": 6.64
 }
 ],
 "s3_b02": [
@@ -928,22 +812,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "vienen del carnaval"
 ],
 "ts": [
-1.12
+1.1
 ],
-"t": 1.12
-},
-{
-"claves": [
-"la bossa nova es eso mismo",
-"samba… pero en casa",
-"y en voz bajita"
-],
-"ts": [
-2.92,
-4.67,
-6.41
-],
-"t": 2.92
+"t": 1.1
 },
 {
 "pj": {
@@ -951,16 +822,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "rie",
 "lado": "der"
 },
-"t": 7.9
+"t": 7.82
 },
 {
 "claves": [
 "Como si la samba se pusiera las zapatillas"
 ],
 "ts": [
-7.82
+7.86
 ],
-"t": 7.82
+"t": 7.86
 }
 ],
 "s3_b03": [
@@ -974,14 +845,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"Primera pista",
-"es suave, tranquila"
+"Primera pista"
 ],
 "ts": [
-0,
-1.16
+0.12
 ],
-"t": 0
+"t": 0.12
 },
 {
 "pj": {
@@ -989,22 +858,13 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "rie",
 "lado": "der"
 },
-"t": 6.19
-},
-{
-"claves": [
-"música de ascensor"
-],
-"ts": [
-6.11
-],
-"t": 6.11
+"t": 6.4
 },
 {
 "son": [
 "sfx/s3/ascensor_ding.mp3"
 ],
-"t": 6.61,
+"t": 6.72,
 "dur": 2.2,
 "vol": 0.4,
 "off": 0
@@ -1014,9 +874,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "de sala de espera del dentista"
 ],
 "ts": [
-9.64
+9.78
 ],
-"t": 9.64
+"t": 9.78
 },
 {
 "pj": {
@@ -1024,18 +884,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "pulgar",
 "lado": "der"
 },
-"t": 12.84
+"t": 12.64
 },
 {
 "claves": [
-"sabemos estar de fiesta",
-"…y de chill"
+"sabemos estar de fiesta"
 ],
 "ts": [
-12.76,
-14.24
+12.68
 ],
-"t": 12.76
+"t": 12.68
 }
 ],
 "s3_b04": [
@@ -1050,7 +908,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "img": "img/s3/inst_b_guitarra.webp",
 "nom": "Guitarra",
-"t": 0.76,
+"t": 0.84,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -1061,20 +919,18 @@ Object.assign(BLUES.CAPAS.lineas, {
 "El corazón es la guitarra"
 ],
 "ts": [
-0
+0.12
 ],
-"t": 0
+"t": 0.12
 },
 {
 "claves": [
-"el pulgar es el surdo",
-"el bajo tranquilo en el uno y en el tres"
+"el pulgar es el surdo"
 ],
 "ts": [
-6.05,
-7.95
+6.1
 ],
-"t": 6.05
+"t": 6.1
 },
 {
 "pj": {
@@ -1082,18 +938,107 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "senala",
 "lado": "der"
 },
-"t": 10.97
+"t": 10.92
 },
 {
 "claves": [
-"los otros dedos son el tamborim",
-"acordes que caen justo donde no te los esperas"
+"los otros dedos son el tamborim"
 ],
 "ts": [
-10.89,
-13.09
+10.96
 ],
-"t": 10.89
+"t": 10.96
+}
+],
+"s3_b04b": [
+{
+"pj": {
+"q": "SEU TOM",
+"pose": "explica",
+"lado": "der"
+},
+"t": 0
+},
+{
+"claves": [
+"La guitarra se basta sola"
+],
+"ts": [
+0.12
+],
+"t": 0.12
+},
+{
+"pj": {
+"q": "SEU TOM",
+"pose": "senala",
+"lado": "der"
+},
+"t": 5.8
+},
+{
+"img": "img/s3/inst_b_contrabajo.webp",
+"nom": "Contrabajo",
+"t": 5.84,
+"x": 0.36,
+"y": 0.46,
+"h": 0.5,
+"caja": true
+},
+{
+"claves": [
+"El contrabajo apoya al pulgar"
+],
+"ts": [
+5.84
+],
+"t": 5.84
+},
+{
+"claves": [
+"casi todas sus notas, con el pulgar"
+],
+"ts": [
+10.2
+],
+"t": 10.2
+}
+],
+"s3_b05a": [
+{
+"pj": {
+"q": "SEU TOM",
+"pose": "explica",
+"lado": "der"
+},
+"t": 0
+},
+{
+"img": "img/s3/inst_b_piano.webp",
+"nom": "Piano",
+"t": 0.12,
+"x": 0.36,
+"y": 0.46,
+"h": 0.5,
+"caja": true
+},
+{
+"claves": [
+"El piano apoya a los otros dedos"
+],
+"ts": [
+1.72
+],
+"t": 1.72
+},
+{
+"claves": [
+"acordes sincopados"
+],
+"ts": [
+3.72
+],
+"t": 3.72
 }
 ],
 "s3_b05": [
@@ -1108,7 +1053,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "img": "img/s3/inst_b_piano.webp",
 "nom": "Piano",
-"t": 0.04,
+"t": 0.2,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -1116,14 +1061,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"séptimas y novenas",
-"como en el jazz"
+"séptimas y novenas"
 ],
 "ts": [
-2.81,
-3.97
+2.78
 ],
-"t": 2.81
+"t": 2.78
 },
 {
 "pj": {
@@ -1131,16 +1074,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "corazon",
 "lado": "der"
 },
-"t": 6.29
+"t": 5.9
 },
 {
 "claves": [
 "tan dulce y tan elegante"
 ],
 "ts": [
-6.21
+5.94
 ],
-"t": 6.21
+"t": 5.94
 }
 ],
 "s3_b06": [
@@ -1157,20 +1100,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "¿Y la percusión?"
 ],
 "ts": [
-0
+0.12
 ],
-"t": 0
-},
-{
-"claves": [
-"Va de puntillas",
-"muy suavecita"
-],
-"ts": [
-1.35,
-2.5
-],
-"t": 1.35
+"t": 0.12
 },
 {
 "pj": {
@@ -1178,12 +1110,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "explica",
 "lado": "der"
 },
-"t": 3.73
+"t": 7.34
 },
 {
 "img": "img/s3/inst_b_aro.webp",
 "nom": "Batería: el aro",
-"t": 3.65,
+"t": 7.38,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -1191,14 +1123,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"un golpecito en el aro",
-"el borde del tambor"
+"lo más característico: el aro"
 ],
 "ts": [
-3.65,
-5.3
+7.38
 ],
-"t": 3.65
+"t": 7.38
 },
 {
 "pj": {
@@ -1206,16 +1136,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "oreja",
 "lado": "der"
 },
-"t": 7.36
+"t": 14.22
 },
 {
 "claves": [
-"toc… toc…"
+"un contrapunto rítmico"
 ],
 "ts": [
-7.28
+16.18
 ],
-"t": 7.28
+"t": 16.18
 }
 ],
 "s3_b07": [
@@ -1232,9 +1162,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "casi susurrando"
 ],
 "ts": [
-0.87
+0.92
 ],
-"t": 0.87
+"t": 0.92
 },
 {
 "pj": {
@@ -1242,16 +1172,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "corazon",
 "lado": "der"
 },
-"t": 2.11
-},
-{
-"claves": [
-"como si te contara un secreto"
-],
-"ts": [
-2.03
-],
-"t": 2.03
+"t": 2.78
 }
 ],
 "s3_b08": [
@@ -1265,14 +1186,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"arma tu bossa nova",
-"sin prisa"
+"arma tu bossa nova"
 ],
 "ts": [
-1.04,
-2.7
+1.16
 ],
-"t": 1.04
+"t": 1.16
 }
 ],
 "s3_b09": [
@@ -1294,15 +1213,15 @@ Object.assign(BLUES.CAPAS.lineas, {
 "estilo": "titulo",
 "fijo": true,
 "lado": "cabeza",
-"t": 0,
+"t": 0.12,
 "ts": [
-0,
-0.35
+0.12,
+0.47
 ]
 },
 {
 "claves": [
-"La samba",
+"Brasil: la samba · Río de Janeiro",
 "carnaval en la calle",
 "una montaña de percusión",
 "que suena a locomotora",
@@ -1310,60 +1229,67 @@ Object.assign(BLUES.CAPAS.lineas, {
 "el apito, que manda"
 ],
 "ts": [
-2.4,
-3.52,
-4.91,
-6.55,
-8.27,
-10.81
+2.56,
+3.54,
+5.18,
+6.8,
+8.54,
+10.9
 ],
-"t": 2.4,
+"t": 2.56,
 "estilo": "lista",
 "fijo": true,
 "lado": "izq"
 },
 {
 "son": [
-"loops/s3/samba_batucada.mp3"
+"loops/s3/samba_sincopa.mp3",
+"loops/s3/samba_agogo.mp3"
 ],
-"t": 4.97,
-"dur": 3.28,
-"vol": 0.42
+"t": 5.12,
+"dur": 8.62,
+"vol": 0.4,
+"grupo": "s3_rr1:samba:0",
+"ciclo": 8.0
 },
 {
 "son": [
 "loops/s3/samba_surdos.mp3"
 ],
-"t": 8.33,
-"dur": 2.31,
-"vol": 0.5
+"t": 8.48,
+"dur": 5.26,
+"vol": 0.4,
+"grupo": "s3_rr1:samba:0",
+"ciclo": 8.0
 },
 {
 "son": [
 "loops/s3/samba_apito.mp3"
 ],
-"t": 10.72,
+"t": 10.34,
 "dur": 3.4,
-"vol": 0.45
+"vol": 0.4,
+"grupo": "s3_rr1:samba:0",
+"ciclo": 8.0
 }
 ],
 "s3_rr2": [
 {
 "claves": [
-"la bossa nova",
+"Brasil: la bossa nova · Ipanema, Río de Janeiro",
 "la samba en voz bajita",
 "La guitarra con el bajo en el uno y el tres",
 "acordes de jazz",
 "la percusión de puntillas"
 ],
 "ts": [
-0.04,
-1.2,
-2.97,
-5.59,
-6.79
+0.2,
+1.34,
+3.1,
+5.54,
+6.92
 ],
-"t": 0.04,
+"t": 0.2,
 "estilo": "lista",
 "fijo": true,
 "lado": "der"
@@ -1372,31 +1298,37 @@ Object.assign(BLUES.CAPAS.lineas, {
 "son": [
 "loops/s3/bossa_guitarra.mp3"
 ],
-"t": 3.03,
-"dur": 2.54,
-"vol": 0.5
+"t": 3.04,
+"dur": 5.34,
+"vol": 0.4,
+"grupo": "s3_rr2:bossa:0",
+"ciclo": 13.7143
 },
 {
 "son": [
 "loops/s3/bossa_piano.mp3"
 ],
-"t": 5.65,
-"dur": 1.5,
-"vol": 0.5
+"t": 5.48,
+"dur": 2.9,
+"vol": 0.4,
+"grupo": "s3_rr2:bossa:0",
+"ciclo": 13.7143
 },
 {
 "son": [
 "loops/s3/bossa_aro.mp3"
 ],
-"t": 6.85,
-"dur": 1.66,
-"vol": 0.55
+"t": 6.86,
+"dur": 1.52,
+"vol": 0.4,
+"grupo": "s3_rr2:bossa:0",
+"ciclo": 13.7143
 },
 {
 "son": [
 "sfx/s3/ascensor_ding.mp3"
 ],
-"t": 9.34,
+"t": 9.54,
 "dur": 2.2,
 "vol": 0.4,
 "off": 0
@@ -1415,10 +1347,10 @@ Object.assign(BLUES.CAPAS.lineas, {
 "estilo": "titulo",
 "fijo": true,
 "lado": "cabeza cierre",
-"t": 0,
+"t": 0.12,
 "ts": [
-0,
-3.66
+0.12,
+3.74
 ]
 },
 {

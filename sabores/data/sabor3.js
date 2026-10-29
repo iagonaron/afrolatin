@@ -613,19 +613,19 @@ BLUES.dia(3, {
       "txt": "pandeiro cc"
      },
      {
-      "t": 38.513,
+      "t": 38.058,
+      "img": "img/s3/vc_s_38_ritinha_canta_pp.webp",
+      "txt": "ritinha canta pp"
+     },
+     {
+      "t": 41.691,
       "img": "img/s3/vc_s_28_agogo_cc.webp",
       "txt": "agogo cc"
      },
      {
-      "t": 41.691,
+      "t": 45.323,
       "img": "img/s3/vc_s_29_de_rio_ciudad.webp",
       "txt": "de rio ciudad"
-     },
-     {
-      "t": 45.323,
-      "img": "img/s3/vc_s_38_ritinha_canta_pp.webp",
-      "txt": "ritinha canta pp"
      },
      {
       "t": 49.409,
@@ -1305,7 +1305,7 @@ BLUES.dia(3, {
     {
      "id": "s3_n05",
      "quien": "NARR",
-     "texto": "¡Ipanema! Aquí, a finales de los años cincuenta, unos músicos jóvenes como Tom Jobim y João Gilberto se inventaron una manera nueva de tocar la samba: suave, en voz bajita. La llamaron bossa nova: «la nueva onda». Y de aquí salió «La chica de Ipanema», una de las canciones más grabadas de la historia.",
+     "texto": "¡Ipanema! Aquí, a finales de los años cincuenta, unos músicos jóvenes como João Gilberto se inventaron una manera nueva de tocar la samba: suave, en voz bajita. La llamaron bossa nova: «la nueva onda». Y de aquí salió «La chica de Ipanema», una de las canciones más grabadas de la historia.",
      "voz": "voz/s3/s3_n05.mp3"
     }
    ],
@@ -1412,15 +1412,75 @@ BLUES.dia(3, {
    }
   },
   {
-   "id": "s3_b5",
-   "nombre": "Reconocerla · acordes de jazz",
+   "id": "s3_b4b",
+   "nombre": "Reconocerla · el contrabajo",
    "img": "img/s3/b_terraza.webp",
-   "desc": "La terraza; el piano.",
+   "desc": "La terraza; el contrabajo, y luego con la guitarra.",
    "amb": [],
    "personajes": [
     "SEU TOM"
    ],
    "lineas": [
+    {
+     "id": "s3_b04b",
+     "quien": "SEU TOM",
+     "texto": "La guitarra se basta sola para toda la rítmica… pero tiene dos ayudantes. El contrabajo apoya al pulgar: lleva un ritmo constante, y casi todas sus notas caen justo con el pulgar de la guitarra.",
+     "voz": "voz/s3/s3_b04b.mp3"
+    }
+   ],
+   "inter": [
+    {
+     "tipo": "instrumento",
+     "id": "bajo",
+     "nom": "Contrabajo",
+     "img": "img/s3/inst_b_contrabajo.webp",
+     "loop": "loops/s3/bossa_bajo.mp3",
+     "color": "#6B4A3A",
+     "bpm": 140,
+     "compases": 4,
+     "vueltas": 1,
+     "espera": 0.6,
+     "recursos": [
+      "loops/s3/bossa_bajo.mp3",
+      "img/s3/inst_b_contrabajo.webp"
+     ]
+    },
+    {
+     "tipo": "instrumento",
+     "id": "guitarra",
+     "nom": "Guitarra + contrabajo",
+     "img": "img/s3/inst_b_guitarra.webp",
+     "loop": "loops/s3/bossa_guitarra_bajo.mp3",
+     "color": "#C27C3A",
+     "bpm": 140,
+     "compases": 4,
+     "vueltas": 1,
+     "espera": 0.6,
+     "recursos": [
+      "loops/s3/bossa_guitarra_bajo.mp3",
+      "img/s3/inst_b_guitarra.webp",
+      "img/s3/inst_b_contrabajo.webp"
+     ],
+     "img2": "img/s3/inst_b_contrabajo.webp"
+    }
+   ]
+  },
+  {
+   "id": "s3_b5",
+   "nombre": "Reconocerla · el piano",
+   "img": "img/s3/b_terraza.webp",
+   "desc": "La terraza; el piano, y luego con la guitarra.",
+   "amb": [],
+   "personajes": [
+    "SEU TOM"
+   ],
+   "lineas": [
+    {
+     "id": "s3_b05a",
+     "quien": "SEU TOM",
+     "texto": "El piano, en cambio, apoya a los otros dedos: sus acordes sincopados suelen caer justo donde caen los de la guitarra.",
+     "voz": "voz/s3/s3_b05a.mp3"
+    },
     {
      "id": "s3_b05",
      "quien": "SEU TOM",
@@ -1428,22 +1488,42 @@ BLUES.dia(3, {
      "voz": "voz/s3/s3_b05.mp3"
     }
    ],
-   "inter": {
-    "tipo": "instrumento",
-    "id": "piano",
-    "nom": "Piano (acordes con 7.ª y 9.ª)",
-    "img": "img/s3/inst_b_piano.webp",
-    "loop": "loops/s3/bossa_piano.mp3",
-    "color": "#3F5E8C",
-    "bpm": 140,
-    "compases": 4,
-    "vueltas": 1,
-    "espera": 0.6,
-    "recursos": [
-     "loops/s3/bossa_piano.mp3",
-     "img/s3/inst_b_piano.webp"
-    ]
-   }
+   "inter": [
+    {
+     "tipo": "instrumento",
+     "id": "piano",
+     "nom": "Piano (acordes con 7.ª y 9.ª)",
+     "img": "img/s3/inst_b_piano.webp",
+     "loop": "loops/s3/bossa_piano.mp3",
+     "color": "#3F5E8C",
+     "bpm": 140,
+     "compases": 4,
+     "vueltas": 1,
+     "espera": 0.6,
+     "recursos": [
+      "loops/s3/bossa_piano.mp3",
+      "img/s3/inst_b_piano.webp"
+     ]
+    },
+    {
+     "tipo": "instrumento",
+     "id": "guitarra",
+     "nom": "Guitarra + piano",
+     "img": "img/s3/inst_b_guitarra.webp",
+     "loop": "loops/s3/bossa_guitarra_piano.mp3",
+     "color": "#C27C3A",
+     "bpm": 140,
+     "compases": 4,
+     "vueltas": 1,
+     "espera": 0.6,
+     "recursos": [
+      "loops/s3/bossa_guitarra_piano.mp3",
+      "img/s3/inst_b_guitarra.webp",
+      "img/s3/inst_b_piano.webp"
+     ],
+     "img2": "img/s3/inst_b_piano.webp"
+    }
+   ]
   },
   {
    "id": "s3_b6",
@@ -1458,7 +1538,7 @@ BLUES.dia(3, {
     {
      "id": "s3_b06",
      "quien": "SEU TOM",
-     "texto": "¿Y la percusión? Va de puntillas, muy suavecita… y un golpecito en el aro, el borde del tambor: toc… toc…",
+     "texto": "¿Y la percusión? Hay una batería completa, pero va de puntillas, con unas escobillas que acarician la caja… Lo más característico es el aro: la baqueta, tumbada sobre la caja, da un golpecito en el borde: toc… toc… Es como un contrapunto rítmico.",
      "voz": "voz/s3/s3_b06.mp3"
     }
    ],
@@ -1688,9 +1768,9 @@ BLUES.dia(3, {
       "txt": "amigos escuchan"
      },
      {
-      "t": 78.699,
-      "img": "img/s3/vc_b_34_guirnalda_plantas.webp",
-      "txt": "guirnalda plantas"
+      "t": 76.867,
+      "img": "img/s3/vc_b_19_brisa_terraza.webp",
+      "txt": "brisa terraza"
      },
      {
       "t": 82.363,
@@ -1739,8 +1819,8 @@ BLUES.dia(3, {
      },
      {
       "t": 130.912,
-      "img": "img/s3/vc_b_34_guirnalda_plantas.webp",
-      "txt": "guirnalda plantas"
+      "img": "img/s3/vc_b_30_amigos_escuchan.webp",
+      "txt": "amigos escuchan"
      }
     ],
     "letra": [

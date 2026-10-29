@@ -13,7 +13,7 @@ BLUES.dia(4, {
     {
      "id": "s4_n01",
      "quien": "NARR",
-     "texto": "¡Bienvenidos al cuarto y último sabor! Echemos la vista atrás, que ya llevamos mucho viaje: la cumbia colombiana, tranquila, con su guacharaca… el merengue, a toda pastilla, con güira y tambora… el bolero cubano, lento, con el tresillo de las maracas… la bachata, con su bongó y la guitarra diabla… la samba de Brasil, carnaval en la calle, con sus surdos y el apito que manda… y la bossa nova, la samba en voz bajita, con una guitarra que lo hace todo y la percusión de puntillas.",
+     "texto": "¡Bienvenidos al cuarto y último sabor! Echemos la vista atrás, que ya llevamos mucho viaje: la cumbia colombiana, tranquila, con su guacharaca… el merengue, a toda pastilla, con güira y tambora… el bolero cubano, lento, con el tresillo de las maracas… la bachata, con la güira y el bongó y la guitarra diabla… la samba de Brasil, carnaval en la calle, con sus surdos y el apito que manda… y la bossa nova, la samba en voz bajita, con una guitarra que lo hace todo y la percusión de puntillas.",
      "voz": "voz/s4/s4_n01.mp3"
     },
     {
@@ -95,15 +95,11 @@ BLUES.dia(4, {
       "vol": 0.55,
       "t": 0
      }
-    ],
-    "musA": {
-     "src": "mus/s4_salsa_fondo.mp3",
-     "vol": 0.7
-    }
+    ]
    },
    "mus": {
-    "src": "mus/s3_bossa_fondo.mp3",
-    "vol": 0.6
+    "src": "mus/s4_viaje_nueva_york.mp3",
+    "vol": 0.62
    }
   },
   {
@@ -289,7 +285,7 @@ BLUES.dia(4, {
      "tipo": "instrumento",
      "id": "bongosero",
      "nom": "Bongosero · estribillo: otro cencerro, más agudo",
-     "img": "img/s4/inst_s_cencerro.webp",
+     "img": "img/s4/inst_s_cencerro_b.webp",
      "loop": "loops/s4/salsa_bongo_estribillo.mp3",
      "color": "#C27C3A",
      "bpm": 95,
@@ -298,7 +294,7 @@ BLUES.dia(4, {
      "espera": 0.6,
      "recursos": [
       "loops/s4/salsa_bongo_estribillo.mp3",
-      "img/s4/inst_s_cencerro.webp"
+      "img/s4/inst_s_cencerro_b.webp"
      ]
     }
    ]
@@ -332,12 +328,12 @@ BLUES.dia(4, {
     "vueltas": 1,
     "espera": 0.6,
     "imgs": [
-     "img/s4/inst_s_cencerro.webp"
+     "img/s4/inst_s_cencerro_b_esc.webp"
     ],
     "recursos": [
      "loops/s4/salsa_cencerrada.mp3",
      "img/s4/inst_s_cencerro.webp",
-     "img/s4/inst_s_cencerro.webp"
+     "img/s4/inst_s_cencerro_b_esc.webp"
     ]
    }
   },
@@ -514,9 +510,9 @@ BLUES.dia(4, {
       "color": "#8C5A3A",
       "loop": "loops/s4/salsa_clave.mp3",
       "celda": [
-       7,
-       3,
        1,
+       3,
+       2,
        1
       ]
      },
@@ -531,7 +527,7 @@ BLUES.dia(4, {
       "color": "#C2502E",
       "loop": "loops/s4/salsa_bajo.mp3",
       "celda": [
-       1,
+       5,
        3,
        4,
        1
@@ -551,7 +547,7 @@ BLUES.dia(4, {
       "celda": [
        1,
        1,
-       3,
+       2,
        2
       ]
      },
@@ -566,10 +562,10 @@ BLUES.dia(4, {
       "color": "#C27C3A",
       "loop": "loops/s4/salsa_bongo_estrofa.mp3",
       "imgsec": {
-       "estribillo": "img/s4/inst_s_cencerro.webp"
+       "estribillo": "img/s4/inst_s_cencerro_b.webp"
       },
       "celda": [
-       5,
+       3,
        3,
        2,
        1
@@ -589,7 +585,7 @@ BLUES.dia(4, {
        "estribillo": "img/s4/inst_s_cencerro.webp"
       },
       "celda": [
-       4,
+       3,
        1,
        2,
        2
@@ -609,7 +605,7 @@ BLUES.dia(4, {
        "estribillo": "img/s4/inst_s_congas.webp"
       },
       "celda": [
-       6,
+       5,
        1,
        2,
        2
@@ -626,10 +622,10 @@ BLUES.dia(4, {
       "color": "#D9B44A",
       "loop": "loops/s4/salsa_metales.mp3",
       "celda": [
-       8,
+       7,
        1,
-       1,
-       3
+       2,
+       2
       ]
      }
     ],
@@ -812,13 +808,13 @@ BLUES.dia(4, {
      },
      {
       "t": 111.59,
-      "img": "img/s4/vc_sa_34_luces_plato_letrero.webp",
-      "txt": "luces plato letrero"
+      "img": "img/s4/vc_sa_30_publico_bailando.webp",
+      "txt": "publico bailando"
      },
      {
       "t": 119.437,
-      "img": "img/s4/vc_sa_33_mesa_zumos_coco.webp",
-      "txt": "mesa zumos coco"
+      "img": "img/s4/vc_sa_25_son_barrio_orquesta.webp",
+      "txt": "son barrio orquesta"
      },
      {
       "t": 128.491,
@@ -1657,7 +1653,7 @@ BLUES.dia(4, {
   {
    "id": "s4_m1",
    "nombre": "El mambo · Don Mamberto",
-   "img": "img/s4/s_metales.webp",
+   "img": "img/s4/vc_sa_29_mambo_metales.webp",
    "desc": "La sección de metales del plató (sin Mamberto: él va en PNG).",
    "amb": [],
    "personajes": [
@@ -1708,15 +1704,21 @@ BLUES.dia(4, {
     "vueltas": 1,
     "espera": 0.6,
     "imgs": [
-     "img/s4/inst_m_saxo_tenor.webp",
-     "img/s4/inst_s_trompeta.webp"
+     "img/s4/inst_m_saxo_tenor_esc.webp",
+     "img/s4/inst_s_trompeta_esc.webp"
     ],
     "recursos": [
      "loops/s4/mambo_vientos.mp3",
      "img/s4/inst_m_saxo_baritono.webp",
-     "img/s4/inst_m_saxo_tenor.webp",
-     "img/s4/inst_s_trompeta.webp"
+     "img/s4/inst_m_saxo_tenor_esc.webp",
+     "img/s4/inst_s_trompeta_esc.webp"
     ]
+   },
+   "var": {
+    "RECURSO_MB2": "img/s4/vc_sa_18_bongo_martillando.webp",
+    "RECURSO_MB3": "img/s4/vc_sa_19_timbal_cascara.webp",
+    "RECURSO_MB4": "img/s4/vc_sa_20_chucho_una_conga.webp",
+    "RECURSO_MB5": "img/s4/vc_sa_25_son_barrio_orquesta.webp"
    }
   },
   {
@@ -1978,7 +1980,7 @@ BLUES.dia(4, {
      "tipo": "instrumento",
      "id": "kiz_bajo",
      "nom": "El bajo de sintetizador",
-     "img": "img/s4/inst_k_teclado.webp",
+     "img": "img/s4/inst_k_sinte.webp",
      "loop": "loops/s4/kiz_bajo.mp3",
      "color": "#C2304A",
      "bpm": 85,
@@ -1987,7 +1989,7 @@ BLUES.dia(4, {
      "espera": 0.6,
      "recursos": [
       "loops/s4/kiz_bajo.mp3",
-      "img/s4/inst_k_teclado.webp"
+      "img/s4/inst_k_sinte.webp"
      ],
      "nivK": 0.6
     },
@@ -1995,7 +1997,7 @@ BLUES.dia(4, {
      "tipo": "instrumento",
      "id": "kiz_pad",
      "nom": "El colchón de teclado",
-     "img": "img/s4/inst_k_sinte.webp",
+     "img": "img/s4/inst_k_teclado.webp",
      "loop": "loops/s4/kiz_pad.mp3",
      "color": "#6B5B95",
      "bpm": 85,
@@ -2004,7 +2006,7 @@ BLUES.dia(4, {
      "espera": 0.6,
      "recursos": [
       "loops/s4/kiz_pad.mp3",
-      "img/s4/inst_k_sinte.webp"
+      "img/s4/inst_k_teclado.webp"
      ]
     }
    ]
@@ -2100,13 +2102,13 @@ BLUES.dia(4, {
      {
       "id": "kiz_bajo",
       "nom": "Bajo de sintetizador",
-      "img": "img/s4/inst_k_teclado.webp",
+      "img": "img/s4/inst_k_sinte.webp",
       "loop": "loops/s4/kiz_bajo.mp3",
       "color": "#C2304A",
       "celda": [
-       1,
-       1,
-       4,
+       3,
+       2,
+       2,
        1
       ],
       "nivK": 0.6
@@ -2114,13 +2116,13 @@ BLUES.dia(4, {
      {
       "id": "kiz_pad",
       "nom": "Colchón de teclado",
-      "img": "img/s4/inst_k_sinte.webp",
+      "img": "img/s4/inst_k_teclado.webp",
       "loop": "loops/s4/kiz_pad.mp3",
       "color": "#6B5B95",
       "celda": [
-       3,
-       2,
-       2,
+       1,
+       1,
+       4,
        1
       ]
      }
@@ -2287,8 +2289,8 @@ BLUES.dia(4, {
      },
      {
       "t": 132.055,
-      "img": "img/s4/vc_kz_33_mesa_zumos.webp",
-      "txt": "mesa zumos"
+      "img": "img/s4/vc_kz_31_orquesta_estribillo.webp",
+      "txt": "orquesta estribillo"
      }
     ],
     "letra": [

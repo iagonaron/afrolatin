@@ -18,18 +18,18 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"la cumbia",
+"Colombia: la cumbia · Cartagena de Indias",
 "tranquila, para caminar",
 "con su guacharaca",
 "el contratiempo en el piano"
 ],
 "ts": [
-3.76,
-4.37,
-5.76,
-6.98
+3.8,
+4.34,
+6.02,
+7.52
 ],
-"t": 3.76,
+"t": 3.8,
 "estilo": "lista",
 "fijo": true,
 "lado": "izq"
@@ -39,69 +39,79 @@ Object.assign(BLUES.CAPAS.lineas, {
 "loops/s1/cumbia_maracas_2c.mp3",
 "loops/s1/cumbia_tambor_bajo_2c.mp3"
 ],
-"t": 4.43,
-"dur": 1.5,
-"vol": 0.42
+"t": 4.28,
+"dur": 4.68,
+"vol": 0.4,
+"grupo": "s2_n01:cumbia:0",
+"ciclo": 5.3333
 },
 {
 "son": [
 "loops/s1/cumbia_guacharaca_2c.mp3"
 ],
-"t": 5.82,
-"dur": 1.5,
-"vol": 0.5
+"t": 5.96,
+"dur": 3.0,
+"vol": 0.4,
+"grupo": "s2_n01:cumbia:0",
+"ciclo": 5.3333
 },
 {
 "son": [
 "loops/s1/cumbia_contratiempo_2c.mp3"
 ],
-"t": 7.04,
-"dur": 1.95,
-"vol": 0.5
+"t": 7.46,
+"dur": 1.5,
+"vol": 0.4,
+"grupo": "s2_n01:cumbia:0",
+"ciclo": 5.3333
 },
 {
 "claves": [
-"el merengue",
+"República Dominicana: el merengue · Santiago de los Caballeros",
 "la cumbia, pero a toda pastilla",
 "con su güira",
 "y su tambora"
 ],
 "ts": [
-9.14,
-10.29,
-12.35,
-12.94
+9.32,
+10.2,
+11.96,
+13.02
 ],
-"t": 9.14,
+"t": 9.32,
 "estilo": "lista",
 "fijo": true,
 "lado": "der"
 },
 {
 "son": [
-"loops/s1/merengue_guira.mp3",
-"loops/s1/merengue_tambora.mp3",
 "loops/s1/merengue_bajo_piano.mp3"
 ],
-"t": 10.86,
-"dur": 1.5,
-"vol": 0.42
+"t": 10.78,
+"dur": 5.38,
+"vol": 0.4,
+"grupo": "s2_n01:merengue:1",
+"ciclo": 6.8571
 },
 {
 "son": [
 "loops/s1/merengue_guira.mp3"
 ],
-"t": 12.41,
-"dur": 1.5,
-"vol": 0.5
+"t": 11.9,
+"dur": 4.26,
+"vol": 0.4,
+"grupo": "s2_n01:merengue:1",
+"ciclo": 6.8571
 },
 {
 "son": [
 "loops/s1/merengue_tambora.mp3"
 ],
-"t": 13.0,
+"t": 12.96,
 "dur": 3.2,
-"vol": 0.5
+"vol": 0.4,
+"grupo": "s2_n01:merengue:1",
+"ciclo": 6.8571
 }
 ],
 "s2_n02": [
@@ -114,9 +124,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "¡nos vamos a Cuba!"
 ],
 "ts": [
-0.42
+0.46
 ],
-"t": 0.42
+"t": 0.46
 }
 ],
 "s2_n03": [
@@ -126,24 +136,20 @@ Object.assign(BLUES.CAPAS.lineas, {
 "Santiago de Cuba"
 ],
 "ts": [
-0,
-4.3
+0.12,
+4.32
 ],
-"t": 0,
+"t": 0.12,
 "estilo": "titulo"
 },
 {
 "claves": [
-"calles en cuesta",
-"balcones de madera",
-"música en cada esquina"
+"calles en cuesta"
 ],
 "ts": [
-5.8,
-6.86,
-8.18
+5.78
 ],
-"t": 5.8
+"t": 5.78
 }
 ],
 "s2_n04": [
@@ -152,29 +158,18 @@ Object.assign(BLUES.CAPAS.lineas, {
 "A finales del siglo XIX"
 ],
 "ts": [
-0.23
+0.78
 ],
-"t": 0.23
-},
-{
-"claves": [
-"los trovadores",
-"a cantar bajo los balcones"
-],
-"ts": [
-2.18,
-4.56
-],
-"t": 2.18
+"t": 0.78
 },
 {
 "claves": [
 "así nació el bolero"
 ],
 "ts": [
-6.38
+6.36
 ],
-"t": 6.38
+"t": 6.36
 }
 ],
 "s2_b01": [
@@ -192,16 +187,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "brazos",
 "lado": "der"
 },
-"t": 1.98
+"t": 1.96
 },
 {
 "claves": [
 "Me llamo Faustino"
 ],
 "ts": [
-3.95
+4.06
 ],
-"t": 3.95
+"t": 4.06
 },
 {
 "pj": {
@@ -209,7 +204,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "rie",
 "lado": "der"
 },
-"t": 8.7
+"t": 10.08
 },
 {
 "pj": {
@@ -217,20 +212,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "senala",
 "lado": "der"
 },
-"t": 10.04
+"t": 11.44
 },
 {
 "claves": [
-"en Galicia tienen el suyo",
-"en Chile hay otro",
-"el nombre del apóstol Santiago"
+"en Galicia tienen el suyo"
 ],
 "ts": [
-11.04,
-13.86,
-16.23
+11.88
 ],
-"t": 11.04
+"t": 11.88
 }
 ],
 "s2_b02": [
@@ -247,9 +238,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "un mensajito y un corazoncito"
 ],
 "ts": [
-4.16
+3.74
 ],
-"t": 4.16
+"t": 3.74
 },
 {
 "pj": {
@@ -257,16 +248,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "baila",
 "lado": "der"
 },
-"t": 6.73
+"t": 6.72
 },
 {
 "claves": [
 "un bolero bajo el balcón"
 ],
 "ts": [
-7.76
+7.8
 ],
-"t": 7.76
+"t": 7.8
 },
 {
 "pj": {
@@ -274,18 +265,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "pulgar",
 "lado": "der"
 },
-"t": 9.84
+"t": 9.7
 },
 {
 "claves": [
-"mucha paciencia",
-"una buena guitarra"
+"mucha paciencia"
 ],
 "ts": [
-10.05,
-11.38
+10.02
 ],
-"t": 10.05
+"t": 10.02
 }
 ],
 "s2_b03": [
@@ -299,12 +288,10 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"viajó a México",
-"los tríos de guitarras"
+"viajó a México"
 ],
 "ts": [
-1.48,
-3.74
+1.48
 ],
 "t": 1.48
 },
@@ -314,25 +301,25 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "corazon",
 "lado": "der"
 },
-"t": 5.6
+"t": 5.06
 },
 {
 "claves": [
 "la canción de amor de toda Latinoamérica"
 ],
 "ts": [
-6.45
+5.84
 ],
-"t": 6.45
+"t": 5.84
 },
 {
 "claves": [
 "lenta, romántica, elegante"
 ],
 "ts": [
-9.81
+9.0
 ],
-"t": 9.81
+"t": 9.0
 },
 {
 "pj": {
@@ -340,7 +327,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "rie",
 "lado": "der"
 },
-"t": 12.33
+"t": 12.32
 }
 ],
 "s2_b06": [
@@ -357,9 +344,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "Lo más característico"
 ],
 "ts": [
-1.85
+2.0
 ],
-"t": 1.85
+"t": 2.0
 },
 {
 "pj": {
@@ -367,12 +354,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "oreja",
 "lado": "der"
 },
-"t": 3.44
+"t": 3.48
 },
 {
 "img": "img/s2/inst_b_maracas.webp",
 "nom": "Maracas",
-"t": 3.36,
+"t": 3.52,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -380,14 +367,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"Corcheas tranquilas",
-"un tresillo de semicorcheas"
+"Corcheas tranquilas"
 ],
 "ts": [
-4.23,
-7.07
+4.88
 ],
-"t": 4.23
+"t": 4.88
 },
 {
 "pj": {
@@ -395,7 +380,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "aplaude",
 "lado": "der"
 },
-"t": 9.59
+"t": 9.56
 }
 ],
 "s2_b07": [
@@ -410,7 +395,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "img": "img/s2/inst_b_congas.webp",
 "nom": "Congas",
-"t": 0.05,
+"t": 0.2,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -421,18 +406,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "calladitas casi todo el rato"
 ],
 "ts": [
-1.23
+1.12
 ],
-"t": 1.23
-},
-{
-"claves": [
-"tres golpes seguidos"
-],
-"ts": [
-5.26
-],
-"t": 5.26
+"t": 1.12
 },
 {
 "pj": {
@@ -440,16 +416,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "aplaude",
 "lado": "der"
 },
-"t": 7.01
+"t": 6.86
 },
 {
 "claves": [
 "¡Ese remate es puro bolero!"
 ],
 "ts": [
-6.93
+6.9
 ],
-"t": 6.93
+"t": 6.9
 }
 ],
 "s2_b11": [
@@ -464,7 +440,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "img": "img/s2/inst_b_guitarra.webp",
 "nom": "Guitarra",
-"t": 1.05,
+"t": 0.64,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -472,14 +448,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"tranquilos, románticos",
-"sin prisa"
+"tranquilos, románticos"
 ],
 "ts": [
-3.9,
-5.87
+3.3
 ],
-"t": 3.9
+"t": 3.3
 },
 {
 "pj": {
@@ -487,7 +461,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "baila",
 "lado": "der"
 },
-"t": 5.95
+"t": 5.9
 }
 ],
 "s2_b08": [
@@ -504,9 +478,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "¡arme la banda!"
 ],
 "ts": [
-1.8
+1.84
 ],
-"t": 1.8
+"t": 1.84
 },
 {
 "pj": {
@@ -514,16 +488,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "senala",
 "lado": "der"
 },
-"t": 7.63
+"t": 7.22
 },
 {
 "claves": [
 "el bongó y el piano"
 ],
 "ts": [
-7.55
+7.26
 ],
-"t": 7.55
+"t": 7.26
 }
 ],
 "s2_b09": [
@@ -551,7 +525,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "senala",
 "lado": "der"
 },
-"t": 2.16
+"t": 2.5
 }
 ],
 "s2_n05": [
@@ -561,10 +535,10 @@ Object.assign(BLUES.CAPAS.lineas, {
 "Santo Domingo"
 ],
 "ts": [
-0.58,
-4.11
+0.7,
+5.66
 ],
-"t": 0.58,
+"t": 0.7,
 "estilo": "titulo"
 },
 {
@@ -572,9 +546,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "a los barrios donde nació la bachata"
 ],
 "ts": [
-4.85
+6.14
 ],
-"t": 4.85
+"t": 6.14
 }
 ],
 "s2_y01": [
@@ -592,7 +566,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "senala",
 "lado": "der"
 },
-"t": 2.16
+"t": 3.3
 },
 {
 "pj": {
@@ -600,7 +574,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "celebra",
 "lado": "der"
 },
-"t": 4.18
+"t": 4.3
 }
 ],
 "s2_h01": [
@@ -617,9 +591,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "Yo soy Ramoncito"
 ],
 "ts": [
-1.76
+2.32
 ],
-"t": 1.76
+"t": 2.32
 },
 {
 "pj": {
@@ -627,16 +601,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "piensa",
 "lado": "der"
 },
-"t": 4.27
-},
-{
-"claves": [
-"cuando a uno le duele el corazón"
-],
-"ts": [
-4.19
-],
-"t": 4.19
+"t": 4.26
 },
 {
 "pj": {
@@ -644,16 +609,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "baila",
 "lado": "der"
 },
-"t": 6.98
+"t": 6.88
 },
 {
 "claves": [
 "¡baila bachata!"
 ],
 "ts": [
-6.9
+6.92
 ],
-"t": 6.9
+"t": 6.92
 }
 ],
 "s2_h02": [
@@ -670,20 +635,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "en los años sesenta"
 ],
 "ts": [
-1.97
+1.58
 ],
-"t": 1.97
-},
-{
-"claves": [
-"música de amargue",
-"no la ponían en la radio"
-],
-"ts": [
-4.68,
-5.88
-],
-"t": 4.68
+"t": 1.58
 },
 {
 "pj": {
@@ -691,16 +645,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "rie",
 "lado": "der"
 },
-"t": 7.47
+"t": 7.28
 },
 {
 "claves": [
 "sonando en todo el mundo"
 ],
 "ts": [
-8.29
+8.4
 ],
-"t": 8.29
+"t": 8.4
 }
 ],
 "s2_h03": [
@@ -717,14 +671,14 @@ Object.assign(BLUES.CAPAS.lineas, {
 "solo dos cosas"
 ],
 "ts": [
-2.56
+2.46
 ],
-"t": 2.56
+"t": 2.46
 },
 {
 "img": "img/s1/inst_m_guira.webp",
 "nom": "Güira",
-"t": 3.9,
+"t": 3.96,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -736,12 +690,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "senala",
 "lado": "der"
 },
-"t": 4.99
+"t": 4.54
 },
 {
 "img": "img/s2/inst_bongo.webp",
 "nom": "Bongó",
-"t": 4.91,
+"t": 4.58,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -752,9 +706,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "¡Nada de congas ni batería!"
 ],
 "ts": [
-6.07
+6.18
 ],
-"t": 6.07
+"t": 6.18
 }
 ],
 "s2_h04": [
@@ -771,14 +725,14 @@ Object.assign(BLUES.CAPAS.lineas, {
 "la base es sencillita"
 ],
 "ts": [
-1.09
+1.14
 ],
-"t": 1.09
+"t": 1.14
 },
 {
 "img": "img/s2/inst_bongo.webp",
 "nom": "Güira + bongó con breaks",
-"t": 6.98,
+"t": 6.8,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -790,18 +744,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "baila",
 "lado": "der"
 },
-"t": 7.06
+"t": 6.76
 },
 {
 "claves": [
-"breaks locos",
-"repiques y cortes"
+"breaks locos"
 ],
 "ts": [
-6.98,
-7.81
+6.8
 ],
-"t": 6.98
+"t": 6.8
 }
 ],
 "s2_h05": [
@@ -816,7 +768,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "img": "img/s1/inst_m_guira.webp",
 "nom": "Güira del estribillo",
-"t": 0.39,
+"t": 0.52,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -827,9 +779,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "en la estrofa va caminando, en corcheas"
 ],
 "ts": [
-1.43
+1.54
 ],
-"t": 1.43
+"t": 1.54
 },
 {
 "pj": {
@@ -837,16 +789,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "piensa",
 "lado": "der"
 },
-"t": 4.91
+"t": 4.76
 },
 {
 "claves": [
 "se queda quieta, en negras"
 ],
 "ts": [
-7.45
+7.56
 ],
-"t": 7.45
+"t": 7.56
 }
 ],
 "s2_h06": [
@@ -861,7 +813,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 {
 "img": "img/s1/inst_m_bajo_h.webp",
 "nom": "Bajo",
-"t": 0.41,
+"t": 0.56,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -872,9 +824,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "una larga y dos cortas"
 ],
 "ts": [
-1.08
+1.62
 ],
-"t": 1.08
+"t": 1.62
 }
 ],
 "s2_h07": [
@@ -891,14 +843,14 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dos guitarras"
 ],
 "ts": [
-1.14
+1.26
 ],
-"t": 1.14
+"t": 1.26
 },
 {
 "img": "img/s2/inst_h_ritmica.webp",
 "nom": "Guitarra rítmica",
-"t": 2.38,
+"t": 2.54,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -910,12 +862,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "senala",
 "lado": "der"
 },
-"t": 4.27
+"t": 3.94
 },
 {
 "img": "img/s2/inst_h_diabla.webp",
 "nom": "Guitarra diabla",
-"t": 4.19,
+"t": 3.98,
 "x": 0.36,
 "y": 0.46,
 "h": 0.5,
@@ -926,9 +878,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "la traviesa, la del punteo"
 ],
 "ts": [
-5.16
+5.3
 ],
-"t": 5.16
+"t": 5.3
 },
 {
 "pj": {
@@ -936,7 +888,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "baila",
 "lado": "der"
 },
-"t": 6.88
+"t": 6.98
 }
 ],
 "s2_h12": [
@@ -953,9 +905,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "una voz de hombre, muy aguda"
 ],
 "ts": [
-2.12
+2.94
 ],
-"t": 2.12
+"t": 2.94
 },
 {
 "pj": {
@@ -963,16 +915,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "senala",
 "lado": "der"
 },
-"t": 4.12
+"t": 5.26
 },
 {
 "claves": [
 "cualquier voz puede cantar bachata"
 ],
 "ts": [
-6.22
+7.36
 ],
-"t": 6.22
+"t": 7.36
 },
 {
 "pj": {
@@ -980,7 +932,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "pulgar",
 "lado": "der"
 },
-"t": 6.3
+"t": 7.32
 }
 ],
 "s2_h08": [
@@ -997,9 +949,9 @@ Object.assign(BLUES.CAPAS.lineas, {
 "arma tu bachata"
 ],
 "ts": [
-3.22
+3.14
 ],
-"t": 3.22
+"t": 3.14
 }
 ],
 "s2_h09": [
@@ -1031,74 +983,79 @@ Object.assign(BLUES.CAPAS.lineas, {
 "estilo": "titulo",
 "fijo": true,
 "lado": "cabeza",
-"t": 0,
+"t": 0.12,
 "ts": [
-0,
-0.35
+0.12,
+0.47
 ]
 },
 {
 "claves": [
-"el bolero",
+"Cuba: el bolero · Santiago de Cuba",
 "lento y elegante",
 "las maracas con su tresillo",
 "las congas con su remate de tres golpes"
 ],
 "ts": [
-1.8,
-2.74,
-4.14,
-7.05
+1.9,
+2.52,
+4.8,
+7.1
 ],
-"t": 1.8,
+"t": 1.9,
 "estilo": "lista",
 "fijo": true,
 "lado": "izq"
 },
 {
 "son": [
-"loops/s2/bolero_maracas.mp3",
 "loops/s2/bolero_guitarra_bajo.mp3"
 ],
-"t": 2.8,
-"dur": 1.5,
-"vol": 0.42
+"t": 2.46,
+"dur": 8.14,
+"vol": 0.4,
+"fase0": 1.3333,
+"grupo": "s2_r01:bolero:0",
+"ciclo": 10.6667
 },
 {
 "son": [
 "loops/s2/bolero_maracas.mp3"
 ],
-"t": 4.2,
-"dur": 2.8,
-"vol": 0.5,
-"off": 3.15
+"t": 4.74,
+"dur": 5.86,
+"vol": 0.4,
+"grupo": "s2_r01:bolero:0",
+"ciclo": 10.6667
 },
 {
 "son": [
 "loops/s2/bolero_congas.mp3"
 ],
-"t": 6.98,
+"t": 6.4,
 "dur": 4.2,
-"vol": 0.5
+"vol": 0.4,
+"grupo": "s2_r01:bolero:0",
+"ciclo": 10.6667
 }
 ],
 "s2_r02": [
 {
 "claves": [
-"la bachata",
+"República Dominicana: la bachata · Santo Domingo",
 "Güira y bongó",
 "breaks locos",
 "el bajo con una larga y dos cortas",
 "la guitarra diabla"
 ],
 "ts": [
-0.04,
-1.0,
-2.12,
-3.19,
-5.65
+0.18,
+0.99,
+2.24,
+3.32,
+5.56
 ],
-"t": 0.04,
+"t": 0.18,
 "estilo": "lista",
 "fijo": true,
 "lado": "der"
@@ -1108,39 +1065,47 @@ Object.assign(BLUES.CAPAS.lineas, {
 "loops/s2/bachata_guira.mp3",
 "loops/s2/bachata_bongo.mp3"
 ],
-"t": 1.06,
-"dur": 1.5,
-"vol": 0.42
+"t": 0.93,
+"dur": 8.17,
+"vol": 0.4,
+"grupo": "s2_r02:bachata:0",
+"ciclo": 7.3846
 },
 {
 "son": [
 "loops/s2/bachata_breaks.mp3"
 ],
 "t": 2.18,
-"dur": 1.5,
-"vol": 0.5
+"dur": 6.92,
+"vol": 0.4,
+"grupo": "s2_r02:bachata:0",
+"ciclo": 7.3846
 },
 {
 "son": [
 "loops/s2/bachata_bajo.mp3"
 ],
-"t": 3.25,
-"dur": 2.25,
-"vol": 0.5
+"t": 3.26,
+"dur": 5.84,
+"vol": 0.4,
+"grupo": "s2_r02:bachata:0",
+"ciclo": 7.3846
 },
 {
 "son": [
 "loops/s2/bachata_diabla.mp3"
 ],
-"t": 5.71,
+"t": 5.5,
 "dur": 3.6,
-"vol": 0.5
+"vol": 0.4,
+"grupo": "s2_r02:bachata:0",
+"ciclo": 7.3846
 }
 ],
 "s2_r03": [
 {
 "quitaFijos": true,
-"t": 3.45
+"t": 3.28
 },
 {
 "claves": [
@@ -1150,10 +1115,10 @@ Object.assign(BLUES.CAPAS.lineas, {
 "estilo": "titulo",
 "fijo": true,
 "lado": "cabeza cierre",
-"t": 3.95,
+"t": 3.9,
 "ts": [
-3.95,
-4.55
+3.9,
+4.5
 ]
 },
 {
@@ -1161,7 +1126,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "src": "mus/s2_bachata_fondo.mp3",
 "vol": 0.5
 },
-"t": 3.95
+"t": 3.78
 }
 ]
 });
