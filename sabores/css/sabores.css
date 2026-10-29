@@ -411,3 +411,7 @@
 .s4-inv .s4-pista.on.golpe{box-shadow:none!important}
 .s4-mezclador .s4-cuad{transform:none!important}
 .s4-mezclador .s4-niv,.s4-instrumento .s4-nivel{display:none!important}
+/* (Iago 29-oct 18:55) «el texto de Cencerro, y hay muchos más (también en el bolero), con muchísimo contorno: se ve fatal». El trazo era el de
+   siempre, pero desde la r12b el fondo ya no se desenfoca (pesaba en la pantalla del aula) y sobre la foto nítida el trazo grueso destaca:
+   los nombres de los instrumentos, sin trazo y con una sombra suave (como los títulos de los países) */
+.c4-suelta b,.s4-instrumento.s4-tam .s4-tpie .s4-nombre,.c4-sep{-webkit-text-stroke:0!important;text-shadow:0 0 calc(var(--u)*.35) rgba(10,6,3,.95),0 0 calc(var(--u)*1.1) rgba(10,6,3,.7),0 0 calc(var(--u)*2.2) rgba(10,6,3,.45)!important}
