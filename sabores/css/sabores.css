@@ -415,3 +415,12 @@
    siempre, pero desde la r12b el fondo ya no se desenfoca (pesaba en la pantalla del aula) y sobre la foto nítida el trazo grueso destaca:
    los nombres de los instrumentos, sin trazo y con una sombra suave (como los títulos de los países) */
 .c4-suelta b,.s4-instrumento.s4-tam .s4-tpie .s4-nombre,.c4-sep{-webkit-text-stroke:0!important;text-shadow:0 0 calc(var(--u)*.35) rgba(10,6,3,.95),0 0 calc(var(--u)*1.1) rgba(10,6,3,.7),0 0 calc(var(--u)*2.2) rgba(10,6,3,.45)!important}
+/* (Iago 29-oct) vídeos del videoclip (js/videos.js): el clip, encima de su foto; y el botón «Preparar para clase», solo en la portada */
+.s4-plano .s4-vc{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bt-vc{position:absolute;right:calc(var(--u)*5.4);bottom:calc(var(--u)*1.1);z-index:45;opacity:.72;display:flex;align-items:center;gap:calc(var(--u)*.4)}
+.bt-vc:hover{opacity:1}
+.bt-vc b{font:600 calc(var(--u)*1.1)/1 'DM Sans',sans-serif;color:#FFF7EA}
+.bt-vc b:empty{display:none}
+.bt-vc.listo svg{fill:#7ED3A8}
+#escena:not(.en-portada) .bt-vc{display:none}
+.bt-vc.bajando{width:auto!important;padding:0 calc(var(--u)*.7)!important}
