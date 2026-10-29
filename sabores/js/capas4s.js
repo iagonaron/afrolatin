@@ -12,6 +12,10 @@
    ══════════════════════════════════════════════════════════════════════ */
 'use strict';
 (function (B) {
+  /* (Iago 29-oct 09:05) «la pantalla de mi clase es muy limitada: prefiero que no haya animaciones, aunque sean sutiles». Fuera las luces
+     que titilan (láminas, videoclip y portada); el movimiento de los conciertos llegará en vídeo pregrabado. Para volver a tenerlas:
+     BLUES.CFG.quieto = false en data/config.js */
+  if (!B.CFG || B.CFG.quieto !== false) { B.vida = null; B.vidaLienzo = null; B.portadaVida = null; }
   const C = B.capas = {};
   let capa = null, pjEl = null, pjAct = null, clavesEl = null, sueltas = []; let veloAnt = null;
   const PJ = q => (B.CAPAS && B.CAPAS.poses && B.CAPAS.poses[q]) || {};
