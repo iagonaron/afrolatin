@@ -159,6 +159,7 @@ window.BLUES = window.BLUES || {};
     const buf = B.buf[ruta]; if (!buf) return null;
     const C = B.ac(), s = C.createBufferSource(), g = C.createGain();
     s.buffer = buf; s.loop = !!o.bucle;
+    if (o.bucle && o.loopEnd) { s.loopStart = o.loopStart || 0; s.loopEnd = o.loopEnd; }   // (29-oct) bucle de un trozo (los ejemplos del resumen, sin el margen del archivo)
     if (o.rate) s.playbackRate.value = o.rate;
     const vol = o.vol == null ? 1 : o.vol, t = o.t || C.currentTime;
     if (o.fade) { g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + o.fade); } else g.gain.value = vol;

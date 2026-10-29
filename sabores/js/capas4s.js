@@ -46,20 +46,30 @@
   }
   /* ── palabras clave ── */
   let fijos = [];
+  let titEl = null;   // (Iago 29-oct 07:56) el título de lugar (país): dura más y sube arriba cuando llegan otros carteles
   function ponClaves(it, dur, c) {
     asegura();
     /* (27-oct noche, Iago: en el resumen, «el texto en su lado, y que se quede, como una recopilación de repasos») fijo: no se quita al
        cambiar de frase (solo al cambiar de plano); lado: 'izq' | 'der' */
+    /* (Iago 29-oct 07:56, «el cartel de Angola aparece y desaparece al momento: que los carteles de los países duren más, con la tipografía
+       elegante y fina, en grande») el título de lugar no lo quita el cartel siguiente: se queda 7 s (o hasta el siguiente título o plano) y,
+       si llegan otros carteles, sube a lo alto de la pantalla, de golpe (sin animación: pantalla del aula) */
+    const pais = it.estilo === 'titulo' && !it.fijo;
     if (!it.fijo) quitaClaves();
-    const box = B.el('div', 'c4-claves ' + (it.estilo || 'fila') + (it.fijo ? ' fijo' : '') + (it.lado ? ' ' + it.lado : ''));
-    if (it.fijo) fijos.push(box); else clavesEl = box; capa.appendChild(box);
+    if (pais) { if (titEl) titEl.remove(); titEl = null; } else if (!it.fijo && titEl) titEl.classList.add('arriba');
+    const box = B.el('div', 'c4-claves ' + (it.estilo || 'fila') + (it.fijo ? ' fijo' : '') + (it.lado ? ' ' + it.lado : '') + (pais ? ' c4-pais' : ''));
+    if (it.fijo) fijos.push(box); else if (pais) { titEl = box; setTimeout(() => { if (titEl === box) { box.remove(); titEl = null; } }, 7000); } else clavesEl = box;
+    capa.appendChild(box);
     const xs = B.arr(it.claves), n = xs.length, t0 = it.t != null ? it.t : (it.en || 0) * dur, t1 = Math.max(t0 + .2, (it.hasta == null ? .62 : it.hasta) * dur);
     xs.forEach((x, i) => {
       const sep = x === '+' || x === '=' || x === '→' || x === '·';
       /* (27-oct 23:22, Iago: «que alguno sea en título grande… con una tipografía complementaria, fina, tipo Gotham») estilo 'titulo':
          el primer trozo, titular grande; los demás, subtítulo fino en mayúsculas espaciadas */
       const cls = sep ? 'c4-sep' : it.estilo === 'titulo' ? (i === 0 ? 'c4-clave c4-tit' : 'c4-clave c4-subt') : 'c4-clave';
-      const ch = B.el('span', cls); ch.textContent = x; box.appendChild(ch);
+      const ch = B.el('span', cls); box.appendChild(ch);
+      /* (29-oct, Iago: «en grande el país siempre, y en pequeño, si acaso, la ubicación más concreta») «País: género · Ciudad» → la ciudad, debajo y pequeña */
+      const k = !sep && it.estilo !== 'titulo' ? x.indexOf(' · ') : -1;
+      if (k > 0) { ch.textContent = x.slice(0, k); const sm = B.el('small', 'c4-lugar'); sm.textContent = x.slice(k + 3); ch.appendChild(sm); } else ch.textContent = x;
       const t = it.ts ? it.ts[i] : n > 1 ? t0 + (t1 - t0) * i / (n - 1) : t0;   // (27-oct noche) it.ts: segundo exacto de cada palabra en el audio
       B.espera(t, c).then(ok => { if (ok && box.isConnected) ch.classList.add('on'); });
     });
@@ -157,7 +167,8 @@
   const ponVelo = () => { if (veloPend && capa) { veloPend = false; capa.classList.add('velo'); if (veloAnt) veloAnt.velo = true; } };
   C.alInter = function (it) { if (it && it.tipo === 'instrumento') ponVelo(); };
   C.plano = function (p) {
-    asegura(); if (!GUARDA.length) C.predecodifica(); quitaClaves(true); quitaSueltas(); fijos.splice(0).forEach(v => v.remove());
+    GRP = {};
+    asegura(); if (!GUARDA.length) C.predecodifica(); quitaClaves(true); quitaSueltas(); fijos.splice(0).forEach(v => v.remove()); if (titEl) { titEl.remove(); titEl = null; }
     if (svg) { svg.remove(); svg = null; }
     const d = B.CAPAS && B.CAPAS.planos && B.CAPAS.planos[p.id];
     /* si la primera frase cambia de pose nada más empezar, se entra ya con esa pose (sin enseñar la del plano un instante) */
@@ -206,6 +217,8 @@
       if (it.rotulos) ponRotulos(it, dur, c);
       if (it.rejillas) ponRejillas(it, dur, c);
       if (it.son) B.espera(t, c).then(ok => ok && suenaEjemplo(it, c));
+      /* (Iago 29-oct 07:52) planos que se alternan DENTRO de una frase (el mambo: los músicos, uno tras otro): { vari: 'RECURSO_X', t } */
+      if (it.vari) B.espera(t, c).then(ok => ok && B.motor && B.motor.ponVariante && B.motor.ponVariante(it.vari));
       /* (28-oct 10:00, Iago: «que haya música para el cierre del capítulo: desde que Doña Cande lo recomienda… hasta que se pulse Portada o
          Repetir el sabor») { musica: { src, vol, bucle } }: la música del plano cambia a esta (sigue sonando en la pantalla final) */
       if (it.musica) B.espera(t, c).then(ok => ok && B.musica && B.musica(Object.assign({ bucle: true }, it.musica)));
@@ -214,8 +227,18 @@
   };
   /* (28-oct 09:23, Iago: «en el resumen, cuando están diciendo las cosas, quiero que se escuchen») { son: [bucles], t, dur, vol }: el
      ejemplo suena (desde su primer tiempo: los bucles traen 0,5 s de margen) mientras se nombra, y se funde al acabar */
+  /* (29-oct, Iago: «que no suenen independientes, sino sumativos; sincronizados, eso sí… como si activáramos los instrumentos en el "cómo
+     sonaba"») { son, t, dur, grupo, ciclo }: los ejemplos de un mismo grupo (un género en el resumen) suenan EN BUCLE y a la vez; cada uno
+     entra en su sitio del compás del primero (misma fase: el kit es el mismo) y todos se apagan juntos al acabar el grupo */
+  let GRP = {};
   function suenaEjemplo(it, c) {
-    const hs = B.arr(it.son).map(src => B.suena(src, { vol: it.vol || .42, offset: it.off != null ? it.off : .5, fade: .06 })).filter(Boolean);
+    const off0 = it.off != null ? it.off : .5; let o = { vol: it.vol || .42, offset: off0, fade: .06 };
+    if (it.grupo && it.ciclo && B.ac) {
+      const ahora = B.ac().currentTime, G = GRP[it.grupo] || (GRP[it.grupo] = { t0: ahora - (it.fase0 || 0) });   // fase0: el grupo entra a mitad de ciclo (el tresillo de las maracas, al decir «tresillo»)
+      const fase = ((ahora - G.t0) % it.ciclo + it.ciclo) % it.ciclo;
+      o = Object.assign(o, { offset: off0 + fase, bucle: true, loopStart: off0, loopEnd: off0 + it.ciclo });
+    }
+    const hs = B.arr(it.son).map(src => B.suena(src, o)).filter(Boolean);
     const para = () => hs.forEach(h => h.parar(.35));
     B.espera(it.dur || 3, c).then(para); if (c && c.alMorir) c.alMorir.push(para);
   }
