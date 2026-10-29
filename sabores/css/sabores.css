@@ -397,3 +397,17 @@
 .s4-mezclador .s4-secciones.arriba{margin:calc(var(--u)*.3) auto calc(var(--u)*.8)!important}
 .s4-mezclador .s4-secciones.arriba .s4-sec{font-size:calc(var(--u)*2.05)!important;padding:calc(var(--u)*.7) calc(var(--u)*3.2)!important}
 #escena[data-sabor] .c4-claves.titulo .c4-clave,#escena[data-sabor] .c4-claves.titulo .c4-clave:first-child{background:none!important;box-shadow:none!important;padding:0!important}
+
+/* ═══ (Iago 29-oct 09:05) PANTALLA DEL AULA: NADA DE ANIMACIONES ═══ «prefiero que no haya animaciones, aunque sean sutiles; los carteles,
+   directamente el cartel, de un fotograma a otro». Sin transiciones; las animaciones que quedan saltan de golpe a su estado (steps), las que
+   se repiten, fuera; nada de filtros que se recalculen (desenfoques del velo y de los carteles). Medido con la CPU 6 veces más lenta: el concierto de salsa pasa de 18 a 58 fotogramas por segundo */
+*,*::before,*::after{transition:none!important}
+*,*::before,*::after{animation-timing-function:steps(1,start)!important}
+.c4-pj.on,.mapa-guia,.mapa-barco .onda,.s4-plano.kb .s4-img,.vida-tren .kb,#grano{animation:none!important}
+.c4-clave,.c4-clave.on{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+#escena .plano .lam,#escena .plano>.vida,#escena .plano>.vida-var{filter:none!important;transform:none!important}
+.s4-fch.sale{display:none!important}
+/* «Arma tu banda» y las fichas de instrumento: sin pulso ni medidores que se muevan solos (el encendido/apagado y el compás, sí) */
+.s4-inv .s4-pista.on.golpe{box-shadow:none!important}
+.s4-mezclador .s4-cuad{transform:none!important}
+.s4-mezclador .s4-niv,.s4-instrumento .s4-nivel{display:none!important}
