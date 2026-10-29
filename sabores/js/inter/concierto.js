@@ -170,6 +170,7 @@
     const esc = B.el('div', 's4-esc'); caja.appendChild(esc);
     if (fichas.length) esc.appendChild(B.el('div', 's4-vela'));      // la lámina de la banda se queda de fondo, algo oscurecida
     const capas = []; let capaAct = null; const temporizadores = new Set();
+    let vids = null, tcAnt = null;   // (29-oct) clips del videoclip ya en la caché (js/videos.js): imagen → URL
     const tira = B.el('div', 's4-tira'); caja.appendChild(tira);
     const chips = {};
     const nombres = pistas.map(p => String(p.nom || p.id));
@@ -197,6 +198,17 @@
       if (dur !== .4) capa.style.transitionDuration = dur + 's';
       if (op.kb) { capa.classList.add('kb', 'kb' + (i % 4)); capa.style.setProperty('--kbd', (op.bpm > 120 ? 7 : 11) + 's'); }   // (27-oct, Iago) movimiento lento de cámara en el videoclip
       capa.appendChild(S.imagen(p.img, p.txt || ('Plano ' + (i + 1)), S.CICLO[i % S.CICLO.length], 's4-pl'));
+      /* (Iago 29-oct) el clip con su zoom lento, si ya está bajado: encima de la foto (que se queda debajo hasta el primer fotograma) */
+      const vu = vids && vids.get(p.img);
+      if (vu) {
+        const v = document.createElement('video'); v.className = 's4-img s4-pl s4-vc'; v.muted = true; v.defaultMuted = true; v.playsInline = true;
+        v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.preload = 'auto'; v.disablePictureInPicture = true; v.style.opacity = '0';
+        v.addEventListener('playing', () => { v.style.opacity = '1'; }, { once: true });
+        v.addEventListener('error', () => v.remove(), { once: true });
+        v.src = vu; capa.appendChild(v); capa._v = v; capa._t0 = Math.max(0, p.t || 0);
+        const pr = v.play(); if (pr && pr.catch) pr.catch(() => { });
+        if (B.videos) B.videos.vigila(v);
+      }
       /* (28-oct, Iago: «me falta animación de fondos en el videoclip: velas, mar…») sus luces titilan (js/portada_vida.js; puntos en
          BLUES.LUCES_VC, herramientas/luces_s1.py); el lienzo lleva la misma clase que la imagen para moverse con ella */
       const LV = B.LUCES_VC && B.LUCES_VC[p.img];
@@ -207,7 +219,7 @@
       if (B.motor && B.motor.ambiente) { const im = capa.querySelector('img'); B.motor.ambiente(im && im.src ? im.src : null); }
       const ant = capaAct; capaAct = capa; capas.push(capa);
       if (ant) {      // la anterior se queda debajo hasta que la nueva es opaca del todo; luego se quita
-        const h = setTimeout(() => { temporizadores.delete(h); ant.remove(); const k = capas.indexOf(ant); if (k >= 0) capas.splice(k, 1); }, dur * 1000 + 80);
+        const h = setTimeout(() => { temporizadores.delete(h); if (ant._v) { try { ant._v.pause(); ant._v.removeAttribute('src'); ant._v.load(); } catch (e) { } } ant.remove(); const k = capas.indexOf(ant); if (k >= 0) capas.splice(k, 1); }, dur * 1000 + 80);
         temporizadores.add(h);
       }
       esc.dataset.plano = etq == null ? i : etq;
@@ -223,6 +235,17 @@
        el ciclo no pasa de `fin`, así que al acabar la canción se queda en su último fondo. ── */
     let pAct = null;            // lo que se ve: 'p<k>' (plano programado) o 'c<k>' (ciclo)
     function pintaPlanos(tc) {
+      /* el clip va con el reloj de la canción: se para con la pausa y se recoloca si se separa más de medio segundo */
+      const v = capaAct && capaAct._v;
+      if (v && v.readyState >= 1) {
+        if (tcAnt != null && tc === tcAnt) { if (!v.paused) v.pause(); }
+        else {
+          const quiere = tc - capaAct._t0;
+          if (quiere >= 0 && quiere < (v.duration || 0) - .15 && Math.abs(v.currentTime - quiere) > .5) { try { v.currentTime = quiere; } catch (e) { } }
+          if (v.paused && !v.ended) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => { }); }
+        }
+      }
+      tcAnt = tc;
       if (ciclo && tc >= ciclo.desde) {
         const tt = info.fin > 0 ? Math.min(tc, info.fin) : tc;
         const k = Math.floor((tt - ciclo.desde) / ciclo.cada) % ciclo.imgs.length, clave = 'c' + k;
@@ -353,6 +376,8 @@
       cierraModal(); if (quitaTecla) { quitaTecla(); quitaTecla = null; } if (mideZona) mideZona.quita();
       if (seguirRes) seguirRes(false);
       apaga(.35);
+      capas.forEach(c => { if (c._v) { try { c._v.pause(); c._v.removeAttribute('src'); c._v.load(); } catch (e) { } } });
+      if (B.videos) B.videos.suelta(vids); vids = null;
     };
     ctl.alMorir.push(limpia);
 
@@ -373,6 +398,7 @@
       !op.voz && op.cancion ? S.carga(op.cancion).then(b => { cancionBuf = b; }) : null,
       mz ? mz.cargar() : null,
       Promise.all(planos.map(p => S.listaImg(p.img))),
+      B.videos && planos.length ? B.videos.abre(planos.map(p => p.img)).then(m => { vids = m; }) : null,
       ciclo ? Promise.all(ciclo.imgs.map(p => S.listaImg(p.img))) : null,
       Promise.all(imgsFichas.filter(Boolean).map(r => S.listaImg(r)))
     ]);
