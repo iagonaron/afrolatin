@@ -1653,7 +1653,7 @@ BLUES.dia(4, {
   {
    "id": "s4_m1",
    "nombre": "El mambo · Don Mamberto",
-   "img": "img/s4/vc_sa_29_mambo_metales.webp",
+   "img": "img/s4/vc_sa_47_mambo_saxos.webp",
    "desc": "La sección de metales del plató (sin Mamberto: él va en PNG).",
    "amb": [],
    "personajes": [
@@ -1715,10 +1715,11 @@ BLUES.dia(4, {
     ]
    },
    "var": {
+    "RECURSO_MB0": "img/s4/vc_sa_45_saxos_suben.webp",
+    "RECURSO_MB1": "img/s4/vc_sa_29_mambo_metales.webp",
     "RECURSO_MB2": "img/s4/vc_sa_18_bongo_martillando.webp",
-    "RECURSO_MB3": "img/s4/vc_sa_19_timbal_cascara.webp",
-    "RECURSO_MB4": "img/s4/vc_sa_20_chucho_una_conga.webp",
-    "RECURSO_MB5": "img/s4/vc_sa_25_son_barrio_orquesta.webp"
+    "RECURSO_MB3": "img/s4/vc_sa_46_saxos_metales.webp",
+    "RECURSO_MB4": "img/s4/vc_sa_20_chucho_una_conga.webp"
    }
   },
   {
