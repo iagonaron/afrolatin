@@ -2,9 +2,9 @@
 BLUES.RECURSOS = Object.assign(BLUES.RECURSOS || {}, {
 "img/portada/fondo.webp": 328820,
 "img/portada/icono_1.webp": 17234,
-"img/portada/icono_2.webp": 8628,
-"img/portada/icono_3.webp": 9224,
-"img/portada/icono_4.webp": 11674,
+"img/portada/icono_2.webp": 14274,
+"img/portada/icono_3.webp": 16912,
+"img/portada/icono_4.webp": 17950,
 "img/portada/sabor_1.webp": 92480,
 "img/portada/sabor_2.webp": 77746,
 "img/portada/sabor_3.webp": 72770,
@@ -809,5 +809,5 @@ BLUES.RECURSOS = Object.assign(BLUES.RECURSOS || {}, {
 "videos/cumbia-2.mp4": 8476050,
 "videos/merengue-2.mp4": 8671716,
 "videos/samba-2.mp4": 8924463,
-"vc/s2/vc_h_32_eso_es_bachata.mp4": 8269239
+"vc/s2/vc_h_32_eso_es_bachata.mp4": 8290192
 });

@@ -49,7 +49,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s1/inst_tambor.webp",
 "img/s1/inst_bajo.webp"
 ],
-"tira": "izq"
+"tira": "izq",
+"pjico": "img/s1/pj/cande_brazos.webp"
 },
 {
 "son": [
@@ -63,7 +64,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s1/inst_guacharaca.webp"
 ],
-"tira": "izq"
+"tira": "izq",
+"pjico": "img/s1/pj/cande_brazos.webp"
 },
 {
 "son": [
@@ -77,7 +79,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s1/inst_contratiempo.webp"
 ],
-"tira": "izq"
+"tira": "izq",
+"pjico": "img/s1/pj/cande_brazos.webp"
 },
 {
 "claves": [
@@ -108,7 +111,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s1/inst_m_bajo.webp",
 "img/s1/inst_m_piano.webp"
 ],
-"tira": "izq"
+"tira": "derb",
+"pjico": "img/s1/pj/yunior_pulgar.webp"
 },
 {
 "son": [
@@ -124,7 +128,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s1/inst_m_guira.webp",
 "img/s1/inst_m_tambora.webp"
 ],
-"tira": "izq"
+"tira": "derb",
+"pjico": "img/s1/pj/yunior_pulgar.webp"
 },
 {
 "quitaFijos": true,
@@ -161,7 +166,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_b_guitarra.webp"
 ],
-"tira": "izq"
+"tira": "izq",
+"pjico": "img/s2/pj/faustino_saluda.webp"
 },
 {
 "son": [
@@ -175,7 +181,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_b_maracas.webp"
 ],
-"tira": "izq"
+"tira": "izq",
+"pjico": "img/s2/pj/faustino_saluda.webp"
 },
 {
 "son": [
@@ -189,7 +196,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_b_congas.webp"
 ],
-"tira": "izq"
+"tira": "izq",
+"pjico": "img/s2/pj/faustino_saluda.webp"
 },
 {
 "claves": [
@@ -221,7 +229,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_bongo.webp"
 ],
-"tira": "izq"
+"tira": "derb",
+"pjico": "img/s2/pj/ramoncito_rie.webp"
 },
 {
 "son": [
@@ -235,7 +244,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s1/inst_bajo.webp"
 ],
-"tira": "izq"
+"tira": "derb",
+"pjico": "img/s2/pj/ramoncito_rie.webp"
 },
 {
 "son": [
@@ -249,7 +259,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_h_diabla.webp"
 ],
-"tira": "izq"
+"tira": "derb",
+"pjico": "img/s2/pj/ramoncito_rie.webp"
 }
 ],
 "s3_n02": [
@@ -264,7 +275,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ts": [
 0.46
 ],
-"t": 0.46
+"t": 0.46,
+"nofiltra": true
 }
 ],
 "s3_n03": [
@@ -280,50 +292,77 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"El país más grande de Sudamérica"
+"El país más grande de Sudamérica",
+"donde se habla portugués"
 ],
 "ts": [
-1.06
+1.06,
+3.38
 ],
-"t": 1.06
+"t": 1.06,
+"nofiltra": true
 },
 {
 "claves": [
-"Río de Janeiro"
+"Río de Janeiro",
+"entre playas y morros"
 ],
 "ts": [
-5.22
+5.22,
+6.2
 ],
-"t": 5.22
+"t": 5.22,
+"nofiltra": true
 },
 {
 "claves": [
-"la fiesta más famosa del mundo"
+"la fiesta más famosa del mundo",
+"el carnaval"
 ],
 "ts": [
-8.5
+8.5,
+10.4
 ],
-"t": 8.5
+"t": 8.5,
+"nofiltra": true
 }
 ],
 "s3_n04": [
 {
 "claves": [
-"La samba bajó de Bahía"
+"La samba bajó de Bahía",
+"a los cerros de Río"
 ],
 "ts": [
-0.12
+0.12,
+1.42
 ],
-"t": 0.12
+"t": 0.12,
+"nofiltra": true
 },
 {
 "claves": [
-"escuelas de samba"
+"descendientes de africanos",
+"de Angola y el Congo"
 ],
 "ts": [
-6.76
+2.82,
+3.94
 ],
-"t": 6.76
+"t": 2.82,
+"nofiltra": true
+},
+{
+"claves": [
+"escuelas de samba",
+"con cientos de tambores"
+],
+"ts": [
+6.76,
+7.5
+],
+"t": 6.76,
+"nofiltra": true
 }
 ],
 "s3_s01": [
@@ -334,15 +373,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "lado": "der"
 },
 "t": 0
-},
-{
-"claves": [
-"¡Soy Ritinha!"
-],
-"ts": [
-2.0
-],
-"t": 2.0
 },
 {
 "pj": {
@@ -359,6 +389,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "lado": "der"
 },
 "t": 4.46
+},
+{
+"claves": [
+"¡Soy Ritinha!"
+],
+"ts": [
+2.0
+],
+"t": 2.0,
+"nofiltra": true
 }
 ],
 "s3_s02": [
@@ -371,30 +411,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 },
 {
-"claves": [
-"en A Coruña, en carnaval"
-],
-"ts": [
-2.02
-],
-"t": 2.02
-},
-{
 "pj": {
 "q": "RITINHA",
 "pose": "rie",
 "lado": "der"
 },
 "t": 6.34
-},
-{
-"claves": [
-"¡Pues eso es samba, gente!"
-],
-"ts": [
-6.38
-],
-"t": 6.38
 },
 {
 "pj": {
@@ -406,12 +428,25 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
+"en A Coruña, en carnaval",
+"también salen batucadas"
+],
+"ts": [
+2.02,
+3.92
+],
+"t": 2.02,
+"nofiltra": true
+},
+{
+"claves": [
 "una escuela de samba en pequeñito"
 ],
 "ts": [
 9.84
 ],
-"t": 9.84
+"t": 9.84,
+"nofiltra": true
 }
 ],
 "s3_s03": [
@@ -422,15 +457,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "lado": "der"
 },
 "t": 0
-},
-{
-"claves": [
-"Primera pista"
-],
-"ts": [
-0.12
-],
-"t": 0.12
 },
 {
 "pj": {
@@ -449,15 +475,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 7.36
 },
 {
-"claves": [
-"¿no les suena a una locomotora?"
-],
-"ts": [
-7.4
-],
-"t": 7.4
-},
-{
 "pj": {
 "q": "RITINHA",
 "pose": "baila",
@@ -467,12 +484,27 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
+"suena a carnaval en la calle",
+"¡Una montaña de percusión!"
+],
+"ts": [
+1.14,
+3.7
+],
+"t": 1.14,
+"nofiltra": true
+},
+{
+"claves": [
+"¿no les suena a una locomotora?",
 "¡Tucuchaca tucuchaca!"
 ],
 "ts": [
+7.4,
 10.04
 ],
-"t": 10.04
+"t": 7.4,
+"nofiltra": true
 }
 ],
 "s3_s04": [
@@ -494,21 +526,26 @@ Object.assign(BLUES.CAPAS.lineas, {
 "caja": true
 },
 {
-"claves": [
-"El corazón son los surdos"
-],
-"ts": [
-0.12
-],
-"t": 0.12
-},
-{
 "pj": {
 "q": "RITINHA",
 "pose": "oreja",
 "lado": "der"
 },
 "t": 3.32
+},
+{
+"claves": [
+"El corazón son los surdos",
+"dos tambores grandes",
+"que hablan entre ellos"
+],
+"ts": [
+0.12,
+2.16,
+3.36
+],
+"t": 0.12,
+"nofiltra": true
 }
 ],
 "s3_s05": [
@@ -530,15 +567,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "caja": true
 },
 {
-"claves": [
-"el silbato"
-],
-"ts": [
-1.0
-],
-"t": 1.0
-},
-{
 "pj": {
 "q": "RITINHA",
 "pose": "explica",
@@ -547,21 +575,46 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 5.4
 },
 {
-"claves": [
-"saltando entre dos notas"
-],
-"ts": [
-5.44
-],
-"t": 5.44
-},
-{
 "pj": {
 "q": "RITINHA",
 "pose": "aplaude",
 "lado": "der"
 },
 "t": 9.7
+},
+{
+"claves": [
+"el apito, el silbato",
+"es el que manda"
+],
+"ts": [
+0.2,
+2.04
+],
+"t": 0.2,
+"nofiltra": true
+},
+{
+"claves": [
+"avisa de las entradas y de los cortes"
+],
+"ts": [
+3.3
+],
+"t": 3.3,
+"nofiltra": true
+},
+{
+"claves": [
+"saltando entre dos notas",
+"de cuarta o de quinta"
+],
+"ts": [
+5.44,
+7.92
+],
+"t": 5.44,
+"nofiltra": true
 }
 ],
 "s3_s05b": [
@@ -584,21 +637,17 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"el agogô"
+"el agogô",
+"dos campanas de metal",
+"que también saltan entre dos notas"
 ],
 "ts": [
-2.48
+2.48,
+3.52,
+4.88
 ],
-"t": 2.48
-},
-{
-"claves": [
-"dos campanas de metal"
-],
-"ts": [
-3.52
-],
-"t": 3.52
+"t": 2.48,
+"nofiltra": true
 }
 ],
 "s3_s06": [
@@ -609,15 +658,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "lado": "der"
 },
 "t": 0
-},
-{
-"claves": [
-"todo sincopado"
-],
-"ts": [
-0.96
-],
-"t": 0.96
 },
 {
 "img": "img/s3/inst_s_tamborim.webp",
@@ -646,12 +686,27 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"suena tan brasileño"
+"todo sincopado"
 ],
 "ts": [
-8.72
+0.96
 ],
-"t": 8.72
+"t": 0.96,
+"nofiltra": true
+},
+{
+"claves": [
+"el tamborim, la caixa y el pandeiro",
+"rellenan cada hueco",
+"¡nada cuadriculado!"
+],
+"ts": [
+2.26,
+4.62,
+6.34
+],
+"t": 2.26,
+"nofiltra": true
 }
 ],
 "s3_s07": [
@@ -670,7 +725,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ts": [
 1.06
 ],
-"t": 1.06
+"t": 1.06,
+"nofiltra": true
 }
 ],
 "s3_s08": [
@@ -693,30 +749,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 },
 {
-"claves": [
-"¡Todos al tren, gente!"
-],
-"ts": [
-0.12
-],
-"t": 0.12
-},
-{
 "pj": {
 "q": "RITINHA",
 "pose": "piensa",
 "lado": "der"
 },
 "t": 4.82
-},
-{
-"claves": [
-"¿Se acuerdan de la locomotora?"
-],
-"ts": [
-4.86
-],
-"t": 4.86
 },
 {
 "pj": {
@@ -755,12 +793,35 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"Seu Tom es de lo más tranquilo"
+"Nos vamos a Ipanema",
+"a conocer a Seu Tom"
 ],
 "ts": [
-16.35
+1.76,
+3.02
 ],
-"t": 16.35
+"t": 1.76,
+"nofiltra": true
+},
+{
+"claves": [
+"¿Se acuerdan de la locomotora?"
+],
+"ts": [
+4.86
+],
+"t": 4.86,
+"nofiltra": true
+},
+{
+"claves": [
+"toca bajar revoluciones"
+],
+"ts": [
+10.64
+],
+"t": 10.64,
+"nofiltra": true
 }
 ],
 "s3_n05": [
@@ -781,25 +842,54 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ts": [
 2.46
 ],
-"t": 2.46
+"t": 2.46,
+"nofiltra": true
 },
 {
 "claves": [
-"una manera nueva de tocar la samba"
+"João Gilberto"
 ],
 "ts": [
-7.48
+5.66
 ],
-"t": 7.48
+"t": 5.66,
+"nofiltra": true
 },
 {
 "claves": [
-"«La chica de Ipanema»"
+"una manera nueva de tocar la samba",
+"suave, en voz bajita"
 ],
 "ts": [
-17.2
+7.48,
+9.06
 ],
-"t": 17.2
+"t": 7.48,
+"nofiltra": true
+},
+{
+"claves": [
+"Bossa nova",
+"«La nueva onda»"
+],
+"ts": [
+12.52,
+14.2
+],
+"t": 12.52,
+"nofiltra": true
+},
+{
+"claves": [
+"«La chica de Ipanema»",
+"una de las canciones más grabadas de la historia"
+],
+"ts": [
+17.2,
+19.44
+],
+"t": 17.2,
+"nofiltra": true
 }
 ],
 "s3_b01": [
@@ -820,15 +910,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 3.06
 },
 {
-"claves": [
-"Siéntense, siéntense"
-],
-"ts": [
-3.1
-],
-"t": 3.1
-},
-{
 "pj": {
 "q": "SEU TOM",
 "pose": "corazon",
@@ -843,7 +924,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ts": [
 6.64
 ],
-"t": 6.64
+"t": 6.64,
+"nofiltra": true
 }
 ],
 "s3_b02": [
@@ -856,15 +938,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 },
 {
-"claves": [
-"vienen del carnaval"
-],
-"ts": [
-1.1
-],
-"t": 1.1
-},
-{
 "pj": {
 "q": "SEU TOM",
 "pose": "rie",
@@ -874,12 +947,27 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
+"la bossa nova es eso mismo",
+"samba… pero en casa",
+"y en voz bajita"
+],
+"ts": [
+3.14,
+4.8,
+6.3
+],
+"t": 3.14,
+"nofiltra": true
+},
+{
+"claves": [
 "Como si la samba se pusiera las zapatillas"
 ],
 "ts": [
 7.86
 ],
-"t": 7.86
+"t": 7.86,
+"nofiltra": true
 }
 ],
 "s3_b03": [
@@ -890,15 +978,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "lado": "der"
 },
 "t": 0
-},
-{
-"claves": [
-"Primera pista"
-],
-"ts": [
-0.12
-],
-"t": 0.12
 },
 {
 "pj": {
@@ -918,15 +997,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "off": 0
 },
 {
-"claves": [
-"de sala de espera del dentista"
-],
-"ts": [
-9.78
-],
-"t": 9.78
-},
-{
 "pj": {
 "q": "SEU TOM",
 "pose": "pulgar",
@@ -936,12 +1006,37 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"sabemos estar de fiesta"
+"es suave, tranquila"
 ],
 "ts": [
-12.68
+1.2
 ],
-"t": 12.68
+"t": 1.2,
+"nofiltra": true
+},
+{
+"claves": [
+"música de ascensor",
+"de sala de espera del dentista"
+],
+"ts": [
+6.44,
+9.78
+],
+"t": 6.44,
+"nofiltra": true
+},
+{
+"claves": [
+"sabemos estar de fiesta",
+"…y de chill"
+],
+"ts": [
+12.68,
+14.38
+],
+"t": 12.68,
+"nofiltra": true
 }
 ],
 "s3_b04": [
@@ -963,24 +1058,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "caja": true
 },
 {
-"claves": [
-"El corazón es la guitarra"
-],
-"ts": [
-0.12
-],
-"t": 0.12
-},
-{
-"claves": [
-"el pulgar es el surdo"
-],
-"ts": [
-6.1
-],
-"t": 6.1
-},
-{
 "pj": {
 "q": "SEU TOM",
 "pose": "senala",
@@ -990,12 +1067,37 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"los otros dedos son el tamborim"
+"El corazón es la guitarra"
 ],
 "ts": [
-10.96
+0.12
 ],
-"t": 10.96
+"t": 0.12,
+"nofiltra": true
+},
+{
+"claves": [
+"el pulgar es el surdo",
+"el bajo tranquilo en el uno y en el tres"
+],
+"ts": [
+6.1,
+7.96
+],
+"t": 6.1,
+"nofiltra": true
+},
+{
+"claves": [
+"los otros dedos son el tamborim",
+"acordes que caen justo donde no te los esperas"
+],
+"ts": [
+10.96,
+13.08
+],
+"t": 10.96,
+"nofiltra": true
 }
 ],
 "s3_b04b": [
@@ -1006,15 +1108,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "lado": "der"
 },
 "t": 0
-},
-{
-"claves": [
-"La guitarra se basta sola"
-],
-"ts": [
-0.12
-],
-"t": 0.12
 },
 {
 "pj": {
@@ -1035,21 +1128,29 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"El contrabajo apoya al pulgar"
+"La guitarra se basta sola",
+"para toda la rítmica"
 ],
 "ts": [
-5.84
+0.12,
+1.64
 ],
-"t": 5.84
+"t": 0.12,
+"nofiltra": true
 },
 {
 "claves": [
+"El contrabajo apoya al pulgar",
+"ritmo constante",
 "casi todas sus notas, con el pulgar"
 ],
 "ts": [
+5.84,
+8.5,
 10.2
 ],
-"t": 10.2
+"t": 5.84,
+"nofiltra": true
 }
 ],
 "s3_b05a": [
@@ -1072,21 +1173,17 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"El piano apoya a los otros dedos"
+"El piano apoya a los otros dedos",
+"acordes sincopados",
+"donde caen los de la guitarra"
 ],
 "ts": [
-1.72
+1.72,
+3.72,
+5.8
 ],
-"t": 1.72
-},
-{
-"claves": [
-"acordes sincopados"
-],
-"ts": [
-3.72
-],
-"t": 3.72
+"t": 1.72,
+"nofiltra": true
 }
 ],
 "s3_b05": [
@@ -1108,15 +1205,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "caja": true
 },
 {
-"claves": [
-"séptimas y novenas"
-],
-"ts": [
-2.78
-],
-"t": 2.78
-},
-{
 "pj": {
 "q": "SEU TOM",
 "pose": "corazon",
@@ -1126,12 +1214,25 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
+"séptimas y novenas",
+"como en el jazz"
+],
+"ts": [
+2.78,
+4.32
+],
+"t": 2.78,
+"nofiltra": true
+},
+{
+"claves": [
 "tan dulce y tan elegante"
 ],
 "ts": [
 5.94
 ],
-"t": 5.94
+"t": 5.94,
+"nofiltra": true
 }
 ],
 "s3_b06": [
@@ -1142,15 +1243,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "lado": "der"
 },
 "t": 0
-},
-{
-"claves": [
-"¿Y la percusión?"
-],
-"ts": [
-0.12
-],
-"t": 0.12
 },
 {
 "pj": {
@@ -1170,15 +1262,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "caja": true
 },
 {
-"claves": [
-"lo más característico: el aro"
-],
-"ts": [
-7.38
-],
-"t": 7.38
-},
-{
 "pj": {
 "q": "SEU TOM",
 "pose": "oreja",
@@ -1188,12 +1271,41 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
+"una batería completa",
+"de puntillas",
+"con escobillas"
+],
+"ts": [
+1.52,
+3.42,
+5.06
+],
+"t": 1.52,
+"nofiltra": true
+},
+{
+"claves": [
+"lo más característico: el aro",
+"la baqueta, tumbada sobre la caja",
+"toc… toc…"
+],
+"ts": [
+7.38,
+10.04,
+14.26
+],
+"t": 7.38,
+"nofiltra": true
+},
+{
+"claves": [
 "un contrapunto rítmico"
 ],
 "ts": [
 16.18
 ],
-"t": 16.18
+"t": 16.18,
+"nofiltra": true
 }
 ],
 "s3_b07": [
@@ -1206,21 +1318,24 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 },
 {
-"claves": [
-"casi susurrando"
-],
-"ts": [
-0.92
-],
-"t": 0.92
-},
-{
 "pj": {
 "q": "SEU TOM",
 "pose": "corazon",
 "lado": "der"
 },
 "t": 2.78
+},
+{
+"claves": [
+"casi susurrando",
+"como si te contara un secreto"
+],
+"ts": [
+0.92,
+2.82
+],
+"t": 0.92,
+"nofiltra": true
 }
 ],
 "s3_b08": [
@@ -1234,12 +1349,15 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"arma tu bossa nova"
+"arma tu bossa nova",
+"sin prisa"
 ],
 "ts": [
-1.16
+1.16,
+2.56
 ],
-"t": 1.16
+"t": 1.16,
+"nofiltra": true
 }
 ],
 "s3_b09": [

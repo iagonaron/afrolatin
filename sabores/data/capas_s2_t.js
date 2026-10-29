@@ -110,7 +110,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s1/inst_m_bajo.webp",
 "img/s1/inst_m_piano.webp"
 ],
-"tira": "izq"
+"tira": "derb"
 },
 {
 "son": [
@@ -124,7 +124,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s1/inst_m_guira.webp"
 ],
-"tira": "izq"
+"tira": "derb"
 },
 {
 "son": [
@@ -138,7 +138,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s1/inst_m_tambora.webp"
 ],
-"tira": "izq"
+"tira": "derb"
 }
 ],
 "s2_n02": [
@@ -153,7 +153,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ts": [
 0.46
 ],
-"t": 0.46
+"t": 0.46,
+"nofiltra": true
 }
 ],
 "s2_n03": [
@@ -171,12 +172,17 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"calles en cuesta"
+"calles en cuesta",
+"balcones de madera",
+"música en cada esquina"
 ],
 "ts": [
-5.78
+5.78,
+7.08,
+8.3
 ],
-"t": 5.78
+"t": 5.78,
+"nofiltra": true
 }
 ],
 "s2_n04": [
@@ -187,7 +193,20 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ts": [
 0.78
 ],
-"t": 0.78
+"t": 0.78,
+"nofiltra": true
+},
+{
+"claves": [
+"los trovadores",
+"a cantar bajo los balcones"
+],
+"ts": [
+2.56,
+4.32
+],
+"t": 2.56,
+"nofiltra": true
 },
 {
 "claves": [
@@ -196,7 +215,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ts": [
 6.36
 ],
-"t": 6.36
+"t": 6.36,
+"nofiltra": true
 }
 ],
 "s2_b01": [
@@ -217,15 +237,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 1.96
 },
 {
-"claves": [
-"Me llamo Faustino"
-],
-"ts": [
-4.06
-],
-"t": 4.06
-},
-{
 "pj": {
 "q": "FAUSTINO",
 "pose": "rie",
@@ -243,12 +254,27 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"en Galicia tienen el suyo"
+"Me llamo Faustino"
 ],
 "ts": [
-11.88
+4.06
 ],
-"t": 11.88
+"t": 4.06,
+"nofiltra": true
+},
+{
+"claves": [
+"en Galicia tienen el suyo",
+"en Chile hay otro",
+"el nombre del apóstol Santiago"
+],
+"ts": [
+11.88,
+13.94,
+16.32
+],
+"t": 11.88,
+"nofiltra": true
 }
 ],
 "s2_b02": [
@@ -261,30 +287,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 },
 {
-"claves": [
-"un mensajito y un corazoncito"
-],
-"ts": [
-3.74
-],
-"t": 3.74
-},
-{
 "pj": {
 "q": "FAUSTINO",
 "pose": "baila",
 "lado": "der"
 },
 "t": 6.72
-},
-{
-"claves": [
-"un bolero bajo el balcón"
-],
-"ts": [
-7.8
-],
-"t": 7.8
 },
 {
 "pj": {
@@ -296,12 +304,35 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"mucha paciencia"
+"un mensajito y un corazoncito"
 ],
 "ts": [
-10.02
+3.74
 ],
-"t": 10.02
+"t": 3.74,
+"nofiltra": true
+},
+{
+"claves": [
+"un bolero bajo el balcón"
+],
+"ts": [
+7.8
+],
+"t": 7.8,
+"nofiltra": true
+},
+{
+"claves": [
+"mucha paciencia",
+"una buena guitarra"
+],
+"ts": [
+10.02,
+11.64
+],
+"t": 10.02,
+"nofiltra": true
 }
 ],
 "s2_b03": [
@@ -314,15 +345,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 },
 {
-"claves": [
-"viajó a México"
-],
-"ts": [
-1.48
-],
-"t": 1.48
-},
-{
 "pj": {
 "q": "FAUSTINO",
 "pose": "corazon",
@@ -331,13 +353,34 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 5.06
 },
 {
+"pj": {
+"q": "FAUSTINO",
+"pose": "rie",
+"lado": "der"
+},
+"t": 12.32
+},
+{
+"claves": [
+"viajó a México",
+"los tríos de guitarras"
+],
+"ts": [
+1.48,
+3.48
+],
+"t": 1.48,
+"nofiltra": true
+},
+{
 "claves": [
 "la canción de amor de toda Latinoamérica"
 ],
 "ts": [
 5.84
 ],
-"t": 5.84
+"t": 5.84,
+"nofiltra": true
 },
 {
 "claves": [
@@ -346,15 +389,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ts": [
 9.0
 ],
-"t": 9.0
-},
-{
-"pj": {
-"q": "FAUSTINO",
-"pose": "rie",
-"lado": "der"
-},
-"t": 12.32
+"t": 9.0,
+"nofiltra": true
 }
 ],
 "s2_b06": [
@@ -365,15 +401,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "lado": "der"
 },
 "t": 0
-},
-{
-"claves": [
-"Lo más característico"
-],
-"ts": [
-2.0
-],
-"t": 2.0
 },
 {
 "pj": {
@@ -393,21 +420,26 @@ Object.assign(BLUES.CAPAS.lineas, {
 "caja": true
 },
 {
-"claves": [
-"Corcheas tranquilas"
-],
-"ts": [
-4.88
-],
-"t": 4.88
-},
-{
 "pj": {
 "q": "FAUSTINO",
 "pose": "aplaude",
 "lado": "der"
 },
 "t": 9.56
+},
+{
+"claves": [
+"lo más característico: las maracas",
+"Corcheas tranquilas",
+"un tresillo de semicorcheas"
+],
+"ts": [
+3.52,
+4.88,
+7.4
+],
+"t": 3.52,
+"nofiltra": true
 }
 ],
 "s2_b07": [
@@ -429,15 +461,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "caja": true
 },
 {
-"claves": [
-"calladitas casi todo el rato"
-],
-"ts": [
-1.12
-],
-"t": 1.12
-},
-{
 "pj": {
 "q": "FAUSTINO",
 "pose": "aplaude",
@@ -447,12 +470,19 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"¡Ese remate es puro bolero!"
+"las congas",
+"calladitas casi todo el rato",
+"al final de cada compás:",
+"tres golpes seguidos"
 ],
 "ts": [
-6.9
+0.2,
+1.12,
+3.66,
+5.0
 ],
-"t": 6.9
+"t": 0.2,
+"nofiltra": true
 }
 ],
 "s2_b11": [
@@ -474,21 +504,26 @@ Object.assign(BLUES.CAPAS.lineas, {
 "caja": true
 },
 {
-"claves": [
-"tranquilos, románticos"
-],
-"ts": [
-3.3
-],
-"t": 3.3
-},
-{
 "pj": {
 "q": "FAUSTINO",
 "pose": "baila",
 "lado": "der"
 },
 "t": 5.9
+},
+{
+"claves": [
+"la guitarra y el bajo acompañan",
+"tranquilos, románticos",
+"sin prisa"
+],
+"ts": [
+0.64,
+3.3,
+5.94
+],
+"t": 0.64,
+"nofiltra": true
 }
 ],
 "s2_b08": [
@@ -501,15 +536,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 },
 {
-"claves": [
-"¡arme la banda!"
-],
-"ts": [
-1.84
-],
-"t": 1.84
-},
-{
 "pj": {
 "q": "FAUSTINO",
 "pose": "senala",
@@ -519,12 +545,23 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
+"¡arme la banda!"
+],
+"ts": [
+1.84
+],
+"t": 1.84,
+"nofiltra": true
+},
+{
+"claves": [
 "el bongó y el piano"
 ],
 "ts": [
 7.26
 ],
-"t": 7.26
+"t": 7.26,
+"nofiltra": true
 }
 ],
 "s2_b09": [
@@ -575,7 +612,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ts": [
 6.14
 ],
-"t": 6.14
+"t": 6.14,
+"nofiltra": true
 }
 ],
 "s2_y01": [
@@ -614,15 +652,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 },
 {
-"claves": [
-"Yo soy Ramoncito"
-],
-"ts": [
-2.32
-],
-"t": 2.32
-},
-{
 "pj": {
 "q": "RAMONCITO",
 "pose": "piensa",
@@ -640,12 +669,25 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"¡baila bachata!"
+"Yo soy Ramoncito"
 ],
 "ts": [
+2.32
+],
+"t": 2.32,
+"nofiltra": true
+},
+{
+"claves": [
+"cuando a uno le duele el corazón",
+"no llora: ¡baila bachata!"
+],
+"ts": [
+4.3,
 6.92
 ],
-"t": 6.92
+"t": 4.3,
+"nofiltra": true
 }
 ],
 "s2_h02": [
@@ -658,15 +700,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 },
 {
-"claves": [
-"en los años sesenta"
-],
-"ts": [
-1.58
-],
-"t": 1.58
-},
-{
 "pj": {
 "q": "RAMONCITO",
 "pose": "rie",
@@ -676,12 +709,35 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
+"en los años sesenta"
+],
+"ts": [
+1.58
+],
+"t": 1.58,
+"nofiltra": true
+},
+{
+"claves": [
+"música de amargue",
+"no la ponían en la radio"
+],
+"ts": [
+4.28,
+5.88
+],
+"t": 4.28,
+"nofiltra": true
+},
+{
+"claves": [
 "sonando en todo el mundo"
 ],
 "ts": [
 8.4
 ],
-"t": 8.4
+"t": 8.4,
+"nofiltra": true
 }
 ],
 "s2_h03": [
@@ -692,15 +748,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "lado": "der"
 },
 "t": 0
-},
-{
-"claves": [
-"solo dos cosas"
-],
-"ts": [
-2.46
-],
-"t": 2.46
 },
 {
 "img": "img/s1/inst_m_guira.webp",
@@ -730,12 +777,19 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
+"la percusión: solo dos cosas",
+"la güira",
+"y el bongó",
 "¡Nada de congas ni batería!"
 ],
 "ts": [
+2.46,
+3.96,
+4.58,
 6.18
 ],
-"t": 6.18
+"t": 2.46,
+"nofiltra": true
 }
 ],
 "s2_h04": [
@@ -746,15 +800,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "lado": "der"
 },
 "t": 0
-},
-{
-"claves": [
-"la base es sencillita"
-],
-"ts": [
-1.14
-],
-"t": 1.14
 },
 {
 "img": "img/s2/inst_bongo.webp",
@@ -775,12 +820,25 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"breaks locos"
+"la base es sencillita"
 ],
 "ts": [
-6.8
+1.14
 ],
-"t": 6.8
+"t": 1.14,
+"nofiltra": true
+},
+{
+"claves": [
+"breaks locos",
+"repiques y cortes"
+],
+"ts": [
+6.8,
+7.9
+],
+"t": 6.8,
+"nofiltra": true
 }
 ],
 "s2_h05": [
@@ -802,15 +860,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "caja": true
 },
 {
-"claves": [
-"en la estrofa va caminando, en corcheas"
-],
-"ts": [
-1.54
-],
-"t": 1.54
-},
-{
 "pj": {
 "q": "RAMONCITO",
 "pose": "piensa",
@@ -820,12 +869,17 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"se queda quieta, en negras"
+"la güira",
+"estrofa: camina, en corcheas",
+"estribillo: quieta, en negras"
 ],
 "ts": [
+0.62,
+1.54,
 7.56
 ],
-"t": 7.56
+"t": 0.62,
+"nofiltra": true
 }
 ],
 "s2_h06": [
@@ -848,12 +902,17 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"una larga y dos cortas"
+"el bajo",
+"una larga y dos cortas",
+"compás tras compás"
 ],
 "ts": [
-1.62
+0.56,
+1.62,
+3.3
 ],
-"t": 1.62
+"t": 0.56,
+"nofiltra": true
 }
 ],
 "s2_h07": [
@@ -864,15 +923,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "lado": "der"
 },
 "t": 0
-},
-{
-"claves": [
-"dos guitarras"
-],
-"ts": [
-1.26
-],
-"t": 1.26
 },
 {
 "img": "img/s2/inst_h_ritmica.webp",
@@ -901,21 +951,38 @@ Object.assign(BLUES.CAPAS.lineas, {
 "caja": true
 },
 {
-"claves": [
-"la traviesa, la del punteo"
-],
-"ts": [
-5.3
-],
-"t": 5.3
-},
-{
 "pj": {
 "q": "RAMONCITO",
 "pose": "baila",
 "lado": "der"
 },
 "t": 6.98
+},
+{
+"claves": [
+"dos guitarras",
+"la rítmica, que acompaña",
+"y la diabla"
+],
+"ts": [
+1.26,
+2.54,
+3.98
+],
+"t": 1.26,
+"nofiltra": true
+},
+{
+"claves": [
+"la traviesa, la del punteo",
+"¡no para de improvisar!"
+],
+"ts": [
+5.3,
+7.02
+],
+"t": 5.3,
+"nofiltra": true
 }
 ],
 "s2_h12": [
@@ -928,15 +995,6 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 },
 {
-"claves": [
-"una voz de hombre, muy aguda"
-],
-"ts": [
-2.94
-],
-"t": 2.94
-},
-{
 "pj": {
 "q": "RAMONCITO",
 "pose": "senala",
@@ -945,21 +1003,32 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 5.26
 },
 {
-"claves": [
-"cualquier voz puede cantar bachata"
-],
-"ts": [
-7.36
-],
-"t": 7.36
-},
-{
 "pj": {
 "q": "RAMONCITO",
 "pose": "pulgar",
 "lado": "der"
 },
 "t": 7.32
+},
+{
+"claves": [
+"una voz de hombre, muy aguda"
+],
+"ts": [
+2.94
+],
+"t": 2.94,
+"nofiltra": true
+},
+{
+"claves": [
+"cualquier voz puede cantar bachata"
+],
+"ts": [
+7.36
+],
+"t": 7.36,
+"nofiltra": true
 }
 ],
 "s2_h08": [
@@ -978,7 +1047,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ts": [
 3.14
 ],
-"t": 3.14
+"t": 3.14,
+"nofiltra": true
 }
 ],
 "s2_h09": [
@@ -1113,7 +1183,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s1/inst_m_guira.webp",
 "img/s2/inst_bongo.webp"
 ],
-"tira": "izq"
+"tira": "derb"
 },
 {
 "son": [
@@ -1127,7 +1197,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_bongo.webp"
 ],
-"tira": "izq"
+"tira": "derb"
 },
 {
 "son": [
@@ -1141,7 +1211,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s1/inst_bajo.webp"
 ],
-"tira": "izq"
+"tira": "derb"
 },
 {
 "son": [
@@ -1155,7 +1225,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_h_diabla.webp"
 ],
-"tira": "izq"
+"tira": "derb"
 }
 ],
 "s2_r03": [
