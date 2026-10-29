@@ -681,7 +681,7 @@ BLUES.dia(4, {
     {
      "id": "s4_ch1",
      "quien": "CHUCHO",
-     "texto": "Oh… tengo muchos nombres. Hay quien me conoce como Antónico, otros como Schoenberg… ¡pero aquí soy Chucho, el conguero! Encantado de conocer esta cultura: creo que me voy a quedar aquí una temporada.",
+     "texto": "Oh… tengo muchos nombres. Hay quien me conoce como Antónico, otros como Schoenberg… ¡pero aquí soy Chucho, el conguero! Encantado de conocer esta cultura: creo que me voy a quedar aquí una temporadita, papi.",
      "voz": "voz/s4/s4_ch1.mp3",
      "var": "RECURSO_DESTAPE",
      "fijo": true
@@ -1688,7 +1688,7 @@ BLUES.dia(4, {
     {
      "id": "s4_grito",
      "quien": "CHUCHO",
-     "texto": "¡Ugh!",
+     "texto": "¡Aaah… uh!",
      "voz": "voz/s4/s4_grito.mp3"
     }
    ],

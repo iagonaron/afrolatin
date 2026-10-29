@@ -828,18 +828,18 @@ Object.assign(BLUES.CAPAS.lineas, {
 "¡pero aquí soy Chucho, el conguero!"
 ],
 "ts": [
-7.98
+7.08
 ],
-"t": 7.98
+"t": 7.08
 },
 {
 "claves": [
-"me voy a quedar aquí una temporada"
+"me voy a quedar aquí una temporadita"
 ],
 "ts": [
-13.76
+13.34
 ],
-"t": 13.76
+"t": 13.34
 }
 ],
 "s4_p10": [
