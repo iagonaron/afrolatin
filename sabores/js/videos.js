@@ -17,7 +17,12 @@
   const listos = new Set();                             // URL absolutas ya en la caché
   let caja = null, leida = null;
   const abre = () => caja || (caja = caches.open(CACHE).catch(() => null));
-  const lee = () => leida || (leida = abre().then(c => c ? c.keys() : []).then(ks => { ks.forEach(r => listos.add(r.url)); }).catch(() => { }));
+  /* (r15b) cada clip lleva su huella (?h=…) en el manifiesto: si se rehace, la URL cambia y se baja el nuevo; los que ya no están en el
+     manifiesto (versiones viejas) se borran de la caché para no ocupar sitio */
+  const lee = () => leida || (leida = abre().then(c => c ? c.keys().then(ks => {
+    const vale = new Set(Object.keys(V()).map(k => abs(V()[k].v)));
+    ks.forEach(r => { if (vale.has(r.url)) listos.add(r.url); else if (vale.size) c.delete(r).catch(() => { }); });
+  }) : null).catch(() => { }));
   async function baja(ruta) {
     const u = abs(ruta); if (listos.has(u)) return true;
     const c = await abre(); if (!c) return false;
