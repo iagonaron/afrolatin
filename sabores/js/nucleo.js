@@ -194,8 +194,8 @@ window.BLUES = window.BLUES || {};
       return;
     }
     if (musSig) { musSig.h.parar(1.2); musSig = null; }
-    if (musAct) { musAct.h.parar(1.6); musAct = null; }
-    if (m && m.src && B.buf[m.src]) { const vol = m.vol == null ? .8 : m.vol; musAct = { src: m.src, vol, h: B.suena(m.src, { bus: B.bus.mus, vol, bucle: !!m.bucle, fade: .8, grupo: 'mus' }) }; }
+    if (musAct) { musAct.h.parar(m && m.corte ? .35 : 1.6); musAct = null; }   // (29-oct 18:54) «corte»: la nueva entra de golpe (la de antes se va en 0,35 s)
+    if (m && m.src && B.buf[m.src]) { const vol = m.vol == null ? .8 : m.vol; musAct = { src: m.src, vol, h: B.suena(m.src, { bus: B.bus.mus, vol, bucle: !!m.bucle, fade: m.corte ? .03 : .8, grupo: 'mus' }) }; }
   };
   /* (ronda 4, Iago: «que la música de La Habana se transforme y que a medida que va avanzando se quede en el jazz»)
      mezcla progresiva entre dos músicas en los mapas: musicaHacia arranca la nueva a cero sin cortar la que suena;
