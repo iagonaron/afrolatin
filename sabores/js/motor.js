@@ -111,6 +111,22 @@ const HIT = (function () {
     bp.dataset.tip = 'Pantalla completa (F)'; bp.setAttribute('aria-label', 'Pantalla completa');
     bp.addEventListener('click', e => { e.stopPropagation(); M.pantallaCompleta(); });
     escena.appendChild(bp);
+    /* (Iago 29-oct 09:06, «suelo probar los portales antes en el ordenador de clase») PREPARAR PARA CLASE: baja ya todos los vídeos de los
+       videoclips a la caché de este navegador (solo en la portada; icono, y el texto al pasar el ratón) */
+    if (B.videos && B.videos.hay()) {
+      const bv = B.el('button', 'bt ico peq bt-vc', '<svg viewBox="0 0 24 24"><path d="M11 3h2v9.2l3.3-3.3 1.4 1.4L12 16l-5.7-5.7 1.4-1.4 3.3 3.3zM4 18h16v2H4z"/></svg><b></b>');
+      const tip = t => { bv.dataset.tip = t; bv.setAttribute('aria-label', t); };
+      tip('Preparar para clase: bajar los vídeos de los conciertos');
+      B.videos.estado().then(e => { if (e.total && e.hechos === e.total) { bv.classList.add('listo'); tip('Listo para clase: los vídeos ya están en este ordenador'); } });
+      let va = false;
+      bv.addEventListener('click', async e => {
+        e.stopPropagation(); if (va) return; va = true; bv.classList.add('bajando');
+        const ok = await B.videos.todo((h, t, bh, bt) => { $('b', bv).textContent = Math.round(100 * (bt ? bh / bt : h / t)) + ' %'; tip('Bajando los vídeos: ' + h + ' de ' + t + ' (' + B.fmtMB(bh) + ' de ' + B.fmtMB(bt) + ')'); });
+        va = false; bv.classList.remove('bajando'); $('b', bv).textContent = '';
+        if (ok) { bv.classList.add('listo'); tip('Listo para clase: los vídeos ya están en este ordenador'); } else tip('No se pudieron bajar todos: vuelve a pulsar para seguir');
+      });
+      escena.appendChild(bv);
+    }
     /* (ronda 6, Iago: en la pizarra, mantener pulsado saca el menú de copiar/cortar) nada de menú contextual ni selección en el portal */
     escena.addEventListener('contextmenu', e => { if (!(e.target && /^(input|textarea|select)$/i.test(e.target.tagName))) e.preventDefault(); });
     escena.addEventListener('selectstart', e => { if (!(e.target && /^(input|textarea)$/i.test(e.target.tagName))) e.preventDefault(); });
@@ -323,6 +339,7 @@ const HIT = (function () {
     }
     escena.classList.remove('precargando');
     correPlano(B.clamp(desde || 0, 0, d.planos.length - 1));
+    if (B.videos) B.videos.prepara(n);   // (Iago 29-oct) los clips del videoclip de este sabor, en segundo plano y de uno en uno
   };
   function recursosDelDia(d) {
     const r = [];
