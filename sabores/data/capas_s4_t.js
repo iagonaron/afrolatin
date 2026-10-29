@@ -273,6 +273,15 @@ Object.assign(BLUES.CAPAS.lineas, {
 1.32
 ],
 "t": 1.32
+},
+{
+"musica": {
+"src": "mus/s4_viaje_nueva_york.mp3",
+"vol": 0.62,
+"bucle": false,
+"corte": true
+},
+"t": 2.02
 }
 ],
 "s4_n03": [
