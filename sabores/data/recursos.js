@@ -807,5 +807,6 @@ BLUES.RECURSOS = Object.assign(BLUES.RECURSOS || {}, {
 "videos/bachata-2.mp4": 8764877,
 "videos/cumbia-2.mp4": 8476050,
 "videos/merengue-2.mp4": 8671716,
-"videos/samba-2.mp4": 8924463
+"videos/samba-2.mp4": 8924463,
+"vc/s2/vc_h_32_eso_es_bachata.mp4": 8269581
 });
