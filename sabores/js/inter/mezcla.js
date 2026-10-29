@@ -253,7 +253,9 @@
       tit.textContent = (op.tit || 'Mezclador') + ' · ' + secs.find(y => y.id === sec).nom;
     }
     if (secs.length) {
-      const gr = B.el('div', 's4-secciones'); pieIzq.appendChild(gr);
+      /* (Iago 29-oct 07:44) «los botones estrofa y estribillo, como un selector arriba, más protagonista»: debajo del título */
+      const gr = B.el('div', 's4-secciones arriba'); cab.parentNode.insertBefore(gr, cab.nextSibling);
+      const raiz = gr.closest('.s4-mezclador') || caja; raiz.classList.add('con-selector');   // (Chrome 94 del aula: sin :has())
       secs.forEach(x => { bSec[x.id] = U.boton(x.nom, '', () => cambiaSec(x.id)); bSec[x.id].classList.add('s4-sec'); bSec[x.id].classList.toggle('on', x.id === sec); gr.appendChild(bSec[x.id]); });
       tit.textContent = (op.tit || 'Mezclador') + ' · ' + secs.find(y => y.id === sec).nom;
     }
