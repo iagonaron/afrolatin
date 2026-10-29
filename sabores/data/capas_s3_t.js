@@ -43,7 +43,13 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 3.8,
 "vol": 0.4,
 "grupo": "s3_n01:cumbia:0",
-"ciclo": 5.3333
+"ciclo": 5.3333,
+"ico": [
+"img/s1/inst_maracas.webp",
+"img/s1/inst_tambor.webp",
+"img/s1/inst_bajo.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -53,7 +59,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 2.84,
 "vol": 0.4,
 "grupo": "s3_n01:cumbia:0",
-"ciclo": 5.3333
+"ciclo": 5.3333,
+"ico": [
+"img/s1/inst_guacharaca.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -63,7 +73,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 2.1,
 "vol": 0.4,
 "grupo": "s3_n01:cumbia:0",
-"ciclo": 5.3333
+"ciclo": 5.3333,
+"ico": [
+"img/s1/inst_contratiempo.webp"
+],
+"tira": "izq"
 },
 {
 "claves": [
@@ -89,7 +103,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 3.76,
 "vol": 0.4,
 "grupo": "s3_n01:merengue:1",
-"ciclo": 6.8571
+"ciclo": 6.8571,
+"ico": [
+"img/s1/inst_m_bajo.webp",
+"img/s1/inst_m_piano.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -100,7 +119,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 1.92,
 "vol": 0.4,
 "grupo": "s3_n01:merengue:1",
-"ciclo": 6.8571
+"ciclo": 6.8571,
+"ico": [
+"img/s1/inst_m_guira.webp",
+"img/s1/inst_m_tambora.webp"
+],
+"tira": "izq"
 },
 {
 "quitaFijos": true,
@@ -133,7 +157,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "vol": 0.4,
 "fase0": 3.3333,
 "grupo": "s3_n01:bolero:2",
-"ciclo": 10.6667
+"ciclo": 10.6667,
+"ico": [
+"img/s2/inst_b_guitarra.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -143,7 +171,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 3.86,
 "vol": 0.4,
 "grupo": "s3_n01:bolero:2",
-"ciclo": 10.6667
+"ciclo": 10.6667,
+"ico": [
+"img/s2/inst_b_maracas.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -153,7 +185,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 2.6,
 "vol": 0.4,
 "grupo": "s3_n01:bolero:2",
-"ciclo": 10.6667
+"ciclo": 10.6667,
+"ico": [
+"img/s2/inst_b_congas.webp"
+],
+"tira": "izq"
 },
 {
 "claves": [
@@ -181,7 +217,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 8.24,
 "vol": 0.4,
 "grupo": "s3_n01:bachata:3",
-"ciclo": 7.3846
+"ciclo": 7.3846,
+"ico": [
+"img/s2/inst_bongo.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -191,7 +231,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 5.58,
 "vol": 0.4,
 "grupo": "s3_n01:bachata:3",
-"ciclo": 7.3846
+"ciclo": 7.3846,
+"ico": [
+"img/s1/inst_bajo.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -201,7 +245,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 3.6,
 "vol": 0.4,
 "grupo": "s3_n01:bachata:3",
-"ciclo": 7.3846
+"ciclo": 7.3846,
+"ico": [
+"img/s2/inst_h_diabla.webp"
+],
+"tira": "izq"
 }
 ],
 "s3_n02": [
@@ -1250,7 +1298,13 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 8.62,
 "vol": 0.4,
 "grupo": "s3_rr1:samba:0",
-"ciclo": 8.0
+"ciclo": 8.0,
+"ico": [
+"img/s3/inst_s_tamborim.webp",
+"img/s3/inst_s_caixa.webp",
+"img/s3/inst_s_agogo.webp"
+],
+"tira": "der"
 },
 {
 "son": [
@@ -1260,7 +1314,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 5.26,
 "vol": 0.4,
 "grupo": "s3_rr1:samba:0",
-"ciclo": 8.0
+"ciclo": 8.0,
+"ico": [
+"img/s3/inst_s_surdo_grave.webp",
+"img/s3/inst_s_surdo_agudo.webp"
+],
+"tira": "der"
 },
 {
 "son": [
@@ -1270,7 +1329,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 3.4,
 "vol": 0.4,
 "grupo": "s3_rr1:samba:0",
-"ciclo": 8.0
+"ciclo": 8.0,
+"ico": [
+"img/s3/inst_s_apito.webp"
+],
+"tira": "der"
 }
 ],
 "s3_rr2": [
@@ -1302,7 +1365,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 5.34,
 "vol": 0.4,
 "grupo": "s3_rr2:bossa:0",
-"ciclo": 13.7143
+"ciclo": 13.7143,
+"ico": [
+"img/s3/inst_b_guitarra.webp"
+],
+"tira": "der"
 },
 {
 "son": [
@@ -1312,7 +1379,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 2.9,
 "vol": 0.4,
 "grupo": "s3_rr2:bossa:0",
-"ciclo": 13.7143
+"ciclo": 13.7143,
+"ico": [
+"img/s3/inst_b_piano.webp"
+],
+"tira": "der"
 },
 {
 "son": [
@@ -1322,7 +1393,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 1.52,
 "vol": 0.4,
 "grupo": "s3_rr2:bossa:0",
-"ciclo": 13.7143
+"ciclo": 13.7143,
+"ico": [
+"img/s3/inst_b_aro.webp"
+],
+"tira": "der"
 },
 {
 "son": [

@@ -41,7 +41,13 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 2.14,
 "vol": 0.4,
 "grupo": "s4_n01:cumbia:0",
-"ciclo": 5.3333
+"ciclo": 5.3333,
+"ico": [
+"img/s1/inst_maracas.webp",
+"img/s1/inst_tambor.webp",
+"img/s1/inst_bajo.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -51,7 +57,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 1.56,
 "vol": 0.4,
 "grupo": "s4_n01:cumbia:0",
-"ciclo": 5.3333
+"ciclo": 5.3333,
+"ico": [
+"img/s1/inst_guacharaca.webp"
+],
+"tira": "izq"
 },
 {
 "claves": [
@@ -77,7 +87,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 2.56,
 "vol": 0.4,
 "grupo": "s4_n01:merengue:1",
-"ciclo": 6.8571
+"ciclo": 6.8571,
+"ico": [
+"img/s1/inst_m_bajo.webp",
+"img/s1/inst_m_piano.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -88,7 +103,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 1.58,
 "vol": 0.4,
 "grupo": "s4_n01:merengue:1",
-"ciclo": 6.8571
+"ciclo": 6.8571,
+"ico": [
+"img/s1/inst_m_guira.webp",
+"img/s1/inst_m_tambora.webp"
+],
+"tira": "izq"
 },
 {
 "quitaFijos": true,
@@ -119,7 +139,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "vol": 0.4,
 "fase0": 3.3333,
 "grupo": "s4_n01:bolero:2",
-"ciclo": 10.6667
+"ciclo": 10.6667,
+"ico": [
+"img/s2/inst_b_guitarra.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -129,7 +153,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 2.2,
 "vol": 0.4,
 "grupo": "s4_n01:bolero:2",
-"ciclo": 10.6667
+"ciclo": 10.6667,
+"ico": [
+"img/s2/inst_b_maracas.webp"
+],
+"tira": "izq"
 },
 {
 "claves": [
@@ -156,7 +184,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 2.94,
 "vol": 0.4,
 "grupo": "s4_n01:bachata:3",
-"ciclo": 7.3846
+"ciclo": 7.3846,
+"ico": [
+"img/s1/inst_m_guira.webp",
+"img/s2/inst_bongo.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -166,7 +199,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 1.7,
 "vol": 0.4,
 "grupo": "s4_n01:bachata:3",
-"ciclo": 7.3846
+"ciclo": 7.3846,
+"ico": [
+"img/s2/inst_h_diabla.webp"
+],
+"tira": "izq"
 },
 {
 "quitaFijos": true,
@@ -199,7 +236,13 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 3.8,
 "vol": 0.4,
 "grupo": "s4_n01:samba:4",
-"ciclo": 8.0
+"ciclo": 8.0,
+"ico": [
+"img/s3/inst_s_tamborim.webp",
+"img/s3/inst_s_caixa.webp",
+"img/s3/inst_s_agogo.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -209,7 +252,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 2.5,
 "vol": 0.4,
 "grupo": "s4_n01:samba:4",
-"ciclo": 8.0
+"ciclo": 8.0,
+"ico": [
+"img/s3/inst_s_surdo_grave.webp",
+"img/s3/inst_s_surdo_agudo.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -219,7 +267,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 1.62,
 "vol": 0.4,
 "grupo": "s4_n01:samba:4",
-"ciclo": 8.0
+"ciclo": 8.0,
+"ico": [
+"img/s3/inst_s_apito.webp"
+],
+"tira": "izq"
 },
 {
 "claves": [
@@ -247,7 +299,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 4.96,
 "vol": 0.4,
 "grupo": "s4_n01:bossa:5",
-"ciclo": 13.7143
+"ciclo": 13.7143,
+"ico": [
+"img/s3/inst_b_guitarra.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -257,7 +313,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 3.4,
 "vol": 0.4,
 "grupo": "s4_n01:bossa:5",
-"ciclo": 13.7143
+"ciclo": 13.7143,
+"ico": [
+"img/s3/inst_b_aro.webp"
+],
+"tira": "izq"
 }
 ],
 "s4_n02": [
@@ -581,6 +641,16 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 1.26
 },
 {
+"claves": [
+"ritmo «martillo»"
+],
+"ts": [
+3.26
+],
+"t": 3.26,
+"nofiltra": true
+},
+{
 "pj": {
 "q": "PAPO VEGA",
 "pose": "oreja",
@@ -589,13 +659,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 5.6
 },
 {
-"img": "img/s4/inst_s_cencerro.webp",
+"img": "img/s4/inst_s_cencerro_b.webp",
 "nom": "Otro cencerro",
 "t": 7.86,
 "x": 0.36,
 "y": 0.46,
-"h": 0.5,
-"caja": true
+"h": 0.5
 },
 {
 "claves": [
@@ -833,6 +902,10 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 1.0
 },
 {
+"vari": "RECURSO_CHU",
+"t": 7.04
+},
+{
 "claves": [
 "¡pero aquí soy Chucho, el conguero!"
 ],
@@ -933,6 +1006,14 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 2.78
 },
 {
+"pj": {
+"q": "DON MAMBERTO",
+"pose": "brazos",
+"lado": "der"
+},
+"t": 2.78
+},
+{
 "claves": [
 "la parte más caliente del danzón"
 ],
@@ -951,7 +1032,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "pose": "senala",
 "lado": "der"
 },
-"t": 11.64
+"t": 10.02
 },
 {
 "vari": "RECURSO_MB4",
@@ -1048,6 +1129,14 @@ Object.assign(BLUES.CAPAS.lineas, {
 ],
 "s4_m04": [
 {
+"vari": "RECURSO_MB3",
+"t": 0
+},
+{
+"quitaSueltas": true,
+"t": 0
+},
+{
 "pj": {
 "q": "DON MAMBERTO",
 "pose": "senala",
@@ -1066,6 +1155,14 @@ Object.assign(BLUES.CAPAS.lineas, {
 }
 ],
 "s4_grito": [
+{
+"vari": "RECURSO_MB3",
+"t": 0
+},
+{
+"quitaSueltas": true,
+"t": 0
+},
 {
 "pj": {
 "q": "CHUCHO",
@@ -1293,12 +1390,42 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 14.42
 },
 {
+"claves": [
+"Lisboa y París"
+],
+"ts": [
+16.08
+],
+"t": 16.08,
+"nofiltra": true
+},
+{
 "pj": {
 "q": "LUENA",
 "pose": "baila",
 "lado": "der"
 },
 "t": 17.96
+},
+{
+"claves": [
+"salsa y bachata"
+],
+"ts": [
+19.68
+],
+"t": 19.68,
+"nofiltra": true
+},
+{
+"claves": [
+"SBK: salsa, bachata y kizomba"
+],
+"ts": [
+21.9
+],
+"t": 21.9,
+"nofiltra": true
 },
 {
 "pj": {
@@ -1635,7 +1762,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 7.66,
 "vol": 0.4,
 "grupo": "s4_rp:salsa:0",
-"ciclo": 10.1053
+"ciclo": 10.1053,
+"ico": [
+"img/s4/inst_s_bajo.webp",
+"img/s3/inst_b_piano.webp"
+],
+"tira": "der"
 },
 {
 "son": [
@@ -1645,7 +1777,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 5.84,
 "vol": 0.4,
 "grupo": "s4_rp:salsa:0",
-"ciclo": 10.1053
+"ciclo": 10.1053,
+"ico": [
+"img/s4/inst_s_claves.webp"
+],
+"tira": "der"
 },
 {
 "son": [
@@ -1657,7 +1793,13 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 4.2,
 "vol": 0.4,
 "grupo": "s4_rp:salsa:0",
-"ciclo": 10.1053
+"ciclo": 10.1053,
+"ico": [
+"img/s4/inst_s_cencerro.webp",
+"img/s4/inst_s_cencerro_b.webp",
+"img/s4/inst_s_congas.webp"
+],
+"tira": "der"
 }
 ],
 "s4_rm": [
@@ -1685,7 +1827,21 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 1.5,
 "vol": 0.4,
 "grupo": "s4_rm:mambo:0",
-"ciclo": 16.0
+"ciclo": 16.0,
+"ico": [
+"img/s4/inst_m_saxo_baritono.webp",
+"img/s4/inst_s_trompeta.webp"
+],
+"tira": "der"
+},
+{
+"son": [
+"voz/s4/s4_grito.mp3"
+],
+"t": 3.99,
+"dur": 2.3,
+"vol": 0.95,
+"off": 0
 }
 ],
 "s4_rl": [
@@ -1733,7 +1889,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 5.88,
 "vol": 0.4,
 "grupo": "s4_rl:kiz:0",
-"ciclo": 11.2941
+"ciclo": 11.2941,
+"ico": [
+"img/s4/inst_k_caja.webp"
+],
+"tira": "der"
 },
 {
 "son": [
@@ -1743,7 +1903,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 3.6,
 "vol": 0.4,
 "grupo": "s4_rl:kiz:0",
-"ciclo": 11.2941
+"ciclo": 11.2941,
+"ico": [
+"img/s4/inst_k_sinte.webp"
+],
+"tira": "der"
 }
 ],
 "s4_n06": [
@@ -1774,4 +1938,4 @@ Object.assign(BLUES.CAPAS.lineas, {
 }
 ]
 });
-BLUES.CAPAS.tam = Object.assign(BLUES.CAPAS.tam || {}, {"img/s4/inst_s_timbales.webp": {"w": 0.3443, "h": 0.384, "x": 0.5, "y": 0.4156, "ry": 0.6876}, "img/s4/inst_s_bongo.webp": {"w": 0.2008, "h": 0.2102, "x": 0.5, "y": 0.4156, "ry": 0.6006}, "img/s4/inst_s_cencerro.webp": {"w": 0.1434, "h": 0.24, "x": 0.5, "y": 0.4156, "ry": 0.6156}, "img/s4/inst_s_conga.webp": {"w": 0.1585, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_congas.webp": {"w": 0.2961, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_claves.webp": {"w": 0.1052, "h": 0.1725, "x": 0.5, "y": 0.4156, "ry": 0.5818}, "img/s4/inst_s_bajo.webp": {"w": 0.0919, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s3/inst_b_piano.webp": {"w": 0.3388, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_trompeta.webp": {"w": 0.0718, "h": 0.425, "x": 0.5, "y": 0.4156, "ry": 0.7081}, "img/s4/inst_s_trombon.webp": {"w": 0.0736, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_m_saxo_tenor.webp": {"w": 0.1221, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_m_saxo_baritono.webp": {"w": 0.1277, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_k_caja.webp": {"w": 0.1721, "h": 0.2064, "x": 0.5, "y": 0.4156, "ry": 0.5987}, "img/s4/inst_k_teclado.webp": {"w": 0.4781, "h": 0.2975, "x": 0.5, "y": 0.4156, "ry": 0.6443}, "img/s4/inst_k_sinte.webp": {"w": 0.3825, "h": 0.3829, "x": 0.5, "y": 0.4156, "ry": 0.687}});
+BLUES.CAPAS.tam = Object.assign(BLUES.CAPAS.tam || {}, {"img/s4/inst_s_timbales.webp": {"w": 0.3443, "h": 0.384, "x": 0.5, "y": 0.4156, "ry": 0.6876}, "img/s4/inst_s_bongo.webp": {"w": 0.2008, "h": 0.2102, "x": 0.5, "y": 0.4156, "ry": 0.6006}, "img/s4/inst_s_cencerro.webp": {"w": 0.1434, "h": 0.24, "x": 0.5, "y": 0.4156, "ry": 0.6156}, "img/s4/inst_s_conga.webp": {"w": 0.1585, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_congas.webp": {"w": 0.2961, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_claves.webp": {"w": 0.1052, "h": 0.1725, "x": 0.5, "y": 0.4156, "ry": 0.5818}, "img/s4/inst_s_bajo.webp": {"w": 0.0919, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s3/inst_b_piano.webp": {"w": 0.3388, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_trompeta.webp": {"w": 0.0718, "h": 0.425, "x": 0.5, "y": 0.4156, "ry": 0.7081}, "img/s4/inst_s_trombon.webp": {"w": 0.0736, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_m_saxo_tenor.webp": {"w": 0.1221, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_m_saxo_baritono.webp": {"w": 0.1277, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_k_caja.webp": {"w": 0.1721, "h": 0.2119, "x": 0.5, "y": 0.4156, "ry": 0.6015}, "img/s4/inst_k_teclado.webp": {"w": 0.4781, "h": 0.2398, "x": 0.5, "y": 0.4156, "ry": 0.6154}, "img/s4/inst_k_sinte.webp": {"w": 0.3825, "h": 0.3318, "x": 0.5, "y": 0.4156, "ry": 0.6614}});

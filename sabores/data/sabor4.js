@@ -212,40 +212,30 @@ BLUES.dia(4, {
      "voz": "voz/s4/s4_p04.mp3"
     }
    ],
-   "inter": [
-    {
-     "tipo": "instrumento",
-     "id": "timbalero",
-     "nom": "Timbalero · estrofa: la cáscara",
-     "img": "img/s4/inst_s_timbales.webp",
-     "loop": "loops/s4/salsa_timbal_estrofa.mp3",
-     "color": "#B8B8C0",
-     "bpm": 95,
-     "compases": 4,
-     "vueltas": 1,
-     "espera": 0.6,
-     "recursos": [
-      "loops/s4/salsa_timbal_estrofa.mp3",
-      "img/s4/inst_s_timbales.webp"
-     ]
-    },
-    {
-     "tipo": "instrumento",
-     "id": "timbalero",
+   "inter": {
+    "tipo": "instrumento",
+    "id": "timbalero",
+    "nom": "Timbalero · estrofa: la cáscara",
+    "img": "img/s4/inst_s_timbales.webp",
+    "loop": "loops/s4/salsa_timbal_estrofa.mp3",
+    "color": "#B8B8C0",
+    "bpm": 95,
+    "compases": 4,
+    "vueltas": 1,
+    "espera": 0.6,
+    "recursos": [
+     "loops/s4/salsa_timbal_estrofa.mp3",
+     "img/s4/inst_s_timbales.webp",
+     "loops/s4/salsa_timbal_estribillo.mp3",
+     "img/s4/inst_s_cencerro.webp"
+    ],
+    "luego": {
      "nom": "Timbalero · estribillo: el cencerro",
      "img": "img/s4/inst_s_cencerro.webp",
      "loop": "loops/s4/salsa_timbal_estribillo.mp3",
-     "color": "#B8B8C0",
-     "bpm": 95,
-     "compases": 4,
-     "vueltas": 1,
-     "espera": 0.6,
-     "recursos": [
-      "loops/s4/salsa_timbal_estribillo.mp3",
-      "img/s4/inst_s_cencerro.webp"
-     ]
+     "vueltas": 1
     }
-   ]
+   }
   },
   {
    "id": "s4_s5",
@@ -264,40 +254,30 @@ BLUES.dia(4, {
      "voz": "voz/s4/s4_p05.mp3"
     }
    ],
-   "inter": [
-    {
-     "tipo": "instrumento",
-     "id": "bongosero",
-     "nom": "Bongosero · estrofa: el bongó",
-     "img": "img/s4/inst_s_bongo.webp",
-     "loop": "loops/s4/salsa_bongo_estrofa.mp3",
-     "color": "#C27C3A",
-     "bpm": 95,
-     "compases": 4,
-     "vueltas": 1,
-     "espera": 0.6,
-     "recursos": [
-      "loops/s4/salsa_bongo_estrofa.mp3",
-      "img/s4/inst_s_bongo.webp"
-     ]
-    },
-    {
-     "tipo": "instrumento",
-     "id": "bongosero",
+   "inter": {
+    "tipo": "instrumento",
+    "id": "bongosero",
+    "nom": "Bongosero · estrofa: el bongó, ritmo «martillo»",
+    "img": "img/s4/inst_s_bongo.webp",
+    "loop": "loops/s4/salsa_bongo_estrofa.mp3",
+    "color": "#C27C3A",
+    "bpm": 95,
+    "compases": 4,
+    "vueltas": 1,
+    "espera": 0.6,
+    "recursos": [
+     "loops/s4/salsa_bongo_estrofa.mp3",
+     "img/s4/inst_s_bongo.webp",
+     "loops/s4/salsa_bongo_estribillo.mp3",
+     "img/s4/inst_s_cencerro_b.webp"
+    ],
+    "luego": {
      "nom": "Bongosero · estribillo: otro cencerro, más agudo",
      "img": "img/s4/inst_s_cencerro_b.webp",
      "loop": "loops/s4/salsa_bongo_estribillo.mp3",
-     "color": "#C27C3A",
-     "bpm": 95,
-     "compases": 4,
-     "vueltas": 1,
-     "espera": 0.6,
-     "recursos": [
-      "loops/s4/salsa_bongo_estribillo.mp3",
-      "img/s4/inst_s_cencerro_b.webp"
-     ]
+     "vueltas": 1
     }
-   ]
+   }
   },
   {
    "id": "s4_s5b",
@@ -1647,7 +1627,8 @@ BLUES.dia(4, {
    },
    "var": {
     "RECURSO_LLEGAN": "img/s4/s_musicos_llegan.webp",
-    "RECURSO_DESTAPE": "img/s4/s_destape.webp"
+    "RECURSO_DESTAPE": "img/s4/s_destape.webp",
+    "RECURSO_CHU": "img/s4/vc_sa_48_chucho_soy_chucho.webp"
    }
   },
   {
@@ -3018,7 +2999,8 @@ BLUES.dia(4, {
      "id": "s4_rm",
      "quien": "DON MAMBERTO",
      "texto": "Y el mambo: los vientos, el flow… ¡y el grito!",
-     "voz": "voz/s4/s4_rm.mp3"
+     "voz": "voz/s4/s4_rm.mp3",
+     "espera": 2.2
     },
     {
      "id": "s4_rl",

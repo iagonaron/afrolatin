@@ -43,7 +43,13 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 4.68,
 "vol": 0.4,
 "grupo": "s2_n01:cumbia:0",
-"ciclo": 5.3333
+"ciclo": 5.3333,
+"ico": [
+"img/s1/inst_maracas.webp",
+"img/s1/inst_tambor.webp",
+"img/s1/inst_bajo.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -53,7 +59,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 3.0,
 "vol": 0.4,
 "grupo": "s2_n01:cumbia:0",
-"ciclo": 5.3333
+"ciclo": 5.3333,
+"ico": [
+"img/s1/inst_guacharaca.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -63,7 +73,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 1.5,
 "vol": 0.4,
 "grupo": "s2_n01:cumbia:0",
-"ciclo": 5.3333
+"ciclo": 5.3333,
+"ico": [
+"img/s1/inst_contratiempo.webp"
+],
+"tira": "izq"
 },
 {
 "claves": [
@@ -91,7 +105,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 5.38,
 "vol": 0.4,
 "grupo": "s2_n01:merengue:1",
-"ciclo": 6.8571
+"ciclo": 6.8571,
+"ico": [
+"img/s1/inst_m_bajo.webp",
+"img/s1/inst_m_piano.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -101,7 +120,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 4.26,
 "vol": 0.4,
 "grupo": "s2_n01:merengue:1",
-"ciclo": 6.8571
+"ciclo": 6.8571,
+"ico": [
+"img/s1/inst_m_guira.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -111,7 +134,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 3.2,
 "vol": 0.4,
 "grupo": "s2_n01:merengue:1",
-"ciclo": 6.8571
+"ciclo": 6.8571,
+"ico": [
+"img/s1/inst_m_tambora.webp"
+],
+"tira": "izq"
 }
 ],
 "s2_n02": [
@@ -1016,7 +1043,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "vol": 0.4,
 "fase0": 1.3333,
 "grupo": "s2_r01:bolero:0",
-"ciclo": 10.6667
+"ciclo": 10.6667,
+"ico": [
+"img/s2/inst_b_guitarra.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -1026,7 +1057,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 5.86,
 "vol": 0.4,
 "grupo": "s2_r01:bolero:0",
-"ciclo": 10.6667
+"ciclo": 10.6667,
+"ico": [
+"img/s2/inst_b_maracas.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -1036,7 +1071,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 4.2,
 "vol": 0.4,
 "grupo": "s2_r01:bolero:0",
-"ciclo": 10.6667
+"ciclo": 10.6667,
+"ico": [
+"img/s2/inst_b_congas.webp"
+],
+"tira": "izq"
 }
 ],
 "s2_r02": [
@@ -1069,7 +1108,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 8.17,
 "vol": 0.4,
 "grupo": "s2_r02:bachata:0",
-"ciclo": 7.3846
+"ciclo": 7.3846,
+"ico": [
+"img/s1/inst_m_guira.webp",
+"img/s2/inst_bongo.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -1079,7 +1123,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 6.92,
 "vol": 0.4,
 "grupo": "s2_r02:bachata:0",
-"ciclo": 7.3846
+"ciclo": 7.3846,
+"ico": [
+"img/s2/inst_bongo.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -1089,7 +1137,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 5.84,
 "vol": 0.4,
 "grupo": "s2_r02:bachata:0",
-"ciclo": 7.3846
+"ciclo": 7.3846,
+"ico": [
+"img/s1/inst_bajo.webp"
+],
+"tira": "izq"
 },
 {
 "son": [
@@ -1099,7 +1151,11 @@ Object.assign(BLUES.CAPAS.lineas, {
 "dur": 3.6,
 "vol": 0.4,
 "grupo": "s2_r02:bachata:0",
-"ciclo": 7.3846
+"ciclo": 7.3846,
+"ico": [
+"img/s2/inst_h_diabla.webp"
+],
+"tira": "izq"
 }
 ],
 "s2_r03": [
