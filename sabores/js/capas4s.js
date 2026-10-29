@@ -65,7 +65,7 @@
     if (!it.fijo) { if (previo) previo.remove(); mio = previo = clavesEl; clavesEl = null; }
     if (pais) { if (titEl) titEl.remove(); titEl = null; } else if (!it.fijo && titEl) titEl.classList.add('arriba');
     const box = B.el('div', 'c4-claves ' + (it.estilo || 'fila') + (it.fijo ? ' fijo' : '') + (it.lado ? ' ' + it.lado : '') + (pais ? ' c4-pais arriba' : ''));   // (Iago 29-oct 21:06) el país, arriba desde el principio (sin moverse) y en mayúsculas
-    if (it.fijo) fijos.push(box); else if (pais) { titEl = box; setTimeout(() => { if (titEl === box) { box.remove(); titEl = null; } }, 7000); } else clavesEl = box;
+    if (it.fijo) fijos.push(box); else if (pais) { titEl = box; setTimeout(() => { if (titEl === box) { box.remove(); titEl = null; } }, 7000); } else { clavesEl = box; box._t = it._t0 != null ? it._t0 : it.t; const ts = B.arr(it.ts); box._fin = ts.length ? (it._t0 != null ? it._t0 - .05 : 0) + Math.max.apply(null, ts) : box._t; }
     capa.appendChild(box);
     const xs = B.arr(it.claves), n = xs.length, t0 = it.t != null ? it.t : (it.en || 0) * dur, t1 = Math.max(t0 + .2, (it.hasta == null ? .62 : it.hasta) * dur);
     xs.forEach((x, i) => {
@@ -89,7 +89,9 @@
   function ponImg(it, c) {
     asegura();
     if (it.solo !== false) quitaSueltas();
-    if (it.caja) { quitaClaves(true); ponVelo(); }   // (28-oct, Iago: «se camina, no se corre: una vez que sale, que ya no aparezca»)
+    /* (28-oct, Iago: «se camina, no se corre: una vez que sale, que ya no aparezca») el cartel de ANTES se va cuando entra el instrumento…
+       (29-oct 23:03: «"una larga y dos cortas" es súper clave») …pero el que empieza con él (el que lo explica) se queda, arriba */
+    if (it.caja) { if (!(clavesEl && it.t != null && ((clavesEl._t != null && it.t - clavesEl._t < .5) || (clavesEl._fin != null && clavesEl._fin > it.t - .3)))) quitaClaves(true); capa.classList.add('con-caja'); ponVelo(); }
     const tam = it.caja && B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[it.img];   // (27-oct noche) caja de «tamaño real», la misma de la interacción
     const w = B.el('div', 'c4-suelta' + (tam ? ' caja' : ''));
     if (tam) { w.style.setProperty('--x', tam.x); w.style.setProperty('--y', tam.y); w.style.setProperty('--w', tam.w); w.style.setProperty('--h', tam.h); }
@@ -99,7 +101,7 @@
     if (it.nom) { const nm = B.el('b'); nm.textContent = it.nom; if (it.tn) nm.style.fontSize = 'calc(var(--u)*' + it.tn + ')'; w.appendChild(nm); }
     capa.appendChild(w); void w.offsetWidth; w.classList.add('on'); sueltas.push(w);
   }
-  function quitaSueltas() { sueltas.splice(0).forEach(v => v.remove()); }   // (27-oct 23:20, Iago) de golpe: ni un fotograma de lo anterior (las rejillas del puzle se veían medio segundo)
+  function quitaSueltas() { sueltas.splice(0).forEach(v => v.remove()); if (capa) capa.classList.remove('con-caja'); }   // (27-oct 23:20, Iago) de golpe: ni un fotograma de lo anterior (las rejillas del puzle se veían medio segundo)
   /* ── flechas y rótulos (mapas) ── */
   let svg = null;
   function asegSvg() {
@@ -221,7 +223,7 @@
          frases con dos o tres carteles solo se veía el último, p. ej. el titular «República Dominicana · Santo Domingo») */
       if (it.claves) {
         const t0 = it.t != null ? it.t : 0;
-        if (!it.fijo && it.ts && t0 > .06) B.espera(t0 - .05, c).then(ok => ok && ponClaves(Object.assign({}, it, { t: .05, ts: it.ts.map(x => Math.max(0, x - t0 + .05)) }), dur, c));
+        if (!it.fijo && it.ts && t0 > .06) B.espera(t0 - .05, c).then(ok => ok && ponClaves(Object.assign({}, it, { t: .05, _t0: t0, ts: it.ts.map(x => Math.max(0, x - t0 + .05)) }), dur, c));
         else ponClaves(it, dur, c);
       }
       if (it.img) B.espera(t, c).then(ok => ok && ponImg(it, c));
@@ -257,7 +259,15 @@
     const ics = [];
     if (it.ico && capa) {
       let tira = capa.querySelector('.c4-tira'); if (!tira) { tira = B.el('div', 'c4-tira'); capa.appendChild(tira); }
-      if (!tira.children.length) tira.classList.toggle('der', it.tira === 'der');   // en el lado donde no están los personajes de la lámina
+      if (!tira.querySelector('img')) {   // en el lado donde no están los personajes de la lámina, o el de la columna del texto
+        tira.classList.toggle('der', it.tira === 'der'); tira.classList.toggle('derb', it.tira === 'derb'); tira.classList.toggle('conpj', !!it.pjico);
+      }
+      /* (Iago 29-oct 22:46) el personaje que presenta ese género, detrás; los instrumentos, por delante */
+      if (it.pjico && !tira.querySelector('img.c4-tpj[data-s="' + it.pjico + '"]')) {
+        B.$$('img.c4-tpj', tira).forEach(x => x.remove());
+        const pj = new Image(); pj.className = 'c4-tpj'; pj.src = url(it.pjico); pj.dataset.s = it.pjico; pj.alt = ''; pj.draggable = false;
+        tira.insertBefore(pj, tira.firstChild); ics.push(pj); tira.classList.add('conpj');
+      }
       B.arr(it.ico).forEach(src => { if (tira.querySelector('img[data-s="' + src + '"]')) return; const im = new Image(); im.src = url(src); im.dataset.s = src; im.alt = ''; im.draggable = false; tira.appendChild(im); ics.push(im); });
     }
     const para = () => { hs.forEach(h => h.parar(.35)); ics.forEach(im => im.remove()); };
@@ -281,7 +291,7 @@
       B.arr(p.lineas).concat(B.arr(p.despues)).forEach(l => l && ids.add(l.id));
       B.arr(p.inter).forEach(it => { if (it && Array.isArray(it.lineas)) it.lineas.forEach(l => l && ids.add(l.id)); });
     });
-    Object.keys(L).forEach(k => { if (ids && !ids.has(k)) return; B.arr(L[k]).forEach(it => { if (it.pj && it.pj.q) qs.add(it.pj.q); if (it.img) r.push(it.img); B.arr(it.son).forEach(x => r.push(x)); B.arr(it.ico).forEach(x => r.push(x)); if (it.musica) r.push(it.musica.src); }); });
+    Object.keys(L).forEach(k => { if (ids && !ids.has(k)) return; B.arr(L[k]).forEach(it => { if (it.pj && it.pj.q) qs.add(it.pj.q); if (it.img) r.push(it.img); B.arr(it.son).forEach(x => r.push(x)); B.arr(it.ico).forEach(x => r.push(x)); if (it.pjico) r.push(it.pjico); if (it.musica) r.push(it.musica.src); }); });
     Object.keys(P).forEach(q => { if (d && !qs.has(q)) return; Object.keys(P[q]).forEach(k => k !== '_' && r.push(P[q][k])); });
     if (d) { QS = qs; GUARDA.splice(0); LISTAS.clear(); }   // al cambiar de sabor, se sueltan los del anterior
     return r;

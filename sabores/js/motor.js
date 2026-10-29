@@ -116,15 +116,18 @@ const HIT = (function () {
     if (B.videos && B.videos.hay()) {
       const bv = B.el('button', 'bt ico peq bt-vc', '<svg viewBox="0 0 24 24"><path d="M11 3h2v9.2l3.3-3.3 1.4 1.4L12 16l-5.7-5.7 1.4-1.4 3.3 3.3zM4 18h16v2H4z"/></svg><b></b>');
       const tip = t => { bv.dataset.tip = t; bv.setAttribute('aria-label', t); };
-      tip('Preparar para clase: bajar los vídeos de los conciertos');
+      tip('Preparar para clase: bajar todos los vídeos (fondos y conciertos)');
       B.videos.estado().then(e => { if (e.total && e.hechos === e.total) { bv.classList.add('listo'); tip('Listo para clase: los vídeos ya están en este ordenador'); } });
       let va = false;
-      bv.addEventListener('click', async e => {
-        e.stopPropagation(); if (va) return; va = true; bv.classList.add('bajando');
+      const baja = async () => {
+        if (va) return; va = true; bv.classList.add('bajando');
         const ok = await B.videos.todo((h, t, bh, bt) => { $('b', bv).textContent = Math.round(100 * (bt ? bh / bt : h / t)) + ' %'; tip('Bajando los vídeos: ' + h + ' de ' + t + ' (' + B.fmtMB(bh) + ' de ' + B.fmtMB(bt) + ')'); });
         va = false; bv.classList.remove('bajando'); $('b', bv).textContent = '';
         if (ok) { bv.classList.add('listo'); tip('Listo para clase: los vídeos ya están en este ordenador'); } else tip('No se pudieron bajar todos: vuelve a pulsar para seguir');
-      });
+      };
+      bv.addEventListener('click', e => { e.stopPropagation(); baja(); });
+      /* (Iago 29-oct 23:01, «¿no hay forma de precargarlo todo?») se empieza a bajar todo solo, en segundo plano, al abrir el portal */
+      setTimeout(() => { if (!bv.classList.contains('listo')) baja(); }, 4000);
       escena.appendChild(bv);
     }
     /* (ronda 6, Iago: en la pizarra, mantener pulsado saca el menú de copiar/cortar) nada de menú contextual ni selección en el portal */
@@ -384,7 +387,7 @@ const HIT = (function () {
     if (B.agacha) B.agacha(false);
     subt.classList.remove('on');
     cartaBox.classList.remove('on', 'leyendo'); escena.classList.remove('con-carta');
-    interBox.classList.remove('on'); interBox.innerHTML = ''; escena.classList.remove('con-inter', 'subt-abajo');
+    interBox.classList.remove('on'); interBox.innerHTML = ''; escena.classList.remove('con-inter', 'subt-abajo'); delete escena.dataset.inter;
     escena.classList.remove('con-inter', 'subt-abajo');
     visAnt = null;
     $('#rotulo').innerHTML = '';
@@ -506,10 +509,10 @@ const HIT = (function () {
     el.appendChild(kbEl);
     const rM = rutaImg(p);
     if (B.img[rM]) {
-      const im = B.el('img', 'lam maestra'); im.src = B.img[rM]; im.alt = p.desc || p.id; im.draggable = false; kbEl.appendChild(im);
+      const im = B.el('img', 'lam maestra'); im.src = B.img[rM]; im.alt = p.desc || p.id; im.draggable = false; im.dataset.r = rM; kbEl.appendChild(im);
       Object.keys(p.var || {}).forEach(q => {
         const r = rutaVar(p, q);
-        if (B.img[r]) { const v = B.el('img', 'lam var'); v.src = B.img[r]; v.dataset.q = q; v.alt = ''; v.draggable = false; kbEl.appendChild(v); }
+        if (B.img[r]) { const v = B.el('img', 'lam var'); v.src = B.img[r]; v.dataset.q = q; v.dataset.r = r; v.alt = ''; v.draggable = false; kbEl.appendChild(v); }
       });
     } else kbEl.appendChild(provisional(p, rM));
     pelicula.appendChild(el);
@@ -529,6 +532,7 @@ const HIT = (function () {
     if (p.mapa) montaMapa(p, kbEl);
     const ip =B.arr(p.inter).find(it => it && it.previa && kbEl.querySelector('.lam.var[data-q="' + it.previa + '"]'));
     if (ip) { el._base = ip.previa; ponVariante(null); }
+    if (B.lamv) B.lamv.sincro(el);   // (Iago 29-oct 22:47) el fondo animado (vídeo pregrabado) de la lámina que se ve
     /* cámara: si no la trae, una distinta para cada plano */
     const dur = p.cam && p.cam.dur || duracionEstimada(p);
     const alterno = idx % 2 === 0;
@@ -752,6 +756,7 @@ const HIT = (function () {
     const vis = corte ? q : base ? base : (q || null);
     B.$$('.lam.var', planoEl).forEach(v => v.classList.toggle('on', !!vis && v.dataset.q === vis));
     B.$$('.vida-var', planoEl).forEach(v => v.classList.toggle('on', !!vis && v.dataset.q === vis));
+    if (B.lamv) B.lamv.sincro(planoEl);
     /* (ronda 5) qué lámina se ve: en un plano recurso o un primer plano no hay bocadillo (no se ve a quien habla) y la vida
        del plano general (fuego, lámpara, polvo…) se apaga para no brillar donde no toca */
     const hay = !!vis && !!planoEl.querySelector('.lam.var[data-q="' + vis + '"]');
@@ -991,7 +996,7 @@ const HIT = (function () {
     ponVariante(null);
     if (B.capas && B.capas.alInter) B.capas.alInter(it);
     subt.classList.remove('on');
-    escena.classList.add('con-inter');
+    escena.classList.add('con-inter'); escena.dataset.inter = it.tipo;   // (r15) en la presentación de un instrumento, los carteles se ven (css)
     escena.classList.toggle('subt-abajo', !!(f.subtAbajo || it.subtAbajo));   // (ronda 6, Iago) el alumno mira abajo, donde toca: el texto, ahí
     interBox.innerHTML = ''; interBox.classList.add('on');
     const caja = B.el('div', 'icaja i-' + it.tipo);
@@ -1006,7 +1011,7 @@ const HIT = (function () {
     if (c.muerto || queda) return;   // queda: la quita limpiaPlano al montar el plano siguiente (en el mismo instante)
     interBox.classList.remove('on'); interBox.innerHTML = '';
     subt.classList.remove('on');
-    escena.classList.remove('con-inter', 'subt-abajo');
+    escena.classList.remove('con-inter', 'subt-abajo'); delete escena.dataset.inter;
   };
 
   /* ══════════ HECHO REAL ══════════ */

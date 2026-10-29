@@ -81,7 +81,8 @@
     brillos(o) {   // destellos del sol o de la luna en el agua
       const z = o.zona || [0, .6, 1, 1], bs = [], n = o.n || 14;
       return {
-        paso(dt) { if (bs.length < n && Math.random() < dt * n * 1.4) bs.push({ x: az(z[0], z[2]), y: az(z[1], z[3]), t: 0, vida: az(.35, 1.1), s: (o.tam || 1) * az(.004, .011) }); for (let i = bs.length - 1; i >= 0; i--) { bs[i].t += dt; if (bs[i].t > bs[i].vida) bs.splice(i, 1); } },
+        paso(dt) { if (bs.length < n && Math.random() < dt * n * 1.4) { const q = o.pts && o.pts.length ? o.pts[Math.floor(Math.random() * o.pts.length)] : null;   // (29-oct) o.pts: puntos sueltos del agua (mapas)
+          bs.push({ x: q ? q[0] + az(-.004, .004) : az(z[0], z[2]), y: q ? q[1] + az(-.003, .003) : az(z[1], z[3]), t: 0, vida: az(.35, 1.1), s: (o.tam || 1) * az(.004, .011) }); } for (let i = bs.length - 1; i >= 0; i--) { bs[i].t += dt; if (bs[i].t > bs[i].vida) bs.splice(i, 1); } },
         pinta(L, M, W, H) { bs.forEach(b => { const a = Math.sin(Math.PI * b.t / b.vida), R = b.s * W; L.globalAlpha = (o.alfa || .42) * a; L.drawImage(o.tono === 'frio' ? S.frio : S.blanco, (b.x * W - R) * K, (b.y * H - R) * K, 2 * R * K, 2 * R * K); }); }
       };
     },
@@ -133,6 +134,24 @@
           M.strokeStyle = o.color || 'rgba(28,26,30,.8)'; M.lineCap = 'round';
           ps.forEach(p => { if (p.espera > 0) return; const s = p.s * W * K, x = p.x * W * K, y = p.y * H * K, a = p.ale > 0 ? Math.sin(this.t * 11 + p.fase) * .55 : .18;
             M.globalAlpha = 1; M.lineWidth = Math.max(1, s * .16); M.beginPath(); M.moveTo(x - s, y - s * a); M.quadraticCurveTo(x - s * .4, y - s * .35, x, y); M.quadraticCurveTo(x + s * .4, y - s * .35, x + s, y - s * a); M.stroke(); });
+        }
+      };
+    },
+    gaviotas(o) {   // (29-oct, vídeos de las láminas) gaviotas que cruzan el cielo en un tiempo exacto (o.P s, el del bucle): sin costura
+      const z = o.zona || [0, .03, 1, .22], n = o.n || 2, P = o.P || 8, tam = o.tam || .010, ps = [];
+      for (let i = 0; i < n; i++) ps.push({ f: i / n + az(0, .35 / n), y: az(z[1], z[3]), dir: Math.random() < .5 ? 1 : -1, s: tam * az(.75, 1.2), fa: az(0, TAU) });
+      return {
+        paso(dt, t) { this.t = t; },
+        pinta(L, M, W, H) {
+          const t = this.t; M.strokeStyle = o.color || 'rgba(30,28,32,.78)'; M.lineCap = 'round'; M.globalAlpha = 1;
+          ps.forEach(p => {
+            const u = ((t / P + p.f) % 1 + 1) % 1, an = z[2] - z[0] + .14;
+            const x = p.dir > 0 ? z[0] - .07 + u * an : z[2] + .07 - u * an;
+            const y = p.y + .012 * Math.sin(TAU * t / P + p.fa);
+            const bate = Math.max(0, Math.sin(TAU * 2 * t / P + p.fa)), a = .16 + .5 * bate * Math.sin(TAU * 8 * t / P + p.fa);   // planea y, a ratos, aletea
+            const S = p.s * W * K, X = x * W * K, Y = y * H * K;
+            M.lineWidth = Math.max(1, S * .16); M.beginPath(); M.moveTo(X - S, Y - S * a); M.quadraticCurveTo(X - S * .4, Y - S * .35, X, Y); M.quadraticCurveTo(X + S * .4, Y - S * .35, X + S, Y - S * a); M.stroke();
+          });
         }
       };
     },
