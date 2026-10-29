@@ -6,6 +6,9 @@
    Sin `patron`: en vez de rejilla, una barra de nivel que reacciona al audio (AnalyserNode).
    Suena el loop `vueltas` veces y la interacción se resuelve sola (`espera` s después; auto:false = hay que pulsar «Seguir»).
    «Otra vez» (o R) vuelve a sonar; «Seguir» (o Espacio/Intro) resuelve al momento.
+   op.luego = { nom, img, loop, vueltas? } (Iago 29-oct 20:56, «cuando pasa de pailas a cencerro, que no haya pausa: que siga el siguiente
+   pulso, como sería en una canción»): al acabar el loop, el segundo entra JUSTO en el compás siguiente (mismo reloj de audio) y cambian
+   la imagen y el nombre en ese instante; la claqueta sigue sin cortarse.
    ══════════════════════════════════════════════════════════════════════ */
 'use strict';
 (function (B) {
@@ -14,7 +17,9 @@
   B.inter.instrumento = async function (caja, op) {
     const ctl = op.ctl || B.control();
     caja.classList.add('s4', 's4-instrumento'); S.sinFoco(caja);
-    const bpm = op.bpm || 90, comp = op.compases || 4, L = S.durLoop(bpm, comp), vueltas = Math.max(.25, op.vueltas || 2);   // (28-oct 12:46, Iago: «los patrones se me hacen largos: ponlos a la mitad») vale media vuelta
+    const escE = document.getElementById('escena'); if (escE) escE.classList.add('inter-espera');   // el PNG de la frase sigue a la vista hasta que este pinta (capas4s.js: interLista)
+    const bpm = op.bpm || 90, comp = op.compases || 4, L = S.durLoop(bpm, comp), v1 = Math.max(.25, op.vueltas || 2);
+    const LG = op.luego || null, v2 = LG ? Math.max(.25, LG.vueltas || v1) : 0, vueltas = v1 + v2;   // vueltas: las de los dos juntos   // (28-oct 12:46, Iago: «los patrones se me hacen largos: ponlos a la mitad») vale media vuelta
     const auto = op.auto !== false, espera = op.espera == null ? 1.2 : op.espera;
     const color = S.color(op.color, 0), nom = op.nom || op.id || '';
     const pat = S.parsePatron(op.patron);
@@ -26,6 +31,10 @@
     centro.style.setProperty('--c', color);
     const tarjeta = B.el('div', 's4-tarjeta'); centro.appendChild(tarjeta);
     const foto = B.el('div', 's4-foto'); foto.appendChild(S.imagen(op.img, nom, color));   // (27-oct, Iago) sin cuadrado de color: el PNG recortado
+    { const im0 = foto.querySelector('img'); let ya = false;
+      const lista = () => { if (ya) return; ya = true; requestAnimationFrame(() => requestAnimationFrame(() => { if (B.capas && B.capas.interLista) B.capas.interLista(); else if (escE) escE.classList.remove('inter-espera'); })); };
+      if (im0) { const d = im0.decode ? im0.decode() : null; if (d) d.then(lista, lista); else if (im0.complete) lista(); else { im0.addEventListener('load', lista, { once: true }); im0.addEventListener('error', lista, { once: true }); } } else lista();
+      setTimeout(lista, 1500); }
     /* (28-oct 19:23, Iago: «cuando suenan güira y bongó, que salgan los iconos de los dos») op.img2: el segundo instrumento, al lado */
     /* (28-oct, Sabor 3) op.imgs: varios a la vez (tamborim + caixa + pandeiro; la batucada entera) */
     const extra = op.imgs || (op.img2 ? [op.img2] : []);
@@ -33,11 +42,21 @@
     /* (27-oct noche, Iago: «el instrumento no cambia de lugar: se le presenta y se le anima en el mismo sitio» y «a tamaño real, el bajo
        acostado») si el instrumento tiene caja en BLUES.CAPAS.tam, la foto va en esa misma caja de la pantalla (la de las capas) */
     const tam = !extra.length && B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[op.img];
+    const ponTam = t => { caja.classList.toggle('s4-tam', !!t); if (!t) return; caja.style.setProperty('--tx', t.x); caja.style.setProperty('--ty', t.y); caja.style.setProperty('--tw', t.w); caja.style.setProperty('--th', t.h); if (t.ry != null) caja.style.setProperty('--ry', t.ry); else caja.style.removeProperty('--ry'); };
     if (tam) { caja.classList.add('s4-tam'); caja.style.setProperty('--tx', tam.x); caja.style.setProperty('--ty', tam.y); caja.style.setProperty('--tw', tam.w); caja.style.setProperty('--th', tam.h); if (tam.ry != null) caja.style.setProperty('--ry', tam.ry); }
     tarjeta.appendChild(foto);
     const pieT = B.el('div', 's4-tpie'); tarjeta.appendChild(pieT);
     const nm = B.el('div', 's4-nombre'); nm.textContent = nom; pieT.appendChild(nm);
-    nm.style.fontSize = 'calc(var(--u)*' + Math.max(1.5, Math.min(2.5, 20 / (Math.max(1, nom.length) * .8))).toFixed(2) + ')';   // los nombres largos se encogen para caber
+    const tamNom = s => { nm.style.fontSize = 'calc(var(--u)*' + Math.max(1.5, Math.min(2.5, 20 / (Math.max(1, s.length) * .8))).toFixed(2) + ')'; };   // los nombres largos se encogen para caber
+    tamNom(nom);
+    /* op.luego: cambiar de instrumento en el sitio (la foto, el nombre y su caja de tamaño real) */
+    const im1 = foto.firstChild; let im2 = null, enSegundo = false;
+    if (LG) { im2 = S.imagen(LG.img, LG.nom || nom, color); if (im2.decode) im2.decode().catch(() => { }); }   // descodificada ya: el cambio, sin fotograma vacío
+    const aSegundo = si => {
+      if (!LG || si === enSegundo) return; enSegundo = si;
+      if (si) { if (!im2) im2 = S.imagen(LG.img, LG.nom || nom, color); im1.replaceWith(im2); nm.textContent = LG.nom || nom; tamNom(LG.nom || nom); ponTam(B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[LG.img]); }
+      else { im2.replaceWith(im1); nm.textContent = nom; tamNom(nom); ponTam(tam); }
+    };
     let pips = null;
     if (comp > 1) {
       pips = B.el('div', 's4-pips');
@@ -93,17 +112,20 @@
     async function reproduce() {
       if (limpio) return;
       const mia = ++gen;
-      if (est) { est.m.parar(.04); paraClaq(est); est = null; apagaRejilla(); pAnt = -1; cAnt = -1; }
+      if (est) { est.m.parar(.04); if (est.m2) est.m2.parar(.04); paraClaq(est); est = null; apagaRejilla(); pAnt = -1; cAnt = -1; }
+      aSegundo(false);
       const m = B.mezcla.crea({ bpm, compases: comp, pistas: [{ id: 'p', nom, loop: op.loop, color, vol: op.vol }], inicial: ['p'] });
+      const m2 = LG ? B.mezcla.crea({ bpm, compases: comp, pistas: [{ id: 'p', nom: LG.nom || nom, loop: LG.loop, color, vol: LG.vol == null ? op.vol : LG.vol }], inicial: ['p'] }) : null;
       if (!cargado) {
         const tc = setTimeout(() => carga.classList.add('on'), 160);
-        await m.cargar();
+        await Promise.all([m.cargar(), m2 ? m2.cargar() : null]);
         clearTimeout(tc); carga.classList.remove('on');
-      } else await m.cargar();
+      } else await Promise.all([m.cargar(), m2 ? m2.cargar() : null]);
       cargado = true;
-      if (limpio || mia !== gen) { m.parar(0); return; }
+      if (limpio || mia !== gen) { m.parar(0); if (m2) m2.parar(0); return; }
       const cu = m.arrancar(B.ac().currentTime + .12);
-      m.pararEn(vueltas * L, .03);
+      m.pararEn(v1 * L, .03);
+      if (m2) { m2.arrancar(cu + v1 * L); m2.pararEn(v2 * L, .03); B.enTiempo(cu + v1 * L + S.lat(), () => { if (mia === gen && !limpio) aSegundo(true); }, ctl); }
       /* (28-oct, Iago: «en la parte en la que nos muestra los instrumentos, que haya claqueta marcando el pulso») un golpe de baqueta en
          cada tiempo (más fuerte en el 1 de cada compás), en el reloj del audio y en su propio canal para poder cortarlo */
       let claq = null;
@@ -117,7 +139,7 @@
           o.connect(g); g.connect(claq); o.start(t); o.stop(t + .07); };
         for (let k = 0; k < n; k++) { B.sint.baqueta(cu + k * p, k % 4 === 0 ? .62 : .36, claq); tic(cu + k * p, k % 4 === 0); }
       }
-      est = { m, cu, mia, claq };
+      est = { m, m2, cu, mia, claq };
       B.inter.instrumento.ultimo = est;      // gancho de pruebas
       B.enTiempo(cu + vueltas * L + espera, () => { if (auto && mia === gen && !limpio) resolver('auto'); }, ctl);
     }
@@ -143,7 +165,7 @@
         if (ov) { const i0 = celdas.indexOf(ce0), d16 = dCompas / 16, k = Math.max(0, Math.min(2, Math.floor((p - c * dCompas - i0 * d16) / (d16 * 2 / 3)))); [...ov.querySelectorAll('i')].forEach((x, j) => x.classList.toggle('on', j === k)); tresAct = ov; }
         else if (tresAct) { tresAct.querySelectorAll('i').forEach(x => x.classList.remove('on')); tresAct = null; }
       } else {
-        const lv = e.m.nivel('p');
+        const lv = (enSegundo && e.m2 ? e.m2 : e.m).nivel('p');
         nivAnt = lv > nivAnt ? lv : nivAnt * .88 + lv * .12;
         const n = Math.round(Math.min(1, nivAnt * (op.nivK || 1)) * segs.length);   // (27-oct) nivK < 1: el bajo no se queda siempre arriba
         for (let j = 0; j < segs.length; j++) segs[j].classList.toggle('on', j < n);
@@ -154,8 +176,9 @@
     /* limpieza (idempotente): al resolverse o si el motor cancela */
     const limpia = () => {
       if (limpio) return; limpio = true; gen++;
+      if (escE) escE.classList.remove('inter-espera');
       quitaF(); quitaK();
-      if (est) { est.m.parar(.15); paraClaq(est); est = null; }
+      if (est) { est.m.parar(.15); if (est.m2) est.m2.parar(.15); paraClaq(est); est = null; }
       resolver(null);
     };
     ctl.alMorir.push(limpia);

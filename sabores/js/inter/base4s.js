@@ -127,7 +127,7 @@
   S.recursosDe = function (tipo, op) {
     op = op || {}; const r = [];
     const pistas = B.arr(op.pistas);
-    if (tipo === 'instrumento') r.push(op.loop, op.img);
+    if (tipo === 'instrumento') { r.push(op.loop, op.img); if (op.luego) r.push(op.luego.loop, op.luego.img); }
     else if (tipo === 'mezclador') pistas.forEach(p => r.push(p.loop, p.img));
     else if (tipo === 'concierto') { r.push(op.voz, op.cancion); pistas.forEach(p => r.push(p.loop, p.img)); B.arr(op.planos).forEach(p => r.push(p.img)); }
     return r.filter(Boolean);

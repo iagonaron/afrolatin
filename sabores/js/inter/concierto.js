@@ -170,7 +170,7 @@
     const esc = B.el('div', 's4-esc'); caja.appendChild(esc);
     if (fichas.length) esc.appendChild(B.el('div', 's4-vela'));      // la lámina de la banda se queda de fondo, algo oscurecida
     const capas = []; let capaAct = null; const temporizadores = new Set();
-    let vids = null, tcAnt = null;   // (29-oct) clips del videoclip ya en la caché (js/videos.js): imagen → URL
+    let vids = null, tcAnt = null, tcCambia = 0;   // (29-oct) clips del videoclip ya en la caché (js/videos.js): imagen → URL
     const tira = B.el('div', 's4-tira'); caja.appendChild(tira);
     const chips = {};
     const nombres = pistas.map(p => String(p.nom || p.id));
@@ -206,13 +206,17 @@
         v.addEventListener('playing', () => { v.style.opacity = '1'; }, { once: true });
         v.addEventListener('error', () => v.remove(), { once: true });
         v.src = vu; capa.appendChild(v); capa._v = v; capa._t0 = Math.max(0, p.t || 0);
+        /* (r15, Iago 29-oct 21:02: «espasmos… unos primeros frames de mucha velocidad y luego se vuelve calmado») el clip que se aleja
+           empieza acercado (1,01–1,08): la foto de debajo (y luego sus luces) va a esa misma escala, para que al aparecer el vídeo no salte */
+        const md = B.VIDEOS && B.VIDEOS[p.img];
+        if (md && md.z) { capa._z = md.z; capa._o = '50% ' + Math.round((md.o || 0) * 100) + '%'; const fo = capa.querySelector('img.s4-pl'); if (fo) { fo.style.transformOrigin = capa._o; fo.style.transform = 'scale(' + md.z[0] + ')'; } }
         const pr = v.play(); if (pr && pr.catch) pr.catch(() => { });
         if (B.videos) B.videos.vigila(v);
       }
       /* (28-oct, Iago: «me falta animación de fondos en el videoclip: velas, mar…») sus luces titilan (js/portada_vida.js; puntos en
          BLUES.LUCES_VC, herramientas/luces_s1.py); el lienzo lleva la misma clase que la imagen para moverse con ella */
       const LV = B.LUCES_VC && B.LUCES_VC[p.img];
-      if (B.vidaLienzo && (LV && LV.length || op.planos)) { const cv = B.el('canvas', 's4-img s4-vida-vc'); capa.appendChild(cv); B.vidaLienzo(cv, { luces: LV || [], rMin: .014, rK: 1.15, caen: 40 }); }   // (28-oct 09:13) y motitas que caen en todos los planos
+      if (B.vidaLienzo && (LV && LV.length || op.planos)) { const cv = B.el('canvas', 's4-img s4-vida-vc'); capa.appendChild(cv); B.vidaLienzo(cv, { luces: LV || [], rMin: .014, rK: 1.15, caen: 40 }); if (capa._z) { capa._cv = cv; cv.style.transformOrigin = capa._o; cv.style.transform = 'scale(' + capa._z[0] + ')'; } }   // (28-oct 09:13) y motitas que caen en todos los planos
       esc.appendChild(capa); void capa.offsetWidth;
       capa.classList.add('on');
       /* (28-oct 21:03, Iago en el iPad: «fondos que parecen de otro tamaño») las franjas de fuera de la pantalla, con el plano que se ve */
@@ -236,16 +240,25 @@
     let pAct = null;            // lo que se ve: 'p<k>' (plano programado) o 'c<k>' (ciclo)
     function pintaPlanos(tc) {
       /* el clip va con el reloj de la canción: se para con la pausa y se recoloca si se separa más de medio segundo */
+      /* (r15, «espasmos») el reloj del AudioContext avanza a saltitos (cada 10–20 ms): dos fotogramas seguidos con la misma hora NO son una
+         pausa. Antes el clip se paraba y arrancaba así muchas veces por segundo; ahora solo se para si el reloj lleva quieto más de 0,3 s */
+      const ya = performance.now();
+      if (tcAnt == null || tc !== tcAnt) tcCambia = ya;
+      tcAnt = tc;
       const v = capaAct && capaAct._v;
       if (v && v.readyState >= 1) {
-        if (tcAnt != null && tc === tcAnt) { if (!v.paused) v.pause(); }
+        if (ya - tcCambia > 300) { if (!v.paused) v.pause(); }
         else {
           const quiere = tc - capaAct._t0;
           if (quiere >= 0 && quiere < (v.duration || 0) - .15 && Math.abs(v.currentTime - quiere) > .5) { try { v.currentTime = quiere; } catch (e) { } }
           if (v.paused && !v.ended) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => { }); }
         }
+        /* las luces, a la escala del fotograma que se ve (el zoom del clip es lineal: de z[0] a z[1]) */
+        if (capaAct._cv && v.duration) {
+          const z = capaAct._z, u = Math.max(0, Math.min(1, v.currentTime / Math.max(.1, v.duration - 1 / 30))), e = (z[0] + (z[1] - z[0]) * u).toFixed(4);
+          if (capaAct._cvE !== e) { capaAct._cvE = e; capaAct._cv.style.transform = 'scale(' + e + ')'; }
+        }
       }
-      tcAnt = tc;
       if (ciclo && tc >= ciclo.desde) {
         const tt = info.fin > 0 ? Math.min(tc, info.fin) : tc;
         const k = Math.floor((tt - ciclo.desde) / ciclo.cada) % ciclo.imgs.length, clave = 'c' + k;
