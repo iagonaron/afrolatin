@@ -879,6 +879,10 @@ const HIT = (function () {
       const dv = (l.voz && B.buf[l.voz] ? B.buf[l.voz].duration : durTexto(l.texto)) + (l.espera || 0);
       let v = l.var !== undefined ? l.var : l.quien;
       if (v && v !== '-') v = eligePlano(v, l, dv);
+      /* (Iago 29-oct 21:04, «cuando viene Mamberto hay varios cambios de fondo fallidos, con cosas extrañas de algún frame») si la frase
+         empieza con un plano alternado (capas: { vari, t: 0 }), ese plano entra YA, en el mismo fotograma (antes se veía uno o dos
+         fotogramas el de base) */
+      const vIni = B.capas && B.capas.variInicial ? B.capas.variInicial(l) : null; if (vIni) v = vIni;
       const lamAnt = planoEl && (planoEl.querySelector('.lam.var.on') || planoEl.querySelector('.lam.maestra'));
       ponVariante(v && v !== '-' ? v : null);
       /* (28-oct 09:07, Iago: «muy importante: cuando hay un cambio de fondo, la imagen del personaje cambia en el MISMO fotograma que el

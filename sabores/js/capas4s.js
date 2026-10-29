@@ -50,6 +50,7 @@
   }
   /* ── palabras clave ── */
   let fijos = [];
+  let previo = null;  // (Iago 29-oct 20:53, «entre un cartel y otro hay un frame sin texto») el cartel de antes, hasta que el nuevo enseña su primera palabra
   let titEl = null;   // (Iago 29-oct 07:56) el título de lugar (país): dura más y sube arriba cuando llegan otros carteles
   function ponClaves(it, dur, c) {
     asegura();
@@ -59,9 +60,11 @@
        elegante y fina, en grande») el título de lugar no lo quita el cartel siguiente: se queda 7 s (o hasta el siguiente título o plano) y,
        si llegan otros carteles, sube a lo alto de la pantalla, de golpe (sin animación: pantalla del aula) */
     const pais = it.estilo === 'titulo' && !it.fijo;
-    if (!it.fijo) quitaClaves();
+    /* el de antes NO se quita al crear el nuevo: se queda hasta que sale la primera palabra del nuevo (sin hueco entre cartel y cartel) */
+    let mio = null;
+    if (!it.fijo) { if (previo) previo.remove(); mio = previo = clavesEl; clavesEl = null; }
     if (pais) { if (titEl) titEl.remove(); titEl = null; } else if (!it.fijo && titEl) titEl.classList.add('arriba');
-    const box = B.el('div', 'c4-claves ' + (it.estilo || 'fila') + (it.fijo ? ' fijo' : '') + (it.lado ? ' ' + it.lado : '') + (pais ? ' c4-pais' : ''));
+    const box = B.el('div', 'c4-claves ' + (it.estilo || 'fila') + (it.fijo ? ' fijo' : '') + (it.lado ? ' ' + it.lado : '') + (pais ? ' c4-pais arriba' : ''));   // (Iago 29-oct 21:06) el país, arriba desde el principio (sin moverse) y en mayúsculas
     if (it.fijo) fijos.push(box); else if (pais) { titEl = box; setTimeout(() => { if (titEl === box) { box.remove(); titEl = null; } }, 7000); } else clavesEl = box;
     capa.appendChild(box);
     const xs = B.arr(it.claves), n = xs.length, t0 = it.t != null ? it.t : (it.en || 0) * dur, t1 = Math.max(t0 + .2, (it.hasta == null ? .62 : it.hasta) * dur);
@@ -75,13 +78,13 @@
       const k = !sep && it.estilo !== 'titulo' ? x.indexOf(' · ') : -1;
       if (k > 0) { ch.textContent = x.slice(0, k); const sm = B.el('small', 'c4-lugar'); sm.textContent = x.slice(k + 3); ch.appendChild(sm); } else ch.textContent = x;
       const t = it.ts ? it.ts[i] : n > 1 ? t0 + (t1 - t0) * i / (n - 1) : t0;   // (27-oct noche) it.ts: segundo exacto de cada palabra en el audio
-      B.espera(t, c).then(ok => { if (ok && box.isConnected) ch.classList.add('on'); });
+      B.espera(t, c).then(ok => { if (ok && box.isConnected) { ch.classList.add('on'); if (mio) { mio.remove(); if (previo === mio) previo = null; mio = null; } } });
     });
     /* (28-oct, Iago: «no me gusta cómo queda lo de España en dos líneas») cada cartel en UNA línea: si no cabe, letra un poco más pequeña */
     requestAnimationFrame(() => { const W = box.clientWidth; box.querySelectorAll('.c4-clave').forEach(ch => {
       if (W && ch.offsetWidth > W) { const fs = parseFloat(getComputedStyle(ch).fontSize); ch.style.setProperty('font-size', (fs * W / ch.offsetWidth * .97).toFixed(1) + 'px', 'important'); } }); });
   }
-  function quitaClaves(ya) { if (clavesEl) { const v = clavesEl; if (ya) v.remove(); else { v.classList.add('sale'); setTimeout(() => v.remove(), 450); } clavesEl = null; } }
+  function quitaClaves(ya) { if (previo) { previo.remove(); previo = null; } if (clavesEl) { const v = clavesEl; if (ya) v.remove(); else { v.classList.add('sale'); setTimeout(() => v.remove(), 450); } clavesEl = null; } }
   /* ── imagen suelta (instrumento en PNG) ── */
   function ponImg(it, c) {
     asegura();
@@ -170,6 +173,11 @@
   let veloPend = false;
   const ponVelo = () => { if (veloPend && capa) { veloPend = false; capa.classList.add('velo'); if (veloAnt) veloAnt.velo = true; } };
   C.alInter = function (it) { if (it && it.tipo === 'instrumento') ponVelo(); };
+  /* (Iago 29-oct 20:59, «con su PNG de las dos congas, es como que desaparece y vuelve a aparecer») el instrumento de la frase (PNG suelto)
+     se queda hasta que la interacción ya pinta el suyo en el mismo sitio, y entonces se quita (antes: se ocultaba al empezar la interacción,
+     a veces un fotograma antes de que esta pintase, y volvía a salir un instante al acabar) */
+  C.variInicial = function (l) { const xs = (B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l && l.id]) || []; const it = xs.find(x => x && x.vari && (x.t || 0) <= .05); return it ? it.vari : null; };
+  C.interLista = function () { quitaSueltas(); const e = document.getElementById('escena'); if (e) e.classList.remove('inter-espera'); };
   C.plano = function (p) {
     GRP = {};
     asegura(); if (!GUARDA.length) C.predecodifica(); quitaClaves(true); quitaSueltas(); fijos.splice(0).forEach(v => v.remove()); if (titEl) { titEl.remove(); titEl = null; }
@@ -226,6 +234,7 @@
       /* (28-oct 10:00, Iago: «que haya música para el cierre del capítulo: desde que Doña Cande lo recomienda… hasta que se pulse Portada o
          Repetir el sabor») { musica: { src, vol, bucle } }: la música del plano cambia a esta (sigue sonando en la pantalla final) */
       if (it.musica) B.espera(t, c).then(ok => ok && B.musica && B.musica(Object.assign({ bucle: true }, it.musica)));
+      if (it.quitaSueltas) B.espera(t, c).then(ok => ok && quitaSueltas());   // (29-oct) fuera los PNG sueltos de la frase anterior
       if (it.quitaFijos) { const vs = fijos.slice(); B.espera(t, c).then(ok => { if (!ok) return; vs.forEach(v => { const k = fijos.indexOf(v); if (k >= 0) fijos.splice(k, 1); v.classList.add('sale'); setTimeout(() => v.remove(), 450); }); }); }   // solo las de antes de esta frase
     });
   };
@@ -243,7 +252,15 @@
       o = Object.assign(o, { offset: off0 + fase, bucle: true, loopStart: off0, loopEnd: off0 + it.ciclo });
     }
     const hs = B.arr(it.son).map(src => B.suena(src, o)).filter(Boolean);
-    const para = () => hs.forEach(h => h.parar(.35));
+    /* (Iago 29-oct 20:54, «en los repasos me falta el icono del instrumento que suena: al escucharlo no me da tiempo a relacionar») los
+       PNG de lo que entra, en una tira abajo: se van sumando con el grupo y se van con él */
+    const ics = [];
+    if (it.ico && capa) {
+      let tira = capa.querySelector('.c4-tira'); if (!tira) { tira = B.el('div', 'c4-tira'); capa.appendChild(tira); }
+      if (!tira.children.length) tira.classList.toggle('der', it.tira === 'der');   // en el lado donde no están los personajes de la lámina
+      B.arr(it.ico).forEach(src => { if (tira.querySelector('img[data-s="' + src + '"]')) return; const im = new Image(); im.src = url(src); im.dataset.s = src; im.alt = ''; im.draggable = false; tira.appendChild(im); ics.push(im); });
+    }
+    const para = () => { hs.forEach(h => h.parar(.35)); ics.forEach(im => im.remove()); };
     B.espera(it.dur || 3, c).then(para); if (c && c.alMorir) c.alMorir.push(para);
   }
   const LISTAS = new Set(), GUARDA = [];
@@ -264,7 +281,7 @@
       B.arr(p.lineas).concat(B.arr(p.despues)).forEach(l => l && ids.add(l.id));
       B.arr(p.inter).forEach(it => { if (it && Array.isArray(it.lineas)) it.lineas.forEach(l => l && ids.add(l.id)); });
     });
-    Object.keys(L).forEach(k => { if (ids && !ids.has(k)) return; B.arr(L[k]).forEach(it => { if (it.pj && it.pj.q) qs.add(it.pj.q); if (it.img) r.push(it.img); B.arr(it.son).forEach(x => r.push(x)); if (it.musica) r.push(it.musica.src); }); });
+    Object.keys(L).forEach(k => { if (ids && !ids.has(k)) return; B.arr(L[k]).forEach(it => { if (it.pj && it.pj.q) qs.add(it.pj.q); if (it.img) r.push(it.img); B.arr(it.son).forEach(x => r.push(x)); B.arr(it.ico).forEach(x => r.push(x)); if (it.musica) r.push(it.musica.src); }); });
     Object.keys(P).forEach(q => { if (d && !qs.has(q)) return; Object.keys(P[q]).forEach(k => k !== '_' && r.push(P[q][k])); });
     if (d) { QS = qs; GUARDA.splice(0); LISTAS.clear(); }   // al cambiar de sabor, se sueltan los del anterior
     return r;
