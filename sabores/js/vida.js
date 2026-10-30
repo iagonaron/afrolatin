@@ -68,12 +68,34 @@
         pinta(L, M, W, H) { const sp = brasa ? S.fuego : S.mota; ms.forEach(m => { L.globalAlpha = (brasa ? .55 : .5) * (.55 + .45 * Math.sin(this.t * m.f + m.p)); const R = m.s * 1.7 * (o.tam || 1); L.drawImage(sp, (m.x * W - R) * K, (m.y * H - R) * K, 2 * R * K, 2 * R * K); }); }
       };
     },
+    sol(o) {   // (r19, Iago 30-oct 14:39: «cada vez que haya un sol, que haya el destello este del sol, bien colocado… y luego partículitas por
+      //   ahí») el sol de la lámina (herramientas/vida_lam.py, SOL_LAM: mirado lámina a lámina): halo cálido grande que respira, el centro
+      //   blanco y rayos finos que laten y giran muy despacio, como el sol de los videoclips. o.x, o.y; o.r = radio del disco (en anchos); o.k
+      const nr = o.nr || 14, fa = Array.from({ length: nr }, () => az(0, TAU)), lo = Array.from({ length: nr }, (_, i) => (i % 2 ? .6 : 1) * az(.8, 1.2)), g0 = az(0, TAU);
+      if (!S.rayo) { const c = document.createElement('canvas'); c.width = 256; c.height = 32; const x = c.getContext('2d');
+        const g = x.createLinearGradient(0, 0, 256, 0); g.addColorStop(0, 'rgba(255,236,190,1)'); g.addColorStop(.35, 'rgba(255,214,150,.45)'); g.addColorStop(1, 'rgba(255,190,120,0)');
+        x.fillStyle = g; x.fillRect(0, 0, 256, 32); x.globalCompositeOperation = 'destination-in';
+        const v = x.createLinearGradient(0, 0, 0, 32); v.addColorStop(0, 'rgba(0,0,0,0)'); v.addColorStop(.5, 'rgba(0,0,0,1)'); v.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = v; x.fillRect(0, 0, 256, 32); S.rayo = c; }
+      return {
+        paso(dt, t) { this.t = t; this.v = (o.k || 1) * (.86 + .09 * Math.sin(t * .55 + fa[0]) + .05 * Math.sin(t * 1.3 + fa[1])); },
+        pinta(L, M, W, H) {
+          const X = o.x * W, Y = o.y * H, r = (o.r || .02) * W, k = this.v;
+          let R = r * 15; L.globalAlpha = Math.min(1, .44 * k); L.drawImage(S.halo, (X - R) * K, (Y - R) * K, 2 * R * K, 2 * R * K);
+          R = r * 3.8; L.globalAlpha = Math.min(1, .6 * k); L.drawImage(S.blanco, (X - R) * K, (Y - R) * K, 2 * R * K, 2 * R * K);
+          const giro = g0 + .05 * Math.sin(this.t * .21);
+          for (let i = 0; i < nr; i++) {
+            const late = .5 + .5 * Math.sin(this.t * (.55 + .07 * i) + fa[i]); L.globalAlpha = Math.min(1, (o.rayos || .5) * k * (.4 + .6 * late));
+            L.save(); L.translate(X * K, Y * K); L.rotate(giro + i * TAU / nr); L.drawImage(S.rayo, r * .7 * K, -r * .8 * K, r * 24 * lo[i] * K, r * 1.6 * K); L.restore();
+          }
+        }
+      };
+    },
     polvoluz(o) {   // (Iago 30-oct 12:28: «me faltan partículas… pequeñitas» · «tiene sentido que se vean cerca de fuentes de luz: polvito que se
       //   refleja si le da luz… cerca de lámparas o del sol; no es lo mismo que el tintineo») motas diminutas que flotan alrededor de cada lámpara,
       //   vela o del sol y solo se ven cuando la luz las alcanza: más vivas cerca de la fuente, se apagan al alejarse. o.f: [{x, y, R}] (R en anchos)
       const F = B.arr(o.f), ms = [], por = o.por || 6;
       const nueva = q => { const a = az(0, TAU), d = Math.sqrt(Math.random()) * .9; return { q, dx: Math.cos(a) * d, dy: Math.sin(a) * d, vx: az(-.05, .05), vy: az(-.07, .02), s: az(1.4, 2.4), f: az(.6, 1.8), p: az(0, TAU), t: 0, vida: az(3, 7) }; };
-      F.forEach(q => { for (let i = 0; i < por; i++) { const m = nueva(q); m.t = az(0, m.vida); ms.push(m); } });
+      F.forEach(q => { for (let i = 0; i < (q.n || por); i++) { const m = nueva(q); m.t = az(0, m.vida); ms.push(m); } });   // (r19) q.n: el sol lleva más
       return {
         paso(dt, t) { ms.forEach((m, i) => { m.t += dt; m.dx += (m.vx + .035 * Math.sin(t * .6 + m.p)) * dt; m.dy += (m.vy + .025 * Math.cos(t * .5 + m.p)) * dt; if (m.t > m.vida || m.dx * m.dx + m.dy * m.dy > 1.1) ms[i] = nueva(m.q); }); this.t = t; },
         pinta(L, M, W, H) { ms.forEach(m => { const q = m.q, rad = q.R * W, d2 = m.dx * m.dx + m.dy * m.dy, cerca = Math.max(0, 1 - d2), vive = Math.sin(Math.PI * Math.min(1, m.t / m.vida));
@@ -91,7 +113,7 @@
       return {
         paso(dt, t) { const r = 1 + .6 * Math.sin(t * .23) * Math.sin(t * .11 + 1); ms.forEach((m, i) => { m.y += m.vy * dt; m.x += (m.vx * r + m.am * Math.cos(t * m.f + m.p)) * dt; if (m.y > z[3] || m.x > z[2] + .05) ms[i] = nueva(true); }); this.t = t; },   // la brisa va y viene (r)
         pinta(L, M, W, H) { L.fillStyle = o.col || '#FFE9C4'; ms.forEach(m => { const fin = Math.min(1, (z[3] - m.y) / .12, (m.y - z[1] + .08) / .1);
-          L.globalAlpha = Math.max(0, Math.min(1, (o.alfa || .5) * 1.15) * fin * (.6 + .4 * Math.sin(this.t * m.f * 2 + m.p))); const R = m.s * 1.5; L.drawImage(S.mota, (m.x * W - R) * K, (m.y * H - R) * K, 2 * R * K, 2 * R * K); }); }
+          L.globalAlpha = Math.max(0, Math.min(1, (o.alfa || .5) * 1.15) * fin * (.6 + .4 * Math.sin(this.t * m.f * 2 + m.p))); const R = m.s * 1.5 * (o.tam || 1); L.drawImage(S.mota, (m.x * W - R) * K, (m.y * H - R) * K, 2 * R * K, 2 * R * K); }); }
       };
     },
     brillos(o) {   // destellos del sol o de la luna en el agua

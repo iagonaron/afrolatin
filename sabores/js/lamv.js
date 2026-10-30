@@ -21,8 +21,11 @@
   async function url(r) {
     const k = clave(r); if (urls.has(k)) return urls.get(k);
     const m = await B.videos.abre([k]); const u = m.get(k) || null;
-    if (u) urls.set(k, u);
-    return u;
+    if (u) { urls.set(k, u); return u; }
+    /* (r19, Iago 30-oct 14:39: «en el primer plano de Río no veo partículas») si aún no está en la caché (se baja por detrás, de uno en
+       uno), el bucle va directo de la red (1–2 MB) en vez de quedarse en foto; abre() ya lo ha puesto el primero de la cola para la caché */
+    const it = B.VIDEOS && B.VIDEOS[k];
+    return it && navigator.onLine !== false ? new URL(it.v, location.href).href : null;
   }
   const quita = v => { try { v.pause(); v.removeAttribute('src'); v.load(); } catch (e) { } v.remove(); };
   const visible = el => el.querySelector('.lam.var.on') || el.querySelector('.lam.maestra');
@@ -89,6 +92,8 @@
     return (v._armaP = fotogramas(3));
   }
   B.lamv = {
+    /* (r19) el motor la llama con las láminas del plano SIGUIENTE: su vídeo, ya leído de la caché (blob) antes de que haga falta */
+    anticipa(r) { if (hay(r) && !urls.has(clave(r))) url(r).catch(() => { }); },
     /* el motor la llama al montar el plano, al cambiar de lámina y al enseñar el plano (siempre en la misma tarea que el cambio) */
     sincro(el) { if (!el) return; prepara(el); pinta(el); },
     /* promesa: el vídeo de esa lámina ya tiene su primer fotograma (o no lo tendrá). Sin vídeos, al momento */

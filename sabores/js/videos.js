@@ -8,10 +8,13 @@
      ?videos=no los quita). */
 (function (B) {
   const V = () => B.VIDEOS || {};                       // imagen → { v: ruta del mp4, b: bytes, d: sabor }
-  const CACHE = 'sabores-vc-1', K_NO = 'sabores_vc_no';
+  /* (r19, Iago 30-oct 14:41: «la canción libre de samba… ni partículas ni destellos ni movimientos de cámara») la marca vieja
+     (sabores_vc_no) la ponía UNA sola medida mala, también con la pestaña oculta o al arrancar: se borra una vez y va la nueva (K_NO) */
+  const CACHE = 'sabores-vc-1', K_NO = 'sabores_vc_no2', K_VIEJA = 'sabores_vc_no';
   const hay = typeof caches !== 'undefined' && !!window.isSecureContext && typeof fetch === 'function';
   const abs = r => new URL(r, location.href).href;
   const ls = (k, v) => { try { if (v === undefined) return localStorage.getItem(k); if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { } return null; };
+  ls(K_VIEJA, null);
   try { const q = new URLSearchParams(location.search).get('videos'); if (q === 'si') ls(K_NO, null); else if (q === 'no') ls(K_NO, '1'); } catch (e) { }
   const apagados = () => ls(K_NO) === '1';
   const listos = new Set();                             // URL absolutas ya en la caché
@@ -46,8 +49,15 @@
     sigue();
   }
   const delDia = n => Object.keys(V()).filter(im => V()[im].d === n);   // en el orden en que salen (el manifiesto ya va ordenado)
+  /* (r19) la pestaña se ha ocultado alguna vez desde… (las medidas de ese rato no valen: el navegador deja de pintar y cuenta perdidos) */
+  let ocultos = 0; document.addEventListener('visibilitychange', () => { if (document.hidden) ocultos++; });
+  let malas = 0, buenas = 0;
   B.videos = {
     hay: () => hay && !apagados() && Object.keys(V()).length > 0,
+    /* (r19) para el botón de la portada: hay vídeos, pero esta pantalla los apagó; y volver a encenderlos */
+    apagados: () => hay && apagados() && Object.keys(V()).length > 0,
+    enciende() { ls(K_NO, null); malas = 0; buenas = 0; },
+    medidas: [],
     /* al empezar un sabor: sus clips, en segundo plano, cuando ya ha arrancado (6 s después) */
     prepara(n) { if (!B.videos.hay()) return; setTimeout(() => lee().then(() => encola(delDia(n))), 6000); },
     /* «Preparar para clase»: todos; cb(hechos, total, bytesHechos, bytesTotal) */
@@ -75,15 +85,24 @@
       return m;
     },
     suelta(m) { if (m) m.forEach(u => { try { URL.revokeObjectURL(u); } catch (e) { } }); },
-    /* la pantalla del aula: si pierde más de 1 de cada 5 fotogramas, desde ahora van las fotos */
+    /* la pantalla del aula: si pierde más de 1 de cada 4 fotogramas, desde ahora van las fotos.
+       (r19) Se mide un rato de ~2 s ya en marcha (no el arranque), solo con la pestaña a la vista todo ese rato, y se apaga solo con
+       pruebas repetidas en la misma sesión: 3 medidas malas y más malas que buenas. Para volver a probar: botón de la portada o ?videos=si */
     vigila(v) {
       if (!v.getVideoPlaybackQuality) return;
+      let q0 = null, w0 = 0, h0 = 0;
       const mira = () => {
-        if (v.currentTime < 2.5) return;
+        if (document.hidden) { q0 = null; return; }
+        if (!q0) { if (v.currentTime < .6) return; const q = v.getVideoPlaybackQuality(); q0 = [q.totalVideoFrames, q.droppedVideoFrames]; w0 = performance.now(); h0 = ocultos; return; }
+        if (performance.now() - w0 < 2000) return;
+        const q = v.getVideoPlaybackQuality(), tot = q.totalVideoFrames - q0[0], per = q.droppedVideoFrames - q0[1];
+        if (ocultos !== h0) { q0 = null; return; }   // se ocultó en medio: otra vez
+        if (tot < 45) return;                        // aún pocos fotogramas (o parado): seguir mirando
         v.removeEventListener('timeupdate', mira);
-        const q = v.getVideoPlaybackQuality();
-        if (q.totalVideoFrames > 50 && q.droppedVideoFrames / q.totalVideoFrames > .2) {
-          ls(K_NO, '1'); console.info('[videos] la pantalla pierde fotogramas (' + q.droppedVideoFrames + '/' + q.totalVideoFrames + '): desde ahora, las fotos');
+        const mala = per / tot > .25; if (mala) malas++; else buenas++;
+        B.videos.medidas.push(per + '/' + tot); if (B.videos.medidas.length > 40) B.videos.medidas.shift();
+        if (mala && malas >= 3 && malas > buenas && !apagados()) {
+          ls(K_NO, '1'); console.info('[videos] la pantalla pierde fotogramas (' + B.videos.medidas.join(' ') + '): desde ahora, las fotos');
         }
       };
       v.addEventListener('timeupdate', mira);

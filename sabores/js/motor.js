@@ -125,6 +125,14 @@ const HIT = (function () {
     escena.appendChild(bp);
     /* (Iago 29-oct 09:06, «suelo probar los portales antes en el ordenador de clase») PREPARAR PARA CLASE: baja ya todos los vídeos de los
        videoclips a la caché de este navegador (solo en la portada; icono, y el texto al pasar el ratón) */
+    /* (r19) si esta pantalla apagó los vídeos (perdía fotogramas), el botón lo dice y, al pulsarlo, se vuelven a encender (y se bajan) */
+    if (B.videos && B.videos.apagados && B.videos.apagados()) {
+      const ba = B.el('button', 'bt ico peq bt-vc apagado', '<svg viewBox="0 0 24 24"><path d="M11 3h2v9.2l3.3-3.3 1.4 1.4L12 16l-5.7-5.7 1.4-1.4 3.3 3.3zM4 18h16v2H4z"/><path d="M3.3 2 22 20.7 20.7 22 2 3.3z"/></svg><b>Vídeos apagados</b>');
+      const t0 = 'Esta pantalla apagó los vídeos (perdía fotogramas). Pulsa para volver a encenderlos';
+      ba.dataset.tip = t0; ba.setAttribute('aria-label', t0);
+      ba.addEventListener('click', e => { e.stopPropagation(); B.videos.enciende(); location.reload(); });
+      escena.appendChild(ba);
+    }
     if (B.videos && B.videos.hay()) {
       const bv = B.el('button', 'bt ico peq bt-vc', '<svg viewBox="0 0 24 24"><path d="M11 3h2v9.2l3.3-3.3 1.4 1.4L12 16l-5.7-5.7 1.4-1.4 3.3 3.3zM4 18h16v2H4z"/></svg><b></b>');
       const tip = t => { bv.dataset.tip = t; bv.setAttribute('aria-label', t); };
@@ -309,7 +317,7 @@ const HIT = (function () {
     const dIr = HIT.ir();
     if (dIr && HIT.abierto(dIr) && B.DIAS[dIr]) {
       const pie = p.querySelector('.port-pie'), v = B.el('div', 'port-directo no-seguir'), antes = pie.innerHTML;
-      v.innerHTML = '<button class="bt prim">' + ICO.play + ' ' + ETQc + ' ' + dIr + ' · ' + B.esc(B.DIAS[dIr].titulo || TIT_DIA[dIr]) + '</button><button class="bt pd-x">Ver todos los actos</button>';
+      v.innerHTML = '<button class="bt prim">' + ICO.play + ' ' + ETQc + ' ' + dIr + ' · ' + B.esc(B.DIAS[dIr].titulo || TIT_DIA[dIr]) + '</button><button class="bt pd-x">Ver todos los ' + (ETQc === 'Sabor' ? 'sabores' : 'actos') + '</button>';   // (r19) «Ver todos los sabores»
       pie.innerHTML = ''; pie.appendChild(v);
       v.querySelector('.prim').addEventListener('click', e => { e.stopPropagation(); B.ac(); v.remove(); M.empezarDia(dIr, dIr === 5 && vio5 ? iPrac : 0, dIr === 5 && vio5); });
       v.querySelector('.pd-x').addEventListener('click', e => { e.stopPropagation(); pie.innerHTML = antes; const c2 = $('#continuar', pie); if (c2) c2.addEventListener('click', () => { B.ac(); const u = B.progreso.leer().ultimo; M.empezarDia(u.dia, u.plano || 0); }); });
@@ -543,6 +551,7 @@ const HIT = (function () {
     [rutaImg(p)].concat(Object.keys(p.var || {}).map(q => rutaVar(p, q))).forEach(r => {
       if (!r || !B.img[r]) return;
       const im = new Image(); im.src = B.img[r]; prepara(im); guardadas.push(im);
+      if (B.lamv && B.lamv.anticipa) B.lamv.anticipa(r);   // (r19) y su bucle ya leído de la caché: al entrar, solo falta su primer fotograma
     });
     while (guardadas.length > 12) guardadas.shift();   // (28-oct 19:10) 12 láminas preparadas como mucho (en el iPad, 30 de 1920×1080 eran ~250 MB)
   }
@@ -619,7 +628,10 @@ const HIT = (function () {
         B.capas && B.capas.preparaPlano ? B.capas.preparaPlano(p) : null, vis ? M.ambiente.prepara(vis.src) : null]); };
     /* luego se «arma» (opacidad 0,001, invisible, 3 fotogramas: el compositor ya tiene la lámina y su vídeo) y entra de golpe */
     const arma = () => { if (el._visto || !el.isConnected || !el.querySelector('video.lamv.vis')) return; el.classList.add('arma'); return new Promise(r => { let n = 3; const f = () => (--n <= 0 ? r() : requestAnimationFrame(f)); requestAnimationFrame(f); }); };   // sin vídeo, nada que armar
-    if (viejo || escena.classList.contains('precargando')) Promise.resolve().then(() => Promise.race([espera(), new Promise(r => setTimeout(r, 900))])).then(arma).then(muestra); else muestra();
+    /* (r19, Iago 30-oct 14:39: «en el primer plano de Río no veo partículas; en el segundo ya sí») el primer plano del sabor sale de la
+       pantalla de carga: ahí puede esperar a su bucle hasta 3 s (leerlo de la caché y su primer fotograma); los demás, como mucho 0,9 s */
+    const tope = !viejo && escena.classList.contains('precargando') ? 3000 : 900;
+    if (viejo || escena.classList.contains('precargando')) Promise.resolve().then(() => Promise.race([espera(), new Promise(r => setTimeout(r, tope))])).then(arma).then(muestra); else muestra();
     planoEl = el; el._kb = kbEl;
     B.$$('.lam', kbEl).forEach(prepara);   // (ronda 6) descodificar ya todas las láminas del plano (gestos, cortes, recursos)
     if (p.mapa) montaMapa(p, kbEl);
