@@ -327,7 +327,11 @@
 .c4-claves.fijo.cabeza.cierre .c4-tit{font-size:calc(var(--u)*4.6)!important}
 .c4-claves.fijo.sale{opacity:0;transition:opacity .45s}
 /* (12:40) franjas de los lados (pantallas que no son 16:9): la imagen del plano, desenfocada y oscura, en vez de negro */
-#marco.con-bandas::before{content:'';position:absolute;inset:-6%;background:var(--amb,none) center/cover no-repeat;filter:blur(28px) brightness(.5) saturate(1.1);pointer-events:none}
+#marco.con-bandas{isolation:isolate}
+#marco.con-bandas::before,#marco.con-bandas::after{content:'';position:absolute;inset:-6%;background-position:center;background-size:cover;background-repeat:no-repeat;filter:blur(28px) brightness(.5) saturate(1.1);pointer-events:none;z-index:-1;transition:opacity .8s ease}
+#marco.con-bandas::before{background-image:var(--ambA,none)}
+#marco.con-bandas::after{background-image:var(--ambB,none);opacity:0}
+#marco.con-bandas.amb-b::after{opacity:1}
 #marco.con-bandas #escena{box-shadow:0 0 calc(var(--u)*3) rgba(0,0,0,.55)}
 .mapa-cartel .mc-ciudad{font-family:'Shrikhand',serif;font-size:calc(var(--u)*2.1);color:#FFE3B8;margin:calc(var(--u)*.2) 0 calc(var(--u)*.5);text-align:center}
 
@@ -439,11 +443,11 @@
 .c4-claves.titulo.c4-pais .c4-tit{text-transform:uppercase!important;letter-spacing:.1em!important}
 /* (Iago 29-oct 20:54) repasos: los iconos de lo que suena, en una tira abajo (capas4s.js: it.ico) */
 .c4-tira{position:absolute;left:24%;right:24%;bottom:5%;height:calc(var(--u)*10.5);display:flex;justify-content:center;align-items:flex-end;gap:calc(var(--u)*1.6);pointer-events:none;z-index:2}
-.c4-tira img{height:100%;width:auto;max-width:calc(var(--u)*16);object-fit:contain}
+.c4-tira img{height:calc(100% * var(--tk,1));width:auto;max-width:calc(var(--u)*18);object-fit:contain}
 .c4-tira{left:3%!important;right:auto!important;width:46%;justify-content:flex-start!important;height:calc(var(--u)*12)!important}   /* abajo a la izquierda: los personajes del repaso van a la derecha */
 .c4-tira.der{left:auto!important;right:3%!important;justify-content:flex-end!important}
 .c4-tira.der{left:auto!important;right:2.5%!important;top:15%;bottom:5%!important;width:19%!important;height:auto!important;flex-direction:column;justify-content:flex-end!important;align-items:center;gap:calc(var(--u)*.9)}
-.c4-tira.der img{height:auto;max-height:calc(var(--u)*8.2);max-width:100%;min-height:0;flex:0 1 auto}
+.c4-tira.der img{height:auto;max-height:calc(var(--u)*8.2 * var(--tk,1));max-width:100%;min-height:0;flex:0 1 auto}
 /* (Iago 29-oct 22:48: «la letra… ya no tiene el problema del contorno, pero no se lee demasiado») detrás de la letra, una caja de cristal
    oscuro semitransparente (como sus tarjetas), sin desenfoque (la pantalla del aula) */
 .s4-concierto .s4-letra{background:rgba(12,8,5,.62)!important;border-radius:calc(var(--u)*1.1)!important;padding:calc(var(--u)*.7) calc(var(--u)*2.2) calc(var(--u)*.8)!important}
@@ -453,9 +457,25 @@
 .c4-tira.derb{left:auto!important;right:3%!important;justify-content:flex-end!important}
 .c4-tira.conpj{bottom:0!important;height:calc(var(--u)*27)!important;width:46%!important;align-items:flex-end;padding-bottom:calc(var(--u)*1.2);box-sizing:border-box;padding-left:calc(var(--u)*9.5)}
 .c4-tira.conpj.derb{padding-left:0;padding-right:calc(var(--u)*9.5)}
-.c4-tira.conpj img{position:relative;z-index:1;height:calc(var(--u)*10.5)!important;max-width:calc(var(--u)*15)}
+.c4-tira.conpj img{position:relative;z-index:1;height:calc(var(--u)*10.5 * var(--tk,1))!important;max-width:calc(var(--u)*17)}
 .c4-tira.conpj img.c4-tpj{position:absolute;z-index:0;bottom:0;left:0;height:100%!important;max-width:none;width:auto}
 .c4-tira.conpj.derb img.c4-tpj{left:auto;right:0}
 .c4-tira.conpj img:not(.c4-tpj){flex:0 1 auto;min-width:0;object-fit:contain}
 /* con un instrumento a tamaño real en pantalla (caja), los carteles van arriba, sin tapar ni el instrumento ni su nombre */
 .c4-capa.con-caja .c4-claves:not(.fijo):not(.c4-pais){top:7%!important;transform:none!important}
+
+/* (Iago 30-oct 06:55: «los instrumentos tienen que estar en el lado de los carteles, no en el opuesto») repasos finales (sin personajes en la
+   lámina): los iconos, en una columna JUNTO a la de los carteles, a su misma altura (en filas de dos o tres si hace falta) */
+.c4-tira.colizq,.c4-tira.colder{top:21%!important;bottom:6%!important;width:23%!important;height:auto!important;flex-direction:row!important;flex-wrap:wrap;
+  align-content:flex-start;align-items:flex-end;gap:calc(var(--u)*1.4) calc(var(--u)*1.4)}
+.c4-tira.colizq{left:31%!important;right:auto!important;justify-content:flex-start!important}
+.c4-tira.colder{left:auto!important;right:31%!important;justify-content:flex-end!important}
+.c4-tira.colizq img,.c4-tira.colder img{height:calc(var(--u)*12 * var(--tk,1))!important;width:auto;max-width:calc(var(--u)*17);flex:0 0 auto;object-fit:contain}
+/* (30-oct) repasos del principio sobre la carta (s3_n01, s4_n01): la tira del personaje con sus instrumentos, abajo y PEGADA a la columna de
+   los carteles (no debajo de ella: con cuatro carteles se pisaban) */
+.c4-tira.conpj:not(.derb){left:30%!important;width:44%!important}
+.c4-tira.conpj.derb{right:30%!important;width:44%!important}
+.c4-claves.c4-alto:not(.fijo):not(.c4-pais){top:7%!important;transform:none!important}   /* (30-oct) el sitio de .con-caja, desde el principio */
+/* (Iago 30-oct 06:54 «justo antes de “aquí se vive en la calle” hay un destello raro») el bucle de la lámina entra con un fundido corto sobre la foto
+   (antes, de golpe: sus luces y brillos aparecían de repente, como un destello) */
+#escena .plano video.lamv{transition:opacity .45s linear,transform 1s ease}

@@ -5,7 +5,7 @@
    Todo en --u (1 % del ancho del escenario 16:9: 100 × 56,25).
    ══════════════════════════════════════════════════════════════════════ */
 .s4-quiz,.s4-quiz *{transition:none!important;animation:none!important}
-.s4-quiz .s4-fondo{background:rgba(20,13,8,.58)}
+.s4-quiz .s4-fondo{background:rgba(20,13,8,.42)}   /* (30-oct) el fondo propio del quiz ya es oscuro en el centro */
 .qz{position:absolute;inset:0;font-family:'DM Sans',sans-serif;color:#FFF7EA}
 .qz-capa{position:absolute;inset:0}
 .qz-tit{font-family:'Shrikhand',serif;font-size:calc(var(--u)*4.4);line-height:1;color:#FFE9C7}
@@ -132,3 +132,6 @@
 .qz-chucho{position:absolute;right:calc(var(--u)*3);bottom:0;height:calc(var(--u)*40);width:auto;pointer-events:none}
 /* sabor 4: el podio un poco a la izquierda, para que Chucho (el colofón) no lo pise */
 .qz-s4 .qz-final>.qz-tit,.qz-s4 .qz-final>.qz-podio,.qz-s4 .qz-final>.qz-resto{margin-right:calc(var(--u)*24)}
+/* (Iago 30-oct 07:16) el podio se destapa de abajo arriba, cada escalón con su sonido (sin transiciones: la pantalla de clase va a pocos fotogramas) */
+.qz-esc.tapado,.qz-resto.tapado{visibility:hidden}
+.qz-aciertos b{font-weight:800}
