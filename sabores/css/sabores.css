@@ -476,6 +476,18 @@
 .c4-tira.conpj:not(.derb){left:30%!important;width:44%!important}
 .c4-tira.conpj.derb{right:30%!important;width:44%!important}
 .c4-claves.c4-alto:not(.fijo):not(.c4-pais){top:7%!important;transform:none!important}   /* (30-oct) el sitio de .con-caja, desde el principio */
-/* (Iago 30-oct 06:54 «justo antes de “aquí se vive en la calle” hay un destello raro») el bucle de la lámina entra con un fundido corto sobre la foto
-   (antes, de golpe: sus luces y brillos aparecían de repente, como un destello) */
-#escena .plano video.lamv{transition:opacity .45s linear,transform 1s ease}
+/* (Iago 30-oct 06:54 «justo antes de “aquí se vive en la calle” hay un destello raro») (r18) el fundido de .45 s que se puso aquí nunca
+   llegó a funcionar (lo anula «*{transition:none!important}» de la pantalla del aula) y el destello venía de otra cosa: unos fotogramas
+   de foto sola entre el vídeo de antes y el nuevo. Ahora (js/lamv.js) el vídeo de la lámina nueva ya está listo y entra en el MISMO
+   fotograma que ella, de golpe: sin fundidos */
+#escena .plano video.lamv{transition:none!important}
+/* (r18) franjas de los lados con dos <img> (js/motor.js, M.ambiente) en vez del fondo CSS de ::before/::after, que tardaba en pintarse
+   (la franja seguía con la imagen de antes, o en negro, ~0,35 s): una sola capa a la vista, la misma caja, desenfoque y oscuridad de antes */
+#marco.con-bandas::before,#marco.con-bandas::after{content:none!important}
+.amb-capa{display:none}
+#marco.con-bandas .amb-capa.ver{display:block;position:absolute;left:-6%;top:-6%;width:112%;height:112%;max-width:none;object-fit:cover;object-position:50% 50%;
+  filter:blur(28px) brightness(.5) saturate(1.1);pointer-events:none;z-index:-1}
+/* (r18) el plano que va a entrar, «armado» unos fotogramas antes (js/motor.js, montaPlano): todo él oculto salvo su vídeo, a opacidad
+   0,001 (invisible, pero ya en el compositor); así entra entero en un solo fotograma, con el vídeo ya pintando */
+#pelicula .plano.arma{opacity:1;visibility:hidden}
+#pelicula .plano.arma video.lamv.vis{visibility:visible;opacity:.001!important}
