@@ -173,7 +173,7 @@
       sala.querySelector('.qz-qr-img').innerHTML = qrSvg(url);
       sala.querySelector('.qz-qr-dir').textContent = dir.replace(/^https?:\/\//, '').replace(/\/$/, '');
       sala.querySelector('.qz-pin b').textContent = partida.pin;
-      est.innerHTML = ICO_MOVIL + ' Escanea el código o entra en la dirección con el PIN, y elige tu apodo.';
+      est.innerHTML = ICO_MOVIL + ' Escanea el código con el móvil y elige tu apodo. Sin cámara: entra en la dirección y escribe el PIN.';
       pintaJugadores();
     } else {
       sala.classList.add('sin-red');
