@@ -37,15 +37,20 @@
     const lado = o.lado || (pjAct && pjAct.lado) || 'der', alto = o.alto || (pjAct && pjAct.alto) || .82;
     if (pjEl && pjAct && pjAct.q === q && pjAct.lado === lado && pjAct.pose === pose) return;
     const mismo = pjEl && pjAct && pjAct.q === q && pjAct.lado === lado;
-    const im = B.el('img', 'c4-pj ' + lado + (mismo ? ' cambio' : '')); im.src = url(src); im.alt = ''; im.draggable = false;
-    im.style.setProperty('--alto', alto); im.dataset.pose = q + '_' + pose;
+    /* (r18) si el motor ya preparó ESTE elemento (C.prepara / C.preparaPlano: creado y descodificado justo antes del cambio), entra al momento */
+    const pr = PREP_EL.get(src); if (pr) PREP_EL.delete(src);
+    const im = pr ? pr.im : B.el('img'); im.className = 'c4-pj ' + lado + (mismo ? ' cambio' : ''); if (!pr) im.src = url(src); im.alt = ''; im.draggable = false;
+    im.style.setProperty('--alto', alto); im.dataset.pose = q + '_' + pose; im.dataset.src = src;
     /* (28-oct, Iago: «un movimiento rápido y extraño de Antónico… como que carga antes otra pose») la pose nueva entra cuando YA está
        decodificada (antes se quitaba la vieja y durante un instante no había ninguna) */
     const viejo = pjEl; pjEl = im; pjAct = { q, pose, lado, alto };
-    /* (28-oct 09:05, Iago: «la primera aparición de Antónico: se ve el fondo sin él y al siguiente fotograma aparece») las poses ya
-       descodificadas (C.predecodifica, al empezar el sabor) entran en el MISMO fotograma que la lámina; solo las que no, esperan */
+    /* (28-oct 09:05) las poses ya descodificadas entran en el MISMO fotograma que la lámina; solo las que no, esperan. (r18, Iago 30-oct:
+       «frames raros, sobre todo de su PNG»; en la prueba, al cortar al radiocasete, Ramoncito desaparecía ~0,2 s) descodificar la MISMA
+       imagen en otro elemento (C.predecodifica) no basta: el elemento nuevo aún no tenía su imagen y se pintaba vacío mientras la pose
+       de antes ya se había quitado. Ahora entra al momento solo el elemento preparado; los demás, cuando su propia imagen está lista
+       (mientras, se queda la pose de antes) */
     const pon = () => { if (pjEl !== im) return; capa.appendChild(im); im.classList.add('on'); capa.querySelectorAll('.c4-pj').forEach(e => { if (e !== im) e.remove(); }); };
-    if (LISTAS.has(src) || !im.decode) pon(); else im.decode().then(pon, pon);
+    if ((pr && pr.ok) || !im.decode) pon(); else if (pr) pr.p.then(pon, pon); else im.decode().then(pon, pon);
     capa.classList.toggle('pj-izq', lado === 'izq'); capa.classList.toggle('pj-der', lado === 'der');
   }
   /* ── palabras clave ── */
@@ -88,7 +93,22 @@
   }
   function quitaClaves(ya) { if (previo) { previo.remove(); previo = null; } if (clavesEl) { const v = clavesEl; if (ya) v.remove(); else { v.classList.add('sale'); setTimeout(() => v.remove(), 450); } clavesEl = null; } }
   /* ── imagen suelta (instrumento en PNG) ── */
+  /* (r18) como las poses: el elemento del PNG se descodifica 0,4 s antes (C.linea / C.prepara) y entra a su tiempo; si aún no lo está, se
+     espera a él (como mucho 0,4 s) y mientras se queda lo de antes (antes se quitaba lo de antes y el nuevo se pintaba vacío unos fotogramas) */
+  const PREP_IMG = new Map();
+  function prepImg(src) {
+    if (!src) return null; let o = PREP_IMG.get(src); if (o) return o.p;
+    const im = new Image(); im.src = url(src); o = { im, ok: false }; PREP_IMG.set(src, o);
+    while (PREP_IMG.size > 8) PREP_IMG.delete(PREP_IMG.keys().next().value);
+    o.p = (im.decode ? im.decode() : Promise.resolve()).then(() => { o.ok = true; }, () => { o.ok = true; });
+    return o.p;
+  }
   function ponImg(it, c) {
+    const o = PREP_IMG.get(it.img);
+    if (o && o.ok) return ponImg2(it, c, o);
+    Promise.race([prepImg(it.img), new Promise(r => setTimeout(r, 400))]).then(() => { if (!(c && c.muerto)) ponImg2(it, c, PREP_IMG.get(it.img)); });
+  }
+  function ponImg2(it, c, o) {
     asegura();
     if (it.solo !== false) quitaSueltas();
     /* (28-oct, Iago: «se camina, no se corre: una vez que sale, que ya no aparezca») el cartel de ANTES se va cuando entra el instrumento…
@@ -98,7 +118,8 @@
     const w = B.el('div', 'c4-suelta' + (tam ? ' caja' : ''));
     if (tam) { w.style.setProperty('--x', tam.x); w.style.setProperty('--y', tam.y); w.style.setProperty('--w', tam.w); w.style.setProperty('--h', tam.h); }
     else { w.style.setProperty('--x', it.x == null ? .5 : it.x); w.style.setProperty('--y', it.y == null ? .5 : it.y); w.style.setProperty('--h', it.h || .5); }
-    const im = B.el('img'); im.src = url(it.img); im.alt = it.nom || ''; w.appendChild(im);
+    if (o) PREP_IMG.delete(it.img);
+    const im = o ? o.im : B.el('img'); if (!o) im.src = url(it.img); im.alt = it.nom || ''; w.appendChild(im);
     if (it.rot) im.style.transform = 'rotate(' + it.rot + 'deg)';   // (28-oct 12:41) las postales, un pelín giradas, como sobre la mesa
     if (it.nom) { const nm = B.el('b'); nm.textContent = it.nom; if (it.tn) nm.style.fontSize = 'calc(var(--u)*' + it.tn + ')'; w.appendChild(nm); }
     capa.appendChild(w); void w.offsetWidth; w.classList.add('on'); sueltas.push(w);
@@ -220,7 +241,10 @@
     const ad = adel && adel.id === l.id ? adel.k : -1; if (adel && adel.id === l.id) adel = null;
     xs.forEach((it, k) => {
       const t = it.t != null ? it.t : (it.en || 0) * dur;
-      if ('pj' in it && k > ad) B.espera(t, c).then(ok => ok && ponPj(it.pj));
+      if ('pj' in it && k > ad) {
+        if (it.pj) B.espera(Math.max(0, t - .4), c).then(ok => ok && decod(srcDe(it.pj)));   // (r18) la pose, descodificada 0,4 s antes: entra justo a su tiempo (y a la vez que un plano alternado del mismo instante)
+        B.espera(t, c).then(ok => ok && ponPj(it.pj));
+      }
       /* (28-oct, C1) cada cartel se crea cuando le toca (antes se creaban todos al empezar la frase y cada uno quitaba al anterior: en las
          frases con dos o tres carteles solo se veía el último, p. ej. el titular «República Dominicana · Santo Domingo») */
       if (it.claves) {
@@ -228,13 +252,16 @@
         if (!it.fijo && it.ts && t0 > .06) B.espera(t0 - .05, c).then(ok => ok && ponClaves(Object.assign({}, it, { t: .05, _t0: t0, ts: it.ts.map(x => Math.max(0, x - t0 + .05)) }), dur, c));
         else ponClaves(it, dur, c);
       }
-      if (it.img) B.espera(t, c).then(ok => ok && ponImg(it, c));
+      if (it.img) { if (t > .05) B.espera(Math.max(0, t - .4), c).then(ok => ok && prepImg(it.img)); B.espera(t, c).then(ok => ok && ponImg(it, c)); }
       if (it.flechas) ponFlechas(it, dur, c);
       if (it.rotulos) ponRotulos(it, dur, c);
       if (it.rejillas) ponRejillas(it, dur, c);
       if (it.son) B.espera(t, c).then(ok => ok && suenaEjemplo(it, c));
       /* (Iago 29-oct 07:52) planos que se alternan DENTRO de una frase (el mambo: los músicos, uno tras otro): { vari: 'RECURSO_X', t } */
-      if (it.vari) B.espera(t, c).then(ok => ok && B.motor && B.motor.ponVariante && B.motor.ponVariante(it.vari));
+      if (it.vari) {
+        if (t > .05) B.espera(Math.max(0, t - .3), c).then(ok => ok && B.motor && B.motor.arma && B.motor.arma(it.vari));   // (r18) su bucle, armado 0,3 s antes: entra en el mismo fotograma
+        B.espera(t, c).then(ok => ok && B.motor && B.motor.ponVariante && B.motor.ponVariante(it.vari));
+      }
       /* (28-oct 10:00, Iago: «que haya música para el cierre del capítulo: desde que Doña Cande lo recomienda… hasta que se pulse Portada o
          Repetir el sabor») { musica: { src, vol, bucle } }: la música del plano cambia a esta (sigue sonando en la pantalla final) */
       if (it.musica) B.espera(t, c).then(ok => ok && B.musica && B.musica(Object.assign({ bucle: true }, it.musica)));
@@ -293,6 +320,36 @@
     const P = (B.CAPAS && B.CAPAS.poses) || {};
     Object.keys(P).forEach(q => { if (QS && !QS.has(q)) return; Object.keys(P[q]).forEach(k => { const src = P[q][k]; if (k === '_' || LISTAS.has(src)) return;
       const im = new Image(); im.src = url(src); GUARDA.push(im); (im.decode ? im.decode() : Promise.resolve()).then(() => LISTAS.add(src), () => { }); }); });
+  };
+  /* (r18, Iago 30-oct en el aula: «frames raros, sobre todo de su PNG») el motor espera (como mucho 0,9 s) a que esté descodificada la pose
+     con la que entra una frase que cambia de lámina (C.prepara) o la de un plano nuevo (C.preparaPlano): así la pose cambia en el mismo
+     fotograma que el fondo (ponPj la pone al momento), sin quedarse un instante la de antes sobre el fondo nuevo */
+  const PREP_EL = new Map();   // src → { im, ok, p }: el elemento <img> que usará ponPj, ya descodificado
+  function decod(src) {
+    if (!src || (pjEl && pjEl.isConnected && pjEl.dataset.src === src)) return null;   // ya es la que se ve
+    const ya = PREP_EL.get(src); if (ya) return ya.p;
+    const im = new Image(); im.src = url(src); im.dataset.src = src;
+    const o = { im, ok: false }; PREP_EL.set(src, o);
+    while (PREP_EL.size > 6) PREP_EL.delete(PREP_EL.keys().next().value);
+    o.p = (im.decode ? im.decode() : Promise.resolve()).then(() => { o.ok = true; LISTAS.add(src); }, () => { PREP_EL.delete(src); });
+    return o.p;
+  }
+  function srcDe(o) {
+    if (!o) return null;
+    const q = o.q || (pjAct && pjAct.q), poses = PJ(q), pose = o.pose || (pjAct && pjAct.q === q && pjAct.pose) || poses._ || Object.keys(poses).find(k => k !== '_');
+    return poses[pose] || poses[poses._] || null;
+  }
+  C.prepara = function (l) {
+    const xs = l && B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l.id], it = xs && primeraNueva(xs);
+    B.arr(xs).forEach(x => { if (x && x.img && (x.t || 0) <= .45) prepImg(x.img); });   // los PNG sueltos del principio de la frase (no se espera por ellos)
+    return Promise.resolve(it ? decod(srcDe(it.pj)) : null);
+  };
+  C.preparaPlano = function (p) {
+    const d = B.CAPAS && B.CAPAS.planos && B.CAPAS.planos[p.id];
+    let pj0 = d && 'pj' in d ? d.pj : null;
+    const l0 = B.arr(p.lineas)[0], xs0 = l0 && B.CAPAS && B.CAPAS.lineas && B.CAPAS.lineas[l0.id], p0 = xs0 && primeraNueva(xs0);
+    if (p0) pj0 = Object.assign({}, pj0 || {}, p0.pj);
+    return Promise.resolve(pj0 ? decod(srcDe(pj0)) : null);
   };
   C.recursos = function (d) {
     const r = [], P = (B.CAPAS && B.CAPAS.poses) || {}, L = (B.CAPAS && B.CAPAS.lineas) || {}, PL = (B.CAPAS && B.CAPAS.planos) || {};

@@ -65,6 +65,18 @@ const HIT = (function () {
   const PAL_DIA = { 1: 'atlantico', 2: 'ocre', 3: 'neon', 4: 'otono', 5: 'farol' };
   const ESQ = '<svg viewBox="0 0 50 50" fill="none" stroke="#E9CD8A" stroke-width="1"><path d="M2 48V2h46"/><path d="M7 48V7h41"/><path d="M2 2l12 12"/><circle cx="17" cy="17" r="2.2"/><path d="M12 7c0 3 2 5 5 5M7 12c3 0 5 2 5 5"/></svg>';
 
+  /* (30-oct-2026, Iago: que en la campana del Diario salga qué sabor abrió cada alumno, como en La cabaña) QUÉ ESTÁ HACIENDO. El latido de la piel
+     (piel/latido.js, cargado al final de index.html) lee cada minuto <i id="lm-que" data-lm-ejercicio> y lo suma al rato del alumno; la campana
+     del Diario lo traduce (suite-campana.js, PORTAL_LIBRE «sabores-gp»): «portada» · «sabor-N-carga» (en «Preparando…», sin empezar aún) ·
+     «sabor-N» (dentro del sabor N). Vacío = no cuenta. Para quitarlo: que esta función no haga nada. */
+  function marcaLatido(k) {
+    try {
+      let m = document.getElementById('lm-que');
+      if (!m) { m = document.createElement('i'); m.id = 'lm-que'; m.hidden = true; (document.body || document.documentElement).appendChild(m); }
+      if (m.getAttribute('data-lm-ejercicio') !== k) m.setAttribute('data-lm-ejercicio', k);
+    } catch (e) { }
+  }
+
   /* ══════════ arranque ══════════ */
   M.iniciar = function () {
     escena = $('#escena'); pelicula = $('#pelicula'); subt = $('#subt'); hechosBox = $('#hechos');
@@ -160,20 +172,35 @@ const HIT = (function () {
      otra proporción (o Chrome enseña una barra arriba), las franjas que sobran ya no son negras: la misma imagen, desenfocada y oscura */
   /* (Iago 30-oct 06:54) «el margencito se oscurece» al cambiar de plano: el fondo de las bandas va en DOS capas; la nueva se pone cuando su
      imagen ya está decodificada y entra con un fundido sobre la anterior (nunca hay un fotograma sin fondo) */
-  let ambCara = 'a', ambUlt;
+  /* (r18, 30-oct) medido en la prueba: la imagen puesta como fondo CSS de ::before/::after tardaba ~0,35 s en pintarse aunque la lámina ya
+     estuviera descodificada (la franja se quedaba con la imagen de antes y, en la vuelta de la capa b a la a, en NEGRO ese rato: «el
+     margencito se oscurece»). Ahora las franjas son dos <img> (.amb-capa) dentro de #marco: la imagen nueva se descodifica en SU propio
+     elemento (M.ambiente.prepara, antes del cambio) y se pasa de una capa a otra en la misma tarea que la lámina: una sola a la vista y
+     nunca sin imagen (si aún no está, se queda la de antes hasta que lo esté) */
+  let ambUlt, ambTok = 0, ambCapas = null;
+  const marcoEl = () => document.getElementById('marco');
+  const conBandas = () => { const m = marcoEl(); return !!(m && m.classList.contains('con-bandas')); };
+  const capasAmb = () => {
+    const m = marcoEl(); if (!m) return null;
+    if (!ambCapas || !ambCapas[0].isConnected) ambCapas = [0, 1].map(() => { const im = new Image(); im.className = 'amb-capa'; im.alt = ''; im.draggable = false; im.setAttribute('aria-hidden', 'true'); m.insertBefore(im, m.firstChild); return im; });
+    return ambCapas;
+  };
+  const absU = src => { let u = src; try { if (u && !/^(blob|data):/.test(u)) u = new URL(u, location.href).href; } catch (e) { } return u || null; };   // (28-oct) ruta absoluta
+  const capaLibre = () => { const cs = capasAmb(); return cs && (cs[0].classList.contains('ver') ? cs[1] : cs[0]); };
+  const cargaAmb = (im, u) => { if (im._u !== u) { im._u = u; im._ok = false; im.src = u; im._p = (im.decode ? im.decode() : Promise.resolve()).then(() => { if (im._u === u) im._ok = true; }, () => { }); } return im._p; };
+  /* deja la imagen de la franja descodificada en la capa oculta, sin enseñarla (el motor lo pide antes de un cambio de lámina) */
+  const preparaAmb = src => { const u = absU(src); if (!u || u === ambUlt || !conBandas()) return Promise.resolve(); const im = capaLibre(); return im ? cargaAmb(im, u) : Promise.resolve(); };
   M.ambiente = function (src) {
-    const m = document.getElementById('marco'); if (!m) return;
-    let u = src; try { if (u && !/^(blob|data):/.test(u)) u = new URL(u, location.href).href; } catch (e) { }   // (28-oct) ruta absoluta: dentro de una variable CSS se leía desde css/
-    if (u === ambUlt) return; ambUlt = u;
-    const pon = () => {
-      if (ambUlt !== u) return;
-      ambCara = ambCara === 'a' ? 'b' : 'a';
-      m.style.setProperty(ambCara === 'a' ? '--ambA' : '--ambB', u ? 'url("' + u + '")' : 'none'); m.classList.toggle('amb-b', ambCara === 'b');
-    };
-    if (!u) return pon();
-    const im = new Image(); im.src = u;
-    if (im.decode) im.decode().then(pon, pon); else { im.onload = pon; im.onerror = pon; }
-  };   // (28-oct) ruta absoluta: dentro de una variable CSS se leía desde css/
+    const cs = capasAmb(); if (!cs) return;
+    const u = absU(src); if (u === ambUlt) return; ambUlt = u; const tk = ++ambTok;
+    if (!u) { cs.forEach(im => { im.classList.remove('ver'); im.removeAttribute('src'); im._u = null; im._ok = false; }); return; }
+    const im = capaLibre(), otra = im === cs[0] ? cs[1] : cs[0];
+    const pon = () => { if (tk !== ambTok) return; im.classList.add('ver'); otra.classList.remove('ver'); };
+    if (!conBandas()) { if (im._u !== u) { im._u = u; im._ok = false; im.src = u; } return pon(); }   // sin franjas a la vista: nada que esperar
+    if (im._u === u && im._ok) return pon();   // ya preparada: en esta misma tarea, con la lámina
+    cargaAmb(im, u).then(pon);
+  };
+  M.ambiente.prepara = preparaAmb;
   const bandas = () => { const m = document.getElementById('marco'); if (m) m.classList.toggle('con-bandas', Math.abs(innerWidth / Math.max(1, innerHeight) - 16 / 9) > .015); };
   addEventListener('resize', bandas); document.addEventListener('fullscreenchange', bandas); document.addEventListener('webkitfullscreenchange', bandas); setTimeout(bandas, 0);
   M.pantallaCompleta = function () {
@@ -238,6 +265,7 @@ const HIT = (function () {
   const TIT_DIA = CF.titulos || { 1: 'La nana de Xan', 2: 'Músicos callejeros', 3: 'Glamour y decepción', 4: 'El blues de John', 5: 'El porche' };   // títulos de Iago (19-oct; el 4 desde el 20-oct; el 1 y el 5, ronda 4)
   M.portada = function () {
     dia = null; idx = -1;
+    marcaLatido('portada');
     escena.classList.add('en-portada'); escena.classList.remove('precargando', 'sin-cursor');
     $('#findia').classList.remove('on');
     const pr = B.progreso.leer();
@@ -328,6 +356,7 @@ const HIT = (function () {
     M.salir(true);
     paraPortada();
     dia = d; idx = -1;
+    marcaLatido('sabor-' + n + '-carga');
     mideRes();
     if (B.banda && B.banda.config) B.banda.config(d.banda);
     escena.classList.remove('en-portada'); escena.classList.add('precargando'); escena.dataset.sabor = n;   // (19:23) la piel de cada sabor (rótulos verdes en el 2)
@@ -358,7 +387,8 @@ const HIT = (function () {
       try { await window.LMVoluntarios.ofrece({ tema: VOL[n] }); } catch (e) { }
       if (dia !== d) return;
     }
-    escena.classList.remove('precargando');
+    /* (r18) la pantalla de carga se quita cuando el primer plano ya se enseña entero (montaPlano: lámina, su bucle y el personaje listos) */
+    marcaLatido('sabor-' + n);
     correPlano(B.clamp(desde || 0, 0, d.planos.length - 1));
     if (B.videos) B.videos.prepara(n);   // (Iago 29-oct) los clips del videoclip de este sabor, en segundo plano y de uno en uno
   };
@@ -397,7 +427,13 @@ const HIT = (function () {
   const rutaVar = (p, q) => { const v = (p.var || {})[q]; return resImg(typeof v === 'string' ? v : (v && v.img) || ('img/d' + p.dia + '/' + p.id.toLowerCase().replace('.', '_') + '_' + q.toLowerCase() + '.webp')); };
 
   /* ══════════ salir / navegar ══════════ */
-  function limpiaPlano() {
+  /* (r18, Iago 30-oct en el aula: «justo antes de "Segundo: la guacharaca", uno o pocos frames raros, sobre todo de su PNG») al pasar de
+     plano, la interacción se quitaba ANTES de que el plano nuevo estuviera listo: durante unos fotogramas se veía el plano de antes a
+     plena luz, con la pose y el cartel de antes. Ahora, si viene otro plano (sigue), la interacción se queda hasta que el nuevo se
+     enseña, y se va en ese mismo fotograma (montaPlano → muestra) */
+  let interRet = false;
+  function quitaInter() { interRet = false; interBox.classList.remove('on'); interBox.innerHTML = ''; escena.classList.remove('con-inter', 'subt-abajo'); delete escena.dataset.inter; }
+  function limpiaPlano(sigue) {
     if (ctl) ctl.matar(); ctl = null; saltable = null;
     if (cilindroAct) { cilindroAct.parar(); cilindroAct = null; }
     B.cortaVivos('plano');
@@ -405,8 +441,7 @@ const HIT = (function () {
     if (B.agacha) B.agacha(false);
     subt.classList.remove('on');
     cartaBox.classList.remove('on', 'leyendo'); escena.classList.remove('con-carta');
-    interBox.classList.remove('on'); interBox.innerHTML = ''; escena.classList.remove('con-inter', 'subt-abajo'); delete escena.dataset.inter;
-    escena.classList.remove('con-inter', 'subt-abajo');
+    if (sigue && interBox.classList.contains('on')) interRet = true; else quitaInter();
     visAnt = null;
     $('#rotulo').innerHTML = '';
   }
@@ -417,6 +452,7 @@ const HIT = (function () {
     hechosBox.innerHTML = '';
     $('#findia').classList.remove('on');
     if (B.pausado) B.pausa(false);
+    if (B.lamv) { const vs = Array.from(pelicula.children); vs.forEach(x => B.lamv.para(x)); setTimeout(() => vs.forEach(x => B.lamv.suelta(x)), 1000); }   // (r18) sus vídeos, parados ya y sueltos luego
     pelicula.innerHTML = ''; planoEl = null; planoAct = null;
     if (!sinPortada) dia = null;
   };
@@ -428,7 +464,7 @@ const HIT = (function () {
 
   /* ══════════ un plano ══════════ */
   async function correPlano(i) {
-    limpiaPlano();
+    limpiaPlano(true);
     $('#findia').classList.remove('on');
     idx = i;
     const p = dia.planos[i]; planoAct = p; tCambio = -1e9; corteAct = null; ultQuien = null;   // un plano puede ABRIR con un plano recurso
@@ -500,7 +536,7 @@ const HIT = (function () {
      había que volver a descodificarla y la voz ya había empezado. Ahora: (1) al montar un plano se descodifican todas sus láminas y
      las del plano siguiente (y se guardan referencias para que el navegador no las suelte); (2) cada frase, si cambia la lámina
      que se ve, espera (como mucho 0,9 s) a que esté descodificada y pintada, y entonces salen a la vez texto, imagen y voz. */
-  const prepara = im => { if (im && im.decode && !im._prep) im._prep = im.decode().catch(() => { }); return im && im._prep; };
+  const prepara = im => { if (im && im.decode && !im._prep) im._prep = im.decode().then(() => { im._dec = true; }, () => { }); return im && im._prep; };
   const guardadas = [];
   function preparaSig(i) {
     const p = dia && dia.planos[i]; if (!p) return;
@@ -514,11 +550,27 @@ const HIT = (function () {
   function esperaLamina() {
     if (!planoEl) return null;
     const im = planoEl.querySelector('.lam.var.on') || planoEl.querySelector('.lam.maestra');
-    if (!im || im === visAnt) return null;
+    const pend = !planoEl._visto && planoEl._mostrado;   // (r18) el plano aún no se enseña (espera a su lámina, su bucle y su personaje): la voz, con él
+    if ((!im || im === visAnt) && !pend) return null;
     visAnt = im;
-    const dec = im.decode ? im.decode().catch(() => { }) : Promise.resolve();
-    return Promise.race([dec, new Promise(r => setTimeout(r, 900))]).then(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+    return Promise.race([Promise.all([im ? prepara(im) : null, pend || null]), new Promise(r => setTimeout(r, 900))]).then(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
   }
+  /* (r18) qué lámina se vería con la variante q, sin ponerla (la misma regla que ponVariante) */
+  function lamDe(q) {
+    if (!planoEl) return null;
+    const base = planoEl._base, vis = q && esCorte(planoAct, q) ? q : base ? base : (q || null);
+    return (vis && planoEl.querySelector('.lam.var[data-q="' + vis + '"]')) || planoEl.querySelector('.lam.maestra');
+  }
+  /* (r18, Iago 30-oct: «justo antes del plano del radiocasete hay como un destello… y hay más así») antes de cambiar de lámina, la nueva
+     ya descodificada, su bucle con su primer fotograma y la pose del personaje lista (como mucho 0,9 s): mientras, se queda lo de antes;
+     luego todo cambia a la vez, en un solo fotograma */
+  function listaParaCambio(im, l) {
+    const dec = im.decode ? im.decode().catch(() => { }) : null;   // la descodifica otra vez (si ya lo estaba, al momento): que no la haya soltado
+    return Promise.race([Promise.all([dec, B.lamv ? B.lamv.arma(im) : null, B.capas && B.capas.prepara ? B.capas.prepara(l) : null, M.ambiente.prepara(im.src)]),
+      new Promise(r => setTimeout(r, 900))]);
+  }
+  /* (r18) los planos que se alternan dentro de una frase (capas: { vari, t }) arman su bucle un poco antes (js/capas4s.js) */
+  M.arma = q => { const im = lamDe(q); if (im && B.lamv && planoEl && planoEl._visto) B.lamv.arma(im); };
 
   /* montar la imagen del plano: maestra + variantes (o el provisional) */
   function montaPlano(p) {
@@ -542,10 +594,32 @@ const HIT = (function () {
     /* (28-oct 19:12, Iago: «hay un fotograma sin fondo antes del salón») el plano nuevo entra cuando su lámina ya está descodificada
        (como mucho 0,7 s); mientras, se queda el de antes */
     const imM = kbEl.querySelector('.lam.maestra');
-    const muestra = () => { if (el._visto) return; el._visto = true; capasPlano(); if (M.ambiente) { const vv = el.querySelector('.lam.var.on') || imM; el._amb = vv ? vv.src : B.img[rM]; M.ambiente(el._amb); }   /* (21:03) las franjas de fuera, con la lámina a la vez */ void el.offsetWidth; el.classList.add('on'); if (viejo) { viejo.classList.remove('on'); setTimeout(() => viejo.remove(), 1000); } };
+    /* (r18, Iago 30-oct en el aula: destellos y «frames raros» al cambiar) el plano entra de una vez, en un solo fotograma: su lámina, su
+       bucle (js/lamv.js), la pose del personaje y las franjas; en esa misma tarea se van el plano de antes, su vídeo y la interacción que
+       se había quedado (limpiaPlano) y, en el primer plano del sabor, la pantalla de carga */
+    let mostrado; el._mostrado = new Promise(r => { mostrado = r; });
+    const muestra = () => {
+      if (el._visto || !el.isConnected) return; el._visto = true;
+      if (interRet) quitaInter();
+      capasPlano();
+      if (el._fondoPend && B.capas && B.capas.fondo) B.capas.fondo(el._fondoPend.l, el._fondoPend.dv);   // la pose de la 1.ª frase si cambia de lámina
+      el._fondoPend = null;
+      if (M.ambiente) { const vv = el.querySelector('.lam.var.on') || imM; el._amb = vv ? vv.src : B.img[rM]; M.ambiente(el._amb); }   /* (21:03) las franjas de fuera, con la lámina a la vez */
+      void el.offsetWidth; el.classList.add('on'); el.classList.remove('arma');
+      Array.from(pelicula.children).forEach(x => { if (x === el || !x.classList.contains('plano')) return; x.classList.remove('on'); if (B.lamv) B.lamv.para(x); setTimeout(() => { if (B.lamv) B.lamv.suelta(x); x.remove(); }, 1000); });   // sus vídeos se sueltan luego (js/lamv.js: soltarlos ya dejaba fotogramas en negro)
+      if (B.lamv) B.lamv.sincro(el);
+      escena.classList.remove('precargando');
+      mostrado();
+    };
     /* (19:22, Iago: «cuidado, fotograma sin fondo cuando aparece Ramoncito») SIEMPRE se espera a la descodificación (en Safari, «complete» no
-       quiere decir pintable); si ya lo está, es inmediato */
-    if (viejo && imM && imM.decode) Promise.race([imM.decode().catch(() => { }), new Promise(r => setTimeout(r, 700))]).then(muestra); else muestra();
+       quiere decir pintable); si ya lo está, es inmediato. (r18) Y también al bucle y a la pose de la lámina que se verá (la de la 1.ª frase,
+       que el motor pone en la misma tarea, antes de esta espera); como mucho 0,9 s */
+    const espera = () => { const vis = el.querySelector('.lam.var.on') || imM;
+      return Promise.all([imM && imM.decode ? imM.decode().catch(() => { }) : null, vis && vis !== imM ? prepara(vis) : null, B.lamv && vis ? B.lamv.listo(vis) : null,
+        B.capas && B.capas.preparaPlano ? B.capas.preparaPlano(p) : null, vis ? M.ambiente.prepara(vis.src) : null]); };
+    /* luego se «arma» (opacidad 0,001, invisible, 3 fotogramas: el compositor ya tiene la lámina y su vídeo) y entra de golpe */
+    const arma = () => { if (el._visto || !el.isConnected || !el.querySelector('video.lamv.vis')) return; el.classList.add('arma'); return new Promise(r => { let n = 3; const f = () => (--n <= 0 ? r() : requestAnimationFrame(f)); requestAnimationFrame(f); }); };   // sin vídeo, nada que armar
+    if (viejo || escena.classList.contains('precargando')) Promise.resolve().then(() => Promise.race([espera(), new Promise(r => setTimeout(r, 900))])).then(arma).then(muestra); else muestra();
     planoEl = el; el._kb = kbEl;
     B.$$('.lam', kbEl).forEach(prepara);   // (ronda 6) descodificar ya todas las láminas del plano (gestos, cortes, recursos)
     if (p.mapa) montaMapa(p, kbEl);
@@ -783,7 +857,7 @@ const HIT = (function () {
     planoEl.classList.toggle('en-corte', planoEl._recurso);
     /* (28-oct 21:03, Iago en el iPad: «en la bachata hay planos en los que el fondo parece de otro tamaño, como un cambio de formato») las
        franjas de fuera de la pantalla (iPad 4:3) seguían con la lámina general mientras dentro se veía el plano recurso: ahora, la que se ve */
-    if (M.ambiente && planoAct && planoEl._visto) { const vv = hay ? planoEl.querySelector('.lam.var[data-q="' + vis + '"]') : planoEl.querySelector('.lam.maestra'); if (vv && vv.src && vv.src !== planoEl._amb) { planoEl._amb = vv.src; M.ambiente(vv.src); } }
+    if (M.ambiente && planoAct && planoEl._visto) { const vv = hay ? planoEl.querySelector('.lam.var[data-q="' + vis + '"]') : planoEl.querySelector('.lam.maestra'); if (vv && vv.src && vv.src !== planoEl._amb) { planoEl._amb = vv.src; M.ambiente(vv.src); } }   // (r18) preparada antes (listaParaCambio): las franjas, en el mismo fotograma
     B.$$('.chapa', planoEl).forEach(v => v.classList.toggle('habla', !!q && v.dataset.q === q));
     const p = planoAct, f = q && p && ((p.foco && p.foco[q]) || (p.var && p.var[q] && p.var[q].foco));
     focoObj = { s: 0, x: .5, y: .5 };   // (Iago, 19-oct, 22:40) sin acercarse a la cara del que habla: NADA de movimientos de cámara (el foco solo sirve para los bocadillos)
@@ -893,6 +967,13 @@ const HIT = (function () {
   }
   M.di = function (l, c, o) {
     o = o || {};
+    /* (r18) durante el aire de antes de la frase, ya se arma el bucle de la lámina a la que probablemente cambiará y se prepara la pose
+       del personaje con la que entra (si luego no cambia, no pasa nada: el armado se deshace solo) */
+    if (l && !o.sinAire && planoEl && planoEl._visto) {
+      const vI = B.capas && B.capas.variInicial ? B.capas.variInicial(l) : null, q0 = vI || (l.var !== undefined ? l.var : l.quien);
+      const im0 = lamDe(q0 && q0 !== '-' ? q0 : null); if (im0 && B.lamv) B.lamv.arma(im0);
+      if (B.capas && B.capas.prepara) B.capas.prepara(l);
+    }
     const aire = l ? aireAntes(l, o) : 0;
     if (aire > 0) return B.espera(aire, c).then(ok => ok ? M.di(l, c, Object.assign({}, o, { sinAire: true })) : false);
     return new Promise(res => {
@@ -907,14 +988,24 @@ const HIT = (function () {
          empieza con un plano alternado (capas: { vari, t: 0 }), ese plano entra YA, en el mismo fotograma (antes se veía uno o dos
          fotogramas el de base) */
       const vIni = B.capas && B.capas.variInicial ? B.capas.variInicial(l) : null; if (vIni) v = vIni;
-      const lamAnt = planoEl && (planoEl.querySelector('.lam.var.on') || planoEl.querySelector('.lam.maestra'));
-      ponVariante(v && v !== '-' ? v : null);
+      const qv = v && v !== '-' ? v : null;
+      const vista = () => planoEl && (planoEl.querySelector('.lam.var.on') || planoEl.querySelector('.lam.maestra'));
+      /* (r18) si la frase cambia de lámina en un plano que ya se ve: primero se prepara la nueva (y su bucle y la pose); mientras, se queda
+         lo de antes; luego cambian a la vez. En un plano que aún no se ve, al momento (lo enseña montaPlano cuando todo está listo) */
+      const obj = planoEl && planoEl._visto ? lamDe(qv) : null, ant0 = vista();
+      if (obj && ant0 && obj !== ant0) listaParaCambio(obj, l).then(() => { if (c && c.muerto) return res(false); cambia(); }); else cambia();
+      function cambia() {
+      const lamAnt = vista();
+      ponVariante(qv);
       /* (28-oct 09:07, Iago: «muy importante: cuando hay un cambio de fondo, la imagen del personaje cambia en el MISMO fotograma que el
          fondo; normalmente mando la voz, pero en un cambio de fondo, la prioridad es que cambien a la vez») */
-      const lamNue = planoEl && (planoEl.querySelector('.lam.var.on') || planoEl.querySelector('.lam.maestra'));
-      if (lamAnt && lamNue && lamAnt !== lamNue && B.capas && B.capas.fondo) B.capas.fondo(l, dv);
+      const lamNue = vista();
+      if (lamAnt && lamNue && lamAnt !== lamNue && B.capas && B.capas.fondo) {
+        if (planoEl._visto) B.capas.fondo(l, dv); else planoEl._fondoPend = { l, dv };   // (r18) plano aún oculto: la pose, cuando se enseñe (antes salía un instante sobre el plano de antes)
+      }
       const g = esperaLamina();
       if (g) g.then(() => { if (c && c.muerto) return res(false); arranca(); }); else arranca();
+      }
       function arranca() {
       $('.subt-quien', subt).textContent = P.nombre;
       subt.style.setProperty('--c', P.color);
@@ -1012,6 +1103,9 @@ const HIT = (function () {
   M.interaccion = async function (it, c, queda, sigL) {
     const f = B.inter[it.tipo];
     if (!f) { console.warn('Interacción sin módulo:', it.tipo); return; }
+    /* (r18) si al empezar la interacción se vuelve a la lámina general, su bucle se arma antes (como mucho 0,3 s): entra con ella */
+    const imG = lamDe(null), visG = planoEl && (planoEl.querySelector('.lam.var.on') || planoEl.querySelector('.lam.maestra'));
+    if (imG && visG && imG !== visG && B.lamv && planoEl._visto) { await Promise.race([B.lamv.arma(imG), new Promise(r => setTimeout(r, 300))]); if (c && c.muerto) return; }
     ponVariante(null);
     if (B.capas && B.capas.alInter) B.capas.alInter(it);
     subt.classList.remove('on');

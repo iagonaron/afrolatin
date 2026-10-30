@@ -68,6 +68,19 @@
         pinta(L, M, W, H) { const sp = brasa ? S.fuego : S.mota; ms.forEach(m => { L.globalAlpha = (brasa ? .55 : .5) * (.55 + .45 * Math.sin(this.t * m.f + m.p)); const R = m.s * 1.7 * (o.tam || 1); L.drawImage(sp, (m.x * W - R) * K, (m.y * H - R) * K, 2 * R * K, 2 * R * K); }); }
       };
     },
+    polvoluz(o) {   // (Iago 30-oct 12:28: «me faltan partículas… pequeñitas» · «tiene sentido que se vean cerca de fuentes de luz: polvito que se
+      //   refleja si le da luz… cerca de lámparas o del sol; no es lo mismo que el tintineo») motas diminutas que flotan alrededor de cada lámpara,
+      //   vela o del sol y solo se ven cuando la luz las alcanza: más vivas cerca de la fuente, se apagan al alejarse. o.f: [{x, y, R}] (R en anchos)
+      const F = B.arr(o.f), ms = [], por = o.por || 6;
+      const nueva = q => { const a = az(0, TAU), d = Math.sqrt(Math.random()) * .9; return { q, dx: Math.cos(a) * d, dy: Math.sin(a) * d, vx: az(-.05, .05), vy: az(-.07, .02), s: az(1.4, 2.4), f: az(.6, 1.8), p: az(0, TAU), t: 0, vida: az(3, 7) }; };
+      F.forEach(q => { for (let i = 0; i < por; i++) { const m = nueva(q); m.t = az(0, m.vida); ms.push(m); } });
+      return {
+        paso(dt, t) { ms.forEach((m, i) => { m.t += dt; m.dx += (m.vx + .035 * Math.sin(t * .6 + m.p)) * dt; m.dy += (m.vy + .025 * Math.cos(t * .5 + m.p)) * dt; if (m.t > m.vida || m.dx * m.dx + m.dy * m.dy > 1.1) ms[i] = nueva(m.q); }); this.t = t; },
+        pinta(L, M, W, H) { ms.forEach(m => { const q = m.q, rad = q.R * W, d2 = m.dx * m.dx + m.dy * m.dy, cerca = Math.max(0, 1 - d2), vive = Math.sin(Math.PI * Math.min(1, m.t / m.vida));
+          L.globalAlpha = Math.min(1, (o.alfa || 1.5) * Math.pow(cerca, .6) * Math.min(1, 2.2 * vive) * (.75 + .25 * Math.sin(this.t * m.f * 2 + m.p))); if (L.globalAlpha < .02) return;
+          const R = m.s * 1.7 * (o.tam || 1), X = q.x * W + m.dx * rad, Y = q.y * H + m.dy * rad * .85; L.drawImage(S.mota, (X - R) * K, (Y - R) * K, 2 * R * K, 2 * R * K); }); }
+      };
+    },
     caen(o) {   // (28-oct 09:13, Iago: «en cada plano con mar o velas, un poquito de animación y partículas como que caigan del cielo») motitas de
       //   luz que bajan despacio, meciéndose, y se apagan al acercarse al suelo
       const z = o.zona || [0, 0, 1, .85], ms = [], n = o.n || 40;
