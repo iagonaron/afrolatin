@@ -19,7 +19,8 @@
     frio: sprite([[0, 'rgba(220,235,255,1)'], [.3, 'rgba(180,205,240,.45)'], [1, 'rgba(150,180,230,0)']]),
     humo: sprite([[0, 'rgba(200,196,188,.9)'], [.55, 'rgba(180,176,168,.35)'], [1, 'rgba(160,156,150,0)']]),
     humoOsc: sprite([[0, 'rgba(58,52,48,.9)'], [.55, 'rgba(50,45,42,.35)'], [1, 'rgba(40,36,34,0)']]),
-    vapor: sprite([[0, 'rgba(240,240,236,.9)'], [.5, 'rgba(230,230,226,.32)'], [1, 'rgba(220,220,216,0)']])
+    vapor: sprite([[0, 'rgba(240,240,236,.9)'], [.5, 'rgba(230,230,226,.32)'], [1, 'rgba(220,220,216,0)']]),
+    mota: sprite([[0, 'rgba(255,246,226,1)'], [.4, 'rgba(255,240,214,.62)'], [1, 'rgba(255,236,206,0)']])
   };
   const vivos = new Set();
   let corre = false, ult = 0;
@@ -62,7 +63,9 @@
       for (let i = 0; i < n; i++) ms.push(nueva());
       return {
         paso(dt, t) { ms.forEach((m, i) => { m.x += (m.vx + .0025 * Math.sin(t * .7 + m.p)) * dt; m.y += m.vy * dt; if (m.x < z[0] || m.x > z[2] || m.y < z[1] || m.y > z[3]) ms[i] = nueva(); }); this.t = t; },
-        pinta(L, M, W, H) { L.fillStyle = brasa ? '#FFB066' : '#FFF1D2'; ms.forEach(m => { L.globalAlpha = (brasa ? .55 : .38) * (.55 + .45 * Math.sin(this.t * m.f + m.p)); L.fillRect(m.x * W * K, m.y * H * K, m.s * K * 1.5, m.s * K * 1.5); }); }
+        /* (Iago 30-oct: «no estás animando las partículas de polvo en el aire, sutiles: esas molan» · «un poco más de presencia, +30 % como mucho»)
+           antes eran cuadraditos de 1–2 px que el vídeo se comía: ahora, motas redondas y suaves de 3–6 px */
+        pinta(L, M, W, H) { const sp = brasa ? S.fuego : S.mota; ms.forEach(m => { L.globalAlpha = (brasa ? .55 : .5) * (.55 + .45 * Math.sin(this.t * m.f + m.p)); const R = m.s * 1.7 * (o.tam || 1); L.drawImage(sp, (m.x * W - R) * K, (m.y * H - R) * K, 2 * R * K, 2 * R * K); }); }
       };
     },
     caen(o) {   // (28-oct 09:13, Iago: «en cada plano con mar o velas, un poquito de animación y partículas como que caigan del cielo») motitas de
@@ -75,7 +78,7 @@
       return {
         paso(dt, t) { const r = 1 + .6 * Math.sin(t * .23) * Math.sin(t * .11 + 1); ms.forEach((m, i) => { m.y += m.vy * dt; m.x += (m.vx * r + m.am * Math.cos(t * m.f + m.p)) * dt; if (m.y > z[3] || m.x > z[2] + .05) ms[i] = nueva(true); }); this.t = t; },   // la brisa va y viene (r)
         pinta(L, M, W, H) { L.fillStyle = o.col || '#FFE9C4'; ms.forEach(m => { const fin = Math.min(1, (z[3] - m.y) / .12, (m.y - z[1] + .08) / .1);
-          L.globalAlpha = Math.max(0, (o.alfa || .5) * fin * (.6 + .4 * Math.sin(this.t * m.f * 2 + m.p))); const s = m.s * K * 1.6; L.fillRect(m.x * W * K - s / 2, m.y * H * K - s / 2, s, s); }); }
+          L.globalAlpha = Math.max(0, Math.min(1, (o.alfa || .5) * 1.15) * fin * (.6 + .4 * Math.sin(this.t * m.f * 2 + m.p))); const R = m.s * 1.5; L.drawImage(S.mota, (m.x * W - R) * K, (m.y * H - R) * K, 2 * R * K, 2 * R * K); }); }
       };
     },
     brillos(o) {   // destellos del sol o de la luna en el agua
@@ -126,14 +129,14 @@
     },
     pajaros(o) {   // gaviotas lejanas: planean y, a ratos, aletean
       const z = o.zona || [0, 0, 1, .3], ps = [], n = o.n || 3, tam = o.tam || .011;
-      const nuevo = (dentro) => { const izq = Math.random() < .5; return { x: dentro ? az(z[0], z[2]) : (izq ? z[0] - .03 : z[2] + .03), y: az(z[1], z[3]), vx: (izq ? 1 : -1) * az(.008, .02), fase: az(0, TAU), ale: 0, prox: az(1, 5), s: tam * az(.7, 1.25), espera: dentro ? 0 : az(2, 9) }; };
+      const nuevo = (dentro) => { const izq = Math.random() < .5; return { x: dentro ? az(z[0], z[2]) : (izq ? z[0] : z[2]), y: az(z[1], z[3]), vx: (izq ? 1 : -1) * az(.008, .02), fase: az(0, TAU), ale: 0, prox: az(1, 5), s: tam * az(.7, 1.25), espera: dentro ? 0 : az(2, 9) }; };
       for (let i = 0; i < n; i++) ps.push(nuevo(true));
       return {
-        paso(dt, t) { ps.forEach((p, i) => { if (p.espera > 0) { p.espera -= dt; return; } p.x += p.vx * dt; p.y += .004 * Math.sin(t * .6 + p.fase) * dt; p.prox -= dt; if (p.prox <= 0) { p.ale = az(.8, 1.6); p.prox = az(3, 8); } if (p.ale > 0) p.ale -= dt; if (p.x < z[0] - .05 || p.x > z[2] + .05) ps[i] = nuevo(false); }); this.t = t; },
+        paso(dt, t) { ps.forEach((p, i) => { if (p.espera > 0) { p.espera -= dt; return; } p.x += p.vx * dt; p.y += .004 * Math.sin(t * .6 + p.fase) * dt; p.prox -= dt; if (p.prox <= 0) { p.ale = az(.8, 1.6); p.prox = az(3, 8); } if (p.ale > 0) p.ale -= dt; if (p.x < z[0] || p.x > z[2]) ps[i] = nuevo(false); }); this.t = t; },
         pinta(L, M, W, H) {
           M.strokeStyle = o.color || 'rgba(28,26,30,.8)'; M.lineCap = 'round';
           ps.forEach(p => { if (p.espera > 0) return; const s = p.s * W * K, x = p.x * W * K, y = p.y * H * K, a = p.ale > 0 ? Math.sin(this.t * 11 + p.fase) * .55 : .18;
-            M.globalAlpha = 1; M.lineWidth = Math.max(1, s * .16); M.beginPath(); M.moveTo(x - s, y - s * a); M.quadraticCurveTo(x - s * .4, y - s * .35, x, y); M.quadraticCurveTo(x + s * .4, y - s * .35, x + s, y - s * a); M.stroke(); });
+            M.globalAlpha = Math.max(0, Math.min(1, Math.min(p.x - z[0], z[2] - p.x) / .07)); M.lineWidth = Math.max(1, s * .16); M.beginPath(); M.moveTo(x - s, y - s * a); M.quadraticCurveTo(x - s * .4, y - s * .35, x, y); M.quadraticCurveTo(x + s * .4, y - s * .35, x + s, y - s * a); M.stroke(); });
         }
       };
     },
@@ -145,8 +148,8 @@
         pinta(L, M, W, H) {
           const t = this.t; M.strokeStyle = o.color || 'rgba(30,28,32,.78)'; M.lineCap = 'round'; M.globalAlpha = 1;
           ps.forEach(p => {
-            const u = ((t / P + p.f) % 1 + 1) % 1, an = z[2] - z[0] + .14;
-            const x = p.dir > 0 ? z[0] - .07 + u * an : z[2] + .07 - u * an;
+            const u = ((t / P + p.f) % 1 + 1) % 1, an = z[2] - z[0];   // (Iago 30-oct) solo por SU cielo: entran y salen desvaneciéndose en los bordes de la zona
+            const x = p.dir > 0 ? z[0] + u * an : z[2] - u * an; M.globalAlpha = Math.max(0, Math.min(1, Math.min(x - z[0], z[2] - x) / .07));
             const y = p.y + .012 * Math.sin(TAU * t / P + p.fa);
             const bate = Math.max(0, Math.sin(TAU * 2 * t / P + p.fa)), a = .16 + .5 * bate * Math.sin(TAU * 8 * t / P + p.fa);   // planea y, a ratos, aletea
             const S = p.s * W * K, X = x * W * K, Y = y * H * K;
@@ -168,8 +171,8 @@
       const nueva = dentro => ({ x: az(z[0], z[2]), y: dentro ? az(z[1], z[3]) : z[1] - .03, vy: az(.025, .06), fase: az(0, TAU), giro: az(1.5, 4), s: az(.008, .014), col: COL[Math.random() * COL.length | 0] });
       for (let i = 0; i < n; i++) hs.push(nueva(true));
       return {
-        paso(dt, t) { hs.forEach((h, i) => { h.y += h.vy * dt; h.x += .022 * Math.sin(t * 1.3 + h.fase) * dt; if (h.y > z[3] + .03) hs[i] = nueva(false); }); this.t = t; },
-        pinta(L, M, W, H) { hs.forEach(h => { const s = h.s * W * K, a = Math.sin(this.t * h.giro + h.fase); M.save(); M.translate(h.x * W * K, h.y * H * K); M.rotate(a * 1.2); M.scale(1, .35 + .65 * Math.abs(a)); M.globalAlpha = .92; M.fillStyle = h.col; M.beginPath(); M.ellipse(0, 0, s, s * .55, 0, 0, TAU); M.fill(); M.restore(); }); }
+        paso(dt, t) { hs.forEach((h, i) => { h.y += h.vy * dt; h.x += .022 * Math.sin(t * 1.3 + h.fase) * dt; h.ed = (h.ed || 0) + dt; if (h.y > 1.06) hs[i] = nueva(false); }); this.t = t; },   // (Iago 30-oct) hasta salir por abajo
+        pinta(L, M, W, H) { hs.forEach(h => { const s = h.s * W * K, a = Math.sin(this.t * h.giro + h.fase); M.save(); M.translate(h.x * W * K, h.y * H * K); M.rotate(a * 1.2); M.scale(1, .35 + .65 * Math.abs(a)); M.globalAlpha = .92 * (h.y < 0 ? 1 : Math.min(1, (h.ed || 0) / .8)); M.fillStyle = h.col; M.beginPath(); M.ellipse(0, 0, s, s * .55, 0, 0, TAU); M.fill(); M.restore(); }); }
       };
     },
     farol(o) {   // farol que se balancea (tren, barco): la luz va y viene

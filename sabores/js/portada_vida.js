@@ -29,9 +29,17 @@
        de motitas de luz que bajan despacio, meciéndose, y se apagan cerca del suelo */
     const nuevaM = arriba => ({ x: Math.random() * 1.1 - .1, y: arriba ? -Math.random() * .08 : Math.random() * .9, vy: .012 + Math.random() * .024, s: .7 + Math.random() * 1.4, f: .4 + Math.random() * .9, p: Math.random() * 6.3, am: .006 + Math.random() * .01, vx: .022 * (.6 + Math.random() * .8) });   // (09:57) con brisa
     const motas = []; for (let i = 0; i < (V.caen || 0); i++) motas.push(nuevaM(false));
+    /* (Iago 30-oct 06:54) en la canción de la cumbia y del merengue, unas pocas hojas que caen girando, meciéndose con la brisa: aparecen
+       con un fundido arriba y se van por abajo, fuera de la pantalla (nunca desaparecen de golpe) */
+    const COLH = ['#5E7A2E', '#7A8F35', '#8C6A2A', '#6B8A3A', '#A0782E'];
+    const nuevaH = arriba => ({ x: Math.random() * 1.1 - .05, y: arriba ? -.06 - Math.random() * .3 : Math.random() * .8, vy: .035 + Math.random() * .03, s: .55 + Math.random() * .5,
+      f: .5 + Math.random() * .7, p: Math.random() * 6.3, am: .025 + Math.random() * .02, r: Math.random() * 6.3, vr: (Math.random() < .5 ? -1 : 1) * (.8 + Math.random() * 1.4), c: COLH[Math.floor(Math.random() * COLH.length)], ed: 0 });
+    const hojas = []; for (let i = 0; i < (V.hojas || 0); i++) hojas.push(nuevaH(false));
     const R = () => Math.random();
     function nuevoGlint(t) {
-      const M = V.mar, s = M.sol && R() < .68;
+      const M = V.mar;
+      if (M.pts && M.pts.length) { const q = M.pts[Math.floor(R() * M.pts.length)]; glints.push({ x: q[0] + (R() - .5) * .004, y: q[1], t0: t, vida: .5 + R() * .7, tam: .55 + R() * .45 }); return; }   // (30-oct) solo donde hay agua
+      const s = M.sol && R() < .68;
       const x = s ? M.sol[0] + R() * (M.sol[1] - M.sol[0]) : M.x0 + R() * (M.x1 - M.x0);
       const y = M.y0 + Math.pow(R(), .8) * (M.y1 - M.y0);
       glints.push({ x, y, t0: t, vida: .55 + R() * .9, tam: (s ? 1.25 : .8) * (.6 + R() * .7) });
@@ -73,8 +81,21 @@
         const dt = tAnt ? Math.min(.1, t - tAnt) : 0; cx.fillStyle = '#FFE9C4';
         const rb = 1 + .6 * Math.sin(t * .23) * Math.sin(t * .11 + 1);
         motas.forEach((m, i) => { m.y += m.vy * dt; m.x += (m.vx * rb + m.am * Math.cos(t * m.f + m.p)) * dt; if (m.y > .9 || m.x > 1.05) { motas[i] = nuevaM(true); return; }
-          const fin = Math.max(0, Math.min(1, (.9 - m.y) / .12, (m.y + .08) / .1)); cx.globalAlpha = .5 * fin * (.6 + .4 * Math.sin(t * m.f * 2 + m.p));
+          const fin = Math.max(0, Math.min(1, (.9 - m.y) / .12, (m.y + .08) / .1)); cx.globalAlpha = (V.caenA || .5) * fin * (.6 + .4 * Math.sin(t * m.f * 2 + m.p));
           const z = m.s * Math.max(1, u * .11); cx.fillRect(m.x * W - z / 2, m.y * H - z / 2, z, z); });
+        cx.globalAlpha = 1;
+      }
+      if (hojas.length) {
+        const dt = tAnt ? Math.min(.1, t - tAnt) : 0; cx.globalCompositeOperation = 'source-over';
+        hojas.forEach((h, i) => {
+          h.y += h.vy * dt; h.x += (.012 + h.am * Math.cos(t * h.f + h.p)) * dt; h.r += h.vr * dt; h.ed = Math.min(1, h.ed + dt / 1.2);
+          if (h.y > 1.08) { hojas[i] = nuevaH(true); return; }
+          const L = h.s * u * 1.15, x = h.x * W, y = h.y * H, ap = Math.abs(Math.cos(t * h.f * 1.3 + h.p));   // se ve de canto al girar
+          cx.globalAlpha = .82 * h.ed; cx.save(); cx.translate(x, y); cx.rotate(h.r); cx.scale(1, .35 + .65 * ap);
+          cx.fillStyle = h.c; cx.beginPath(); cx.ellipse(0, 0, L, L * .42, 0, 0, 6.3); cx.fill();
+          cx.strokeStyle = 'rgba(40,30,10,.35)'; cx.lineWidth = Math.max(1, L * .08); cx.beginPath(); cx.moveTo(-L * .95, 0); cx.lineTo(L * .95, 0); cx.stroke();
+          cx.restore();
+        });
         cx.globalAlpha = 1;
       }
       tAnt = t;

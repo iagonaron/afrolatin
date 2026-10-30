@@ -147,7 +147,10 @@ const HIT = (function () {
       const k = e.key;
       if (k === 'p' || k === 'P' || k === 'Escape') { if (dia) { e.preventDefault(); B.pausa(); } return; }
       if (B.pausado) { if (k === ' ') { e.preventDefault(); B.pausa(false); } return; }
-      if (k === ' ' || k === 'Enter') { if (dia) { e.preventDefault(); M.seguir(); } }
+      /* (Iago 30-oct 06:54: «no quiero que el botón espacio avance diapositivas») Espacio ya no avanza: solo Intro (y → para saltar);
+         Espacio sí mueve los medios de transporte de los viajes y quita la pausa */
+      if (k === ' ') { if (dia) e.preventDefault(); }
+      else if (k === 'Enter') { if (dia) { e.preventDefault(); M.seguir(); } }
       else if (k === 'ArrowRight') { if (dia) { e.preventDefault(); M.siguiente(); } }
       else if (k === 'ArrowLeft') { if (dia) { e.preventDefault(); M.anterior(); } }
       else if (k === 'f' || k === 'F') { e.preventDefault(); M.pantallaCompleta(); }
@@ -155,7 +158,22 @@ const HIT = (function () {
   }
   /* (28-oct 12:40, Iago: «al darle a pantalla completa, al menos en mi ordenador, no ocupa todo») la escena es 16:9; si la pantalla tiene
      otra proporción (o Chrome enseña una barra arriba), las franjas que sobran ya no son negras: la misma imagen, desenfocada y oscura */
-  M.ambiente = function (src) { const m = document.getElementById('marco'); let u = src; try { if (u && !/^(blob|data):/.test(u)) u = new URL(u, location.href).href; } catch (e) { } if (m) m.style.setProperty('--amb', u ? 'url("' + u + '")' : 'none'); };   // (28-oct) ruta absoluta: dentro de una variable CSS se leía desde css/
+  /* (Iago 30-oct 06:54) «el margencito se oscurece» al cambiar de plano: el fondo de las bandas va en DOS capas; la nueva se pone cuando su
+     imagen ya está decodificada y entra con un fundido sobre la anterior (nunca hay un fotograma sin fondo) */
+  let ambCara = 'a', ambUlt;
+  M.ambiente = function (src) {
+    const m = document.getElementById('marco'); if (!m) return;
+    let u = src; try { if (u && !/^(blob|data):/.test(u)) u = new URL(u, location.href).href; } catch (e) { }   // (28-oct) ruta absoluta: dentro de una variable CSS se leía desde css/
+    if (u === ambUlt) return; ambUlt = u;
+    const pon = () => {
+      if (ambUlt !== u) return;
+      ambCara = ambCara === 'a' ? 'b' : 'a';
+      m.style.setProperty(ambCara === 'a' ? '--ambA' : '--ambB', u ? 'url("' + u + '")' : 'none'); m.classList.toggle('amb-b', ambCara === 'b');
+    };
+    if (!u) return pon();
+    const im = new Image(); im.src = u;
+    if (im.decode) im.decode().then(pon, pon); else { im.onload = pon; im.onerror = pon; }
+  };   // (28-oct) ruta absoluta: dentro de una variable CSS se leía desde css/
   const bandas = () => { const m = document.getElementById('marco'); if (m) m.classList.toggle('con-bandas', Math.abs(innerWidth / Math.max(1, innerHeight) - 16 / 9) > .015); };
   addEventListener('resize', bandas); document.addEventListener('fullscreenchange', bandas); document.addEventListener('webkitfullscreenchange', bandas); setTimeout(bandas, 0);
   M.pantallaCompleta = function () {
@@ -434,7 +452,8 @@ const HIT = (function () {
       const it = its[k];
       if (!directo) for (const l of B.arr(it.antes)) { await M.di(l, c); if (c.muerto) return; }
       const queda = k === its.length - 1 && !B.arr(p.despues).length && !p.mapa && i + 1 < dia.planos.length;
-      await M.interaccion(it, c, queda); if (c.muerto) return;
+      const sigL = k + 1 < its.length ? B.arr(its[k + 1].antes)[0] : B.arr(p.despues)[0];   // (30-oct) la frase que viene detrás
+      await M.interaccion(it, c, queda, sigL); if (c.muerto) return;
       siguePegado = queda;
     }
     for (const l of B.arr(p.despues)) { await M.di(l, c); if (c.muerto) return; }
@@ -614,7 +633,7 @@ const HIT = (function () {
     const L = ruta.getTotalLength(); (tren ? [mascara] : [ruta, sombra]).forEach(r => { r.style.strokeDasharray = L; r.style.strokeDashoffset = L; });
     paradas.forEach(pa => { let dm = Infinity; for (let v = 0; v <= 1.0001; v += .002) { const q = ruta.getPointAtLength(L * Math.min(1, v)), dd = Math.hypot(q.x - P[pa.i][0], q.y - P[pa.i][1]); if (dd < dm) { dm = dd; pa.s = v; } } });
     const soloArrastre = m.arrastrar === 'solo';   // (Iago a C2) en el acto 2 el tren solo se mueve arrastrando (Protester puede saltar)
-    const T = m.dur || 8;
+    const T = (m.dur || 8) * .7;   // (Iago 30-oct 06:54: «sí me parece bien desplazar medios de transporte, pero un poco más rápido») un 30 % más corto
     let prog = 0, s = 0, ult = B.ahora(), tHumo = 0, activo = false, llego = false, musFija = true, held = false, holdHasta = 0, alLlegar = null;
     const pinta = (ahora) => {
       if (tren) mascara.style.strokeDashoffset = L * (1 - s); else ruta.style.strokeDashoffset = sombra.style.strokeDashoffset = L * (1 - s);
@@ -990,7 +1009,7 @@ const HIT = (function () {
   }
 
   /* ══════════ interacciones ══════════ */
-  M.interaccion = async function (it, c, queda) {
+  M.interaccion = async function (it, c, queda, sigL) {
     const f = B.inter[it.tipo];
     if (!f) { console.warn('Interacción sin módulo:', it.tipo); return; }
     ponVariante(null);
@@ -1001,14 +1020,25 @@ const HIT = (function () {
     interBox.innerHTML = ''; interBox.classList.add('on');
     const caja = B.el('div', 'icaja i-' + it.tipo);
     caja.style.cssText = 'position:absolute;inset:0';
+    /* (Iago 30-oct 06:54: «el fundido a oscuro cuando es la parte de cómo reconocerlos quiero que lo recuperes») al entrar en una pantalla
+       oscura (instrumento, mezclador, ejemplos) desde la lámina, fundido de 0,9 s; entre dos seguidas (menos de 1,5 s), sin fundido */
+    const OSC = { instrumento: 1, mezclador: 1, ejemplos: 1 };
+    if (OSC[it.tipo] && !(M._oscFin && performance.now() - M._oscFin < 1500)) caja.classList.add('fundir');
     interBox.appendChild(caja);
+    const CALLA = { instrumento: 1, ejemplos: 1 }; if (CALLA[it.tipo] && B.musicaCalla) B.musicaCalla(true);   // (Iago 30-oct 07:44)
     const sub = B.control(); c.alMorir.push(() => sub.matar());
     const muerte = new Promise(r => sub.alMorir.push(r));
     try { await Promise.race([f(caja, Object.assign({}, it, { ctl: sub, plano: planoAct, dia: dia }), sub), muerte]); }
     catch (e) { console.error('Interacción', it.tipo, e); }
     sub.matar();
+    if (OSC[it.tipo]) M._oscFin = performance.now();
+    if (CALLA[it.tipo] && B.musicaCalla && !c.muerto) B.musicaCalla(false);
     if (planoEl && it.previa && planoEl._base === it.previa) { planoEl._base = null; ponVariante(null); }   // corte seco a la lámina de después
     if (c.muerto || queda) return;   // queda: la quita limpiaPlano al montar el plano siguiente (en el mismo instante)
+    /* (Iago 30-oct 06:54: «justo cuando dice “eso es cumbia, amigos” hay un frame previo de Doña Cande que se mueve rápido… frames sucios
+       justo después de una sección») la pose de la frase siguiente se pone ANTES de quitar la interacción (debajo, aún tapada): al quitarla
+       ya está; antes se veía un instante la pose de antes del concierto y enseguida cambiaba */
+    if (sigL && B.capas && B.capas.fondo) B.capas.fondo(sigL);
     interBox.classList.remove('on'); interBox.innerHTML = '';
     subt.classList.remove('on');
     escena.classList.remove('con-inter', 'subt-abajo'); delete escena.dataset.inter;

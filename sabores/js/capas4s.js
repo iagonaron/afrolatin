@@ -64,8 +64,10 @@
     let mio = null;
     if (!it.fijo) { if (previo) previo.remove(); mio = previo = clavesEl; clavesEl = null; }
     if (pais) { if (titEl) titEl.remove(); titEl = null; } else if (!it.fijo && titEl) titEl.classList.add('arriba');
-    const box = B.el('div', 'c4-claves ' + (it.estilo || 'fila') + (it.fijo ? ' fijo' : '') + (it.lado ? ' ' + it.lado : '') + (pais ? ' c4-pais arriba' : ''));   // (Iago 29-oct 21:06) el país, arriba desde el principio (sin moverse) y en mayúsculas
+    const box = B.el('div', 'c4-claves ' + (it.estilo || 'fila') + (it.fijo ? ' fijo' : '') + (it.lado ? ' ' + it.lado : '') + (pais ? ' c4-pais arriba' : '') + (it.arriba ? ' c4-alto' : ''));   // c4-alto: ya en el sitio donde quedará cuando entre la caja (30-oct)   // (Iago 29-oct 21:06) el país, arriba desde el principio (sin moverse) y en mayúsculas
     if (it.fijo) fijos.push(box); else if (pais) { titEl = box; setTimeout(() => { if (titEl === box) { box.remove(); titEl = null; } }, 7000); } else { clavesEl = box; box._t = it._t0 != null ? it._t0 : it.t; const ts = B.arr(it.ts); box._fin = ts.length ? (it._t0 != null ? it._t0 - .05 : 0) + Math.max.apply(null, ts) : box._t; }
+    /* (30-oct) en los repasos, un cartel suelto (p. ej. «¡nos vamos a Cuba!») se lleva la columna de iconos de al lado: no se pisan */
+    if (!it.fijo && !pais) { const tc = capa.querySelector('.c4-tira.colizq, .c4-tira.colder'); if (tc) tc.innerHTML = ''; }
     capa.appendChild(box);
     const xs = B.arr(it.claves), n = xs.length, t0 = it.t != null ? it.t : (it.en || 0) * dur, t1 = Math.max(t0 + .2, (it.hasta == null ? .62 : it.hasta) * dur);
     xs.forEach((x, i) => {
@@ -260,7 +262,7 @@
     if (it.ico && capa) {
       let tira = capa.querySelector('.c4-tira'); if (!tira) { tira = B.el('div', 'c4-tira'); capa.appendChild(tira); }
       if (!tira.querySelector('img')) {   // en el lado donde no están los personajes de la lámina, o el de la columna del texto
-        tira.classList.toggle('der', it.tira === 'der'); tira.classList.toggle('derb', it.tira === 'derb'); tira.classList.toggle('conpj', !!it.pjico);
+        tira.classList.toggle('der', it.tira === 'der'); tira.classList.toggle('derb', it.tira === 'derb'); tira.classList.toggle('colizq', it.tira === 'colizq'); tira.classList.toggle('colder', it.tira === 'colder'); tira.classList.toggle('conpj', !!it.pjico);
       }
       /* (Iago 29-oct 22:46) el personaje que presenta ese género, detrás; los instrumentos, por delante */
       if (it.pjico && !tira.querySelector('img.c4-tpj[data-s="' + it.pjico + '"]')) {
@@ -268,11 +270,20 @@
         const pj = new Image(); pj.className = 'c4-tpj'; pj.src = url(it.pjico); pj.dataset.s = it.pjico; pj.alt = ''; pj.draggable = false;
         tira.insertBefore(pj, tira.firstChild); ics.push(pj); tira.classList.add('conpj');
       }
-      B.arr(it.ico).forEach(src => { if (tira.querySelector('img[data-s="' + src + '"]')) return; const im = new Image(); im.src = url(src); im.dataset.s = src; im.alt = ''; im.draggable = false; tira.appendChild(im); ics.push(im); });
+      B.arr(it.ico).forEach(src => { if (tira.querySelector('img[data-s="' + src + '"]')) return; const im = new Image(); im.src = url(src); im.dataset.s = src; im.alt = ''; im.draggable = false;
+        const k = TAM_INST[(src.split('/').pop() || '').replace(/^inst_/, '').replace(/\.\w+$/, '')]; if (k) im.style.setProperty('--tk', (.25 + .75 * k).toFixed(3));   // (Iago 30-oct 07:24) tamaños proporcionales
+        tira.appendChild(im); ics.push(im); });
     }
     const para = () => { hs.forEach(h => h.parar(.35)); ics.forEach(im => im.remove()); };
     B.espera(it.dur || 3, c).then(para); if (c && c.alMorir) c.alMorir.push(para);
   }
+  /* (Iago 30-oct 07:24: «en los repasos, que los instrumentos tengan tamaños proporcionales: no tiene sentido unas maracas más grandes que un
+     bajo») altura de cada instrumento respecto al más alto (bajo, guitarra, saxo, piano vertical = 1), comprimida (.25 + .75·k) para que lo
+     pequeño (el apito, el tamborim) se siga viendo; en el CSS, var(--tk) multiplica la altura de la tira */
+  const TAM_INST = { bajo: 1, m_bajo: 1, s_bajo: 1, b_guitarra: .88, h_diabla: .88, m_saxo_baritono: 1, b_piano: 1, s_trompeta: .45, tambor: .62,
+    m_tambora: .32, maracas: .25, b_maracas: .25, guacharaca: .42, m_guira: .3, contratiempo: .26, m_piano: .26, bongo: .2, b_congas: .65, s_congas: .65,
+    b_aro: .2, s_caixa: .25, s_tamborim: .16, s_agogo: .28, s_apito: .15, s_surdo_grave: .6, s_surdo_agudo: .52, k_caja: .18, k_sinte: .22,
+    s_cencerro: .2, s_cencerro_b: .2, s_claves: .2 };
   const LISTAS = new Set(), GUARDA = [];
   /* (28-oct 19:10, Iago en el iPad: «no se me han cargado las imágenes») antes se precargaban y descodificaban los personajes, los
      instrumentos y los ejemplos de TODOS los sabores al empezar cualquiera (con el Sabor 2, el doble): en el iPad se quedaba sin memoria.

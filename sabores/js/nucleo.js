@@ -190,7 +190,7 @@ window.BLUES = window.BLUES || {};
     if (!AC) return;
     if (musSig && m && musSig.src === m.src) B.musicaFija();
     if (m && musAct && musAct.src === m.src) {   // la misma música sigue sonando; solo se ajusta su volumen
-      if (m.vol != null && Math.abs((musAct.vol || 0) - m.vol) > .01) { musAct.h.gan.gain.setTargetAtTime(m.vol, AC.currentTime, .9); musAct.vol = m.vol; }
+      if (m.vol != null) { musAct.h.gan.gain.setTargetAtTime(m.vol, AC.currentTime, .9); musAct.vol = m.vol; }   // (30-oct) también la devuelve si estaba callada (B.musicaCalla)
       return;
     }
     if (musSig) { musSig.h.parar(1.2); musSig = null; }
@@ -219,6 +219,12 @@ window.BLUES = window.BLUES || {};
     try { musAct.h.gan.gain.setTargetAtTime(musAct.vol, AC.currentTime, .2); } catch (e) { }
   };
   B.silencioTotal = function () { B.ambiente([]); B.musica(null); };
+  /* (Iago 30-oct 07:44) el fondo sutil de los planos «Reconocer…» se calla mientras suena un instrumento y vuelve al terminar */
+  B.musicaCalla = function (on) {
+    if (!AC || !musAct) return;
+    const t = AC.currentTime, g = musAct.h.gan.gain;
+    try { g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.setTargetAtTime(on ? 0 : (musAct.vol == null ? .8 : musAct.vol), t, on ? .12 : .5); } catch (e) { }
+  };
 
   /* ══════════ RELOJ ══════════
      B.ahora() es el tiempo del AudioContext. Las esperas se resuelven
