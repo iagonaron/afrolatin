@@ -1,393 +1,373 @@
 /* 4 Sabores · clips de los videoclips (herramientas/videos_vc.py; NO editar a mano): imagen → {v: mp4, b: bytes, d: sabor, z: [escala inicial, final], o: punto fijo (alto)} */
 BLUES.VIDEOS = {
 "lam:img/s1/v2_maleta.webp": {
-"v": "vl/s1/v2_maleta.mp4?h=d7e0545b",
-"b": 972295,
-"d": 1
-},
-"lam:img/s1/mapa_atlantico.webp": {
-"v": "vl/s1/mapa_atlantico.mp4?h=7a404be3",
-"b": 2403586,
+"v": "vl/s1/v2_maleta.mp4?h=46507294",
+"b": 984496,
 "d": 1
 },
 "lam:img/s1/v2_mesa.webp": {
-"v": "vl/s1/v2_mesa.mp4?h=f90ca27e",
-"b": 1181660,
+"v": "vl/s1/v2_mesa.mp4?h=1252d3bd",
+"b": 1195573,
 "d": 1
 },
 "lam:img/s1/v2_ritmo.webp": {
-"v": "vl/s1/v2_ritmo.mp4?h=f8fcf6fe",
-"b": 1070414,
+"v": "vl/s1/v2_ritmo.mp4?h=f19490bd",
+"b": 1028731,
 "d": 1
 },
 "lam:img/s1/i4c_aeropuerto.webp": {
-"v": "vl/s1/i4c_aeropuerto.mp4?h=aae09f67",
-"b": 997244,
+"v": "vl/s1/i4c_aeropuerto.mp4?h=86bbce06",
+"b": 1015452,
 "d": 1
 },
 "lam:img/s1/v2_avion.webp": {
-"v": "vl/s1/v2_avion.mp4?h=8352a9b7",
-"b": 873644,
+"v": "vl/s1/v2_avion.mp4?h=f1487b7d",
+"b": 882274,
 "d": 1
 },
 "lam:img/s1/v2_puerto.webp": {
-"v": "vl/s1/v2_puerto.mp4?h=af521395",
-"b": 1407506,
+"v": "vl/s1/v2_puerto.mp4?h=cda0dc7a",
+"b": 1424196,
 "d": 1
 },
 "lam:img/s1/v2_calle.webp": {
-"v": "vl/s1/v2_calle.mp4?h=14b956ec",
-"b": 1282913,
+"v": "vl/s1/v2_calle.mp4?h=f8ea25cf",
+"b": 1300048,
 "d": 1
 },
 "lam:img/s1/v2_gaiteros.webp": {
-"v": "vl/s1/v2_gaiteros.mp4?h=12a71fb3",
-"b": 1268347,
+"v": "vl/s1/v2_gaiteros.mp4?h=942ef043",
+"b": 1263883,
 "d": 1
 },
 "lam:img/s1/c3_playa.webp": {
-"v": "vl/s1/c3_playa.mp4?h=97ee4168",
-"b": 1689319,
+"v": "vl/s1/c3_playa.mp4?h=fe944c1f",
+"b": 1694489,
 "d": 1
 },
 "lam:img/s1/v2_calle_tarde.webp": {
-"v": "vl/s1/v2_calle_tarde.mp4?h=66ef498c",
-"b": 1773212,
+"v": "vl/s1/v2_calle_tarde.mp4?h=d60276dc",
+"b": 1765399,
 "d": 1
 },
 "lam:img/s1/v2_mercado.webp": {
-"v": "vl/s1/v2_mercado.mp4?h=11e90582",
-"b": 1260502,
+"v": "vl/s1/v2_mercado.mp4?h=545cd097",
+"b": 1262506,
 "d": 1
 },
 "lam:img/s1/v2_camino.webp": {
-"v": "vl/s1/v2_camino.mp4?h=007f00d6",
-"b": 1394150,
+"v": "vl/s1/v2_camino.mp4?h=6da93db3",
+"b": 1400232,
 "d": 1
 },
 "lam:img/s1/v2_rueda.webp": {
-"v": "vl/s1/v2_rueda.mp4?h=b85e0e0c",
-"b": 1066181,
+"v": "vl/s1/v2_rueda.mp4?h=9b66b5e2",
+"b": 1066198,
 "d": 1
 },
 "lam:img/s1/v2_tarima.webp": {
-"v": "vl/s1/v2_tarima.mp4?h=e01c63f5",
-"b": 1610748,
+"v": "vl/s1/v2_tarima.mp4?h=87e7fb7e",
+"b": 1623201,
 "d": 1
 },
 "lam:img/s1/c14_cande_telefono.webp": {
-"v": "vl/s1/c14_cande_telefono.mp4?h=1dde7738",
-"b": 1295387,
-"d": 1
-},
-"lam:img/s1/mapa_caribe_v3.webp": {
-"v": "vl/s1/mapa_caribe_v3.mp4?h=1870a0f1",
-"b": 2314134,
+"v": "vl/s1/c14_cande_telefono.mp4?h=1b43093f",
+"b": 1296448,
 "d": 1
 },
 "lam:img/s1/m1_zona_colonial.webp": {
-"v": "vl/s1/m1_zona_colonial.mp4?h=ebe8f3ba",
-"b": 1332690,
+"v": "vl/s1/m1_zona_colonial.mp4?h=bfccf195",
+"b": 1328036,
 "d": 1
 },
 "lam:img/s1/m1b_cibao.webp": {
-"v": "vl/s1/m1b_cibao.mp4?h=7ca02d11",
-"b": 1739936,
+"v": "vl/s1/m1b_cibao.mp4?h=521ee5ba",
+"b": 1725540,
 "d": 1
 },
 "lam:img/s1/m2b_calle.webp": {
-"v": "vl/s1/m2b_calle.mp4?h=a4e4fb54",
-"b": 2090992,
+"v": "vl/s1/m2b_calle.mp4?h=b2d24570",
+"b": 2088586,
 "d": 1
 },
 "lam:img/s1/m2c_domino.webp": {
-"v": "vl/s1/m2c_domino.mp4?h=fccc4523",
-"b": 1154333,
+"v": "vl/s1/m2c_domino.mp4?h=274edb94",
+"b": 1153132,
 "d": 1
 },
 "lam:img/s1/m3_enramada.webp": {
-"v": "vl/s1/m3_enramada.mp4?h=da35387e",
-"b": 1876660,
+"v": "vl/s1/m3_enramada.mp4?h=b73173cd",
+"b": 1807874,
 "d": 1
 },
 "lam:img/s1/m2e_origen.webp": {
-"v": "vl/s1/m2e_origen.mp4?h=7b76e934",
-"b": 1594061,
+"v": "vl/s1/m2e_origen.mp4?h=12dd47f5",
+"b": 1597455,
 "d": 1
 },
 "lam:img/s1/m2g_nacional.webp": {
-"v": "vl/s1/m2g_nacional.mp4?h=27249a65",
-"b": 1349934,
+"v": "vl/s1/m2g_nacional.mp4?h=b89943f5",
+"b": 1352430,
 "d": 1
 },
 "lam:img/s1/m9b_musicos_llegan.webp": {
-"v": "vl/s1/m9b_musicos_llegan.mp4?h=c5e59709",
-"b": 1690177,
+"v": "vl/s1/m9b_musicos_llegan.mp4?h=f7d94836",
+"b": 1697329,
+"d": 1
+},
+"lam:img/s1/r_repaso.webp": {
+"v": "vl/s1/r_repaso.mp4?h=50462db9",
+"b": 325903,
 "d": 1
 },
 "lam:img/s1/r_resumen.webp": {
-"v": "vl/s1/r_resumen.mp4?h=164aa0e9",
-"b": 686984,
-"d": 1
-},
-"lam:img/s2/mapa_cuba_rd.webp": {
-"v": "vl/s2/mapa_cuba_rd.mp4?h=68f0ff9c",
-"b": 1997001,
+"v": "vl/s1/r_resumen.mp4?h=717db087",
+"b": 689169,
 "d": 2
 },
 "lam:img/s2/b_calle.webp": {
-"v": "vl/s2/b_calle.mp4?h=bfdc8c4f",
-"b": 1543562,
+"v": "vl/s2/b_calle.mp4?h=7e03e6e1",
+"b": 1529763,
 "d": 2
 },
 "lam:img/s2/b_trovadores.webp": {
-"v": "vl/s2/b_trovadores.mp4?h=7fab2a58",
-"b": 1243124,
+"v": "vl/s2/b_trovadores.mp4?h=dfb7571e",
+"b": 1201077,
 "d": 2
 },
 "lam:img/s2/b_fachada.webp": {
-"v": "vl/s2/b_fachada.mp4?h=b2c5ba15",
-"b": 1698521,
+"v": "vl/s2/b_fachada.mp4?h=d44cd2ad",
+"b": 1681142,
 "d": 2
 },
 "lam:img/s2/b_balcones.webp": {
-"v": "vl/s2/b_balcones.mp4?h=69014fd8",
-"b": 1440316,
+"v": "vl/s2/b_balcones.mp4?h=dcbf3be9",
+"b": 1408713,
 "d": 2
 },
 "lam:img/s2/b_mexico.webp": {
-"v": "vl/s2/b_mexico.mp4?h=6fe3470b",
-"b": 1120828,
+"v": "vl/s2/b_mexico.mp4?h=2782d146",
+"b": 1115558,
 "d": 2
 },
 "lam:img/s2/b_salon.webp": {
-"v": "vl/s2/b_salon.mp4?h=c20aae3c",
-"b": 1462272,
+"v": "vl/s2/b_salon.mp4?h=f0821e12",
+"b": 1394105,
 "d": 2
 },
 "lam:img/s2/b_musicos_llegan.webp": {
-"v": "vl/s2/b_musicos_llegan.mp4?h=5d4709a3",
-"b": 1110716,
+"v": "vl/s2/b_musicos_llegan.mp4?h=1670a704",
+"b": 1092351,
 "d": 2
 },
 "lam:img/s2/b_llamada.webp": {
-"v": "vl/s2/b_llamada.mp4?h=3b366c90",
-"b": 1134045,
+"v": "vl/s2/b_llamada.mp4?h=b9efde77",
+"b": 1121872,
 "d": 2
 },
 "lam:img/s2/h_zona_colonial.webp": {
-"v": "vl/s2/h_zona_colonial.mp4?h=b524c716",
-"b": 1736549,
+"v": "vl/s2/h_zona_colonial.mp4?h=fa881260",
+"b": 1750300,
 "d": 2
 },
 "lam:img/s2/h_calle_barrio.webp": {
-"v": "vl/s2/h_calle_barrio.mp4?h=993caf0f",
-"b": 1610558,
+"v": "vl/s2/h_calle_barrio.mp4?h=f57d83b0",
+"b": 1609219,
 "d": 2
 },
 "lam:img/s2/h_colmado.webp": {
-"v": "vl/s2/h_colmado.mp4?h=eea2bd4a",
-"b": 1543936,
+"v": "vl/s2/h_colmado.mp4?h=a23cef81",
+"b": 1563644,
 "d": 2
 },
 "lam:img/s2/h_radio.webp": {
-"v": "vl/s2/h_radio.mp4?h=c58c18d0",
-"b": 1125310,
+"v": "vl/s2/h_radio.mp4?h=7ee2b81e",
+"b": 1132905,
 "d": 2
 },
 "lam:img/s2/h_patio.webp": {
-"v": "vl/s2/h_patio.mp4?h=2df0a370",
-"b": 1790260,
+"v": "vl/s2/h_patio.mp4?h=24211b5a",
+"b": 1788576,
 "d": 2
 },
 "lam:img/s2/h_musicos_llegan.webp": {
-"v": "vl/s2/h_musicos_llegan.mp4?h=137ab685",
-"b": 1514134,
+"v": "vl/s2/h_musicos_llegan.mp4?h=0ed16e03",
+"b": 1533879,
 "d": 2
 },
-"lam:img/s2/r_resumen.webp": {
-"v": "vl/s2/r_resumen.mp4?h=00d2aa8b",
-"b": 548120,
+"lam:img/s2/r_repaso.webp": {
+"v": "vl/s2/r_repaso.mp4?h=bce91075",
+"b": 334777,
 "d": 2
-},
-"lam:img/s3/mapa_caribe_rio.webp": {
-"v": "vl/s3/mapa_caribe_rio.mp4?h=e7bbff47",
-"b": 2313924,
-"d": 3
 },
 "lam:img/s3/s_rio.webp": {
-"v": "vl/s3/s_rio.mp4?h=75a5f49d",
-"b": 1496268,
+"v": "vl/s3/s_rio.mp4?h=26a495a9",
+"b": 1500033,
 "d": 3
 },
 "lam:img/s3/s_origen.webp": {
-"v": "vl/s3/s_origen.mp4?h=7df4f6ab",
-"b": 1056745,
+"v": "vl/s3/s_origen.mp4?h=d3dda1bd",
+"b": 1057343,
 "d": 3
 },
 "lam:img/s3/s_calle.webp": {
-"v": "vl/s3/s_calle.mp4?h=f70b118c",
-"b": 1761591,
+"v": "vl/s3/s_calle.mp4?h=b6b4afe7",
+"b": 1754866,
 "d": 3
 },
 "lam:img/s3/s_escola.webp": {
-"v": "vl/s3/s_escola.mp4?h=2ec27573",
-"b": 1097265,
+"v": "vl/s3/s_escola.mp4?h=7ab67d12",
+"b": 1102670,
 "d": 3
 },
 "lam:img/s3/s_morro.webp": {
-"v": "vl/s3/s_morro.mp4?h=2e1dc4e5",
-"b": 1714429,
+"v": "vl/s3/s_morro.mp4?h=1496207e",
+"b": 1726891,
 "d": 3
 },
 "lam:img/s3/s_musicos_llegan.webp": {
-"v": "vl/s3/s_musicos_llegan.mp4?h=1b10e18b",
-"b": 1666798,
+"v": "vl/s3/s_musicos_llegan.mp4?h=af0fd1a9",
+"b": 1658002,
 "d": 3
 },
 "lam:img/s3/b_tren.webp": {
-"v": "vl/s3/b_tren.mp4?h=1d61449a",
-"b": 875898,
+"v": "vl/s3/b_tren.mp4?h=b401f6a0",
+"b": 875211,
 "d": 3
 },
 "lam:img/s3/b_ipanema.webp": {
-"v": "vl/s3/b_ipanema.mp4?h=bcdeab62",
-"b": 1366852,
+"v": "vl/s3/b_ipanema.mp4?h=e3e42749",
+"b": 1355080,
 "d": 3
 },
 "lam:img/s3/b_callejon.webp": {
-"v": "vl/s3/b_callejon.mp4?h=6808dcea",
-"b": 1552686,
+"v": "vl/s3/b_callejon.mp4?h=ecd56173",
+"b": 1549035,
 "d": 3
 },
 "lam:img/s3/b_origen.webp": {
-"v": "vl/s3/b_origen.mp4?h=8088e567",
-"b": 900000,
+"v": "vl/s3/b_origen.mp4?h=cca2371f",
+"b": 905440,
 "d": 3
 },
 "lam:img/s3/b_terraza.webp": {
-"v": "vl/s3/b_terraza.mp4?h=2933ff57",
-"b": 1216104,
+"v": "vl/s3/b_terraza.mp4?h=3a0174ef",
+"b": 1209097,
 "d": 3
 },
 "lam:img/s3/b_musicos_llegan.webp": {
-"v": "vl/s3/b_musicos_llegan.mp4?h=96238770",
-"b": 1155885,
+"v": "vl/s3/b_musicos_llegan.mp4?h=19d15bdc",
+"b": 1151514,
 "d": 3
 },
-"lam:img/s3/r_resumen.webp": {
-"v": "vl/s3/r_resumen.mp4?h=4dd2f922",
-"b": 508894,
+"lam:img/s3/r_repaso.webp": {
+"v": "vl/s3/r_repaso.mp4?h=ee209c83",
+"b": 323431,
 "d": 3
-},
-"lam:img/s4/mapa_atlantico.webp": {
-"v": "vl/s4/mapa_atlantico.mp4?h=9394c930",
-"b": 2256171,
-"d": 4
 },
 "lam:img/s4/s_skyline.webp": {
-"v": "vl/s4/s_skyline.mp4?h=38536d1d",
-"b": 1702024,
+"v": "vl/s4/s_skyline.mp4?h=892a88ee",
+"b": 1711087,
 "d": 4
 },
 "lam:img/s4/s_puerta.webp": {
-"v": "vl/s4/s_puerta.mp4?h=065c7d7f",
-"b": 1433894,
+"v": "vl/s4/s_puerta.mp4?h=908cf2aa",
+"b": 1486929,
 "d": 4
 },
 "lam:img/s4/s_luces.webp": {
-"v": "vl/s4/s_luces.mp4?h=0f6acf2f",
-"b": 1072247,
+"v": "vl/s4/s_luces.mp4?h=5cc031f6",
+"b": 1112535,
 "d": 4
 },
 "lam:img/s4/s_origen.webp": {
-"v": "vl/s4/s_origen.mp4?h=f6795e59",
-"b": 1015729,
+"v": "vl/s4/s_origen.mp4?h=2c7fb052",
+"b": 1018606,
 "d": 4
 },
 "lam:img/s4/s_plato.webp": {
-"v": "vl/s4/s_plato.mp4?h=5a1b4b79",
-"b": 954750,
+"v": "vl/s4/s_plato.mp4?h=15ad56dc",
+"b": 992793,
 "d": 4
 },
 "lam:img/s4/s_musicos_llegan.webp": {
-"v": "vl/s4/s_musicos_llegan.mp4?h=85807b60",
-"b": 1027802,
+"v": "vl/s4/s_musicos_llegan.mp4?h=cb6c1ccc",
+"b": 1052444,
 "d": 4
 },
 "lam:img/s4/s_destape.webp": {
-"v": "vl/s4/s_destape.mp4?h=9437338d",
-"b": 1076915,
+"v": "vl/s4/s_destape.mp4?h=340f6e29",
+"b": 1085976,
 "d": 4
 },
 "lam:img/s4/vc_sa_48_chucho_soy_chucho.webp": {
-"v": "vl/s4/vc_sa_48_chucho_soy_chucho.mp4?h=e3a6c55d",
-"b": 780905,
+"v": "vl/s4/vc_sa_48_chucho_soy_chucho.mp4?h=cc926e2a",
+"b": 792008,
 "d": 4
 },
 "lam:img/s4/vc_sa_47_mambo_saxos.webp": {
-"v": "vl/s4/vc_sa_47_mambo_saxos.mp4?h=28e38c3d",
-"b": 1523504,
+"v": "vl/s4/vc_sa_47_mambo_saxos.mp4?h=47b9b806",
+"b": 1516479,
 "d": 4
 },
 "lam:img/s4/vc_sa_45_saxos_suben.webp": {
-"v": "vl/s4/vc_sa_45_saxos_suben.mp4?h=3e40c9f4",
-"b": 1367066,
+"v": "vl/s4/vc_sa_45_saxos_suben.mp4?h=990ce8f3",
+"b": 1377143,
 "d": 4
 },
 "lam:img/s4/vc_sa_29_mambo_metales.webp": {
-"v": "vl/s4/vc_sa_29_mambo_metales.mp4?h=ad13599c",
-"b": 998851,
+"v": "vl/s4/vc_sa_29_mambo_metales.mp4?h=0f4e3b90",
+"b": 1004084,
 "d": 4
 },
 "lam:img/s4/vc_sa_18_bongo_martillando.webp": {
-"v": "vl/s4/vc_sa_18_bongo_martillando.mp4?h=b56c7756",
-"b": 976032,
+"v": "vl/s4/vc_sa_18_bongo_martillando.mp4?h=c828e81c",
+"b": 994075,
 "d": 4
 },
 "lam:img/s4/vc_sa_46_saxos_metales.webp": {
-"v": "vl/s4/vc_sa_46_saxos_metales.mp4?h=f17b1c69",
-"b": 1279311,
+"v": "vl/s4/vc_sa_46_saxos_metales.mp4?h=1aee35e7",
+"b": 1276456,
 "d": 4
 },
-"lam:img/s4/vc_sa_20_chucho_una_conga.webp": {
-"v": "vl/s4/vc_sa_20_chucho_una_conga.mp4?h=390391b5",
-"b": 946611,
+"lam:img/s4/vc_sa_30_publico_bailando.webp": {
+"v": "vl/s4/vc_sa_30_publico_bailando.mp4?h=bbe46218",
+"b": 960112,
 "d": 4
 },
 "lam:img/s4/k_avion.webp": {
-"v": "vl/s4/k_avion.mp4?h=44f866df",
-"b": 1112694,
+"v": "vl/s4/k_avion.mp4?h=655193d7",
+"b": 1109061,
 "d": 4
 },
 "lam:img/s4/k_origen.webp": {
-"v": "vl/s4/k_origen.mp4?h=617335c9",
-"b": 1245986,
+"v": "vl/s4/k_origen.mp4?h=1f5aa77f",
+"b": 1255708,
 "d": 4
 },
 "lam:img/s4/k_terraza.webp": {
-"v": "vl/s4/k_terraza.mp4?h=56c70e3b",
-"b": 1554841,
+"v": "vl/s4/k_terraza.mp4?h=76db4930",
+"b": 1550075,
 "d": 4
 },
 "lam:img/s4/k_baile.webp": {
-"v": "vl/s4/k_baile.mp4?h=2a98b5bd",
-"b": 902644,
+"v": "vl/s4/k_baile.mp4?h=528b74de",
+"b": 911260,
 "d": 4
 },
 "lam:img/s4/k_musicos_llegan.webp": {
-"v": "vl/s4/k_musicos_llegan.mp4?h=90955c15",
-"b": 1479265,
+"v": "vl/s4/k_musicos_llegan.mp4?h=066563f8",
+"b": 1453607,
 "d": 4
 },
-"lam:img/s4/r_resumen.webp": {
-"v": "vl/s4/r_resumen.mp4?h=2f383e82",
-"b": 602371,
+"lam:img/s4/r_repaso.webp": {
+"v": "vl/s4/r_repaso.mp4?h=d430c2bf",
+"b": 326674,
 "d": 4
 },
 "img/s1/vc_c_00_musicos_llegan.webp": {
-"v": "vc/s1/vc_c_00_musicos_llegan.mp4?h=89f12990",
-"b": 1240560,
+"v": "vc/s1/vc_c_00_musicos_llegan.mp4?h=740768b6",
+"b": 1288296,
 "d": 1,
 "z": [
 1,
@@ -396,8 +376,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_c_50_cande_canta_pp.webp": {
-"v": "vc/s1/vc_c_50_cande_canta_pp.mp4?h=b6ee564e",
-"b": 1529174,
+"v": "vc/s1/vc_c_50_cande_canta_pp.mp4?h=329d0e2f",
+"b": 1602909,
 "d": 1,
 "z": [
 1.0579,
@@ -406,8 +386,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_c_28_pies_cumbia.webp": {
-"v": "vc/s1/vc_c_28_pies_cumbia.mp4?h=0eed328f",
-"b": 1630553,
+"v": "vc/s1/vc_c_28_pies_cumbia.mp4?h=d70b2ff4",
+"b": 1718605,
 "d": 1,
 "z": [
 1,
@@ -416,8 +396,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_c_29_maracas_musico.webp": {
-"v": "vc/s1/vc_c_29_maracas_musico.mp4?h=11fc7352",
-"b": 1181905,
+"v": "vc/s1/vc_c_29_maracas_musico.mp4?h=091bcf05",
+"b": 1249863,
 "d": 1,
 "z": [
 1.0529,
@@ -426,8 +406,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_c_30_tambor_y_bajo_se_miran.webp": {
-"v": "vc/s1/vc_c_30_tambor_y_bajo_se_miran.mp4?h=52485a96",
-"b": 1374436,
+"v": "vc/s1/vc_c_30_tambor_y_bajo_se_miran.mp4?h=a44c35e1",
+"b": 1435601,
 "d": 1,
 "z": [
 1,
@@ -436,8 +416,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_c_32_guacharaquero_rie.webp": {
-"v": "vc/s1/vc_c_32_guacharaquero_rie.mp4?h=2afa3bd7",
-"b": 2296448,
+"v": "vc/s1/vc_c_32_guacharaquero_rie.mp4?h=6ebe166b",
+"b": 2382282,
 "d": 1,
 "z": [
 1.0729,
@@ -446,8 +426,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_c_33_cande_y_coristas.webp": {
-"v": "vc/s1/vc_c_33_cande_y_coristas.mp4?h=6e9e0099",
-"b": 1670526,
+"v": "vc/s1/vc_c_33_cande_y_coristas.mp4?h=de92760a",
+"b": 1756830,
 "d": 1,
 "z": [
 1,
@@ -456,8 +436,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_c_49_gente_llega.webp": {
-"v": "vc/s1/vc_c_49_gente_llega.mp4?h=0e78c86b",
-"b": 1808688,
+"v": "vc/s1/vc_c_49_gente_llega.mp4?h=857ee011",
+"b": 1866882,
 "d": 1,
 "z": [
 1.0429,
@@ -466,8 +446,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_c_48_coristas.webp": {
-"v": "vc/s1/vc_c_48_coristas.mp4?h=f22ceb92",
-"b": 2015497,
+"v": "vc/s1/vc_c_48_coristas.mp4?h=75a43a12",
+"b": 2078276,
 "d": 1,
 "z": [
 1,
@@ -476,8 +456,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_c_36_manos_teclista.webp": {
-"v": "vc/s1/vc_c_36_manos_teclista.mp4?h=13f93a80",
-"b": 1803480,
+"v": "vc/s1/vc_c_36_manos_teclista.mp4?h=ff31f2ff",
+"b": 1899653,
 "d": 1,
 "z": [
 1.0629,
@@ -486,8 +466,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_c_37_cande_senala_teclista.webp": {
-"v": "vc/s1/vc_c_37_cande_senala_teclista.mp4?h=068bdf7b",
-"b": 1602088,
+"v": "vc/s1/vc_c_37_cande_senala_teclista.mp4?h=9f80b374",
+"b": 1638422,
 "d": 1,
 "z": [
 1,
@@ -496,8 +476,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_c_38_acordeon_encima.webp": {
-"v": "vc/s1/vc_c_38_acordeon_encima.mp4?h=6423a110",
-"b": 1854542,
+"v": "vc/s1/vc_c_38_acordeon_encima.mp4?h=e30ced97",
+"b": 1937138,
 "d": 1,
 "z": [
 1.0579,
@@ -506,8 +486,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_c_39_metales.webp": {
-"v": "vc/s1/vc_c_39_metales.mp4?h=26dcc7d9",
-"b": 1606182,
+"v": "vc/s1/vc_c_39_metales.mp4?h=b76276db",
+"b": 1698500,
 "d": 1,
 "z": [
 1,
@@ -516,8 +496,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_c_46_banderines_luces.webp": {
-"v": "vc/s1/vc_c_46_banderines_luces.mp4?h=c32b458f",
-"b": 1986706,
+"v": "vc/s1/vc_c_46_banderines_luces.mp4?h=54d7971a",
+"b": 2045032,
 "d": 1,
 "z": [
 1.0429,
@@ -526,8 +506,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_c_47_baterista.webp": {
-"v": "vc/s1/vc_c_47_baterista.mp4?h=9d8d300b",
-"b": 1132176,
+"v": "vc/s1/vc_c_47_baterista.mp4?h=d529cadc",
+"b": 1166049,
 "d": 1,
 "z": [
 1,
@@ -536,8 +516,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_c_41_velas_mar_banda_fondo.webp": {
-"v": "vc/s1/vc_c_41_velas_mar_banda_fondo.mp4?h=b5224437",
-"b": 1056214,
+"v": "vc/s1/vc_c_41_velas_mar_banda_fondo.mp4?h=cb6ac138",
+"b": 1118407,
 "d": 1,
 "z": [
 1.038,
@@ -546,8 +526,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_c_35_solo_medio_teclista.webp": {
-"v": "vc/s1/vc_c_35_solo_medio_teclista.mp4?h=fd3150ff",
-"b": 396557,
+"v": "vc/s1/vc_c_35_solo_medio_teclista.mp4?h=1a58abec",
+"b": 415873,
 "d": 1,
 "z": [
 1,
@@ -556,8 +536,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_c_42_cande_brazos_abiertos.webp": {
-"v": "vc/s1/vc_c_42_cande_brazos_abiertos.mp4?h=168330d8",
-"b": 1166362,
+"v": "vc/s1/vc_c_42_cande_brazos_abiertos.mp4?h=df2ea42f",
+"b": 1202319,
 "d": 1,
 "z": [
 1.033,
@@ -566,8 +546,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_c_19_maracas.webp": {
-"v": "vc/s1/vc_c_19_maracas.mp4?h=9eb98712",
-"b": 698167,
+"v": "vc/s1/vc_c_19_maracas.mp4?h=8f2f494d",
+"b": 738351,
 "d": 1,
 "z": [
 1,
@@ -576,8 +556,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_c_27_cande_canta.webp": {
-"v": "vc/s1/vc_c_27_cande_canta.mp4?h=b45a6ead",
-"b": 1374936,
+"v": "vc/s1/vc_c_27_cande_canta.mp4?h=8aebfd5a",
+"b": 1439996,
 "d": 1,
 "z": [
 1.0429,
@@ -586,8 +566,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_c_44_aplausos.webp": {
-"v": "vc/s1/vc_c_44_aplausos.mp4?h=f7f75a02",
-"b": 7172221,
+"v": "vc/s1/vc_c_44_aplausos.mp4?h=5683a418",
+"b": 6358491,
 "d": 1,
 "z": [
 1,
@@ -596,8 +576,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_m_19_orquesta_arranca.webp": {
-"v": "vc/s1/vc_m_19_orquesta_arranca.mp4?h=663cfec1",
-"b": 885217,
+"v": "vc/s1/vc_m_19_orquesta_arranca.mp4?h=7a83659e",
+"b": 915811,
 "d": 1,
 "z": [
 1.0248,
@@ -606,8 +586,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_m_36_yunior_canta_pp.webp": {
-"v": "vc/s1/vc_m_36_yunior_canta_pp.mp4?h=504b6ec6",
-"b": 1260339,
+"v": "vc/s1/vc_m_36_yunior_canta_pp.mp4?h=8357092b",
+"b": 1319984,
 "d": 1,
 "z": [
 1,
@@ -616,8 +596,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_m_30_baile_calle.webp": {
-"v": "vc/s1/vc_m_30_baile_calle.mp4?h=e56c52d1",
-"b": 1533611,
+"v": "vc/s1/vc_m_30_baile_calle.mp4?h=abb47b28",
+"b": 1588137,
 "d": 1,
 "z": [
 1.0378,
@@ -626,8 +606,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_m_20_guira_cc.webp": {
-"v": "vc/s1/vc_m_20_guira_cc.mp4?h=e5d1f6f9",
-"b": 992144,
+"v": "vc/s1/vc_m_20_guira_cc.mp4?h=f4c536de",
+"b": 1040178,
 "d": 1,
 "z": [
 1,
@@ -636,8 +616,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_m_21_guira_manos.webp": {
-"v": "vc/s1/vc_m_21_guira_manos.mp4?h=ea2c602f",
-"b": 1209593,
+"v": "vc/s1/vc_m_21_guira_manos.mp4?h=dea3374a",
+"b": 1280389,
 "d": 1,
 "z": [
 1.044,
@@ -646,8 +626,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_m_22_estribillo.webp": {
-"v": "vc/s1/vc_m_22_estribillo.mp4?h=febd7e38",
-"b": 2283862,
+"v": "vc/s1/vc_m_22_estribillo.mp4?h=95036e33",
+"b": 2368495,
 "d": 1,
 "z": [
 1,
@@ -656,8 +636,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_m_17_yunior_guira.webp": {
-"v": "vc/s1/vc_m_17_yunior_guira.mp4?h=607fe234",
-"b": 1050043,
+"v": "vc/s1/vc_m_17_yunior_guira.mp4?h=fd0f00db",
+"b": 1080238,
 "d": 1,
 "z": [
 1.0254,
@@ -666,8 +646,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_m_23_tambora_cc.webp": {
-"v": "vc/s1/vc_m_23_tambora_cc.mp4?h=f47c1b34",
-"b": 1323960,
+"v": "vc/s1/vc_m_23_tambora_cc.mp4?h=3630c4e0",
+"b": 1396746,
 "d": 1,
 "z": [
 1,
@@ -676,8 +656,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_m_24_bandera.webp": {
-"v": "vc/s1/vc_m_24_bandera.mp4?h=046c2d2f",
-"b": 1491059,
+"v": "vc/s1/vc_m_24_bandera.mp4?h=ede2acde",
+"b": 1537571,
 "d": 1,
 "z": [
 1.0316,
@@ -686,8 +666,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_m_31_orquesta_entera.webp": {
-"v": "vc/s1/vc_m_31_orquesta_entera.mp4?h=c65313e4",
-"b": 2512410,
+"v": "vc/s1/vc_m_31_orquesta_entera.mp4?h=59ceb7b8",
+"b": 2588602,
 "d": 1,
 "z": [
 1,
@@ -696,8 +676,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_m_25_bajo_cc.webp": {
-"v": "vc/s1/vc_m_25_bajo_cc.mp4?h=4eef915f",
-"b": 442413,
+"v": "vc/s1/vc_m_25_bajo_cc.mp4?h=39eb9d60",
+"b": 461109,
 "d": 1,
 "z": [
 1.0223,
@@ -706,8 +686,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_m_26_piano.webp": {
-"v": "vc/s1/vc_m_26_piano.mp4?h=86cb5744",
-"b": 868233,
+"v": "vc/s1/vc_m_26_piano.mp4?h=3416332c",
+"b": 912574,
 "d": 1,
 "z": [
 1,
@@ -716,8 +696,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_m_27_saxos.webp": {
-"v": "vc/s1/vc_m_27_saxos.mp4?h=a5307014",
-"b": 390614,
+"v": "vc/s1/vc_m_27_saxos.mp4?h=3ed134be",
+"b": 420658,
 "d": 1,
 "z": [
 1.0223,
@@ -726,8 +706,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_m_28_trompetas.webp": {
-"v": "vc/s1/vc_m_28_trompetas.mp4?h=b6cda3aa",
-"b": 603820,
+"v": "vc/s1/vc_m_28_trompetas.mp4?h=6e2847c7",
+"b": 631771,
 "d": 1,
 "z": [
 1,
@@ -736,8 +716,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_m_29_conga_cc.webp": {
-"v": "vc/s1/vc_m_29_conga_cc.mp4?h=82515967",
-"b": 616413,
+"v": "vc/s1/vc_m_29_conga_cc.mp4?h=ede62472",
+"b": 646990,
 "d": 1,
 "z": [
 1.0285,
@@ -746,8 +726,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_m_35_pies_bailando.webp": {
-"v": "vc/s1/vc_m_35_pies_bailando.mp4?h=52a13b51",
-"b": 654088,
+"v": "vc/s1/vc_m_35_pies_bailando.mp4?h=c34f6769",
+"b": 693761,
 "d": 1,
 "z": [
 1,
@@ -756,8 +736,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_m_34_guirnaldas_banderines.webp": {
-"v": "vc/s1/vc_m_34_guirnaldas_banderines.mp4?h=ec5f541d",
-"b": 1258637,
+"v": "vc/s1/vc_m_34_guirnaldas_banderines.mp4?h=2795e64d",
+"b": 1304302,
 "d": 1,
 "z": [
 1.0316,
@@ -766,8 +746,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s1/vc_m_33_mesa_colmado.webp": {
-"v": "vc/s1/vc_m_33_mesa_colmado.mp4?h=2280d551",
-"b": 1139713,
+"v": "vc/s1/vc_m_33_mesa_colmado.mp4?h=0afa2522",
+"b": 1215552,
 "d": 1,
 "z": [
 1,
@@ -776,8 +756,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_m_16_hoja_banda.webp": {
-"v": "vc/s1/vc_m_16_hoja_banda.mp4?h=791c8079",
-"b": 1593333,
+"v": "vc/s1/vc_m_16_hoja_banda.mp4?h=38541ce4",
+"b": 1665636,
 "d": 1,
 "z": [
 1.0378,
@@ -786,8 +766,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s1/vc_m_32_yunior_final.webp": {
-"v": "vc/s1/vc_m_32_yunior_final.mp4?h=82c86e77",
-"b": 6540479,
+"v": "vc/s1/vc_m_32_yunior_final.mp4?h=3bf05472",
+"b": 6830662,
 "d": 1,
 "z": [
 1,
@@ -796,8 +776,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_b_16_hoja_banda.webp": {
-"v": "vc/s2/vc_b_16_hoja_banda.mp4?h=8eddbfcb",
-"b": 1661932,
+"v": "vc/s2/vc_b_16_hoja_banda.mp4?h=6a4e4a9f",
+"b": 1654216,
 "d": 2,
 "z": [
 1.0503,
@@ -806,8 +786,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_b_36_faustino_canta_pp.webp": {
-"v": "vc/s2/vc_b_36_faustino_canta_pp.mp4?h=0833e9ea",
-"b": 1436448,
+"v": "vc/s2/vc_b_36_faustino_canta_pp.mp4?h=8a9815ae",
+"b": 1433175,
 "d": 2,
 "z": [
 1,
@@ -816,8 +796,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_b_35_pies_bailando.webp": {
-"v": "vc/s2/vc_b_35_pies_bailando.mp4?h=4cfafa86",
-"b": 1602845,
+"v": "vc/s2/vc_b_35_pies_bailando.mp4?h=21ada2e7",
+"b": 1601195,
 "d": 2,
 "z": [
 1.0563,
@@ -826,8 +806,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_b_19_guitarra_trio_cc.webp": {
-"v": "vc/s2/vc_b_19_guitarra_trio_cc.mp4?h=d5b5738a",
-"b": 1585011,
+"v": "vc/s2/vc_b_19_guitarra_trio_cc.mp4?h=02a87c4a",
+"b": 1583962,
 "d": 2,
 "z": [
 1,
@@ -836,8 +816,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_b_20_bajo_suave_cc.webp": {
-"v": "vc/s2/vc_b_20_bajo_suave_cc.mp4?h=e620ed2a",
-"b": 1752905,
+"v": "vc/s2/vc_b_20_bajo_suave_cc.mp4?h=73e4b728",
+"b": 1730961,
 "d": 2,
 "z": [
 1.0617,
@@ -846,8 +826,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_b_21_maracas_cc.webp": {
-"v": "vc/s2/vc_b_21_maracas_cc.mp4?h=bfb84485",
-"b": 1542563,
+"v": "vc/s2/vc_b_21_maracas_cc.mp4?h=bb527f99",
+"b": 1536839,
 "d": 2,
 "z": [
 1,
@@ -856,8 +836,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_b_22_maracas_manos.webp": {
-"v": "vc/s2/vc_b_22_maracas_manos.mp4?h=0d712280",
-"b": 1364336,
+"v": "vc/s2/vc_b_22_maracas_manos.mp4?h=c2f7cefa",
+"b": 1383164,
 "d": 2,
 "z": [
 1.0671,
@@ -866,8 +846,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_b_23_congas_cc.webp": {
-"v": "vc/s2/vc_b_23_congas_cc.mp4?h=e12c0e7e",
-"b": 1353055,
+"v": "vc/s2/vc_b_23_congas_cc.mp4?h=bef1b56a",
+"b": 1322604,
 "d": 2,
 "z": [
 1,
@@ -876,8 +856,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_b_24_congas_callan.webp": {
-"v": "vc/s2/vc_b_24_congas_callan.mp4?h=77ab209d",
-"b": 2117375,
+"v": "vc/s2/vc_b_24_congas_callan.mp4?h=8b8c544c",
+"b": 2104602,
 "d": 2,
 "z": [
 1.0563,
@@ -886,8 +866,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_b_25_nacio_santiago.webp": {
-"v": "vc/s2/vc_b_25_nacio_santiago.mp4?h=89b39f08",
-"b": 2374762,
+"v": "vc/s2/vc_b_25_nacio_santiago.mp4?h=3098622a",
+"b": 2365873,
 "d": 2,
 "z": [
 1,
@@ -896,8 +876,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_b_27_balcon_a_balcon.webp": {
-"v": "vc/s2/vc_b_27_balcon_a_balcon.mp4?h=2fbcb941",
-"b": 2087717,
+"v": "vc/s2/vc_b_27_balcon_a_balcon.mp4?h=5830af8b",
+"b": 2076858,
 "d": 2,
 "z": [
 1.0455,
@@ -906,8 +886,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_b_37_faustino_canta_pp.webp": {
-"v": "vc/s2/vc_b_37_faustino_canta_pp.mp4?h=45eafb17",
-"b": 1115032,
+"v": "vc/s2/vc_b_37_faustino_canta_pp.mp4?h=0db42337",
+"b": 1128697,
 "d": 2,
 "z": [
 1,
@@ -916,8 +896,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_b_29_parejas_abrazadas.webp": {
-"v": "vc/s2/vc_b_29_parejas_abrazadas.mp4?h=002e6842",
-"b": 2872331,
+"v": "vc/s2/vc_b_29_parejas_abrazadas.mp4?h=57a3ea19",
+"b": 2832771,
 "d": 2,
 "z": [
 1.0686,
@@ -926,8 +906,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_b_33_mesa_zumos_flores.webp": {
-"v": "vc/s2/vc_b_33_mesa_zumos_flores.mp4?h=e3c9a8d0",
-"b": 940381,
+"v": "vc/s2/vc_b_33_mesa_zumos_flores.mp4?h=efdb2a60",
+"b": 947508,
 "d": 2,
 "z": [
 1,
@@ -936,8 +916,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_b_31_trio_completo.webp": {
-"v": "vc/s2/vc_b_31_trio_completo.mp4?h=b5835e62",
-"b": 2455279,
+"v": "vc/s2/vc_b_31_trio_completo.mp4?h=5634f2ca",
+"b": 2438728,
 "d": 2,
 "z": [
 1.0563,
@@ -946,8 +926,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_b_30_salon_entero.webp": {
-"v": "vc/s2/vc_b_30_salon_entero.mp4?h=abe46155",
-"b": 2245220,
+"v": "vc/s2/vc_b_30_salon_entero.mp4?h=20eee75e",
+"b": 2213306,
 "d": 2,
 "z": [
 1,
@@ -956,8 +936,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_b_38_faustino_canta_pp.webp": {
-"v": "vc/s2/vc_b_38_faustino_canta_pp.mp4?h=4046bb01",
-"b": 1538310,
+"v": "vc/s2/vc_b_38_faustino_canta_pp.mp4?h=d4e34aee",
+"b": 1549172,
 "d": 2,
 "z": [
 1.0617,
@@ -966,8 +946,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_b_32_eso_es_bolero.webp": {
-"v": "vc/s2/vc_b_32_eso_es_bolero.mp4?h=44cdbdf2",
-"b": 1255583,
+"v": "vc/s2/vc_b_32_eso_es_bolero.mp4?h=33758ce0",
+"b": 1254722,
 "d": 2,
 "z": [
 1,
@@ -976,8 +956,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_h_16_hoja_banda.webp": {
-"v": "vc/s2/vc_h_16_hoja_banda.mp4?h=7f2623cd",
-"b": 1538764,
+"v": "vc/s2/vc_h_16_hoja_banda.mp4?h=a9105bc9",
+"b": 1538006,
 "d": 2,
 "z": [
 1.0405,
@@ -986,8 +966,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_h_17_ramoncito_micro.webp": {
-"v": "vc/s2/vc_h_17_ramoncito_micro.mp4?h=59b384a4",
-"b": 2253466,
+"v": "vc/s2/vc_h_17_ramoncito_micro.mp4?h=1a51561e",
+"b": 2251789,
 "d": 2,
 "z": [
 1,
@@ -996,8 +976,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_h_36_ramoncito_canta_pp.webp": {
-"v": "vc/s2/vc_h_36_ramoncito_canta_pp.mp4?h=efc7056d",
-"b": 961158,
+"v": "vc/s2/vc_h_36_ramoncito_canta_pp.mp4?h=24f8f858",
+"b": 962035,
 "d": 2,
 "z": [
 1.0376,
@@ -1006,8 +986,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_h_34_bombillas_banderines.webp": {
-"v": "vc/s2/vc_h_34_bombillas_banderines.mp4?h=e9d5af8e",
-"b": 1467690,
+"v": "vc/s2/vc_h_34_bombillas_banderines.mp4?h=f674130f",
+"b": 1468666,
 "d": 2,
 "z": [
 1,
@@ -1016,8 +996,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_h_19_guira_bongo_cc.webp": {
-"v": "vc/s2/vc_h_19_guira_bongo_cc.mp4?h=214288c5",
-"b": 1418098,
+"v": "vc/s2/vc_h_19_guira_bongo_cc.mp4?h=0f614044",
+"b": 1412492,
 "d": 2,
 "z": [
 1.0447,
@@ -1026,8 +1006,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_h_20_break_de_locos.webp": {
-"v": "vc/s2/vc_h_20_break_de_locos.mp4?h=dfe373e8",
-"b": 1764440,
+"v": "vc/s2/vc_h_20_break_de_locos.mp4?h=441b7c00",
+"b": 1764677,
 "d": 2,
 "z": [
 1,
@@ -1036,8 +1016,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_h_21_guira_caminando.webp": {
-"v": "vc/s2/vc_h_21_guira_caminando.mp4?h=ea46f7f0",
-"b": 1513565,
+"v": "vc/s2/vc_h_21_guira_caminando.mp4?h=f5d1da47",
+"b": 1514402,
 "d": 2,
 "z": [
 1.0447,
@@ -1046,8 +1026,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_h_22_estribillo.webp": {
-"v": "vc/s2/vc_h_22_estribillo.mp4?h=c42431ae",
-"b": 1757906,
+"v": "vc/s2/vc_h_22_estribillo.mp4?h=7d53eb0b",
+"b": 1756950,
 "d": 2,
 "z": [
 1,
@@ -1056,8 +1036,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_h_37_ramoncito_canta_pp.webp": {
-"v": "vc/s2/vc_h_37_ramoncito_canta_pp.mp4?h=8ac060e6",
-"b": 1565105,
+"v": "vc/s2/vc_h_37_ramoncito_canta_pp.mp4?h=1eac5a6b",
+"b": 1567767,
 "d": 2,
 "z": [
 1.0552,
@@ -1066,8 +1046,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_h_23_diabla_cc.webp": {
-"v": "vc/s2/vc_h_23_diabla_cc.mp4?h=e1b3fc77",
-"b": 941743,
+"v": "vc/s2/vc_h_23_diabla_cc.mp4?h=f8e18376",
+"b": 940625,
 "d": 2,
 "z": [
 1,
@@ -1076,8 +1056,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_h_24_bajo_cc.webp": {
-"v": "vc/s2/vc_h_24_bajo_cc.mp4?h=d3ea97f4",
-"b": 959543,
+"v": "vc/s2/vc_h_24_bajo_cc.mp4?h=3f66cf35",
+"b": 965704,
 "d": 2,
 "z": [
 1.0376,
@@ -1086,8 +1066,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_h_25_guira_quietica.webp": {
-"v": "vc/s2/vc_h_25_guira_quietica.mp4?h=cc2ae36e",
-"b": 1188153,
+"v": "vc/s2/vc_h_25_guira_quietica.mp4?h=90e752a8",
+"b": 1189043,
 "d": 2,
 "z": [
 1,
@@ -1096,8 +1076,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_h_35_pies_bailando.webp": {
-"v": "vc/s2/vc_h_35_pies_bailando.mp4?h=fc10b84c",
-"b": 883698,
+"v": "vc/s2/vc_h_35_pies_bailando.mp4?h=cf63ef4b",
+"b": 879795,
 "d": 2,
 "z": [
 1.0341,
@@ -1106,8 +1086,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_h_39_diabla_solo.webp": {
-"v": "vc/s2/vc_h_39_diabla_solo.mp4?h=e671fb39",
-"b": 1606996,
+"v": "vc/s2/vc_h_39_diabla_solo.mp4?h=2173fa22",
+"b": 1601907,
 "d": 2,
 "z": [
 1,
@@ -1116,8 +1096,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_h_26_barrio_santo_domingo.webp": {
-"v": "vc/s2/vc_h_26_barrio_santo_domingo.mp4?h=7e416090",
-"b": 1667009,
+"v": "vc/s2/vc_h_26_barrio_santo_domingo.mp4?h=1c072752",
+"b": 1670194,
 "d": 2,
 "z": [
 1.0411,
@@ -1126,8 +1106,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_h_27_amargue_patio.webp": {
-"v": "vc/s2/vc_h_27_amargue_patio.mp4?h=118b943a",
-"b": 952324,
+"v": "vc/s2/vc_h_27_amargue_patio.mp4?h=8bf5ae07",
+"b": 952167,
 "d": 2,
 "z": [
 1,
@@ -1136,8 +1116,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_h_28_ritmica_contratiempo.webp": {
-"v": "vc/s2/vc_h_28_ritmica_contratiempo.mp4?h=631bc837",
-"b": 1073062,
+"v": "vc/s2/vc_h_28_ritmica_contratiempo.mp4?h=bb13241e",
+"b": 1074826,
 "d": 2,
 "z": [
 1.0411,
@@ -1146,8 +1126,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s2/vc_h_29_diabla_puntea.webp": {
-"v": "vc/s2/vc_h_29_diabla_puntea.mp4?h=93f3a7b6",
-"b": 1159185,
+"v": "vc/s2/vc_h_29_diabla_puntea.mp4?h=d01cfe09",
+"b": 1153717,
 "d": 2,
 "z": [
 1,
@@ -1156,8 +1136,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_h_38_ramoncito_canta_pp.webp": {
-"v": "vc/s2/vc_h_38_ramoncito_canta_pp.mp4?h=f846e6ff",
-"b": 1704487,
+"v": "vc/s2/vc_h_38_ramoncito_canta_pp.mp4?h=6a048450",
+"b": 1706255,
 "d": 2,
 "z": [
 1.0552,
@@ -1166,8 +1146,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s2/vc_h_32_eso_es_bachata.webp": {
-"v": "vc/s2/vc_h_32_eso_es_bachata.mp4?h=c907ec71",
-"b": 9591620,
+"v": "vc/s2/vc_h_32_eso_es_bachata.mp4?h=0f5c4441",
+"b": 9609716,
 "d": 2,
 "z": [
 1,
@@ -1356,8 +1336,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s3/vc_b_16_hoja_banda.webp": {
-"v": "vc/s3/vc_b_16_hoja_banda.mp4?h=85fd49cb",
-"b": 2413727,
+"v": "vc/s3/vc_b_16_hoja_banda.mp4?h=1d200fb4",
+"b": 2460033,
 "d": 3,
 "z": [
 1.0708,
@@ -1366,8 +1346,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s3/vc_b_36_seutom_canta_pp.webp": {
-"v": "vc/s3/vc_b_36_seutom_canta_pp.mp4?h=6a1146c0",
-"b": 1415208,
+"v": "vc/s3/vc_b_36_seutom_canta_pp.mp4?h=acaf6a2e",
+"b": 1444649,
 "d": 3,
 "z": [
 1,
@@ -1376,8 +1356,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s3/vc_b_18_junto_al_mar_canta.webp": {
-"v": "vc/s3/vc_b_18_junto_al_mar_canta.mp4?h=d7016917",
-"b": 955121,
+"v": "vc/s3/vc_b_18_junto_al_mar_canta.mp4?h=24162925",
+"b": 967329,
 "d": 3,
 "z": [
 1.0336,
@@ -1386,8 +1366,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s3/vc_b_19_brisa_terraza.webp": {
-"v": "vc/s3/vc_b_19_brisa_terraza.mp4?h=d1deb321",
-"b": 2196884,
+"v": "vc/s3/vc_b_19_brisa_terraza.mp4?h=4364ce81",
+"b": 2227748,
 "d": 3,
 "z": [
 1,
@@ -1396,8 +1376,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s3/vc_b_20_guitarra_pulgar_cc.webp": {
-"v": "vc/s3/vc_b_20_guitarra_pulgar_cc.mp4?h=98c356a5",
-"b": 852531,
+"v": "vc/s3/vc_b_20_guitarra_pulgar_cc.mp4?h=3b705c66",
+"b": 871512,
 "d": 3,
 "z": [
 1.0371,
@@ -1406,8 +1386,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s3/vc_b_26_contrabajo_cc.webp": {
-"v": "vc/s3/vc_b_26_contrabajo_cc.mp4?h=e25b5b1e",
-"b": 1280787,
+"v": "vc/s3/vc_b_26_contrabajo_cc.mp4?h=21ed2229",
+"b": 1304514,
 "d": 3,
 "z": [
 1,
@@ -1416,8 +1396,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s3/vc_b_21_acorde_tarde_cc.webp": {
-"v": "vc/s3/vc_b_21_acorde_tarde_cc.mp4?h=1c430f2b",
-"b": 1951397,
+"v": "vc/s3/vc_b_21_acorde_tarde_cc.mp4?h=8f7eef62",
+"b": 1979505,
 "d": 3,
 "z": [
 1.0714,
@@ -1426,8 +1406,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s3/vc_b_22_bossa_nova_sonrie.webp": {
-"v": "vc/s3/vc_b_22_bossa_nova_sonrie.mp4?h=fe1b649d",
-"b": 1459427,
+"v": "vc/s3/vc_b_22_bossa_nova_sonrie.mp4?h=cff11b2a",
+"b": 1476624,
 "d": 3,
 "z": [
 1,
@@ -1436,8 +1416,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s3/vc_b_27_piano_cc.webp": {
-"v": "vc/s3/vc_b_27_piano_cc.mp4?h=4121ccff",
-"b": 1741109,
+"v": "vc/s3/vc_b_27_piano_cc.mp4?h=fb1501a1",
+"b": 1774232,
 "d": 3,
 "z": [
 1.0611,
@@ -1446,8 +1426,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s3/vc_b_37_seutom_canta_pp.webp": {
-"v": "vc/s3/vc_b_37_seutom_canta_pp.mp4?h=5ad25316",
-"b": 1079068,
+"v": "vc/s3/vc_b_37_seutom_canta_pp.mp4?h=f976a58a",
+"b": 1098520,
 "d": 3,
 "z": [
 1,
@@ -1456,8 +1436,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s3/vc_b_24_aro_toc_cc.webp": {
-"v": "vc/s3/vc_b_24_aro_toc_cc.mp4?h=b2ecc040",
-"b": 2012193,
+"v": "vc/s3/vc_b_24_aro_toc_cc.mp4?h=95c88720",
+"b": 2054036,
 "d": 3,
 "z": [
 1.068,
@@ -1466,8 +1446,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s3/vc_b_31_banda_completa.webp": {
-"v": "vc/s3/vc_b_31_banda_completa.mp4?h=716439fb",
-"b": 2614988,
+"v": "vc/s3/vc_b_31_banda_completa.mp4?h=ca8d1256",
+"b": 2656975,
 "d": 3,
 "z": [
 1,
@@ -1476,8 +1456,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s3/vc_b_25_cafe_ipanema.webp": {
-"v": "vc/s3/vc_b_25_cafe_ipanema.mp4?h=3e48e2b2",
-"b": 1633965,
+"v": "vc/s3/vc_b_25_cafe_ipanema.mp4?h=0448b3dc",
+"b": 1661410,
 "d": 3,
 "z": [
 1.0542,
@@ -1486,8 +1466,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s3/vc_b_30_amigos_escuchan.webp": {
-"v": "vc/s3/vc_b_30_amigos_escuchan.mp4?h=52951e9b",
-"b": 1549742,
+"v": "vc/s3/vc_b_30_amigos_escuchan.mp4?h=214b527e",
+"b": 1570529,
 "d": 3,
 "z": [
 1,
@@ -1496,8 +1476,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s3/vc_b_28_voz_secreto.webp": {
-"v": "vc/s3/vc_b_28_voz_secreto.mp4?h=1833839b",
-"b": 1761539,
+"v": "vc/s3/vc_b_28_voz_secreto.mp4?h=f38f6cdc",
+"b": 1796300,
 "d": 3,
 "z": [
 1.068,
@@ -1506,8 +1486,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s3/vc_b_29_nueva_onda_rio.webp": {
-"v": "vc/s3/vc_b_29_nueva_onda_rio.mp4?h=d9267eb8",
-"b": 1052405,
+"v": "vc/s3/vc_b_29_nueva_onda_rio.mp4?h=54284a2d",
+"b": 1073472,
 "d": 3,
 "z": [
 1,
@@ -1516,8 +1496,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s3/vc_b_38_seutom_canta_pp.webp": {
-"v": "vc/s3/vc_b_38_seutom_canta_pp.mp4?h=aae7a805",
-"b": 856402,
+"v": "vc/s3/vc_b_38_seutom_canta_pp.mp4?h=32492aeb",
+"b": 875675,
 "d": 3,
 "z": [
 1.0371,
@@ -1526,8 +1506,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s3/vc_b_17_seutom_micro.webp": {
-"v": "vc/s3/vc_b_17_seutom_micro.mp4?h=efd8c92a",
-"b": 2208666,
+"v": "vc/s3/vc_b_17_seutom_micro.mp4?h=69317c37",
+"b": 2248207,
 "d": 3,
 "z": [
 1,
@@ -1536,8 +1516,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s3/vc_b_35_pies_bossa.webp": {
-"v": "vc/s3/vc_b_35_pies_bossa.mp4?h=3c83c510",
-"b": 1271751,
+"v": "vc/s3/vc_b_35_pies_bossa.mp4?h=16a661c9",
+"b": 1286547,
 "d": 3,
 "z": [
 1.0439,
@@ -1546,8 +1526,8 @@ BLUES.VIDEOS = {
 "o": 0.5
 },
 "img/s3/vc_b_32_que_beleza_final.webp": {
-"v": "vc/s3/vc_b_32_que_beleza_final.mp4?h=ae02c897",
-"b": 1669220,
+"v": "vc/s3/vc_b_32_que_beleza_final.mp4?h=71a725b3",
+"b": 1695237,
 "d": 3,
 "z": [
 1,
@@ -1646,8 +1626,8 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s4/vc_sa_31_orquesta_estribillo.webp": {
-"v": "vc/s4/vc_sa_31_orquesta_estribillo.mp4?h=5f2db1d8",
-"b": 1962056,
+"v": "vc/s4/vc_sa_31_orquesta_estribillo.mp4?h=9f56d744",
+"b": 1897447,
 "d": 4,
 "z": [
 1,
@@ -1716,58 +1696,18 @@ BLUES.VIDEOS = {
 "o": 0
 },
 "img/s4/vc_sa_30_publico_bailando.webp": {
-"v": "vc/s4/vc_sa_30_publico_bailando.mp4?h=92bc748e",
-"b": 2655768,
+"v": "vc/s4/vc_sa_30_publico_bailando.mp4?h=60004752",
+"b": 1681135,
 "d": 4,
 "z": [
-1.0719,
+1.0492,
 1
 ],
 "o": 0
 },
-"img/s4/vc_sa_29_mambo_metales.webp": {
-"v": "vc/s4/vc_sa_29_mambo_metales.mp4?h=412a542f",
-"b": 2282676,
-"d": 4,
-"z": [
-1,
-1.0673
-],
-"o": 0.5
-},
-"img/s4/vc_sa_35_pies_bailando_salsa.webp": {
-"v": "vc/s4/vc_sa_35_pies_bailando_salsa.mp4?h=48f50eed",
-"b": 2324009,
-"d": 4,
-"z": [
-1.0719,
-1
-],
-"o": 0.5
-},
-"img/s4/vc_sa_44_papo_canta_pp.webp": {
-"v": "vc/s4/vc_sa_44_papo_canta_pp.mp4?h=7997e73c",
-"b": 2237795,
-"d": 4,
-"z": [
-1,
-1.0673
-],
-"o": 0
-},
-"img/s4/vc_sa_32_papo_wepa_final.webp": {
-"v": "vc/s4/vc_sa_32_papo_wepa_final.mp4?h=69889820",
-"b": 4078263,
-"d": 4,
-"z": [
-1.08,
-1
-],
-"o": 0
-},
-"img/s4/vc_kz_16_hoja_banda.webp": {
-"v": "vc/s4/vc_kz_16_hoja_banda.mp4?h=90864846",
-"b": 4324013,
+"img/s4/vc_sa_49_piano_solo.webp": {
+"v": "vc/s4/vc_sa_49_piano_solo.mp4?h=e4337f3d",
+"b": 3002594,
 "d": 4,
 "z": [
 1,
@@ -1775,159 +1715,199 @@ BLUES.VIDEOS = {
 ],
 "o": 0.5
 },
-"img/s4/vc_kz_42_luena_canta_pp.webp": {
-"v": "vc/s4/vc_kz_42_luena_canta_pp.mp4?h=eb3e8a04",
-"b": 1378710,
+"img/s4/vc_sa_29_mambo_metales.webp": {
+"v": "vc/s4/vc_sa_29_mambo_metales.mp4?h=ed60253f",
+"b": 1596552,
 "d": 4,
 "z": [
-1.0484,
+1.0492,
 1
 ],
 "o": 0.5
 },
-"img/s4/vc_kz_19_caja_ritmos_cc.webp": {
-"v": "vc/s4/vc_kz_19_caja_ritmos_cc.mp4?h=106768ec",
-"b": 1623356,
+"img/s4/vc_sa_44_papo_canta_pp.webp": {
+"v": "vc/s4/vc_sa_44_papo_canta_pp.mp4?h=62821a98",
+"b": 1247571,
 "d": 4,
 "z": [
 1,
-1.0534
+1.0401
+],
+"o": 0
+},
+"img/s4/vc_sa_35_pies_bailando_salsa.webp": {
+"v": "vc/s4/vc_sa_35_pies_bailando_salsa.mp4?h=ad8e8d5d",
+"b": 1143688,
+"d": 4,
+"z": [
+1.0401,
+1
+],
+"o": 0
+},
+"img/s4/vc_sa_32_papo_wepa_final.webp": {
+"v": "vc/s4/vc_sa_32_papo_wepa_final.mp4?h=25a45fc6",
+"b": 4015463,
+"d": 4,
+"z": [
+1,
+1.08
+],
+"o": 0.5
+},
+"img/s4/vc_kz_16_hoja_banda.webp": {
+"v": "vc/s4/vc_kz_16_hoja_banda.mp4?h=befebddc",
+"b": 4384875,
+"d": 4,
+"z": [
+1.08,
+1
+],
+"o": 0.5
+},
+"img/s4/vc_kz_42_luena_canta_pp.webp": {
+"v": "vc/s4/vc_kz_42_luena_canta_pp.mp4?h=e39947b8",
+"b": 1373289,
+"d": 4,
+"z": [
+1,
+1.0484
+],
+"o": 0
+},
+"img/s4/vc_kz_19_caja_ritmos_cc.webp": {
+"v": "vc/s4/vc_kz_19_caja_ritmos_cc.mp4?h=1d3f324e",
+"b": 1637485,
+"d": 4,
+"z": [
+1.0534,
+1
 ],
 "o": 0
 },
 "img/s4/vc_kz_20_dembow_bajo_cc.webp": {
-"v": "vc/s4/vc_kz_20_dembow_bajo_cc.mp4?h=c585c6ac",
-"b": 1602041,
-"d": 4,
-"z": [
-1.0484,
-1
-],
-"o": 0
-},
-"img/s4/vc_kz_28_angola_mar.webp": {
-"v": "vc/s4/vc_kz_28_angola_mar.mp4?h=3a53a9b4",
-"b": 2548401,
+"v": "vc/s4/vc_kz_20_dembow_bajo_cc.mp4?h=8ad1822e",
+"b": 1559173,
 "d": 4,
 "z": [
 1,
-1.0635
+1.0484
+],
+"o": 0.5
+},
+"img/s4/vc_kz_28_angola_mar.webp": {
+"v": "vc/s4/vc_kz_28_angola_mar.mp4?h=e5b91ab3",
+"b": 2582647,
+"d": 4,
+"z": [
+1.0635,
+1
 ],
 "o": 0.5
 },
 "img/s4/vc_kz_22_tobillo_mejilla.webp": {
-"v": "vc/s4/vc_kz_22_tobillo_mejilla.mp4?h=9bd2cc25",
-"b": 1466986,
-"d": 4,
-"z": [
-1.0433,
-1
-],
-"o": 0.5
-},
-"img/s4/vc_kz_37_baile_conexion.webp": {
-"v": "vc/s4/vc_kz_37_baile_conexion.mp4?h=2f8bad54",
-"b": 1558367,
+"v": "vc/s4/vc_kz_22_tobillo_mejilla.mp4?h=b11014af",
+"b": 1413725,
 "d": 4,
 "z": [
 1,
-1.0534
+1.0433
+],
+"o": 0
+},
+"img/s4/vc_kz_37_baile_conexion.webp": {
+"v": "vc/s4/vc_kz_37_baile_conexion.mp4?h=7cf1556e",
+"b": 1571970,
+"d": 4,
+"z": [
+1.0534,
+1
 ],
 "o": 0
 },
 "img/s4/vc_kz_23_fiesta_kimbundu.webp": {
-"v": "vc/s4/vc_kz_23_fiesta_kimbundu.mp4?h=9a057ab9",
-"b": 2165140,
-"d": 4,
-"z": [
-1.0534,
-1
-],
-"o": 0
-},
-"img/s4/vc_kz_24_se_para_el_mundo.webp": {
-"v": "vc/s4/vc_kz_24_se_para_el_mundo.mp4?h=790b7920",
-"b": 2047468,
+"v": "vc/s4/vc_kz_23_fiesta_kimbundu.mp4?h=ca935617",
+"b": 2108151,
 "d": 4,
 "z": [
 1,
 1.0534
+],
+"o": 0.5
+},
+"img/s4/vc_kz_24_se_para_el_mundo.webp": {
+"v": "vc/s4/vc_kz_24_se_para_el_mundo.mp4?h=121fb05c",
+"b": 2082862,
+"d": 4,
+"z": [
+1.0534,
+1
 ],
 "o": 0.5
 },
 "img/s4/vc_kz_43_luena_canta_pp.webp": {
-"v": "vc/s4/vc_kz_43_luena_canta_pp.mp4?h=2ffe129c",
-"b": 1616127,
-"d": 4,
-"z": [
-1.0534,
-1
-],
-"o": 0.5
-},
-"img/s4/vc_kz_30_teclado_colchon_cc.webp": {
-"v": "vc/s4/vc_kz_30_teclado_colchon_cc.mp4?h=dba050e3",
-"b": 1776508,
+"v": "vc/s4/vc_kz_43_luena_canta_pp.mp4?h=944370c1",
+"b": 1597492,
 "d": 4,
 "z": [
 1,
 1.0534
+],
+"o": 0
+},
+"img/s4/vc_kz_30_teclado_colchon_cc.webp": {
+"v": "vc/s4/vc_kz_30_teclado_colchon_cc.mp4?h=d99b1018",
+"b": 1795354,
+"d": 4,
+"z": [
+1.0534,
+1
 ],
 "o": 0
 },
 "img/s4/vc_kz_21_pies_pareja.webp": {
-"v": "vc/s4/vc_kz_21_pies_pareja.mp4?h=c840d37d",
-"b": 1770967,
-"d": 4,
-"z": [
-1.0534,
-1
-],
-"o": 0
-},
-"img/s4/vc_kz_34_luces_bahia.webp": {
-"v": "vc/s4/vc_kz_34_luces_bahia.mp4?h=a9bfedeb",
-"b": 2166441,
+"v": "vc/s4/vc_kz_21_pies_pareja.mp4?h=eebe8134",
+"b": 1720474,
 "d": 4,
 "z": [
 1,
 1.0534
+],
+"o": 0.5
+},
+"img/s4/vc_kz_34_luces_bahia.webp": {
+"v": "vc/s4/vc_kz_34_luces_bahia.mp4?h=a3dc8a81",
+"b": 2206951,
+"d": 4,
+"z": [
+1.0534,
+1
 ],
 "o": 0.5
 },
 "img/s4/vc_kz_25_habla_corazon_cc.webp": {
-"v": "vc/s4/vc_kz_25_habla_corazon_cc.mp4?h=93f646c5",
-"b": 1939057,
-"d": 4,
-"z": [
-1.0534,
-1
-],
-"o": 0.5
-},
-"img/s4/vc_kz_26_bajo_abraza_cc.webp": {
-"v": "vc/s4/vc_kz_26_bajo_abraza_cc.mp4?h=d6541885",
-"b": 1815458,
+"v": "vc/s4/vc_kz_25_habla_corazon_cc.mp4?h=89cc5255",
+"b": 1951203,
 "d": 4,
 "z": [
 1,
 1.0534
+],
+"o": 0
+},
+"img/s4/vc_kz_26_bajo_abraza_cc.webp": {
+"v": "vc/s4/vc_kz_26_bajo_abraza_cc.mp4?h=b36b89e1",
+"b": 1830002,
+"d": 4,
+"z": [
+1.0534,
+1
 ],
 "o": 0
 },
 "img/s4/vc_kz_27_semba_zouk.webp": {
-"v": "vc/s4/vc_kz_27_semba_zouk.mp4?h=6af0f67c",
-"b": 2003323,
-"d": 4,
-"z": [
-1.0534,
-1
-],
-"o": 0
-},
-"img/s4/vc_kz_44_luena_canta_pp.webp": {
-"v": "vc/s4/vc_kz_44_luena_canta_pp.mp4?h=831b7995",
-"b": 1695740,
+"v": "vc/s4/vc_kz_27_semba_zouk.mp4?h=91f0a9ef",
+"b": 1947207,
 "d": 4,
 "z": [
 1,
@@ -1935,9 +1915,9 @@ BLUES.VIDEOS = {
 ],
 "o": 0.5
 },
-"img/s4/vc_kz_29_estribillo_parejas.webp": {
-"v": "vc/s4/vc_kz_29_estribillo_parejas.mp4?h=7651c614",
-"b": 2117130,
+"img/s4/vc_kz_44_luena_canta_pp.webp": {
+"v": "vc/s4/vc_kz_44_luena_canta_pp.mp4?h=f30face7",
+"b": 1720511,
 "d": 4,
 "z": [
 1.0534,
@@ -1945,44 +1925,54 @@ BLUES.VIDEOS = {
 ],
 "o": 0.5
 },
-"img/s4/vc_kz_35_pies_bailando.webp": {
-"v": "vc/s4/vc_kz_35_pies_bailando.mp4?h=9daf5058",
-"b": 2088437,
+"img/s4/vc_kz_29_estribillo_parejas.webp": {
+"v": "vc/s4/vc_kz_29_estribillo_parejas.mp4?h=8c67b8a4",
+"b": 2119870,
 "d": 4,
 "z": [
 1,
-1.0635
+1.0534
+],
+"o": 0
+},
+"img/s4/vc_kz_35_pies_bailando.webp": {
+"v": "vc/s4/vc_kz_35_pies_bailando.mp4?h=e03c6375",
+"b": 2096621,
+"d": 4,
+"z": [
+1.0635,
+1
 ],
 "o": 0
 },
 "img/s4/vc_kz_31_orquesta_estribillo.webp": {
-"v": "vc/s4/vc_kz_31_orquesta_estribillo.mp4?h=2f099389",
-"b": 3406646,
-"d": 4,
-"z": [
-1.0763,
-1
-],
-"o": 0
-},
-"img/s4/vc_kz_32_luena_final.webp": {
-"v": "vc/s4/vc_kz_32_luena_final.mp4?h=da80e603",
-"b": 2696700,
+"v": "vc/s4/vc_kz_31_orquesta_estribillo.mp4?h=95c12d49",
+"b": 3327568,
 "d": 4,
 "z": [
 1,
-1.0635
+1.0763
+],
+"o": 0.5
+},
+"img/s4/vc_kz_32_luena_final.webp": {
+"v": "vc/s4/vc_kz_32_luena_final.mp4?h=2dd79aab",
+"b": 2737956,
+"d": 4,
+"z": [
+1.0635,
+1
 ],
 "o": 0.5
 },
 "img/s4/vc_kz_36_luanda_noche.webp": {
-"v": "vc/s4/vc_kz_36_luanda_noche.mp4?h=7b601dbb",
-"b": 3188726,
+"v": "vc/s4/vc_kz_36_luanda_noche.mp4?h=a679d068",
+"b": 3199214,
 "d": 4,
 "z": [
-1.0737,
-1
+1,
+1.0737
 ],
-"o": 0.5
+"o": 0
 }
 };

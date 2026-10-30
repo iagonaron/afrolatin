@@ -234,7 +234,16 @@ BLUES.dia(4, {
      "img": "img/s4/inst_s_cencerro.webp",
      "loop": "loops/s4/salsa_timbal_estribillo.mp3",
      "vueltas": 1
-    }
+    },
+    "secciones": [
+     "Estrofa",
+     "Estribillo"
+    ]
+   },
+   "mus": {
+    "src": "mus/s4_salsa_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -276,7 +285,16 @@ BLUES.dia(4, {
      "img": "img/s4/inst_s_cencerro_b.webp",
      "loop": "loops/s4/salsa_bongo_estribillo.mp3",
      "vueltas": 1
-    }
+    },
+    "secciones": [
+     "Estrofa",
+     "Estribillo"
+    ]
+   },
+   "mus": {
+    "src": "mus/s4_salsa_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -315,6 +333,11 @@ BLUES.dia(4, {
      "img/s4/inst_s_cencerro.webp",
      "img/s4/inst_s_cencerro_b_esc.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s4_salsa_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -350,6 +373,11 @@ BLUES.dia(4, {
      "img/s4/inst_s_conga.webp"
     ],
     "nivK": 0.6
+   },
+   "mus": {
+    "src": "mus/s4_salsa_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -385,6 +413,11 @@ BLUES.dia(4, {
      "img/s4/inst_s_congas.webp"
     ],
     "nivK": 0.6
+   },
+   "mus": {
+    "src": "mus/s4_salsa_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -454,7 +487,12 @@ BLUES.dia(4, {
       "img/s3/inst_b_piano.webp"
      ]
     }
-   ]
+   ],
+   "mus": {
+    "src": "mus/s4_salsa_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
+   }
   },
   {
    "id": "s4_s8",
@@ -773,13 +811,13 @@ BLUES.dia(4, {
      },
      {
       "t": 89.256,
-      "img": "img/s4/vc_sa_29_mambo_metales.webp",
-      "txt": "mambo metales"
+      "img": "img/s4/vc_sa_49_piano_solo.webp",
+      "txt": "piano solo"
      },
      {
-      "t": 96.499,
-      "img": "img/s4/vc_sa_35_pies_bailando_salsa.webp",
-      "txt": "pies bailando salsa"
+      "t": 99.518,
+      "img": "img/s4/vc_sa_29_mambo_metales.webp",
+      "txt": "mambo metales"
      },
      {
       "t": 104.347,
@@ -787,9 +825,19 @@ BLUES.dia(4, {
       "txt": "papo canta pp"
      },
      {
+      "t": 107.968,
+      "img": "img/s4/vc_sa_35_pies_bailando_salsa.webp",
+      "txt": "pies bailando salsa"
+     },
+     {
       "t": 111.59,
       "img": "img/s4/vc_sa_30_publico_bailando.webp",
       "txt": "publico bailando"
+     },
+     {
+      "t": 115.815,
+      "img": "img/s4/vc_sa_29_mambo_metales.webp",
+      "txt": "mambo metales"
      },
      {
       "t": 119.437,
@@ -1700,7 +1748,7 @@ BLUES.dia(4, {
     "RECURSO_MB1": "img/s4/vc_sa_29_mambo_metales.webp",
     "RECURSO_MB2": "img/s4/vc_sa_18_bongo_martillando.webp",
     "RECURSO_MB3": "img/s4/vc_sa_46_saxos_metales.webp",
-    "RECURSO_MB4": "img/s4/vc_sa_20_chucho_una_conga.webp"
+    "RECURSO_MB4": "img/s4/vc_sa_30_publico_bailando.webp"
    }
   },
   {
@@ -1760,7 +1808,7 @@ BLUES.dia(4, {
    "mapa": {
     "desde": "Nueva York",
     "hasta": "Angola · Luanda",
-    "sub": "Angola, Luanda: aquí nació la kizomba",
+    "sub": "Luanda, Angola: aquí nació la kizomba",
     "dur": 11,
     "vehiculo": "el avión",
     "ruta": [
@@ -1876,7 +1924,7 @@ BLUES.dia(4, {
    "id": "s4_k3",
    "nombre": "Reconocerla · el dembow",
    "img": "img/s4/k_terraza.webp",
-   "desc": "La terraza vacía con los instrumentos; el reguetón, golpeado.",
+   "desc": "La terraza vacía con los instrumentos; el reggaetón, golpeado.",
    "amb": [],
    "personajes": [
     "LUENA"
@@ -1892,7 +1940,7 @@ BLUES.dia(4, {
    "inter": {
     "tipo": "instrumento",
     "id": "kiz_reggaeton",
-    "nom": "El dembow del reguetón: golpeado",
+    "nom": "El dembow del reggaetón: golpeado",
     "img": "img/s4/inst_k_caja.webp",
     "loop": "loops/s4/kiz_reggaeton.mp3",
     "color": "#7A7A8C",
@@ -1904,6 +1952,11 @@ BLUES.dia(4, {
      "loops/s4/kiz_reggaeton.mp3",
      "img/s4/inst_k_caja.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s4_kizomba_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -1919,7 +1972,7 @@ BLUES.dia(4, {
     {
      "id": "s4_l04b",
      "quien": "LUENA",
-     "texto": "Es el mismo dibujo que el del reguetón, el dembow… solo que aquí va acariciado, en vez de golpeado.",
+     "texto": "Es el mismo dibujo que el del reggaetón, el dembow… solo que aquí va acariciado, en vez de golpeado.",
      "voz": "voz/s4/s4_l04b.mp3"
     }
    ],
@@ -1938,6 +1991,11 @@ BLUES.dia(4, {
      "loops/s4/kiz_ritmo.mp3",
      "img/s4/inst_k_caja.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s4_kizomba_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -1991,7 +2049,12 @@ BLUES.dia(4, {
       "img/s4/inst_k_teclado.webp"
      ]
     }
-   ]
+   ],
+   "mus": {
+    "src": "mus/s4_kizomba_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
+   }
   },
   {
    "id": "s4_k5",
@@ -2035,7 +2098,7 @@ BLUES.dia(4, {
     {
      "id": "s4_l08",
      "quien": "LUENA",
-     "texto": "Por eso es la joya escondida de este viaje: si te gusta el reguetón… esto te va a encantar.",
+     "texto": "Por eso es la joya escondida de este viaje: si te gusta el reggaetón… esto te va a encantar.",
      "voz": "voz/s4/s4_l08.mp3"
     }
    ],
@@ -2980,7 +3043,7 @@ BLUES.dia(4, {
   {
    "id": "s4_r1",
    "nombre": "Repaso del sabor 4",
-   "img": "img/s4/r_resumen.webp",
+   "img": "img/s4/r_repaso.webp",
    "desc": "Papo, Don Mamberto y Luena juntos (sus PNG) entre las fichas, sobre el plató y la terraza desenfocados.",
    "amb": [],
    "personajes": [
@@ -3019,7 +3082,7 @@ BLUES.dia(4, {
   {
    "id": "s4_q",
    "nombre": "Quiz",
-   "img": "img/s4/mapa_atlantico.webp",
+   "img": "img/quiz/fondo_quiz.webp",
    "quiz": true,
    "desc": "Quiz en directo tipo Kahoot (móviles con el QR o, sin red, en voz alta): reconocer cada género visto con 15 s de una canción real y teoría del sabor.",
    "amb": [],
@@ -3030,7 +3093,7 @@ BLUES.dia(4, {
     "tipo": "quiz",
     "sabor": 4,
     "recursos": [
-     "img/s4/mapa_atlantico.webp",
+     "img/quiz/fondo_quiz.webp",
      "mus/portada.mp3",
      "voz/squiz/q_n_intro.mp3",
      "voz/squiz/q_n_fin9.mp3",
@@ -3040,7 +3103,7 @@ BLUES.dia(4, {
      "voz/squiz/q_n_rec1.mp3",
      "mus/quiz/merengue_7.4.mp3",
      "voz/squiz/q_n_rec2.mp3",
-     "mus/quiz/bolero_video1.mp3",
+     "mus/quiz/bolero_video3.mp3",
      "voz/squiz/q_n_rec3.mp3",
      "mus/quiz/bachata_7.4.mp3",
      "mus/quiz/samba_7.2.mp3",
@@ -3099,7 +3162,19 @@ BLUES.dia(4, {
      "voz/squiz/q_r_s4_t11.mp3",
      "voz/squiz/q_chucho.mp3",
      "voz/s4/s4_grito.mp3",
-     "img/s4/pj/chucho_explica.webp"
+     "img/s4/pj/chucho_explica.webp",
+     "mus/quiz/fondo_salsa.mp3",
+     "loops/s4/mambo_vientos.mp3",
+     "mus/quiz/fondo_kizomba.mp3",
+     "mus/quiz/fondo_bolero.mp3",
+     "sfx/quiz/tic.mp3",
+     "sfx/quiz/cuenta.mp3",
+     "sfx/quiz/cierre.mp3",
+     "sfx/quiz/buena.mp3",
+     "sfx/quiz/clasif.mp3",
+     "sfx/quiz/puesto.mp3",
+     "sfx/quiz/podio.mp3",
+     "sfx/s1/aplausos.mp3"
     ]
    }
   }

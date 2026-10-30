@@ -254,6 +254,11 @@ BLUES.dia(2, {
      "loops/s2/bolero_maracas.mp3",
      "img/s2/inst_b_maracas.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s2_bolero_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -290,6 +295,11 @@ BLUES.dia(2, {
      "img/s2/inst_b_congas.webp"
     ],
     "nivK": 0.6
+   },
+   "mus": {
+    "src": "mus/s2_bolero_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -326,6 +336,11 @@ BLUES.dia(2, {
      "img/s2/inst_b_guitarra.webp"
     ],
     "img2": "img/s1/inst_m_bajo.webp"
+   },
+   "mus": {
+    "src": "mus/s2_bolero_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -1597,7 +1612,12 @@ BLUES.dia(2, {
      ],
      "nivK": 0.6
     }
-   ]
+   ],
+   "mus": {
+    "src": "mus/s2_bachata_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
+   }
   },
   {
    "id": "s2_h4",
@@ -1632,6 +1652,11 @@ BLUES.dia(2, {
      "img/s2/inst_bongo.webp"
     ],
     "img2": "img/s1/inst_m_guira.webp"
+   },
+   "mus": {
+    "src": "mus/s2_bachata_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -1669,6 +1694,11 @@ BLUES.dia(2, {
      "img/s2/inst_bongo.webp"
     ],
     "img2": "img/s2/inst_bongo.webp"
+   },
+   "mus": {
+    "src": "mus/s2_bachata_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -1705,6 +1735,11 @@ BLUES.dia(2, {
      "img/s1/inst_m_bajo_h.webp"
     ],
     "nivK": 0.6
+   },
+   "mus": {
+    "src": "mus/s2_bachata_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -1757,7 +1792,12 @@ BLUES.dia(2, {
       "img/s2/inst_h_diabla.webp"
      ]
     }
-   ]
+   ],
+   "mus": {
+    "src": "mus/s2_bachata_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
+   }
   },
   {
    "id": "s2_h7b",
@@ -1775,7 +1815,12 @@ BLUES.dia(2, {
      "texto": "Y otra pista: la bachata suele cantarla una voz de hombre, muy aguda… ¡Pero ojo! Eso es solo una referencia: cualquier voz puede cantar bachata.",
      "voz": "voz/s2/s2_h12.mp3"
     }
-   ]
+   ],
+   "mus": {
+    "src": "mus/s2_bachata_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
+   }
   },
   {
    "id": "s2_h8",
@@ -2850,7 +2895,7 @@ BLUES.dia(2, {
   {
    "id": "s2_r1",
    "nombre": "Repaso del sabor 2",
-   "img": "img/s2/r_resumen.webp",
+   "img": "img/s2/r_repaso.webp",
    "desc": "Faustino y Ramoncito juntos (sus PNG) entre las dos fichas, sobre el salón y el patio desenfocados.",
    "amb": [],
    "personajes": [
@@ -2881,7 +2926,7 @@ BLUES.dia(2, {
   {
    "id": "s2_q",
    "nombre": "Quiz",
-   "img": "img/s2/mapa_cuba_rd.webp",
+   "img": "img/quiz/fondo_quiz.webp",
    "quiz": true,
    "desc": "Quiz en directo tipo Kahoot (móviles con el QR o, sin red, en voz alta): reconocer cada género visto con 15 s de una canción real y teoría del sabor.",
    "amb": [],
@@ -2892,7 +2937,7 @@ BLUES.dia(2, {
     "tipo": "quiz",
     "sabor": 2,
     "recursos": [
-     "img/s2/mapa_cuba_rd.webp",
+     "img/quiz/fondo_quiz.webp",
      "mus/portada.mp3",
      "voz/squiz/q_n_intro_s2.mp3",
      "voz/squiz/q_n_pleno.mp3",
@@ -2938,7 +2983,17 @@ BLUES.dia(2, {
      "voz/squiz/q_n_s2_t10.mp3",
      "voz/squiz/q_r_s2_t10.mp3",
      "voz/squiz/q_n_s2_t11.mp3",
-     "voz/squiz/q_r_s2_t11.mp3"
+     "voz/squiz/q_r_s2_t11.mp3",
+     "mus/quiz/fondo_bolero.mp3",
+     "mus/quiz/fondo_bachata.mp3",
+     "sfx/quiz/tic.mp3",
+     "sfx/quiz/cuenta.mp3",
+     "sfx/quiz/cierre.mp3",
+     "sfx/quiz/buena.mp3",
+     "sfx/quiz/clasif.mp3",
+     "sfx/quiz/puesto.mp3",
+     "sfx/quiz/podio.mp3",
+     "sfx/s1/aplausos.mp3"
     ]
    }
   }

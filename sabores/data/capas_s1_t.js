@@ -557,7 +557,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 6.2
 ],
 "t": 2.72,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s1_021": [
@@ -598,7 +599,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 9.52
 ],
 "t": 1.1,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s1_022": [
@@ -629,7 +631,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 3.64
 ],
 "t": 1.08,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s1_023": [
@@ -660,7 +663,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 3.02
 ],
 "t": 0.9,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s1_024": [
@@ -994,7 +998,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 4.38
 ],
 "t": 1.52,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s1_m09": [
@@ -1025,7 +1030,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 3.82
 ],
 "t": 0.8,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s1_m10": [
@@ -1064,7 +1070,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 2.74
 ],
 "t": 1.66,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s1_m11": [
@@ -1155,7 +1162,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s1/inst_tambor.webp",
 "img/s1/inst_bajo.webp"
 ],
-"tira": "der"
+"tira": "colizq"
 },
 {
 "son": [
@@ -1169,7 +1176,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s1/inst_guacharaca.webp"
 ],
-"tira": "der"
+"tira": "colizq"
 },
 {
 "son": [
@@ -1183,7 +1190,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s1/inst_contratiempo.webp"
 ],
-"tira": "der"
+"tira": "colizq"
 }
 ],
 "s1_r02": [
@@ -1218,7 +1225,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s1/inst_m_bajo.webp",
 "img/s1/inst_m_piano.webp"
 ],
-"tira": "der"
+"tira": "colder"
 },
 {
 "son": [
@@ -1232,7 +1239,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s1/inst_m_guira.webp"
 ],
-"tira": "der"
+"tira": "colder"
 },
 {
 "son": [
@@ -1246,7 +1253,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s1/inst_m_tambora.webp"
 ],
-"tira": "der"
+"tira": "colder"
 }
 ],
 "s1_r03": [

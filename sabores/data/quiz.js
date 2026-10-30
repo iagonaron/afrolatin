@@ -11,6 +11,9 @@
     "quien": "CANDE",
     "texto": "Es cumbia, mijos: tempo tranquilo, la guacharaca con su negra y dos corcheas… y el teclado en el contratiempo.",
     "audio": "voz/squiz/q_cumbia_res.mp3"
+   },
+   "fondo": {
+    "src": "mus/quiz/fondo_cumbia.mp3"
    }
   },
   "merengue": {
@@ -22,6 +25,9 @@
     "quien": "YUNIOR",
     "texto": "¡Es merengue! El mismo ritmo que la cumbia, pero a toda pastilla: escucha la güira y la tambora.",
     "audio": "voz/squiz/q_merengue_res.mp3"
+   },
+   "fondo": {
+    "src": "mus/quiz/fondo_merengue.mp3"
    }
   },
   "bolero": {
@@ -33,6 +39,9 @@
     "quien": "FAUSTINO",
     "texto": "Es un bolero, jóvenes: lento y en cuatro, con las maracas y su tresillo… y el remate de las congas.",
     "audio": "voz/squiz/q_bolero_res.mp3"
+   },
+   "fondo": {
+    "src": "mus/quiz/fondo_bolero.mp3"
    }
   },
   "bachata": {
@@ -44,6 +53,9 @@
     "quien": "RAMONCITO",
     "texto": "Es bachata, mi gente: la guitarra diabla que puntea, la güira y el bongó… y el bajo, una larga y dos cortas.",
     "audio": "voz/squiz/q_bachata_res.mp3"
+   },
+   "fondo": {
+    "src": "mus/quiz/fondo_bachata.mp3"
    }
   },
   "samba": {
@@ -55,6 +67,9 @@
     "quien": "RITINHA",
     "texto": "¡Es samba, gente! Carnaval en la calle: los surdos, los tambores grandes… y el apito, que manda.",
     "audio": "voz/squiz/q_samba_res.mp3"
+   },
+   "fondo": {
+    "src": "mus/quiz/fondo_samba.mp3"
    }
   },
   "bossa": {
@@ -66,6 +81,9 @@
     "quien": "SEU TOM",
     "texto": "Es bossa nova… bajito y sin prisa: una guitarra que lo hace todo y la percusión de puntillas.",
     "audio": "voz/squiz/q_bossa_res.mp3"
+   },
+   "fondo": {
+    "src": "mus/quiz/fondo_bossa.mp3"
    }
   },
   "salsa": {
@@ -77,6 +95,9 @@
     "quien": "PAPO VEGA",
     "texto": "¡Es salsa! La clave, debajo de todo… y en el estribillo, ¡los cencerros!",
     "audio": "voz/squiz/q_salsa_res.mp3"
+   },
+   "fondo": {
+    "src": "mus/quiz/fondo_salsa.mp3"
    }
   },
   "mambo": {
@@ -88,6 +109,10 @@
     "quien": "DON MAMBERTO",
     "texto": "¡Es mambo! Los vientos: saxos abajo, trompetas arriba… mucho flow… ¡y el grito!",
     "audio": "voz/squiz/q_mambo_res.mp3"
+   },
+   "fondo": {
+    "src": "loops/s4/mambo_vientos.mp3",
+    "bucle": true
    }
   },
   "kizomba": {
@@ -99,8 +124,21 @@
     "quien": "LUENA",
     "texto": "Es kizomba: lenta, programada… el dembow, pero acariciado, y un bajo muy profundo.",
     "audio": "voz/squiz/q_kizomba_res.mp3"
+   },
+   "fondo": {
+    "src": "mus/quiz/fondo_kizomba.mp3"
    }
   }
+ },
+ "sfx": {
+  "tic": "sfx/quiz/tic.mp3",
+  "cuenta": "sfx/quiz/cuenta.mp3",
+  "cierre": "sfx/quiz/cierre.mp3",
+  "buena": "sfx/quiz/buena.mp3",
+  "clasif": "sfx/quiz/clasif.mp3",
+  "puesto": "sfx/quiz/puesto.mp3",
+  "podio": "sfx/quiz/podio.mp3",
+  "aplausos": "sfx/s1/aplausos.mp3"
  },
  "kahoot": {
   "opciones_reconocer": 4,
@@ -128,6 +166,7 @@
       "desde": 186.0,
       "dur": 15.0,
       "src": "mus/quiz/cumbia_7.2.mp3",
+      "total": 45.0,
       "carpeta": "7.2"
      },
      "narrador": {
@@ -144,6 +183,7 @@
       "dur": 15.0,
       "src": "mus/quiz/merengue_7.2.mp3",
       "nota": "(Iago 23:01) opción C",
+      "total": 45.0,
       "carpeta": "7.2"
      },
      "narrador": {
@@ -159,6 +199,7 @@
       "desde": 128.0,
       "dur": 15.0,
       "src": "mus/quiz/bolero_7.2.mp3",
+      "total": 45.0,
       "carpeta": "7.2"
      },
      "narrador": {
@@ -174,6 +215,7 @@
       "desde": 56.0,
       "dur": 15.0,
       "src": "mus/quiz/bachata_7.2.mp3",
+      "total": 45.0,
       "carpeta": "7.2"
      },
      "narrador": {
@@ -404,7 +446,7 @@
      "opciones": [
       "Una larga y dos cortas",
       "Cuatro negras iguales",
-      "Nunca toca en el uno",
+      "(Casi) nunca toca en el uno",
       "Una nota larga por compás"
      ],
      "correcta": 0,
@@ -509,6 +551,7 @@
       "desde": 194.0,
       "dur": 15.0,
       "src": "mus/quiz/cumbia_7.3.mp3",
+      "total": 45.0,
       "carpeta": "7.3"
      },
      "narrador": {
@@ -524,6 +567,7 @@
       "desde": 158.0,
       "dur": 15.0,
       "src": "mus/quiz/merengue_7.3.mp3",
+      "total": 45.0,
       "carpeta": "7.3"
      },
      "narrador": {
@@ -539,6 +583,7 @@
       "desde": 126.0,
       "dur": 15.0,
       "src": "mus/quiz/bolero_7.3.mp3",
+      "total": 45.0,
       "carpeta": "7.3"
      },
      "narrador": {
@@ -555,6 +600,7 @@
       "dur": 15.0,
       "src": "mus/quiz/bachata_video2.mp3",
       "nota": "(Iago 23:00) bachata del sabor 3: otra canción (videos/bachata-2.mp4, ejemplo real del concierto)",
+      "total": 27.5,
       "carpeta": "video2"
      },
      "narrador": {
@@ -570,6 +616,7 @@
       "desde": 262.0,
       "dur": 15.0,
       "src": "mus/quiz/samba_7.3.mp3",
+      "total": 45.0,
       "carpeta": "7.3"
      },
      "narrador": {
@@ -585,6 +632,7 @@
       "desde": 166.0,
       "dur": 15.0,
       "src": "mus/quiz/bossa_nova_7.2.mp3",
+      "total": 45.0,
       "carpeta": "7.2"
      },
      "narrador": {
@@ -898,6 +946,7 @@
       "desde": 14.0,
       "dur": 15.0,
       "src": "mus/quiz/cumbia_7.4.mp3",
+      "total": 45.0,
       "carpeta": "7.4"
      },
      "narrador": {
@@ -913,6 +962,7 @@
       "desde": 116.0,
       "dur": 15.0,
       "src": "mus/quiz/merengue_7.4.mp3",
+      "total": 45.0,
       "carpeta": "7.4"
      },
      "narrador": {
@@ -925,11 +975,12 @@
     {
      "genero": "bolero",
      "fragmento": {
-      "desde": 42.0,
+      "desde": 16.0,
       "dur": 15.0,
-      "src": "mus/quiz/bolero_video1.mp3",
-      "nota": "videos/bolero-1.mp4 (ejemplo real del concierto)",
-      "carpeta": "video1"
+      "src": "mus/quiz/bolero_video3.mp3",
+      "nota": "videos/bolero-3.mp4 (ejemplo real del concierto) · (Iago 30-oct 07:50) para el quiz del sabor 4: el tramo más melódico (el de video1 era solo percusión)",
+      "total": 43.5,
+      "carpeta": "video3"
      },
      "narrador": {
       "id": "q_n_rec3",
@@ -945,6 +996,7 @@
       "dur": 15.0,
       "src": "mus/quiz/bachata_7.4.mp3",
       "nota": "(Iago 22-oct 11:59) más tarde, donde empieza el estribillo «Ven a mi lado, corazón»; alternativas 2:14,7 y 1:46,6",
+      "total": 45.0,
       "carpeta": "7.4"
      },
      "narrador": {
@@ -960,6 +1012,7 @@
       "desde": 60.0,
       "dur": 15.0,
       "src": "mus/quiz/samba_7.2.mp3",
+      "total": 45.0,
       "carpeta": "7.2"
      },
      "narrador": {
@@ -975,6 +1028,7 @@
       "desde": 74.0,
       "dur": 15.0,
       "src": "mus/quiz/bossa_nova_7.4.mp3",
+      "total": 45.0,
       "carpeta": "7.4"
      },
      "narrador": {
@@ -990,6 +1044,7 @@
       "desde": 280.0,
       "dur": 15.0,
       "src": "mus/quiz/salsa_7.4.mp3",
+      "total": 36.9,
       "carpeta": "7.4"
      },
      "narrador": {
@@ -1003,9 +1058,10 @@
      "genero": "mambo",
      "fragmento": {
       "desde": 75.1,
-      "dur": 22.4,
+      "dur": 15.0,
       "src": "mus/quiz/mambo_7.2.mp3",
       "nota": "con el grito más claro (Iago 22:18: candidato 4), hacia los 11,7 s",
+      "total": 45.0,
       "carpeta": "7.2"
      },
      "narrador": {
@@ -1021,6 +1077,7 @@
       "desde": 76.0,
       "dur": 15.0,
       "src": "mus/quiz/kizomba_7.4.mp3",
+      "total": 45.0,
       "carpeta": "7.4"
      },
      "narrador": {
@@ -1120,17 +1177,17 @@
      "respuesta": {
       "id": "q_r_s4_t04",
       "quien": "PAPO VEGA",
-      "texto": "Porque nunca toca en el uno: ¡por eso empuja tanto!",
+      "texto": "Porque (casi) nunca toca en el uno: ¡por eso empuja tanto!",
       "audio": "voz/squiz/q_r_s4_t04.mp3"
      },
      "opciones": [
-      "Nunca toca en el uno",
+      "(Casi) nunca toca en el uno",
       "Toca semicorcheas",
       "Va siempre con el bombo",
       "Toca una larga y dos cortas"
      ],
      "correcta": 0,
-     "explicacion": "Un bajo que nunca toca en el uno: ¡por eso empuja tanto!"
+     "explicacion": "Un bajo que (casi) nunca toca en el uno: ¡por eso empuja tanto!"
     },
     {
      "id": "4_t05",
@@ -1260,17 +1317,17 @@
     {
      "id": "4_t10",
      "genero": "kizomba",
-     "pregunta": "La kizomba lleva el mismo dibujo rítmico que el reguetón. ¿Cuál?",
+     "pregunta": "La kizomba lleva el mismo dibujo rítmico que el reggaetón. ¿Cuál?",
      "narrador": {
       "id": "q_n_s4_t10",
       "quien": "NARRADOR",
-      "texto": "La kizomba lleva el mismo dibujo rítmico que el reguetón. ¿Cuál?",
+      "texto": "La kizomba lleva el mismo dibujo rítmico que el reggaetón. ¿Cuál?",
       "audio": "voz/squiz/q_n_s4_t10.mp3"
      },
      "respuesta": {
       "id": "q_r_s4_t10",
       "quien": "LUENA",
-      "texto": "El dembow, como en el reguetón… pero acariciado, en vez de golpeado.",
+      "texto": "El dembow, como en el reggaetón… pero acariciado, en vez de golpeado.",
       "audio": "voz/squiz/q_r_s4_t10.mp3"
      },
      "opciones": [
@@ -1280,7 +1337,7 @@
       "La cáscara"
      ],
      "correcta": 0,
-     "explicacion": "Es el dembow, como en el reguetón… solo que aquí va acariciado, en vez de golpeado."
+     "explicacion": "Es el dembow, como en el reggaetón… solo que aquí va acariciado, en vez de golpeado."
     },
     {
      "id": "4_t11",

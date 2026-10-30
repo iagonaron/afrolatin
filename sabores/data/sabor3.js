@@ -240,6 +240,11 @@ BLUES.dia(3, {
      "img/s3/inst_s_agogo.webp"
     ],
     "nivK": 0.6
+   },
+   "mus": {
+    "src": "mus/s3_samba_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -279,6 +284,11 @@ BLUES.dia(3, {
      "img/s3/inst_s_surdo_agudo.webp"
     ],
     "nivK": 0.6
+   },
+   "mus": {
+    "src": "mus/s3_samba_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -313,6 +323,11 @@ BLUES.dia(3, {
      "loops/s3/samba_apito.mp3",
      "img/s3/inst_s_apito.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s3_samba_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -348,6 +363,11 @@ BLUES.dia(3, {
      "loops/s3/samba_agogo.mp3",
      "img/s3/inst_s_agogo.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s3_samba_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -388,6 +408,11 @@ BLUES.dia(3, {
      "img/s3/inst_s_caixa.webp",
      "img/s3/inst_s_pandeiro.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s3_samba_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -1409,6 +1434,11 @@ BLUES.dia(3, {
      "loops/s3/bossa_guitarra.mp3",
      "img/s3/inst_b_guitarra.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s3_bossa_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -1463,7 +1493,12 @@ BLUES.dia(3, {
      ],
      "img2": "img/s3/inst_b_contrabajo.webp"
     }
-   ]
+   ],
+   "mus": {
+    "src": "mus/s3_bossa_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
+   }
   },
   {
    "id": "s3_b5",
@@ -1523,7 +1558,12 @@ BLUES.dia(3, {
      ],
      "img2": "img/s3/inst_b_piano.webp"
     }
-   ]
+   ],
+   "mus": {
+    "src": "mus/s3_bossa_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
+   }
   },
   {
    "id": "s3_b6",
@@ -1557,6 +1597,11 @@ BLUES.dia(3, {
      "loops/s3/bossa_aro.mp3",
      "img/s3/inst_b_aro.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s3_bossa_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -1575,7 +1620,12 @@ BLUES.dia(3, {
      "texto": "Y la voz… casi susurrando, como si te contara un secreto.",
      "voz": "voz/s3/s3_b07.mp3"
     }
-   ]
+   ],
+   "mus": {
+    "src": "mus/s3_bossa_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
+   }
   },
   {
    "id": "s3_b8",
@@ -2639,7 +2689,7 @@ BLUES.dia(3, {
   {
    "id": "s3_r1",
    "nombre": "Repaso del sabor 3",
-   "img": "img/s3/r_resumen.webp",
+   "img": "img/s3/r_repaso.webp",
    "desc": "Ritinha y Seu Tom juntos (sus PNG) entre las dos fichas, sobre la calle del morro y la terraza desenfocadas.",
    "amb": [],
    "personajes": [
@@ -2670,7 +2720,7 @@ BLUES.dia(3, {
   {
    "id": "s3_q",
    "nombre": "Quiz",
-   "img": "img/s3/mapa_caribe_rio.webp",
+   "img": "img/quiz/fondo_quiz.webp",
    "quiz": true,
    "desc": "Quiz en directo tipo Kahoot (móviles con el QR o, sin red, en voz alta): reconocer cada género visto con 15 s de una canción real y teoría del sabor.",
    "amb": [],
@@ -2681,7 +2731,7 @@ BLUES.dia(3, {
     "tipo": "quiz",
     "sabor": 3,
     "recursos": [
-     "img/s3/mapa_caribe_rio.webp",
+     "img/quiz/fondo_quiz.webp",
      "mus/portada.mp3",
      "voz/squiz/q_n_intro_s3.mp3",
      "voz/squiz/q_n_pleno.mp3",
@@ -2733,7 +2783,18 @@ BLUES.dia(3, {
      "voz/squiz/q_n_s3_t09.mp3",
      "voz/squiz/q_r_s3_t09.mp3",
      "voz/squiz/q_n_s3_t10.mp3",
-     "voz/squiz/q_r_s3_t10.mp3"
+     "voz/squiz/q_r_s3_t10.mp3",
+     "mus/quiz/fondo_samba.mp3",
+     "mus/quiz/fondo_bossa.mp3",
+     "mus/quiz/fondo_bachata.mp3",
+     "sfx/quiz/tic.mp3",
+     "sfx/quiz/cuenta.mp3",
+     "sfx/quiz/cierre.mp3",
+     "sfx/quiz/buena.mp3",
+     "sfx/quiz/clasif.mp3",
+     "sfx/quiz/puesto.mp3",
+     "sfx/quiz/podio.mp3",
+     "sfx/s1/aplausos.mp3"
     ]
    }
   }

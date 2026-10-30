@@ -545,7 +545,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 3.36
 ],
 "t": 0.12,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s3_s05": [
@@ -592,7 +593,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 2.04
 ],
 "t": 0.2,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 },
 {
 "claves": [
@@ -706,7 +708,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 6.34
 ],
 "t": 2.26,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s3_s07": [
@@ -1150,7 +1153,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 10.2
 ],
 "t": 5.84,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s3_b05a": [
@@ -1295,7 +1299,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 14.26
 ],
 "t": 7.38,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 },
 {
 "claves": [
@@ -1422,7 +1427,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s3/inst_s_caixa.webp",
 "img/s3/inst_s_agogo.webp"
 ],
-"tira": "der"
+"tira": "colizq"
 },
 {
 "son": [
@@ -1437,7 +1442,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s3/inst_s_surdo_grave.webp",
 "img/s3/inst_s_surdo_agudo.webp"
 ],
-"tira": "der"
+"tira": "colizq"
 },
 {
 "son": [
@@ -1451,7 +1456,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s3/inst_s_apito.webp"
 ],
-"tira": "der"
+"tira": "colizq"
 }
 ],
 "s3_rr2": [
@@ -1487,7 +1492,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s3/inst_b_guitarra.webp"
 ],
-"tira": "der"
+"tira": "colder"
 },
 {
 "son": [
@@ -1501,7 +1506,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s3/inst_b_piano.webp"
 ],
-"tira": "der"
+"tira": "colder"
 },
 {
 "son": [
@@ -1515,7 +1520,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s3/inst_b_aro.webp"
 ],
-"tira": "der"
+"tira": "colder"
 },
 {
 "son": [

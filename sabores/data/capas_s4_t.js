@@ -677,7 +677,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 4.4
 ],
 "t": 0.12,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 },
 {
 "claves": [
@@ -689,7 +690,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 7.98
 ],
 "t": 5.92,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s4_p05": [
@@ -724,7 +726,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 7.86,
 "x": 0.36,
 "y": 0.46,
-"h": 0.5
+"h": 0.5,
+"caja": true
 },
 {
 "claves": [
@@ -748,7 +751,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 10.64
 ],
 "t": 7.86,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s4_p05b": [
@@ -909,11 +913,12 @@ Object.assign(BLUES.CAPAS.lineas, {
 2.14
 ],
 "t": 0.94,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 },
 {
 "claves": [
-"un bajo que nunca toca en el uno",
+"un bajo que (casi) nunca marca el uno",
 "¡por eso empuja tanto!"
 ],
 "ts": [
@@ -921,7 +926,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 6.88
 ],
 "t": 4.76,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 },
 {
 "claves": [
@@ -935,7 +941,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 12.44
 ],
 "t": 8.54,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s4_p08": [
@@ -1186,6 +1193,10 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 },
 {
+"vari": "RECURSO_MB3",
+"t": 4.18
+},
+{
 "img": "img/s4/inst_m_saxo_baritono.webp",
 "nom": "Saxos",
 "t": 4.22,
@@ -1233,7 +1244,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 6.38
 ],
 "t": 1.58,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 },
 {
 "claves": [
@@ -1278,7 +1290,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 ],
 "s4_grito": [
 {
-"vari": "RECURSO_MB3",
+"vari": "RECURSO_MB4",
 "t": 0
 },
 {
@@ -1643,7 +1655,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"el mismo dibujo que el del reguetón",
+"el mismo dibujo que el del reggaetón",
 "el dembow"
 ],
 "ts": [
@@ -1651,7 +1663,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 2.6
 ],
 "t": 0.26,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 },
 {
 "claves": [
@@ -1726,7 +1739,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 8.06
 ],
 "t": 2.72,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s4_l06": [
@@ -1844,7 +1858,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"si te gusta el reguetón",
+"si te gusta el reggaetón",
 "esto te va a encantar"
 ],
 "ts": [
@@ -1964,7 +1978,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s4/inst_s_bajo.webp",
 "img/s3/inst_b_piano.webp"
 ],
-"tira": "der"
+"tira": "colizq"
 },
 {
 "son": [
@@ -1978,7 +1992,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s4/inst_s_claves.webp"
 ],
-"tira": "der"
+"tira": "colizq"
 },
 {
 "son": [
@@ -1996,7 +2010,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s4/inst_s_cencerro_b.webp",
 "img/s4/inst_s_congas.webp"
 ],
-"tira": "der"
+"tira": "colizq"
 }
 ],
 "s4_rm": [
@@ -2029,7 +2043,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s4/inst_m_saxo_baritono.webp",
 "img/s4/inst_s_trompeta.webp"
 ],
-"tira": "der"
+"tira": "colder"
 },
 {
 "son": [
@@ -2090,7 +2104,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s4/inst_k_caja.webp"
 ],
-"tira": "der"
+"tira": "colizq"
 },
 {
 "son": [
@@ -2104,7 +2118,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s4/inst_k_sinte.webp"
 ],
-"tira": "der"
+"tira": "colizq"
 }
 ],
 "s4_n06": [
@@ -2135,4 +2149,4 @@ Object.assign(BLUES.CAPAS.lineas, {
 }
 ]
 });
-BLUES.CAPAS.tam = Object.assign(BLUES.CAPAS.tam || {}, {"img/s4/inst_s_timbales.webp": {"w": 0.3443, "h": 0.384, "x": 0.5, "y": 0.4156, "ry": 0.6876}, "img/s4/inst_s_bongo.webp": {"w": 0.2008, "h": 0.2102, "x": 0.5, "y": 0.4156, "ry": 0.6006}, "img/s4/inst_s_cencerro.webp": {"w": 0.1434, "h": 0.24, "x": 0.5, "y": 0.4156, "ry": 0.6156}, "img/s4/inst_s_conga.webp": {"w": 0.1585, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_congas.webp": {"w": 0.2961, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_claves.webp": {"w": 0.1052, "h": 0.1725, "x": 0.5, "y": 0.4156, "ry": 0.5818}, "img/s4/inst_s_bajo.webp": {"w": 0.0919, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s3/inst_b_piano.webp": {"w": 0.3388, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_trompeta.webp": {"w": 0.0718, "h": 0.425, "x": 0.5, "y": 0.4156, "ry": 0.7081}, "img/s4/inst_s_trombon.webp": {"w": 0.0736, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_m_saxo_tenor.webp": {"w": 0.1221, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_m_saxo_baritono.webp": {"w": 0.1277, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_k_caja.webp": {"w": 0.1721, "h": 0.2119, "x": 0.5, "y": 0.4156, "ry": 0.6015}, "img/s4/inst_k_teclado.webp": {"w": 0.4781, "h": 0.2398, "x": 0.5, "y": 0.4156, "ry": 0.6154}, "img/s4/inst_k_sinte.webp": {"w": 0.3825, "h": 0.3318, "x": 0.5, "y": 0.4156, "ry": 0.6614}});
+BLUES.CAPAS.tam = Object.assign(BLUES.CAPAS.tam || {}, {"img/s4/inst_s_timbales.webp": {"w": 0.3443, "h": 0.384, "x": 0.5, "y": 0.4156, "ry": 0.6876}, "img/s4/inst_s_bongo.webp": {"w": 0.2008, "h": 0.2102, "x": 0.5, "y": 0.4156, "ry": 0.6006}, "img/s4/inst_s_cencerro.webp": {"w": 0.0956, "h": 0.16, "x": 0.5, "y": 0.4156, "ry": 0.5756}, "img/s4/inst_s_cencerro_b.webp": {"w": 0.0765, "h": 0.1129, "x": 0.5, "y": 0.4156, "ry": 0.552}, "img/s4/inst_s_conga.webp": {"w": 0.1585, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_congas.webp": {"w": 0.2961, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_claves.webp": {"w": 0.1052, "h": 0.1725, "x": 0.5, "y": 0.4156, "ry": 0.5818}, "img/s4/inst_s_bajo.webp": {"w": 0.0919, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s3/inst_b_piano.webp": {"w": 0.3388, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_s_trompeta.webp": {"w": 0.0718, "h": 0.425, "x": 0.5, "y": 0.4156, "ry": 0.7081}, "img/s4/inst_s_trombon.webp": {"w": 0.0736, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_m_saxo_tenor.webp": {"w": 0.1221, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_m_saxo_baritono.webp": {"w": 0.1277, "h": 0.46, "x": 0.5, "y": 0.4156, "ry": 0.7256}, "img/s4/inst_k_caja.webp": {"w": 0.1721, "h": 0.2119, "x": 0.5, "y": 0.4156, "ry": 0.6015}, "img/s4/inst_k_teclado.webp": {"w": 0.4781, "h": 0.2398, "x": 0.5, "y": 0.4156, "ry": 0.6154}, "img/s4/inst_k_sinte.webp": {"w": 0.3825, "h": 0.3318, "x": 0.5, "y": 0.4156, "ry": 0.6614}});

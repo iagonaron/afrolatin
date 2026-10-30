@@ -439,7 +439,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 7.4
 ],
 "t": 3.52,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s2_b07": [
@@ -482,7 +483,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 5.0
 ],
 "t": 0.2,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s2_b11": [
@@ -523,7 +525,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 5.94
 ],
 "t": 0.64,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s2_b08": [
@@ -789,7 +792,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 6.18
 ],
 "t": 2.46,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s2_h04": [
@@ -838,7 +842,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 7.9
 ],
 "t": 6.8,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s2_h05": [
@@ -912,7 +917,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 3.3
 ],
 "t": 0.56,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 }
 ],
 "s2_h07": [
@@ -970,7 +976,8 @@ Object.assign(BLUES.CAPAS.lineas, {
 3.98
 ],
 "t": 1.26,
-"nofiltra": true
+"nofiltra": true,
+"arriba": true
 },
 {
 "claves": [
@@ -1117,7 +1124,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_b_guitarra.webp"
 ],
-"tira": "izq"
+"tira": "colizq"
 },
 {
 "son": [
@@ -1131,7 +1138,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_b_maracas.webp"
 ],
-"tira": "izq"
+"tira": "colizq"
 },
 {
 "son": [
@@ -1145,7 +1152,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_b_congas.webp"
 ],
-"tira": "izq"
+"tira": "colizq"
 }
 ],
 "s2_r02": [
@@ -1183,7 +1190,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "img/s1/inst_m_guira.webp",
 "img/s2/inst_bongo.webp"
 ],
-"tira": "derb"
+"tira": "colder"
 },
 {
 "son": [
@@ -1197,7 +1204,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_bongo.webp"
 ],
-"tira": "derb"
+"tira": "colder"
 },
 {
 "son": [
@@ -1211,7 +1218,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s1/inst_bajo.webp"
 ],
-"tira": "derb"
+"tira": "colder"
 },
 {
 "son": [
@@ -1225,7 +1232,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "ico": [
 "img/s2/inst_h_diabla.webp"
 ],
-"tira": "derb"
+"tira": "colder"
 }
 ],
 "s2_r03": [

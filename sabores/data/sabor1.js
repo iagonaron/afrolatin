@@ -163,6 +163,12 @@ BLUES.dia(1, {
      "quien": "NARR",
      "texto": "Venga, maestro… igual le vendría bien soltarse un poco.",
      "voz": "voz/s1/s1_n03.mp3"
+    },
+    {
+     "id": "s1_sch2",
+     "quien": "SCHOENBERG",
+     "texto": "Hmm…",
+     "voz": "voz/s1/s1_sch2.mp3"
     }
    ],
    "gesto": {
@@ -537,6 +543,11 @@ BLUES.dia(1, {
      "loops/s1/cumbia_maracas_2c.mp3",
      "img/s1/inst_maracas.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s1_cumbia_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -577,6 +588,11 @@ BLUES.dia(1, {
      "loops/s1/cumbia_guacharaca_2c.mp3",
      "img/s1/inst_guacharaca.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s1_cumbia_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -618,6 +634,11 @@ BLUES.dia(1, {
      "loops/s1/cumbia_contratiempo_2c.mp3",
      "img/s1/inst_contratiempo.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s1_cumbia_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -676,7 +697,12 @@ BLUES.dia(1, {
       "img/s1/inst_bajo.webp"
      ]
     }
-   ]
+   ],
+   "mus": {
+    "src": "mus/s1_cumbia_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
+   }
   },
   {
    "id": "s1_c10",
@@ -715,6 +741,11 @@ BLUES.dia(1, {
      "loops/s1/cumbia_acordeon_2c.mp3",
      "img/s1/inst_acordeon.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s1_cumbia_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -1666,7 +1697,8 @@ BLUES.dia(1, {
      "videos/cumbia-2.mp4"
     ],
     "fundidoPlanos": 0.18,
-    "kb": false
+    "kb": false,
+    "hojas": 6
    },
    "despues": [
     {
@@ -1993,7 +2025,12 @@ BLUES.dia(1, {
       "img/s1/inst_m_guira.webp"
      ]
     }
-   ]
+   ],
+   "mus": {
+    "src": "mus/s1_merengue_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
+   }
   },
   {
    "id": "s1_m5",
@@ -2033,6 +2070,11 @@ BLUES.dia(1, {
      "img/s1/inst_m_tambora.webp"
     ],
     "nivK": 0.6
+   },
+   "mus": {
+    "src": "mus/s1_merengue_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -2090,7 +2132,12 @@ BLUES.dia(1, {
       "img/s1/inst_m_piano.webp"
      ]
     }
-   ]
+   ],
+   "mus": {
+    "src": "mus/s1_merengue_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
+   }
   },
   {
    "id": "s1_m7",
@@ -2129,6 +2176,11 @@ BLUES.dia(1, {
      "loops/s1/merengue_saxos.mp3",
      "img/s1/inst_m_saxos.webp"
     ]
+   },
+   "mus": {
+    "src": "mus/s1_merengue_fondo.mp3",
+    "vol": 0.3,
+    "bucle": true
    }
   },
   {
@@ -3215,7 +3267,8 @@ BLUES.dia(1, {
      "videos/merengue-3.mp4"
     ],
     "fundidoPlanos": 0.18,
-    "kb": false
+    "kb": false,
+    "hojas": 6
    },
    "despues": [
     {
@@ -3232,7 +3285,7 @@ BLUES.dia(1, {
   {
    "id": "s1_r1",
    "nombre": "Resumen del sabor 1",
-   "img": "img/s1/r_resumen.webp",
+   "img": "img/s1/r_repaso.webp",
    "desc": "Doña Cande y Yunior juntos (sus PNG) sobre un fondo de colores; a cada lado, la ficha de su género.",
    "amb": [],
    "personajes": [
