@@ -428,6 +428,9 @@
 .bt-vc.listo svg{fill:#7ED3A8}
 #escena:not(.en-portada) .bt-vc{display:none}
 .bt-vc.bajando{width:auto!important;padding:0 calc(var(--u)*.7)!important}
+/* (r19) esta pantalla apagó los vídeos: el botón lo dice (y al pulsarlo se encienden) */
+.bt-vc.apagado{width:auto!important;padding:0 calc(var(--u)*.7)!important;opacity:.85}
+.bt-vc.apagado svg{fill:#F2A65A}
 /* (Iago 29-oct 20:52) «en la portada los instrumentos están más cortados; la pandereta de samba sale cortada»: el icono iba al 118 % de su
    hueco y se salía por el borde de la carta. Ahora cabe entero (al 100 %, en un hueco algo mayor) y sin el cuadrado de fondo (Chrome 94
    no entiende :has(), y ahí se veía) */
