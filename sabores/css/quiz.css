@@ -21,8 +21,8 @@
 .qz-qr-img svg{display:block;width:100%;height:auto}
 .qz-qr-dir{margin-top:calc(var(--u)*1.1);text-align:center;font-weight:700;font-size:calc(var(--u)*1.32);letter-spacing:.01em;word-break:break-all}
 .qz-pin{display:flex;align-items:baseline;justify-content:center;gap:calc(var(--u)*1);margin-top:calc(var(--u)*.5)}
-.qz-pin span{font-weight:700;text-transform:uppercase;letter-spacing:.3em;font-size:calc(var(--u)*1.15);color:#7A5A2C}
-.qz-pin b{font-family:'Shrikhand',serif;font-weight:400;font-size:calc(var(--u)*5.4);line-height:1.05;letter-spacing:.08em}
+.qz-pin span{font-weight:700;text-transform:uppercase;letter-spacing:.3em;font-size:calc(var(--u)*1);color:#7A5A2C}
+.qz-pin b{font-family:'Shrikhand',serif;font-weight:400;font-size:calc(var(--u)*2.4);line-height:1.1;letter-spacing:.08em}
 .qz-sala-der{position:absolute;left:calc(var(--u)*40);right:calc(var(--u)*4);top:calc(var(--u)*5)}
 .qz-sala.sin-red .qz-qr{display:none}
 .qz-sala.sin-red .qz-sala-der{left:calc(var(--u)*5)}
