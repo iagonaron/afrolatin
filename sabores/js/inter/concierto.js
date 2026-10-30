@@ -191,9 +191,14 @@
     const carga = B.el('div', 's4-carga', 'Cargando…'); caja.appendChild(carga);
     const pie = B.el('div', 'i-pie'); caja.appendChild(pie);
 
-    /* ── plano de fondo (`dur` = fundido en s: 0,4 en los planos, 0,6 en el ciclo) ── */
-    function ponPlano(p, i, dur, etq) {
-      dur = dur || .4;
+    /* ── plano de fondo (`dur` = fundido en s: 0,4 en los planos, 0,6 en el ciclo) ──
+       (r20, Iago 30-oct 18:19 en el aula: «en el videoclip, al cambiar de imagen, los halos de sol y de luz se cargan como un frame más
+       tarde: no queda limpio el cambio») antes la capa nueva salía con la FOTO y su clip (que lleva grabados los halos, los rayos y las
+       motas) se destapaba al empezar a sonar, unos fotogramas después. Ahora la capa del plano SIGUIENTE se monta antes (preparaCapa):
+       su clip ya cargado, parado en su primer fotograma y «armado» (opacidad 0,001: el compositor ya lo tiene); al llegar su hora entra
+       entera, foto y clip a la vez, en un solo fotograma. Si no llegó a estar listo, como antes (la foto y luego el clip). */
+    const prep = new Map();     // clave del plano ('p3', 'c1'…) → capa preparada
+    function creaCapa(p, i, dur) {
       const capa = B.el('div', 's4-plano'); capa.dataset.i = i;
       if (dur !== .4) capa.style.transitionDuration = dur + 's';
       if (op.kb) { capa.classList.add('kb', 'kb' + (i % 4)); capa.style.setProperty('--kbd', (op.bpm > 120 ? 7 : 11) + 's'); }   // (27-oct, Iago) movimiento lento de cámara en el videoclip
@@ -204,14 +209,13 @@
         const v = document.createElement('video'); v.className = 's4-img s4-pl s4-vc'; v.muted = true; v.defaultMuted = true; v.playsInline = true;
         v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.preload = 'auto'; v.disablePictureInPicture = true; v.style.opacity = '0';
         v.addEventListener('playing', () => { v.style.opacity = '1'; }, { once: true });
-        v.addEventListener('error', () => v.remove(), { once: true });
+        v.addEventListener('loadeddata', () => { v._listo = true; }, { once: true });
+        v.addEventListener('error', () => { v._roto = true; v.remove(); }, { once: true });
         v.src = vu; capa.appendChild(v); capa._v = v; capa._t0 = Math.max(0, p.t || 0);
         /* (r15, Iago 29-oct 21:02: «espasmos… unos primeros frames de mucha velocidad y luego se vuelve calmado») el clip que se aleja
            empieza acercado (1,01–1,08): la foto de debajo (y luego sus luces) va a esa misma escala, para que al aparecer el vídeo no salte */
         const md = B.VIDEOS && B.VIDEOS[p.img];
         if (md && md.z) { capa._z = md.z; capa._o = '50% ' + Math.round((md.o || 0) * 100) + '%'; const fo = capa.querySelector('img.s4-pl'); if (fo) { fo.style.transformOrigin = capa._o; fo.style.transform = 'scale(' + md.z[0] + ')'; } }
-        const pr = v.play(); if (pr && pr.catch) pr.catch(() => { });
-        if (B.videos) B.videos.vigila(v);
       }
       /* (28-oct, Iago: «me falta animación de fondos en el videoclip: velas, mar…») sus luces titilan (js/portada_vida.js; puntos en
          BLUES.LUCES_VC, herramientas/luces_s1.py); el lienzo lleva la misma clase que la imagen para moverse con ella */
@@ -220,16 +224,40 @@
          mar, pocos y solo donde hay agua (BLUES.MAR_VC, herramientas/mar_vc.py) · partículas, un poco más presentes (+15 % y +12 % de opacidad) */
       const LV2 = LV && /^img\/s2\//.test(p.img) ? LV.filter((l, j) => j % 4 !== 3) : LV, MV = B.MAR_VC && B.MAR_VC[p.img];
       if (B.vidaLienzo && (LV2 && LV2.length || op.planos)) { const cv = B.el('canvas', 's4-img s4-vida-vc'); capa.appendChild(cv); B.vidaLienzo(cv, { luces: LV2 || [], rMin: .014, rK: 1.15, caen: 46, caenA: .56, mar: MV || null, hojas: op.hojas || 0 }); if (capa._z) { capa._cv = cv; cv.style.transformOrigin = capa._o; cv.style.transform = 'scale(' + capa._z[0] + ')'; } }   // (28-oct 09:13) y motitas que caen en todos los planos
-      esc.appendChild(capa); void capa.offsetWidth;
-      capa.classList.add('on');
+      return capa;
+    }
+    /* (r20) monta ya, invisible, la capa de un plano que vendrá: su clip, cargado y parado en el primer fotograma, armado */
+    function preparaCapa(p, i, dur, clave) {
+      if (!p || prep.has(clave) || limpio) return;
+      const capa = creaCapa(p, i, dur); capa.classList.add('arma'); capa._clave = clave;
+      if (capa._v) capa._v.style.opacity = '.001';
+      esc.appendChild(capa); prep.set(clave, capa); capas.push(capa);
+      /* y su imagen en la franja de fuera (si la pantalla no es 16:9), ya descodificada: también cambia en el mismo fotograma */
+      if (B.motor && B.motor.ambiente && B.motor.ambiente.prepara) { const im = capa.querySelector('img'); if (im && im.src) B.motor.ambiente.prepara(im.src); }
+    }
+    function sueltaCapa(c) { if (c._v) { try { c._v.pause(); c._v.removeAttribute('src'); c._v.load(); } catch (e) { } } c.remove(); const k = capas.indexOf(c); if (k >= 0) capas.splice(k, 1); }
+    function ponPlano(p, i, dur, etq) {
+      dur = dur || .4;
+      const clave = etq == null ? 'p' + i : etq;
+      let capa = prep.get(clave); prep.delete(clave);
+      const lista = !!(capa && capa._v && capa._v._listo && !capa._v._roto);
+      if (capa && capa._v && !lista) { sueltaCapa(capa); capa = null; }   // preparada pero su clip aún no tenía fotograma: como antes
+      if (!capa) { capa = creaCapa(p, i, dur); esc.appendChild(capa); capas.push(capa); }
+      if (lista) { capa._v.style.opacity = '1'; capa.classList.remove('arma'); capa.classList.add('on'); }   // ya está encima de la de antes y su primer fotograma, en el compositor: entra entera, en el mismo fotograma (sin fundido)
+      else { void capa.offsetWidth; capa.classList.add('on'); }
+      if (capa._v) { const pr = capa._v.play(); if (pr && pr.catch) pr.catch(() => { }); if (B.videos) B.videos.vigila(capa._v); }
       /* (28-oct 21:03, Iago en el iPad: «fondos que parecen de otro tamaño») las franjas de fuera de la pantalla, con el plano que se ve */
       if (B.motor && B.motor.ambiente) { const im = capa.querySelector('img'); B.motor.ambiente(im && im.src ? im.src : null); }
-      const ant = capaAct; capaAct = capa; capas.push(capa);
+      const ant = capaAct; capaAct = capa;
       if (ant) {      // la anterior se queda debajo hasta que la nueva es opaca del todo; luego se quita
-        const h = setTimeout(() => { temporizadores.delete(h); if (ant._v) { try { ant._v.pause(); ant._v.removeAttribute('src'); ant._v.load(); } catch (e) { } } ant.remove(); const k = capas.indexOf(ant); if (k >= 0) capas.splice(k, 1); }, dur * 1000 + 80);
+        const h = setTimeout(() => { temporizadores.delete(h); sueltaCapa(ant); }, dur * 1000 + 80);
         temporizadores.add(h);
       }
       esc.dataset.plano = etq == null ? i : etq;
+      /* (r20) y la del plano siguiente, ya preparada (las que se quedaron sin usar, p. ej. tras un salto, fuera) */
+      prep.forEach((c, k) => { sueltaCapa(c); }); prep.clear();
+      if (etq == null) { if (planos[i + 1] && !(ciclo && planos[i + 1].t >= ciclo.desde)) preparaCapa(planos[i + 1], i + 1, +op.fundidoPlanos || .4, 'p' + (i + 1)); else if (ciclo && ciclo.imgs.length) preparaCapa(ciclo.imgs[0], 0, .6, 'c0'); }
+      else if (ciclo && /^c\d+$/.test(etq)) { const n = (+etq.slice(1) + 1) % ciclo.imgs.length; preparaCapa(ciclo.imgs[n], n, .6, 'c' + n); }
     }
     function marcaBloque(k) {
       const on = bloques[Math.min(k, nB - 1)] || [];
