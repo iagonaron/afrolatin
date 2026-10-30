@@ -4,21 +4,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s4_n01": [
 {
 "claves": [
-"Repaso",
-"Sabores 1, 2 y 3"
-],
-"estilo": "titulo",
-"fijo": true,
-"lado": "cabeza",
-"t": 2.6,
-"ts": [
-2.6,
-2.95
-]
-},
-{
-"claves": [
-"Colombia: la cumbia · Cartagena de Indias",
+"Cumbia · Colombia · Cartagena de Indias",
 "tranquila",
 "con su guacharaca"
 ],
@@ -67,7 +53,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"República Dominicana: el merengue · Santiago de los Caballeros",
+"Merengue · República Dominicana · Santiago de los Caballeros",
 "¡a toda pastilla!",
 "con güira y tambora"
 ],
@@ -120,7 +106,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"Cuba: el bolero · Santiago de Cuba",
+"Bolero · Cuba · Santiago de Cuba",
 "lento",
 "el tresillo de las maracas"
 ],
@@ -167,7 +153,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"República Dominicana: la bachata · Santo Domingo",
+"Bachata · República Dominicana · Santo Domingo",
 "con güira y bongó",
 "la guitarra diabla"
 ],
@@ -219,7 +205,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"Brasil: la samba · Río de Janeiro",
+"Samba · Brasil · Río de Janeiro",
 "carnaval en la calle",
 "con sus surdos",
 "y el apito, que manda"
@@ -286,7 +272,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"Brasil: la bossa nova · Ipanema, Río de Janeiro",
+"Bossa nova · Brasil · Ipanema, Río de Janeiro",
 "la samba en voz bajita",
 "una guitarra que lo hace todo",
 "la percusión de puntillas"
@@ -1934,21 +1920,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s4_rp": [
 {
 "claves": [
-"Repaso",
-"Salsa, mambo y kizomba"
-],
-"estilo": "titulo",
-"fijo": true,
-"lado": "cabeza",
-"t": 0.12,
-"ts": [
-0.12,
-0.47
-]
-},
-{
-"claves": [
-"Estados Unidos: la salsa · Nueva York",
+"Salsa · Estados Unidos · Nueva York",
 "una mezcla con mucha calle",
 "la clave debajo de todo",
 "los percusionistas cambiando de instrumento"
@@ -2016,7 +1988,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s4_rm": [
 {
 "claves": [
-"Cuba: el mambo · La Habana",
+"Mambo · Cuba · La Habana",
 "los vientos, el flow",
 "¡y el grito!"
 ],
@@ -2062,21 +2034,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"Repaso",
-"Salsa, mambo y kizomba"
-],
-"estilo": "titulo",
-"fijo": true,
-"lado": "cabeza",
-"t": 0.17,
-"ts": [
-0.17,
-0.52
-]
-},
-{
-"claves": [
-"Angola: la kizomba · Luanda",
+"Kizomba · Angola · Luanda",
 "el dembow, despacito",
 "un bajo profundo",
 "un baile de conexión"

@@ -4,21 +4,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s3_n01": [
 {
 "claves": [
-"Repaso",
-"Sabores 1 y 2"
-],
-"estilo": "titulo",
-"fijo": true,
-"lado": "cabeza",
-"t": 3.3,
-"ts": [
-3.3,
-3.65
-]
-},
-{
-"claves": [
-"Colombia: la cumbia · Cartagena de Indias",
+"Cumbia · Colombia · Cartagena de Indias",
 "tranquila",
 "con su guacharaca",
 "el contratiempo del piano"
@@ -84,7 +70,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"República Dominicana: el merengue · Santiago de los Caballeros",
+"Merengue · República Dominicana · Santiago de los Caballeros",
 "¡la cumbia a toda pastilla!",
 "con güira y tambora"
 ],
@@ -137,7 +123,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"Cuba: el bolero · Santiago de Cuba",
+"Bolero · Cuba · Santiago de Cuba",
 "lento y elegante",
 "el tresillo de las maracas",
 "el remate de las congas"
@@ -201,7 +187,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"República Dominicana: la bachata · Santo Domingo",
+"Bachata · República Dominicana · Santo Domingo",
 "bongó, breaks locos",
 "el bajo: una larga y dos cortas",
 "la guitarra diabla"
@@ -1378,21 +1364,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s3_rr1": [
 {
 "claves": [
-"Repaso",
-"Samba y bossa nova"
-],
-"estilo": "titulo",
-"fijo": true,
-"lado": "cabeza",
-"t": 0.12,
-"ts": [
-0.12,
-0.47
-]
-},
-{
-"claves": [
-"Brasil: la samba · Río de Janeiro",
+"Samba · Brasil · Río de Janeiro",
 "carnaval en la calle",
 "una montaña de percusión",
 "que suena a locomotora",
@@ -1462,7 +1434,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s3_rr2": [
 {
 "claves": [
-"Brasil: la bossa nova · Ipanema, Río de Janeiro",
+"Bossa nova · Brasil · Ipanema, Río de Janeiro",
 "la samba en voz bajita",
 "La guitarra con el bajo en el uno y el tres",
 "acordes de jazz",

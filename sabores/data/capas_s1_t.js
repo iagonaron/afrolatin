@@ -269,14 +269,15 @@ Object.assign(BLUES.CAPAS.lineas, {
 "t": 0
 }
 ],
-"s1_n03": [
+"s1_n03": [],
+"s1_sch2": [
 {
 "pj": {
 "q": "SCHOENBERG",
 "pose": "piensa",
 "lado": "der"
 },
-"t": 1.44
+"t": 0
 }
 ],
 "s1_009": [
@@ -1117,21 +1118,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s1_r01": [
 {
 "claves": [
-"Repaso",
-"Cumbia y merengue"
-],
-"estilo": "titulo",
-"fijo": true,
-"lado": "cabeza",
-"t": 0.12,
-"ts": [
-0.12,
-0.47
-]
-},
-{
-"claves": [
-"Colombia: la cumbia · Cartagena de Indias",
+"Cumbia · Colombia · Cartagena de Indias",
 "tempo tranquilo, pa' caminar",
 "la guacharaca, una larga y dos cortas",
 "el contratiempo, en el piano o el teclado"
@@ -1196,7 +1183,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s1_r02": [
 {
 "claves": [
-"República Dominicana: el merengue · Santiago de los Caballeros",
+"Merengue · República Dominicana · Santiago de los Caballeros",
 "La cumbia, pero a toda pastilla",
 "El mismo dibujo en la güira, corriendo",
 "la tambora, con mano y palito"

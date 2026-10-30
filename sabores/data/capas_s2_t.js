@@ -4,21 +4,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s2_n01": [
 {
 "claves": [
-"Repaso",
-"Cumbia y merengue"
-],
-"estilo": "titulo",
-"fijo": true,
-"lado": "cabeza",
-"t": 2.34,
-"ts": [
-2.34,
-2.69
-]
-},
-{
-"claves": [
-"Colombia: la cumbia · Cartagena de Indias",
+"Cumbia · Colombia · Cartagena de Indias",
 "tranquila, para caminar",
 "con su guacharaca",
 "el contratiempo en el piano"
@@ -81,7 +67,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 },
 {
 "claves": [
-"República Dominicana: el merengue · Santiago de los Caballeros",
+"Merengue · República Dominicana · Santiago de los Caballeros",
 "la cumbia, pero a toda pastilla",
 "con su güira",
 "y su tambora"
@@ -1081,21 +1067,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s2_r01": [
 {
 "claves": [
-"Repaso",
-"Bolero y bachata"
-],
-"estilo": "titulo",
-"fijo": true,
-"lado": "cabeza",
-"t": 0.12,
-"ts": [
-0.12,
-0.47
-]
-},
-{
-"claves": [
-"Cuba: el bolero · Santiago de Cuba",
+"Bolero · Cuba · Santiago de Cuba",
 "lento y elegante",
 "las maracas con su tresillo",
 "las congas con su remate de tres golpes"
@@ -1158,7 +1130,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "s2_r02": [
 {
 "claves": [
-"República Dominicana: la bachata · Santo Domingo",
+"Bachata · República Dominicana · Santo Domingo",
 "Güira y bongó",
 "breaks locos",
 "el bajo con una larga y dos cortas",

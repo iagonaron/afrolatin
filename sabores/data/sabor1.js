@@ -175,7 +175,7 @@ BLUES.dia(1, {
     "tras": "s1_n03",
     "quien": "SCHOENBERG",
     "img": "img/s1/i4c_aeropuerto.webp",
-    "espera": 1.8,
+    "espera": 0.6,
     "nota": "sin palabras: contesta con la cara, pensativo (se le ha sembrado la duda)"
    },
    "mus": {
