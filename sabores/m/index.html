@@ -72,9 +72,9 @@ input.pin{font-family:'Shrikhand',serif;font-weight:400;font-size:34px;letter-sp
 <main>
   <section class="pant" id="p-entrar">
     <h1>¿Qué sabor es?</h1>
-    <p>Escribe el PIN que sale en la pantalla de clase y elige tu apodo.</p>
-    <label for="pin">PIN</label>
-    <input id="pin" class="pin" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" placeholder="····">
+    <p id="intro">Escribe el PIN que sale en la pantalla de clase y elige tu apodo.</p>
+    <div id="caja-pin"><label for="pin">PIN</label>
+    <input id="pin" class="pin" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" placeholder="····"></div>
     <label for="nick">Tu apodo</label>
     <input id="nick" maxlength="16" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Por ejemplo, Lúa">
     <button class="bt" id="entrar">Entrar</button>
@@ -142,7 +142,9 @@ input.pin{font-family:'Shrikhand',serif;font-weight:400;font-size:34px;letter-sp
 
   /* ── entrar ── */
   var q = /[?&]c=([0-9]{4})/.exec(location.search);
-  if (q) $('pin').value = q[1];
+  /* (Iago 30-oct 06:42) quien entra por el QR no ve el PIN (va dentro del código): solo el apodo */
+  var conPin = function (ver) { $('caja-pin').style.display = ver ? '' : 'none'; $('intro').textContent = ver ? 'Escribe el PIN que sale en la pantalla de clase y elige tu apodo.' : 'Elige tu apodo y pulsa Entrar.'; };
+  if (q) { $('pin').value = q[1]; conPin(false); }
   try { var ap = localStorage.getItem('afroquiz_nick'); if (ap) $('nick').value = ap; } catch (e) { }
   $('entrar').addEventListener('click', entra);
   $('nick').addEventListener('keydown', function (e) { if (e.key === 'Enter') entra(); });
@@ -157,10 +159,10 @@ input.pin{font-family:'Shrikhand',serif;font-weight:400;font-size:34px;letter-sp
       yo = { jugador: r.jugador, clave: r.clave, nick: r.nick, pin: pin }; guarda(yo);
       try { localStorage.setItem('afroquiz_nick', r.nick); } catch (e) { }
       cabYo(); pant('espera'); arranca();
-    }, function (e) { $('err').textContent = ERR[e.message] || (e.servidor ? 'No se ha podido entrar (' + e.message + ').' : 'Sin conexión: comprueba la wifi y vuelve a probar.'); })
+    }, function (e) { if (e.message === 'pin') conPin(true); $('err').textContent = ERR[e.message] || (e.servidor ? 'No se ha podido entrar (' + e.message + ').' : 'Sin conexión: comprueba la wifi y vuelve a probar.'); })
       .then(function () { $('entrar').disabled = false; });
   }
-  $('otra').addEventListener('click', function () { para(); yo = null; guarda(null); cabYo(); $('pin').value = ''; pant('entrar'); });
+  $('otra').addEventListener('click', function () { para(); yo = null; guarda(null); cabYo(); $('pin').value = ''; conPin(true); pant('entrar'); });
 
   /* ── seguir la partida: pregunta su estado cada segundo ── */
   function arranca() { para(); nAct = -1; ultimo = null; tick(); sondeo = setInterval(tick, 1000); reloj = setInterval(cuenta, 250); }
