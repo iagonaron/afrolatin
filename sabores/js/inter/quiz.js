@@ -7,7 +7,7 @@
    · Cada pregunta la DICE EL NARRADOR; al acabar el tiempo (o cuando han contestado todos) se marca la buena y el maestro de
      ceremonias del género da la respuesta y el porqué, NEUTRO (contesta toda la clase a la vez). En teoría, la explicación sale escrita.
    · Pantalla del aula: nada se anima en vivo (solo cambian los números, una vez por segundo).
-   · Espacio / Intro: empezar, cerrar la pregunta antes de tiempo y seguir. P: pausa.
+   · Intro: empezar, cerrar la pregunta antes de tiempo y seguir (Espacio no avanza: Iago 30-oct). P: pausa.
    Datos: BLUES.QUIZ (data/quiz.js). Servidor: BLUES.QUIZ_SB = { url, anon } (js/quiz_sb.js) → funciones suite_aq_* de Supabase
    (herramientas/quiz_supabase.sql). ?quizsb=local: el servidor de pruebas de la misma dirección (herramientas/quiz_prueba.mjs). */
 'use strict';
@@ -73,8 +73,8 @@
       if (p && Q.generos.indexOf(p) >= 0) dis.push(p);
       baraja(Q.generos.filter(g => g !== r.genero && g !== p)).forEach(g => { if (dis.length < 3) dis.push(g); });
       const ops = baraja([r.genero].concat(dis));
-      const dur = (B.buf[r.fragmento.src] && B.buf[r.fragmento.src].duration) || r.fragmento.dur || 15;
-      return { tipo: 'rec', genero: r.genero, opciones: ops.map(g => G[g].nombre), buena: ops.indexOf(r.genero), frag: r.fragmento.src,
+      const dur = r.fragmento.dur || (B.buf[r.fragmento.src] && B.buf[r.fragmento.src].duration) || 15;   // (30-oct) lo que se escucha para contestar; la canción sigue
+      return { tipo: 'rec', genero: r.genero, opciones: ops.map(g => G[g].nombre), buena: ops.indexOf(r.genero), frag: r.fragmento.src, fondo: G[r.genero].fondo,
         seg: Math.max(SEG, Math.ceil(dur) + 3), narr: linea(r.narrador), res: linea(G[r.genero].respuesta), nombre: G[r.genero].nombre, pais: G[r.genero].pais };
     });
     const pool = baraja(Q.teoria), elegidas = [], usados = {};
@@ -82,7 +82,7 @@
     pool.forEach(t => { if (elegidas.length < Q.teoria_n && elegidas.indexOf(t) < 0) elegidas.push(t); });
     const teo = elegidas.map(t => {
       const idx = baraja(t.opciones.map((x, i) => i));
-      return { tipo: 'teo', genero: t.genero, texto: t.pregunta, opciones: idx.map(i => t.opciones[i]), buena: idx.indexOf(t.correcta), seg: SEG,
+      return { tipo: 'teo', genero: t.genero, fondo: G[t.genero].fondo, texto: t.pregunta, opciones: idx.map(i => t.opciones[i]), buena: idx.indexOf(t.correcta), seg: SEG,
         narr: linea(t.narrador), res: linea(t.respuesta), expl: t.explicacion };
     });
     /* reconocer barajadas; la primera, siempre de reconocer; las de teoría, en huecos sueltos (nunca dos seguidas) */
@@ -104,13 +104,32 @@
     return '<svg viewBox="-2 -2 ' + (n + 4) + ' ' + (n + 4) + '" shape-rendering="crispEdges" aria-label="Código QR"><rect x="-2" y="-2" width="' + (n + 4) + '" height="' + (n + 4) + '" fill="#fff"/><path d="' + d + '" fill="#1E1A16"/></svg>';
   }
 
+  /* ══════════ (Iago 30-oct 07:16) sonidos y números que suben (herramientas/quiz_sonidos.py) ══════════
+     los números cuentan a saltos (~12 por segundo, sin animaciones de CSS: la pantalla de clase va a pocos fotogramas) */
+  function sfx(k, vol) { const S = (B.QUIZ && B.QUIZ.sfx) || {}; return S[k] && B.buf[S[k]] ? B.suena(S[k], { bus: B.bus.sfx, vol: vol == null ? .8 : vol, grupo: 'plano' }) : null; }
+  function cuenta(desde, hasta, seg, pinta, ctl, sonido) {
+    return new Promise(res => {
+      if (hasta === desde) { pinta(hasta, 1); return res(); }
+      const t0 = B.ahora(); let ult = desde, sono = 0;
+      const id = setInterval(() => {
+        const p = Math.min(1, (B.ahora() - t0) / seg), e = 1 - Math.pow(1 - p, 3), v = Math.round(desde + (hasta - desde) * e);
+        if (v !== ult) { ult = v; pinta(v, e); if (sonido !== false && B.ahora() - sono > .085) { sono = B.ahora(); sfx('cuenta', .45); } }
+        if (p >= 1 || (ctl && ctl.muerto)) { clearInterval(id); pinta(hasta, 1); res(); }
+      }, 80);
+    });
+  }
+
   /* ══════════ la interacción ══════════ */
   B.inter.quiz = async function (caja, op) {
     const ctl = op.ctl, n = op.sabor, Q = B.QUIZ && B.QUIZ.quizzes && B.QUIZ.quizzes[n];
     if (!Q) return;
     let muerto = false; const relojes = new Set();
     const cada = (fn, ms) => { const id = setInterval(fn, ms); relojes.add(id); return () => { clearInterval(id); relojes.delete(id); }; };
-    ctl.alMorir.push(() => { muerto = true; relojes.forEach(clearInterval); relojes.clear(); B.musica(null); });
+    /* (Iago 30-oct 07:16) «que la música que suene lo haga hasta que sea la siguiente pregunta» */
+    let cancion = null, tokCancion = 0;
+    const paraCancion = f => { tokCancion++; if (cancion) { cancion.parar(f == null ? .8 : f); cancion = null; } };
+    const fondo = (q, vol) => q && q.fondo && B.buf[q.fondo.src] ? { src: q.fondo.src, vol: vol, bucle: !!q.fondo.bucle } : null;
+    ctl.alMorir.push(() => { muerto = true; relojes.forEach(clearInterval); relojes.clear(); paraCancion(.3); B.musica(null); });
     const di = l => l ? B.motor.di(l, ctl) : Promise.resolve(true);
     const preg = monta(n);
     let partida = null, jugadores = [], moviles = false;
@@ -129,7 +148,7 @@
         const fin = v => { if (hecho) return; hecho = true; quitaK(); b.remove(); res(v); };
         b.addEventListener('click', e => { e.stopPropagation(); fin(true); });
         pie.appendChild(b);
-        const quitaK = B.captura.poner(e => { if (e.key === ' ' || e.key === 'Enter') { fin(true); return true; } return false; });
+        const quitaK = B.captura.poner(e => { if (e.key === 'Enter') { fin(true); return true; } return false; });
         ctl.alMorir.push(() => fin(false));
         if (seg) B.espera(seg, ctl).then(() => fin(true));
       });
@@ -193,7 +212,7 @@
       let hecho = false; const fin = v => { if (hecho) return; hecho = true; quitaK(); res(v); };
       if (partida) { const b2 = U.boton('Sin móviles', '', () => fin('voz')); b2.dataset.tip = 'Jugar en voz alta: sin puntos ni clasificación'; pie.appendChild(b2); }
       pie.appendChild(U.boton('Empezar ' + B.motor.ICO.play, 'prim', () => fin(partida ? 'moviles' : 'voz')));
-      const quitaK = B.captura.poner(e => { if (e.key === ' ' || e.key === 'Enter') { fin(partida ? 'moviles' : 'voz'); return true; } return false; });
+      const quitaK = B.captura.poner(e => { if (e.key === 'Enter') { fin(partida ? 'moviles' : 'voz'); return true; } return false; });
       ctl.alMorir.push(() => fin(null));
     });
     paraSala(); pie.innerHTML = '';
@@ -205,7 +224,7 @@
     await di(linea(Q.intro)); if (muerto) return;
 
     /* ── 3 · las preguntas ── */
-    let totalAciertos = 0;
+    let totalAciertos = 0; const antes = {};   // puntos de la clasificación anterior (para contarlos desde ahí)
     for (let i = 0; i < preg.length; i++) {
       const q = preg[i], k = i + 1;
       const v = capa('qz-preg ' + (q.tipo === 'rec' ? 'es-rec' : 'es-teo'));
@@ -223,14 +242,19 @@
         '<img class="qz-pj" alt="">';
       const reloj = v.querySelector('.qz-reloj b'), recuento = v.querySelector('.qz-reloj em');
       if (!moviles) recuento.style.display = 'none';
-      if (q.tipo === 'rec') B.musica(null); else B.musica({ src: MUS, vol: .2, bucle: true });
+      paraCancion();
+      B.musica(q.tipo === 'rec' ? null : (fondo(q, .34) || { src: MUS, vol: .2, bucle: true }));   // teoría: la música de su género
       await di(q.narr); if (muerto) return;
       /* abrir la pregunta */
       let abierta = moviles;
       if (moviles) { try { await rpc('suite_aq_preguntar', { p_pin: partida.pin, p_clave: partida.clave, p_n: k, p_opciones: q.opciones, p_segundos: q.seg }); } catch (e) { abierta = false; } }
       if (muerto) return;
-      const frag = q.tipo === 'rec' && B.buf[q.frag] ? B.suena(q.frag, { bus: B.bus.mus, vol: .95, fade: .25, grupo: 'plano' }) : null;
-      const btCerrar = U.boton('Resolver ya', '', () => cierra()); btCerrar.dataset.tip = 'Cerrar la pregunta (Espacio)';
+      if (q.tipo === 'rec' && B.buf[q.frag]) {
+        cancion = B.suena(q.frag, { bus: B.bus.mus, vol: .95, fade: .25, grupo: 'plano' });
+        const tok = ++tokCancion, fq = fondo(q, .4);   // si la canción se acaba antes de la pregunta siguiente, entra el fondo del género
+        if (cancion && fq) B.espera(Math.max(1, cancion.dur - 2.6), ctl).then(ok => { if (ok && tok === tokCancion && !muerto) B.musica(fq); });
+      }
+      const btCerrar = U.boton('Resolver ya', '', () => cierra()); btCerrar.dataset.tip = 'Cerrar la pregunta (Intro)';
       pie.innerHTML = ''; pie.appendChild(btCerrar);
       let cierra;
       await new Promise(res => {
@@ -238,7 +262,7 @@
         const paraR = cada(() => {
           if (muerto) return acaba();
           const s = Math.max(0, Math.ceil(tFin - B.ahora()));
-          if (s !== ultS) { ultS = s; reloj.textContent = s; reloj.parentNode.classList.toggle('poco', s <= 5); }
+          if (s !== ultS) { if (ultS > 0 && s > 0 && s <= 5) sfx('tic', .7); ultS = s; reloj.textContent = s; reloj.parentNode.classList.toggle('poco', s <= 5); }
           if (tFin - B.ahora() <= 0) acaba();
         }, 200);
         const paraP = abierta ? cada(async () => {
@@ -250,30 +274,38 @@
           } catch (e) { }
         }, 1000) : () => { };
         if (abierta) recuento.textContent = '0 / ' + jugadores.length + ' respuestas';
-        const quitaK = B.captura.poner(e => { if (e.key === ' ' || e.key === 'Enter') { acaba(); return true; } return false; });
+        const quitaK = B.captura.poner(e => { if (e.key === 'Enter') { acaba(); return true; } return false; });
         function acaba() { if (hecho) return; hecho = true; paraR(); paraP(); quitaK(); res(); }
         cierra = acaba; ctl.alMorir.push(acaba);
       });
       pie.innerHTML = '';
-      if (frag) frag.parar(.9);
       if (muerto) return;
+      sfx('cierre', .55);
       /* resolver: la buena, el reparto y los 5 primeros */
       let r = null;
       if (abierta) { try { r = await rpc('suite_aq_resolver', { p_pin: partida.pin, p_clave: partida.clave, p_buena: q.buena }); } catch (e) { r = null; } }
       if (muerto) return;
-      B.musica(null);
       v.classList.add('resuelta'); if (!r) v.classList.add('sin-cuentas'); caja.dataset.fase = 'res';
       v.querySelector('.qz-reloj').style.visibility = 'hidden';
       const ops = B.$$('.qz-op', v), tot = r ? Math.max(1, (r.reparto || []).reduce((a, b) => a + b, 0)) : 0;
+      sfx('buena', .75);
+      const cuentas = [];
       ops.forEach((o, j) => {
         o.classList.add(j === q.buena ? 'buena' : 'mala');
-        if (r && r.reparto) { const c = r.reparto[j] || 0; o.querySelector('.qz-cuenta').textContent = c; o.querySelector('.qz-barra i').style.width = (100 * c / tot).toFixed(1) + '%'; }
+        if (r && r.reparto) {
+          const c = r.reparto[j] || 0, el = o.querySelector('.qz-cuenta'), barra = o.querySelector('.qz-barra i');
+          el.textContent = '0'; barra.style.width = '0%';
+          cuentas.push(cuenta(0, c, .9, (x, e) => { el.textContent = x; barra.style.width = (100 * c / tot * e).toFixed(1) + '%'; }, ctl, j === q.buena));
+        }
       });
       if (r) totalAciertos += r.aciertos || 0;
       const resBox = v.querySelector('.qz-res');
       if (q.tipo === 'rec') resBox.innerHTML = '<div class="qz-gen">' + B.esc(q.nombre) + '</div><div class="qz-pais">' + B.esc(q.pais) + '</div>';
       else resBox.innerHTML = '<div class="qz-expl">' + B.esc(q.expl) + '</div>';
-      if (r) resBox.insertAdjacentHTML('beforeend', '<div class="qz-aciertos">' + (r.aciertos || 0) + ' de ' + (r.contestados || 0) + ((r.aciertos || 0) === 1 ? ' ha' : ' han') + ' acertado</div>');
+      if (r) {
+        resBox.insertAdjacentHTML('beforeend', '<div class="qz-aciertos"><b>0</b> de ' + (r.contestados || 0) + ((r.aciertos || 0) === 1 ? ' ha' : ' han') + ' acertado</div>');
+        const ac = resBox.querySelector('.qz-aciertos b'); cuenta(0, r.aciertos || 0, .9, x => { ac.textContent = x; }, ctl, false);
+      }
       const pjD = PJ[q.res && q.res.quien];
       const pjI = v.querySelector('.qz-pj'); if (pjD) { pjI.src = pjD[0]; pjI.classList.add('on'); }
       await di(q.res); if (muerto) return;
@@ -282,12 +314,17 @@
       if (r && r.top && r.top.length && k < preg.length) {
         const c = capa('qz-clasif');
         c.innerHTML = '<div class="qz-tit">Clasificación</div><div class="qz-sub">tras la pregunta ' + k + ' de ' + preg.length + '</div>' +
-          '<ol class="qz-top">' + r.top.map((t, j) => '<li><span class="qz-pos">' + (j + 1) + '</span><span class="qz-tn">' + B.esc(t.nick) + '</span><span class="qz-tp">' + t.puntos + '</span></li>').join('') + '</ol>';
-        await seguir('Siguiente', 4); if (muerto) return;
+          '<ol class="qz-top">' + r.top.map((t, j) => '<li><span class="qz-pos">' + (j + 1) + '</span><span class="qz-tn">' + B.esc(t.nick) + '</span><span class="qz-tp">' + (antes[t.nick] || 0) + '</span></li>').join('') + '</ol>';
+        sfx('clasif', .7);
+        const tps = B.$$('.qz-tp', c);
+        r.top.forEach((t, j) => cuenta(antes[t.nick] || 0, t.puntos, 1.2, x => { tps[j].textContent = x; }, ctl, j === 0));
+        r.top.forEach(t => { antes[t.nick] = t.puntos; });
+        await seguir('Siguiente', 4.5); if (muerto) return;
       }
     }
 
     /* ── 4 · el final: podio (con móviles), la frase del narrador y, en el sabor 4, Chucho y el grito ── */
+    paraCancion(1.2);
     B.musica({ src: MUS, vol: .4, bucle: true });
     let f = null;
     if (moviles) { try { f = await rpc('suite_aq_fin', { p_pin: partida.pin, p_clave: partida.clave }); } catch (e) { f = null; } }
@@ -296,8 +333,19 @@
     const top = (f && f.top) || [];
     if (top.length) {
       const pod = [top[1], top[0], top[2]];
-      fin.innerHTML = '<div class="qz-tit">¡Enhorabuena!</div><div class="qz-podio">' + pod.map((t, j) => t ? '<div class="qz-esc p' + [2, 1, 3][j] + '"><div class="qz-esc-n">' + B.esc(t.nick) + '</div><div class="qz-esc-p">' + t.puntos + ' puntos</div><div class="qz-esc-b"><b>' + [2, 1, 3][j] + '</b></div></div>' : '<div class="qz-esc vacio"></div>').join('') + '</div>' +
-        (top.length > 3 ? '<ol class="qz-resto" start="4">' + top.slice(3, 10).map(t => '<li><span class="qz-tn">' + B.esc(t.nick) + '</span><span class="qz-tp">' + t.puntos + '</span></li>').join('') + '</ol>' : '');
+      fin.innerHTML = '<div class="qz-tit">¡Enhorabuena!</div><div class="qz-podio">' + pod.map((t, j) => t ? '<div class="qz-esc p' + [2, 1, 3][j] + ' tapado"><div class="qz-esc-n">' + B.esc(t.nick) + '</div><div class="qz-esc-p"><b>0</b> puntos</div><div class="qz-esc-b"><b>' + [2, 1, 3][j] + '</b></div></div>' : '<div class="qz-esc vacio"></div>').join('') + '</div>' +
+        (top.length > 3 ? '<ol class="qz-resto tapado" start="4">' + top.slice(3, 10).map(t => '<li><span class="qz-tn">' + B.esc(t.nick) + '</span><span class="qz-tp">' + t.puntos + '</span></li>').join('') + '</ol>' : '');
+      /* (Iago 30-oct 07:16) el podio se destapa de abajo arriba: el resto, el 3.º, el 2.º y, con fanfarria y aplausos, el 1.º */
+      const resto = fin.querySelector('.qz-resto');
+      if (resto) { await B.espera(.6, ctl); if (muerto) return; resto.classList.remove('tapado'); }
+      for (const p of [3, 2, 1]) {
+        const e = fin.querySelector('.qz-esc.p' + p), t = top[p - 1]; if (!e || !t) continue;
+        await B.espera(p === 1 ? 1.1 : .8, ctl); if (muerto) return;
+        e.classList.remove('tapado');
+        if (p === 1) { sfx('podio', .8); const a = sfx('aplausos', .5); if (a) a.parar && setTimeout(() => a.parar(1.5), 4200); } else sfx('puesto', .7);
+        const pb = e.querySelector('.qz-esc-p b'); cuenta(0, t.puntos, p === 1 ? 1.6 : 1, x => { pb.textContent = x; }, ctl, true);
+      }
+      await B.espera(1.2, ctl); if (muerto) return;
     } else {
       fin.innerHTML = '<div class="qz-tit">¡Fin del quiz!</div><div class="qz-sub">' + preg.length + ' preguntas · ' + Q.generos.length + ' géneros</div>';
     }

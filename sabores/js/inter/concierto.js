@@ -216,7 +216,10 @@
       /* (28-oct, Iago: «me falta animación de fondos en el videoclip: velas, mar…») sus luces titilan (js/portada_vida.js; puntos en
          BLUES.LUCES_VC, herramientas/luces_s1.py); el lienzo lleva la misma clase que la imagen para moverse con ella */
       const LV = B.LUCES_VC && B.LUCES_VC[p.img];
-      if (B.vidaLienzo && (LV && LV.length || op.planos)) { const cv = B.el('canvas', 's4-img s4-vida-vc'); capa.appendChild(cv); B.vidaLienzo(cv, { luces: LV || [], rMin: .014, rK: 1.15, caen: 40 }); if (capa._z) { capa._cv = cv; cv.style.transformOrigin = capa._o; cv.style.transform = 'scale(' + capa._z[0] + ')'; } }   // (28-oct 09:13) y motitas que caen en todos los planos
+      /* (Iago 30-oct 07:16) en la canción del sabor 2 sobran un poco las lucecitas: una de cada cuatro, fuera · (06:54, 07:26) destellos del
+         mar, pocos y solo donde hay agua (BLUES.MAR_VC, herramientas/mar_vc.py) · partículas, un poco más presentes (+15 % y +12 % de opacidad) */
+      const LV2 = LV && /^img\/s2\//.test(p.img) ? LV.filter((l, j) => j % 4 !== 3) : LV, MV = B.MAR_VC && B.MAR_VC[p.img];
+      if (B.vidaLienzo && (LV2 && LV2.length || op.planos)) { const cv = B.el('canvas', 's4-img s4-vida-vc'); capa.appendChild(cv); B.vidaLienzo(cv, { luces: LV2 || [], rMin: .014, rK: 1.15, caen: 46, caenA: .56, mar: MV || null, hojas: op.hojas || 0 }); if (capa._z) { capa._cv = cv; cv.style.transformOrigin = capa._o; cv.style.transform = 'scale(' + capa._z[0] + ')'; } }   // (28-oct 09:13) y motitas que caen en todos los planos
       esc.appendChild(capa); void capa.offsetWidth;
       capa.classList.add('on');
       /* (28-oct 21:03, Iago en el iPad: «fondos que parecen de otro tamaño») las franjas de fuera de la pantalla, con el plano que se ve */
@@ -584,7 +587,7 @@
       if (bo.ejemplos.length) acc.appendChild(U.boton(S.ICO.play + ' Ejemplos reales', 's4-bt-ej', () => ejemplosReales()));
       const bSeg = U.boton('', 'prim s4-bt-seg', () => principal()); bSeg.textContent = bo.seguir; acc.appendChild(bSeg);
       fueSeguir = new Promise(r => { seguirRes = r; });
-      quitaTecla = B.captura.poner(e => { if (e.key === ' ' || e.key === 'Enter') { principal(); return true; } return false; });
+      quitaTecla = B.captura.poner(e => { if (e.key === 'Enter') { principal(); return true; } return false; });   // (Iago 30-oct) Espacio ya no avanza
       /* la letra se aparta de la columna de botones: --zb = su ancho (en u) + márgenes */
       const mide = () => {
         const a = acc.getBoundingClientRect().width, c = caja.getBoundingClientRect().width;

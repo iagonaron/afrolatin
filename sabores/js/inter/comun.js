@@ -28,7 +28,7 @@
       const fin = () => { if (hecho) return; hecho = true; quita(); res(true); };
       b.addEventListener('click', e => { e.stopPropagation(); fin(); });
       pie.appendChild(b);
-      const quita = B.captura.poner(e => { if (e.key === ' ' || e.key === 'Enter') { fin(); return true; } return false; });
+      const quita = B.captura.poner(e => { if (e.key === 'Enter') { fin(); return true; } return false; });   // (Iago 30-oct) Espacio ya no avanza
       ctl.alMorir.push(() => { quita(); res(false); });
     });
   };

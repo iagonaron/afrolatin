@@ -52,8 +52,16 @@
     /* op.luego: cambiar de instrumento en el sitio (la foto, el nombre y su caja de tamaño real) */
     const im1 = foto.firstChild; let im2 = null, enSegundo = false;
     if (LG) { im2 = S.imagen(LG.img, LG.nom || nom, color); if (im2.decode) im2.decode().catch(() => { }); }   // descodificada ya: el cambio, sin fotograma vacío
+    /* (Iago 30-oct 07:34: «que sea más claro el paso de estrofa a estribillo: el selector como después, pero arriba y automático, para que el
+       alumno vea que es el mismo percusionista») op.secciones = ['Estrofa', 'Estribillo']: el selector de «Arma la banda», arriba, que cambia solo */
+    let selSec = null;
+    if (LG && B.arr(op.secciones).length === 2) {
+      selSec = B.el('div', 's4-sel-auto'); op.secciones.forEach((x, k) => { const e = B.el('span', k === 0 ? 'on' : ''); e.textContent = x; selSec.appendChild(e); });
+      caja.appendChild(selSec);
+    }
     const aSegundo = si => {
       if (!LG || si === enSegundo) return; enSegundo = si;
+      if (selSec) B.$$('span', selSec).forEach((e, k) => e.classList.toggle('on', k === (si ? 1 : 0)));
       if (si) { if (!im2) im2 = S.imagen(LG.img, LG.nom || nom, color); im1.replaceWith(im2); nm.textContent = LG.nom || nom; tamNom(LG.nom || nom); ponTam(B.CAPAS && B.CAPAS.tam && B.CAPAS.tam[LG.img]); }
       else { im2.replaceWith(im1); nm.textContent = nom; tamNom(nom); ponTam(tam); }
     };
