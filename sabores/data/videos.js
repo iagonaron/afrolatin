@@ -1,5 +1,10 @@
 /* 4 Sabores · clips de los videoclips (herramientas/videos_vc.py; NO editar a mano): imagen → {v: mp4, b: bytes, d: sabor, z: [escala inicial, final], o: punto fijo (alto)} */
 BLUES.VIDEOS = {
+"lam:img/portada/fondo.webp": {
+"v": "vl/portada/fondo.mp4?h=c5ad80af",
+"b": 4006497,
+"d": 0
+},
 "lam:img/s1/v2_maleta.webp": {
 "v": "vl/s1/v2_maleta.mp4?h=ddd4916b",
 "b": 1014593,

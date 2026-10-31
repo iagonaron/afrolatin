@@ -1,6 +1,6 @@
 /* 4 SABORES · recursos publicados (herramientas/paquete_web.py; NO editar a mano). Ruta → bytes. */
 BLUES.RECURSOS = Object.assign(BLUES.RECURSOS || {}, {
-"img/portada/fondo.webp": 328820,
+"img/portada/fondo.webp": 363670,
 "img/portada/icono_1.webp": 17234,
 "img/portada/icono_2.webp": 14274,
 "img/portada/icono_3.webp": 16912,
