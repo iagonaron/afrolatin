@@ -306,8 +306,10 @@ const HIT = (function () {
       h += '<button class="bt prim" id="continuar">' + ICO.play + ' Continuar · ' + ETQc + ' ' + u.dia + (u.plano && d.planos[u.plano] ? ' · ' + (d.planos[u.plano].nombre || d.planos[u.plano].id) : '') + '</button>';
     } else h += '<span class="port-nota">Elige ' + (CF.elige || 'un acto') + ' · Espacio para seguir · P pausa · F pantalla completa</span>';
     h += '</div>';
+    sueltaFondoVivo();
     p.innerHTML = h;
     if (cartel && B.portadaVida) B.portadaVida(p);   // (28-oct) luces que respiran y brillos en el mar (js/portada_vida.js)
+    if (cartel) fondoVivo(p);
     B.$$('.billete, .s4p-carta', p).forEach(b => b.addEventListener('click', () => {
       B.ac(); const n = +b.dataset.dia;
       if (!HIT.abierto(n)) { M.aviso('El ' + ETQ.toLowerCase() + ' ' + n + ' se abre al acabar la clase en que lo veáis.', 3.2); return; }
@@ -353,7 +355,31 @@ const HIT = (function () {
     }
     return h + '</div>';
   }
-  function paraPortada() { if (M._crepita) { M._crepita.parar(); M._crepita = null; } B.musica(null); }
+  function paraPortada() { if (M._crepita) { M._crepita.parar(); M._crepita = null; } B.musica(null); sueltaFondoVivo(); }
+  /* (r21, Iago 31-oct 17:47–23:05: «una versión animada y en bucle de la portada… que se anime un poquito de forma natural»; imagen de
+     ChatGPT animada con Runway, vl/portada/fondo.mp4) el fondo de la portada, en vídeo, encima de su foto (img/portada/fondo.webp es su
+     primer fotograma: al empezar a sonar entra de golpe y no salta). Solo si los vídeos están encendidos en esta pantalla; de la caché si
+     ya está bajado y, si no, de la red. Al salir de la portada se para y se suelta (un vídeo menos descodificando durante el sabor). */
+  const K_PORT = 'lam:img/portada/fondo.webp';
+  async function fondoVivo(p) {
+    const fo = p.querySelector('.s4p-fondo');
+    if (!fo || !B.videos || !B.videos.hay() || !B.VIDEOS || !B.VIDEOS[K_PORT]) return;
+    let u = null;
+    try { const m = await B.videos.abre([K_PORT]); u = m.get(K_PORT) || null; } catch (e) { }
+    if (!u) u = new URL(B.VIDEOS[K_PORT].v, location.href).href;
+    if (!fo.isConnected || !escena.classList.contains('en-portada') || fo.querySelector('video')) { if (/^blob:/.test(u)) { try { URL.revokeObjectURL(u); } catch (e) { } } return; }
+    const v = document.createElement('video'); v.className = 's4p-vid';
+    v.muted = true; v.defaultMuted = true; v.loop = true; v.playsInline = true; v.autoplay = true; v.preload = 'auto'; v.disablePictureInPicture = true;
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('loop', ''); v.setAttribute('aria-hidden', 'true'); v.style.opacity = '0';
+    v.addEventListener('playing', () => { v.style.opacity = '1'; }, { once: true });
+    v.addEventListener('error', () => v.remove(), { once: true });
+    v.src = u; fo.appendChild(v);
+    const pr = v.play(); if (pr && pr.catch) pr.catch(() => { });
+    if (B.videos.vigila) B.videos.vigila(v);
+  }
+  function sueltaFondoVivo() {
+    B.$$('#portada .s4p-vid').forEach(v => { try { const s = v.src; v.pause(); v.removeAttribute('src'); v.load(); if (/^blob:/.test(s)) URL.revokeObjectURL(s); } catch (e) { } v.remove(); });
+  }
 
   /* ══════════ empezar un día: precarga y primer plano ══════════ */
   let directoA = -1;   // (punto 54) plano en el que se entra directo a la interacción (sin intro ni frases)
