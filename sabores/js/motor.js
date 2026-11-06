@@ -44,7 +44,11 @@ const HIT = (function () {
         history.replaceState(history.state, '', location.pathname + location.search + (resto ? '#' + resto : ''));
       }
     } catch (e) { }
-    const ab = (st && Array.isArray(st.dias) && st.dias.length) ? st.dias.map(Number) : null;   // null = todo abierto
+    /* (6-nov-2026, Iago: «está bien que esté cerrado… quiero que mis alumnos puedan entrar con su cuenta, pero solo cuando esté
+       habilitado») sin cuenta del portal y sin ser el profe, ya NO está todo abierto: solo el sabor 1 (antes, quien abría la
+       dirección a pelo lo tenía todo). El profe sigue con todo abierto: entra por Protester (#c=) y ese navegador lo recuerda
+       (lm_vol_cuenta). Como el Blues. Deshacer: volver a «: null». */
+    const ab = prof ? null : (st && Array.isArray(st.dias) && st.dias.length) ? st.dias.map(Number) : [1];   // null = todo abierto
     return { activo: () => !!ab, abierto: n => !ab || ab.indexOf(+n) >= 0, ir: () => { const n = ir; ir = 0; return n; }, prof };
   })();
   B.hitos = HIT; B.prof = HIT.prof;
