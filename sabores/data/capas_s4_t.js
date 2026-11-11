@@ -2022,7 +2022,7 @@ Object.assign(BLUES.CAPAS.lineas, {
 "voz/s4/s4_grito.mp3"
 ],
 "t": 3.99,
-"dur": 2.3,
+"dur": 2.7,
 "vol": 0.95,
 "off": 0
 }

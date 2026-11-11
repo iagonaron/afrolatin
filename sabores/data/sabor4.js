@@ -3063,7 +3063,7 @@ BLUES.dia(4, {
      "quien": "DON MAMBERTO",
      "texto": "Y el mambo: los vientos, el flow… ¡y el grito!",
      "voz": "voz/s4/s4_rm.mp3",
-     "espera": 2.2
+     "espera": 2.7
     },
     {
      "id": "s4_rl",

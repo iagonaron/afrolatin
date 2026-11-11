@@ -806,7 +806,7 @@ BLUES.RECURSOS = Object.assign(BLUES.RECURSOS || {}, {
 "voz/s3/s3_s09.mp3": 44347,
 "voz/s3/s3_t01.mp3": 375685,
 "voz/s4/s4_ch1.mp3": 255835,
-"voz/s4/s4_grito.mp3": 33480,
+"voz/s4/s4_grito.mp3": 42675,
 "voz/s4/s4_l01.mp3": 157614,
 "voz/s4/s4_l02.mp3": 155524,
 "voz/s4/s4_l03.mp3": 548406,
