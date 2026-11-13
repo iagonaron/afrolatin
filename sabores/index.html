@@ -196,5 +196,47 @@ window.LM_VOL_CONFIG = function () {
 })();
 </script>
 <i id="lm-que" hidden data-lm-ejercicio="portada"></i><!-- (30-oct-2026, Iago) para la campana del Diario: el latido (piel/latido.js) apunta qué hace el alumno: «portada», «sabor-N-carga» o «sabor-N» (lo pone js/motor.js, marcaLatido). Para quitarlo: borrar esta línea -->
+<script>/* (13-nov-2026, Iago · «Qué suma v2», C1) «cada capítulo cuenta al llegar al 75 %»: 4 Sabores le dice al latido cuánto lleva hecho del sabor
+   (data-lm-progreso, 0–1, en <i id="lm-que"> junto a data-lm-ejercicio; el latido lo manda a la campana cada 5 s). Se mide por PLANOS REALMENTE VISTOS:
+   un plano cuenta cuando ha estado en pantalla DWELL_S segundos de verdad (sin pausa, con la pestaña a la vista); pasar a toda prisa con → o con los
+   puntos NO suma. Avance = planos vistos ÷ planos del sabor. Al «Fin del sabor» llega a 1 (si ya lleva el 80 % visto de verdad). Nunca baja
+   (se guarda en este navegador, lm_4s_vistos, para que «Repetir» y «Continuar» no empiecen de cero). Portada y «sabor-N-carga»: sin atributo.
+   Solo lee BLUES.motor y BLUES.DIAS; no cambia nada más. Quitarlo: borrar este bloque. */
+(function () {
+  var DWELL_S = 4, FIN_MIN = 0.8, K = 'lm_4s_vistos', V = null;
+  function cargar() { if (V) return V; try { V = JSON.parse(localStorage.getItem(K) || 'null'); } catch (e) { V = null; } if (!V || typeof V !== 'object') V = {}; return V; }
+  function guardar() { try { localStorage.setItem(K, JSON.stringify(V)); } catch (e) {} }
+  function hechos(r) { var c = 0, k; for (k in r.d) if (r.d[k] >= DWELL_S) c++; return c; }
+  function avance(r, N) { if (r.f) return 1; return Math.max(+r.m || 0, Math.min(1, N ? hechos(r) / N : 0)); }
+  function tic() {
+    try {
+      var B = window.BLUES, M = B && B.motor, el = document.getElementById('lm-que'); if (!M || !el) return;
+      var v = el.getAttribute('data-lm-ejercicio') || '', m = /^sabor-(\d+)$/.exec(v), dia = m && M.dia && M.dia();
+      if (!m || !dia || +dia.n !== +m[1]) { if (el.hasAttribute('data-lm-progreso')) el.removeAttribute('data-lm-progreso'); return; }
+      var n = m[1], N = (dia.planos || []).length, i = +M.indice(); if (!N || !(i >= 0)) return;
+      cargar();
+      var r = V[n], cambio = false;
+      if (!r || typeof r !== 'object' || !r.d) {
+        r = V[n] = { d: {}, f: 0, m: 0 }; cambio = true;
+        try { /* sabor ya terminado antes de esto: vale 1; si se reanuda a mitad («Continuar»), lo de atrás ya se hizo */
+          var pr = JSON.parse(localStorage.getItem('blues5_progreso_v1') || 'null');
+          if (pr && pr.dias && pr.dias[n]) r.f = 1; else for (var j = 0; j < i; j++) r.d[j] = DWELL_S;
+        } catch (e) { for (var j2 = 0; j2 < i; j2++) r.d[j2] = DWELL_S; }
+      }
+      var fd = document.getElementById('findia'), fin = !!(fd && fd.classList.contains('on')), tj = document.getElementById('tarjeta');
+      if (fin) { if (!r.f && avance(r, N) >= FIN_MIN) { r.f = 1; cambio = true; } }
+      else if (!B.pausado && !document.hidden && !(tj && tj.classList.contains('on'))) {
+        var s = +r.d[i] || 0; if (s < DWELL_S) { r.d[i] = s + 1; cambio = true; }
+      }
+      var a = avance(r, N); if (a > (+r.m || 0)) { r.m = a; cambio = true; }
+      if (cambio) guardar();
+      var t = Math.max(a, +r.m || 0).toFixed(3);
+      if (el.getAttribute('data-lm-progreso') !== t) el.setAttribute('data-lm-progreso', t);
+    } catch (e) {}
+  }
+  setInterval(tic, 1000);
+  window.__4sProgreso = function () { var el = document.getElementById('lm-que'); return el && el.getAttribute('data-lm-progreso'); };
+})();
+</script>
 <script src="https://ge.lmathome.es/piel/latido.js?v=1" defer></script><!-- (15-oct-2026, Iago) trabajo por libre: el latido para la campana del Diario. Para quitarlo: borrar esta línea -->
 </body></html>
